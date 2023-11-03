@@ -687,9 +687,87 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 			s.Room.Encode(e)
 		}
 	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.ModelAt.Set {
+			e.FieldStart("model_at")
+			s.ModelAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.ModelAttack.Set {
+			e.FieldStart("model_attack")
+			s.ModelAttack.Encode(e)
+		}
+	}
+	{
+		if s.ModelLimit.Set {
+			e.FieldStart("model_limit")
+			s.ModelLimit.Encode(e)
+		}
+	}
+	{
+		if s.ModelSkill.Set {
+			e.FieldStart("model_skill")
+			s.ModelSkill.Encode(e)
+		}
+	}
+	{
+		if s.ModelMode.Set {
+			e.FieldStart("model_mode")
+			s.ModelMode.Encode(e)
+		}
+	}
+	{
+		if s.ModelCritical.Set {
+			e.FieldStart("model_critical")
+			s.ModelCritical.Encode(e)
+		}
+	}
+	{
+		if s.ModelCriticalD.Set {
+			e.FieldStart("model_critical_d")
+			s.ModelCriticalD.Encode(e)
+		}
+	}
+	{
+		if s.Game.Set {
+			e.FieldStart("game")
+			s.Game.Encode(e)
+		}
+	}
+	{
+		if s.GameTest.Set {
+			e.FieldStart("game_test")
+			s.GameTest.Encode(e)
+		}
+	}
+	{
+		if s.GameEnd.Set {
+			e.FieldStart("game_end")
+			s.GameEnd.Encode(e)
+		}
+	}
+	{
+		if s.GameAccount.Set {
+			e.FieldStart("game_account")
+			s.GameAccount.Encode(e)
+		}
+	}
+	{
+		if s.GameLv.Set {
+			e.FieldStart("game_lv")
+			s.GameLv.Encode(e)
+		}
+	}
 }
 
-var jsonFieldsNameOfCardOwnerRead = [33]string{
+var jsonFieldsNameOfCardOwnerRead = [46]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -723,6 +801,19 @@ var jsonFieldsNameOfCardOwnerRead = [33]string{
 	30: "ten_at",
 	31: "next",
 	32: "room",
+	33: "model",
+	34: "model_at",
+	35: "model_attack",
+	36: "model_limit",
+	37: "model_skill",
+	38: "model_mode",
+	39: "model_critical",
+	40: "model_critical_d",
+	41: "game",
+	42: "game_test",
+	43: "game_end",
+	44: "game_account",
+	45: "game_lv",
 }
 
 // Decode decodes CardOwnerRead from json.
@@ -730,7 +821,7 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CardOwnerRead to nil")
 	}
-	var requiredBitSet [5]uint8
+	var requiredBitSet [6]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -1068,6 +1159,136 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"room\"")
 			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "model_at":
+			if err := func() error {
+				s.ModelAt.Reset()
+				if err := s.ModelAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_at\"")
+			}
+		case "model_attack":
+			if err := func() error {
+				s.ModelAttack.Reset()
+				if err := s.ModelAttack.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_attack\"")
+			}
+		case "model_limit":
+			if err := func() error {
+				s.ModelLimit.Reset()
+				if err := s.ModelLimit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_limit\"")
+			}
+		case "model_skill":
+			if err := func() error {
+				s.ModelSkill.Reset()
+				if err := s.ModelSkill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_skill\"")
+			}
+		case "model_mode":
+			if err := func() error {
+				s.ModelMode.Reset()
+				if err := s.ModelMode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_mode\"")
+			}
+		case "model_critical":
+			if err := func() error {
+				s.ModelCritical.Reset()
+				if err := s.ModelCritical.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical\"")
+			}
+		case "model_critical_d":
+			if err := func() error {
+				s.ModelCriticalD.Reset()
+				if err := s.ModelCriticalD.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical_d\"")
+			}
+		case "game":
+			if err := func() error {
+				s.Game.Reset()
+				if err := s.Game.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game\"")
+			}
+		case "game_test":
+			if err := func() error {
+				s.GameTest.Reset()
+				if err := s.GameTest.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_test\"")
+			}
+		case "game_end":
+			if err := func() error {
+				s.GameEnd.Reset()
+				if err := s.GameEnd.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_end\"")
+			}
+		case "game_account":
+			if err := func() error {
+				s.GameAccount.Reset()
+				if err := s.GameAccount.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_account\"")
+			}
+		case "game_lv":
+			if err := func() error {
+				s.GameLv.Reset()
+				if err := s.GameLv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_lv\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -1077,8 +1298,9 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [5]uint8{
+	for i, mask := range [6]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -2222,6 +2444,84 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.ModelAt.Set {
+			e.FieldStart("model_at")
+			s.ModelAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.ModelAttack.Set {
+			e.FieldStart("model_attack")
+			s.ModelAttack.Encode(e)
+		}
+	}
+	{
+		if s.ModelLimit.Set {
+			e.FieldStart("model_limit")
+			s.ModelLimit.Encode(e)
+		}
+	}
+	{
+		if s.ModelSkill.Set {
+			e.FieldStart("model_skill")
+			s.ModelSkill.Encode(e)
+		}
+	}
+	{
+		if s.ModelMode.Set {
+			e.FieldStart("model_mode")
+			s.ModelMode.Encode(e)
+		}
+	}
+	{
+		if s.ModelCritical.Set {
+			e.FieldStart("model_critical")
+			s.ModelCritical.Encode(e)
+		}
+	}
+	{
+		if s.ModelCriticalD.Set {
+			e.FieldStart("model_critical_d")
+			s.ModelCriticalD.Encode(e)
+		}
+	}
+	{
+		if s.Game.Set {
+			e.FieldStart("game")
+			s.Game.Encode(e)
+		}
+	}
+	{
+		if s.GameTest.Set {
+			e.FieldStart("game_test")
+			s.GameTest.Encode(e)
+		}
+	}
+	{
+		if s.GameEnd.Set {
+			e.FieldStart("game_end")
+			s.GameEnd.Encode(e)
+		}
+	}
+	{
+		if s.GameAccount.Set {
+			e.FieldStart("game_account")
+			s.GameAccount.Encode(e)
+		}
+	}
+	{
+		if s.GameLv.Set {
+			e.FieldStart("game_lv")
+			s.GameLv.Encode(e)
+		}
+	}
+	{
 		if s.Card != nil {
 			e.FieldStart("card")
 			e.ArrStart()
@@ -2233,7 +2533,7 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateUserReq = [35]string{
+var jsonFieldsNameOfCreateUserReq = [48]string{
 	0:  "username",
 	1:  "did",
 	2:  "member",
@@ -2268,7 +2568,20 @@ var jsonFieldsNameOfCreateUserReq = [35]string{
 	31: "ten_at",
 	32: "next",
 	33: "room",
-	34: "card",
+	34: "model",
+	35: "model_at",
+	36: "model_attack",
+	37: "model_limit",
+	38: "model_skill",
+	39: "model_mode",
+	40: "model_critical",
+	41: "model_critical_d",
+	42: "game",
+	43: "game_test",
+	44: "game_end",
+	45: "game_account",
+	46: "game_lv",
+	47: "card",
 }
 
 // Decode decodes CreateUserReq from json.
@@ -2276,7 +2589,7 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CreateUserReq to nil")
 	}
-	var requiredBitSet [5]uint8
+	var requiredBitSet [6]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -2624,6 +2937,136 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"room\"")
 			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "model_at":
+			if err := func() error {
+				s.ModelAt.Reset()
+				if err := s.ModelAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_at\"")
+			}
+		case "model_attack":
+			if err := func() error {
+				s.ModelAttack.Reset()
+				if err := s.ModelAttack.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_attack\"")
+			}
+		case "model_limit":
+			if err := func() error {
+				s.ModelLimit.Reset()
+				if err := s.ModelLimit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_limit\"")
+			}
+		case "model_skill":
+			if err := func() error {
+				s.ModelSkill.Reset()
+				if err := s.ModelSkill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_skill\"")
+			}
+		case "model_mode":
+			if err := func() error {
+				s.ModelMode.Reset()
+				if err := s.ModelMode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_mode\"")
+			}
+		case "model_critical":
+			if err := func() error {
+				s.ModelCritical.Reset()
+				if err := s.ModelCritical.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical\"")
+			}
+		case "model_critical_d":
+			if err := func() error {
+				s.ModelCriticalD.Reset()
+				if err := s.ModelCriticalD.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical_d\"")
+			}
+		case "game":
+			if err := func() error {
+				s.Game.Reset()
+				if err := s.Game.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game\"")
+			}
+		case "game_test":
+			if err := func() error {
+				s.GameTest.Reset()
+				if err := s.GameTest.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_test\"")
+			}
+		case "game_end":
+			if err := func() error {
+				s.GameEnd.Reset()
+				if err := s.GameEnd.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_end\"")
+			}
+		case "game_account":
+			if err := func() error {
+				s.GameAccount.Reset()
+				if err := s.GameAccount.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_account\"")
+			}
+		case "game_lv":
+			if err := func() error {
+				s.GameLv.Reset()
+				if err := s.GameLv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_lv\"")
+			}
 		case "card":
 			if err := func() error {
 				s.Card = make([]int, 0)
@@ -2652,9 +3095,10 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [5]uint8{
+	for i, mask := range [6]uint8{
 		0b00000001,
 		0b00001000,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -3368,9 +3812,87 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 			s.Room.Encode(e)
 		}
 	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.ModelAt.Set {
+			e.FieldStart("model_at")
+			s.ModelAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.ModelAttack.Set {
+			e.FieldStart("model_attack")
+			s.ModelAttack.Encode(e)
+		}
+	}
+	{
+		if s.ModelLimit.Set {
+			e.FieldStart("model_limit")
+			s.ModelLimit.Encode(e)
+		}
+	}
+	{
+		if s.ModelSkill.Set {
+			e.FieldStart("model_skill")
+			s.ModelSkill.Encode(e)
+		}
+	}
+	{
+		if s.ModelMode.Set {
+			e.FieldStart("model_mode")
+			s.ModelMode.Encode(e)
+		}
+	}
+	{
+		if s.ModelCritical.Set {
+			e.FieldStart("model_critical")
+			s.ModelCritical.Encode(e)
+		}
+	}
+	{
+		if s.ModelCriticalD.Set {
+			e.FieldStart("model_critical_d")
+			s.ModelCriticalD.Encode(e)
+		}
+	}
+	{
+		if s.Game.Set {
+			e.FieldStart("game")
+			s.Game.Encode(e)
+		}
+	}
+	{
+		if s.GameTest.Set {
+			e.FieldStart("game_test")
+			s.GameTest.Encode(e)
+		}
+	}
+	{
+		if s.GameEnd.Set {
+			e.FieldStart("game_end")
+			s.GameEnd.Encode(e)
+		}
+	}
+	{
+		if s.GameAccount.Set {
+			e.FieldStart("game_account")
+			s.GameAccount.Encode(e)
+		}
+	}
+	{
+		if s.GameLv.Set {
+			e.FieldStart("game_lv")
+			s.GameLv.Encode(e)
+		}
+	}
 }
 
-var jsonFieldsNameOfGroupUsersList = [33]string{
+var jsonFieldsNameOfGroupUsersList = [46]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -3404,6 +3926,19 @@ var jsonFieldsNameOfGroupUsersList = [33]string{
 	30: "ten_at",
 	31: "next",
 	32: "room",
+	33: "model",
+	34: "model_at",
+	35: "model_attack",
+	36: "model_limit",
+	37: "model_skill",
+	38: "model_mode",
+	39: "model_critical",
+	40: "model_critical_d",
+	41: "game",
+	42: "game_test",
+	43: "game_end",
+	44: "game_account",
+	45: "game_lv",
 }
 
 // Decode decodes GroupUsersList from json.
@@ -3411,7 +3946,7 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode GroupUsersList to nil")
 	}
-	var requiredBitSet [5]uint8
+	var requiredBitSet [6]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -3749,6 +4284,136 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"room\"")
 			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "model_at":
+			if err := func() error {
+				s.ModelAt.Reset()
+				if err := s.ModelAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_at\"")
+			}
+		case "model_attack":
+			if err := func() error {
+				s.ModelAttack.Reset()
+				if err := s.ModelAttack.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_attack\"")
+			}
+		case "model_limit":
+			if err := func() error {
+				s.ModelLimit.Reset()
+				if err := s.ModelLimit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_limit\"")
+			}
+		case "model_skill":
+			if err := func() error {
+				s.ModelSkill.Reset()
+				if err := s.ModelSkill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_skill\"")
+			}
+		case "model_mode":
+			if err := func() error {
+				s.ModelMode.Reset()
+				if err := s.ModelMode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_mode\"")
+			}
+		case "model_critical":
+			if err := func() error {
+				s.ModelCritical.Reset()
+				if err := s.ModelCritical.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical\"")
+			}
+		case "model_critical_d":
+			if err := func() error {
+				s.ModelCriticalD.Reset()
+				if err := s.ModelCriticalD.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical_d\"")
+			}
+		case "game":
+			if err := func() error {
+				s.Game.Reset()
+				if err := s.Game.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game\"")
+			}
+		case "game_test":
+			if err := func() error {
+				s.GameTest.Reset()
+				if err := s.GameTest.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_test\"")
+			}
+		case "game_end":
+			if err := func() error {
+				s.GameEnd.Reset()
+				if err := s.GameEnd.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_end\"")
+			}
+		case "game_account":
+			if err := func() error {
+				s.GameAccount.Reset()
+				if err := s.GameAccount.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_account\"")
+			}
+		case "game_lv":
+			if err := func() error {
+				s.GameLv.Reset()
+				if err := s.GameLv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_lv\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -3758,8 +4423,9 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [5]uint8{
+	for i, mask := range [6]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -5223,6 +5889,84 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.ModelAt.Set {
+			e.FieldStart("model_at")
+			s.ModelAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.ModelAttack.Set {
+			e.FieldStart("model_attack")
+			s.ModelAttack.Encode(e)
+		}
+	}
+	{
+		if s.ModelLimit.Set {
+			e.FieldStart("model_limit")
+			s.ModelLimit.Encode(e)
+		}
+	}
+	{
+		if s.ModelSkill.Set {
+			e.FieldStart("model_skill")
+			s.ModelSkill.Encode(e)
+		}
+	}
+	{
+		if s.ModelMode.Set {
+			e.FieldStart("model_mode")
+			s.ModelMode.Encode(e)
+		}
+	}
+	{
+		if s.ModelCritical.Set {
+			e.FieldStart("model_critical")
+			s.ModelCritical.Encode(e)
+		}
+	}
+	{
+		if s.ModelCriticalD.Set {
+			e.FieldStart("model_critical_d")
+			s.ModelCriticalD.Encode(e)
+		}
+	}
+	{
+		if s.Game.Set {
+			e.FieldStart("game")
+			s.Game.Encode(e)
+		}
+	}
+	{
+		if s.GameTest.Set {
+			e.FieldStart("game_test")
+			s.GameTest.Encode(e)
+		}
+	}
+	{
+		if s.GameEnd.Set {
+			e.FieldStart("game_end")
+			s.GameEnd.Encode(e)
+		}
+	}
+	{
+		if s.GameAccount.Set {
+			e.FieldStart("game_account")
+			s.GameAccount.Encode(e)
+		}
+	}
+	{
+		if s.GameLv.Set {
+			e.FieldStart("game_lv")
+			s.GameLv.Encode(e)
+		}
+	}
+	{
 		if s.Card != nil {
 			e.FieldStart("card")
 			e.ArrStart()
@@ -5234,7 +5978,7 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUpdateUserReq = [32]string{
+var jsonFieldsNameOfUpdateUserReq = [45]string{
 	0:  "did",
 	1:  "member",
 	2:  "book",
@@ -5266,7 +6010,20 @@ var jsonFieldsNameOfUpdateUserReq = [32]string{
 	28: "ten_at",
 	29: "next",
 	30: "room",
-	31: "card",
+	31: "model",
+	32: "model_at",
+	33: "model_attack",
+	34: "model_limit",
+	35: "model_skill",
+	36: "model_mode",
+	37: "model_critical",
+	38: "model_critical_d",
+	39: "game",
+	40: "game_test",
+	41: "game_end",
+	42: "game_account",
+	43: "game_lv",
+	44: "card",
 }
 
 // Decode decodes UpdateUserReq from json.
@@ -5586,6 +6343,136 @@ func (s *UpdateUserReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"room\"")
+			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "model_at":
+			if err := func() error {
+				s.ModelAt.Reset()
+				if err := s.ModelAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_at\"")
+			}
+		case "model_attack":
+			if err := func() error {
+				s.ModelAttack.Reset()
+				if err := s.ModelAttack.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_attack\"")
+			}
+		case "model_limit":
+			if err := func() error {
+				s.ModelLimit.Reset()
+				if err := s.ModelLimit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_limit\"")
+			}
+		case "model_skill":
+			if err := func() error {
+				s.ModelSkill.Reset()
+				if err := s.ModelSkill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_skill\"")
+			}
+		case "model_mode":
+			if err := func() error {
+				s.ModelMode.Reset()
+				if err := s.ModelMode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_mode\"")
+			}
+		case "model_critical":
+			if err := func() error {
+				s.ModelCritical.Reset()
+				if err := s.ModelCritical.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical\"")
+			}
+		case "model_critical_d":
+			if err := func() error {
+				s.ModelCriticalD.Reset()
+				if err := s.ModelCriticalD.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical_d\"")
+			}
+		case "game":
+			if err := func() error {
+				s.Game.Reset()
+				if err := s.Game.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game\"")
+			}
+		case "game_test":
+			if err := func() error {
+				s.GameTest.Reset()
+				if err := s.GameTest.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_test\"")
+			}
+		case "game_end":
+			if err := func() error {
+				s.GameEnd.Reset()
+				if err := s.GameEnd.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_end\"")
+			}
+		case "game_account":
+			if err := func() error {
+				s.GameAccount.Reset()
+				if err := s.GameAccount.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_account\"")
+			}
+		case "game_lv":
+			if err := func() error {
+				s.GameLv.Reset()
+				if err := s.GameLv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_lv\"")
 			}
 		case "card":
 			if err := func() error {
@@ -6069,9 +6956,87 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 			s.Room.Encode(e)
 		}
 	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.ModelAt.Set {
+			e.FieldStart("model_at")
+			s.ModelAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.ModelAttack.Set {
+			e.FieldStart("model_attack")
+			s.ModelAttack.Encode(e)
+		}
+	}
+	{
+		if s.ModelLimit.Set {
+			e.FieldStart("model_limit")
+			s.ModelLimit.Encode(e)
+		}
+	}
+	{
+		if s.ModelSkill.Set {
+			e.FieldStart("model_skill")
+			s.ModelSkill.Encode(e)
+		}
+	}
+	{
+		if s.ModelMode.Set {
+			e.FieldStart("model_mode")
+			s.ModelMode.Encode(e)
+		}
+	}
+	{
+		if s.ModelCritical.Set {
+			e.FieldStart("model_critical")
+			s.ModelCritical.Encode(e)
+		}
+	}
+	{
+		if s.ModelCriticalD.Set {
+			e.FieldStart("model_critical_d")
+			s.ModelCriticalD.Encode(e)
+		}
+	}
+	{
+		if s.Game.Set {
+			e.FieldStart("game")
+			s.Game.Encode(e)
+		}
+	}
+	{
+		if s.GameTest.Set {
+			e.FieldStart("game_test")
+			s.GameTest.Encode(e)
+		}
+	}
+	{
+		if s.GameEnd.Set {
+			e.FieldStart("game_end")
+			s.GameEnd.Encode(e)
+		}
+	}
+	{
+		if s.GameAccount.Set {
+			e.FieldStart("game_account")
+			s.GameAccount.Encode(e)
+		}
+	}
+	{
+		if s.GameLv.Set {
+			e.FieldStart("game_lv")
+			s.GameLv.Encode(e)
+		}
+	}
 }
 
-var jsonFieldsNameOfUserCreate = [33]string{
+var jsonFieldsNameOfUserCreate = [46]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -6105,6 +7070,19 @@ var jsonFieldsNameOfUserCreate = [33]string{
 	30: "ten_at",
 	31: "next",
 	32: "room",
+	33: "model",
+	34: "model_at",
+	35: "model_attack",
+	36: "model_limit",
+	37: "model_skill",
+	38: "model_mode",
+	39: "model_critical",
+	40: "model_critical_d",
+	41: "game",
+	42: "game_test",
+	43: "game_end",
+	44: "game_account",
+	45: "game_lv",
 }
 
 // Decode decodes UserCreate from json.
@@ -6112,7 +7090,7 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserCreate to nil")
 	}
-	var requiredBitSet [5]uint8
+	var requiredBitSet [6]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -6450,6 +7428,136 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"room\"")
 			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "model_at":
+			if err := func() error {
+				s.ModelAt.Reset()
+				if err := s.ModelAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_at\"")
+			}
+		case "model_attack":
+			if err := func() error {
+				s.ModelAttack.Reset()
+				if err := s.ModelAttack.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_attack\"")
+			}
+		case "model_limit":
+			if err := func() error {
+				s.ModelLimit.Reset()
+				if err := s.ModelLimit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_limit\"")
+			}
+		case "model_skill":
+			if err := func() error {
+				s.ModelSkill.Reset()
+				if err := s.ModelSkill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_skill\"")
+			}
+		case "model_mode":
+			if err := func() error {
+				s.ModelMode.Reset()
+				if err := s.ModelMode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_mode\"")
+			}
+		case "model_critical":
+			if err := func() error {
+				s.ModelCritical.Reset()
+				if err := s.ModelCritical.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical\"")
+			}
+		case "model_critical_d":
+			if err := func() error {
+				s.ModelCriticalD.Reset()
+				if err := s.ModelCriticalD.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical_d\"")
+			}
+		case "game":
+			if err := func() error {
+				s.Game.Reset()
+				if err := s.Game.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game\"")
+			}
+		case "game_test":
+			if err := func() error {
+				s.GameTest.Reset()
+				if err := s.GameTest.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_test\"")
+			}
+		case "game_end":
+			if err := func() error {
+				s.GameEnd.Reset()
+				if err := s.GameEnd.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_end\"")
+			}
+		case "game_account":
+			if err := func() error {
+				s.GameAccount.Reset()
+				if err := s.GameAccount.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_account\"")
+			}
+		case "game_lv":
+			if err := func() error {
+				s.GameLv.Reset()
+				if err := s.GameLv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_lv\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -6459,8 +7567,9 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [5]uint8{
+	for i, mask := range [6]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -6715,9 +7824,87 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 			s.Room.Encode(e)
 		}
 	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.ModelAt.Set {
+			e.FieldStart("model_at")
+			s.ModelAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.ModelAttack.Set {
+			e.FieldStart("model_attack")
+			s.ModelAttack.Encode(e)
+		}
+	}
+	{
+		if s.ModelLimit.Set {
+			e.FieldStart("model_limit")
+			s.ModelLimit.Encode(e)
+		}
+	}
+	{
+		if s.ModelSkill.Set {
+			e.FieldStart("model_skill")
+			s.ModelSkill.Encode(e)
+		}
+	}
+	{
+		if s.ModelMode.Set {
+			e.FieldStart("model_mode")
+			s.ModelMode.Encode(e)
+		}
+	}
+	{
+		if s.ModelCritical.Set {
+			e.FieldStart("model_critical")
+			s.ModelCritical.Encode(e)
+		}
+	}
+	{
+		if s.ModelCriticalD.Set {
+			e.FieldStart("model_critical_d")
+			s.ModelCriticalD.Encode(e)
+		}
+	}
+	{
+		if s.Game.Set {
+			e.FieldStart("game")
+			s.Game.Encode(e)
+		}
+	}
+	{
+		if s.GameTest.Set {
+			e.FieldStart("game_test")
+			s.GameTest.Encode(e)
+		}
+	}
+	{
+		if s.GameEnd.Set {
+			e.FieldStart("game_end")
+			s.GameEnd.Encode(e)
+		}
+	}
+	{
+		if s.GameAccount.Set {
+			e.FieldStart("game_account")
+			s.GameAccount.Encode(e)
+		}
+	}
+	{
+		if s.GameLv.Set {
+			e.FieldStart("game_lv")
+			s.GameLv.Encode(e)
+		}
+	}
 }
 
-var jsonFieldsNameOfUserList = [33]string{
+var jsonFieldsNameOfUserList = [46]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -6751,6 +7938,19 @@ var jsonFieldsNameOfUserList = [33]string{
 	30: "ten_at",
 	31: "next",
 	32: "room",
+	33: "model",
+	34: "model_at",
+	35: "model_attack",
+	36: "model_limit",
+	37: "model_skill",
+	38: "model_mode",
+	39: "model_critical",
+	40: "model_critical_d",
+	41: "game",
+	42: "game_test",
+	43: "game_end",
+	44: "game_account",
+	45: "game_lv",
 }
 
 // Decode decodes UserList from json.
@@ -6758,7 +7958,7 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserList to nil")
 	}
-	var requiredBitSet [5]uint8
+	var requiredBitSet [6]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -7096,6 +8296,136 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"room\"")
 			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "model_at":
+			if err := func() error {
+				s.ModelAt.Reset()
+				if err := s.ModelAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_at\"")
+			}
+		case "model_attack":
+			if err := func() error {
+				s.ModelAttack.Reset()
+				if err := s.ModelAttack.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_attack\"")
+			}
+		case "model_limit":
+			if err := func() error {
+				s.ModelLimit.Reset()
+				if err := s.ModelLimit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_limit\"")
+			}
+		case "model_skill":
+			if err := func() error {
+				s.ModelSkill.Reset()
+				if err := s.ModelSkill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_skill\"")
+			}
+		case "model_mode":
+			if err := func() error {
+				s.ModelMode.Reset()
+				if err := s.ModelMode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_mode\"")
+			}
+		case "model_critical":
+			if err := func() error {
+				s.ModelCritical.Reset()
+				if err := s.ModelCritical.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical\"")
+			}
+		case "model_critical_d":
+			if err := func() error {
+				s.ModelCriticalD.Reset()
+				if err := s.ModelCriticalD.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical_d\"")
+			}
+		case "game":
+			if err := func() error {
+				s.Game.Reset()
+				if err := s.Game.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game\"")
+			}
+		case "game_test":
+			if err := func() error {
+				s.GameTest.Reset()
+				if err := s.GameTest.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_test\"")
+			}
+		case "game_end":
+			if err := func() error {
+				s.GameEnd.Reset()
+				if err := s.GameEnd.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_end\"")
+			}
+		case "game_account":
+			if err := func() error {
+				s.GameAccount.Reset()
+				if err := s.GameAccount.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_account\"")
+			}
+		case "game_lv":
+			if err := func() error {
+				s.GameLv.Reset()
+				if err := s.GameLv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_lv\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -7105,8 +8435,9 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [5]uint8{
+	for i, mask := range [6]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -7361,9 +8692,87 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 			s.Room.Encode(e)
 		}
 	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.ModelAt.Set {
+			e.FieldStart("model_at")
+			s.ModelAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.ModelAttack.Set {
+			e.FieldStart("model_attack")
+			s.ModelAttack.Encode(e)
+		}
+	}
+	{
+		if s.ModelLimit.Set {
+			e.FieldStart("model_limit")
+			s.ModelLimit.Encode(e)
+		}
+	}
+	{
+		if s.ModelSkill.Set {
+			e.FieldStart("model_skill")
+			s.ModelSkill.Encode(e)
+		}
+	}
+	{
+		if s.ModelMode.Set {
+			e.FieldStart("model_mode")
+			s.ModelMode.Encode(e)
+		}
+	}
+	{
+		if s.ModelCritical.Set {
+			e.FieldStart("model_critical")
+			s.ModelCritical.Encode(e)
+		}
+	}
+	{
+		if s.ModelCriticalD.Set {
+			e.FieldStart("model_critical_d")
+			s.ModelCriticalD.Encode(e)
+		}
+	}
+	{
+		if s.Game.Set {
+			e.FieldStart("game")
+			s.Game.Encode(e)
+		}
+	}
+	{
+		if s.GameTest.Set {
+			e.FieldStart("game_test")
+			s.GameTest.Encode(e)
+		}
+	}
+	{
+		if s.GameEnd.Set {
+			e.FieldStart("game_end")
+			s.GameEnd.Encode(e)
+		}
+	}
+	{
+		if s.GameAccount.Set {
+			e.FieldStart("game_account")
+			s.GameAccount.Encode(e)
+		}
+	}
+	{
+		if s.GameLv.Set {
+			e.FieldStart("game_lv")
+			s.GameLv.Encode(e)
+		}
+	}
 }
 
-var jsonFieldsNameOfUserRead = [33]string{
+var jsonFieldsNameOfUserRead = [46]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -7397,6 +8806,19 @@ var jsonFieldsNameOfUserRead = [33]string{
 	30: "ten_at",
 	31: "next",
 	32: "room",
+	33: "model",
+	34: "model_at",
+	35: "model_attack",
+	36: "model_limit",
+	37: "model_skill",
+	38: "model_mode",
+	39: "model_critical",
+	40: "model_critical_d",
+	41: "game",
+	42: "game_test",
+	43: "game_end",
+	44: "game_account",
+	45: "game_lv",
 }
 
 // Decode decodes UserRead from json.
@@ -7404,7 +8826,7 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserRead to nil")
 	}
-	var requiredBitSet [5]uint8
+	var requiredBitSet [6]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -7742,6 +9164,136 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"room\"")
 			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "model_at":
+			if err := func() error {
+				s.ModelAt.Reset()
+				if err := s.ModelAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_at\"")
+			}
+		case "model_attack":
+			if err := func() error {
+				s.ModelAttack.Reset()
+				if err := s.ModelAttack.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_attack\"")
+			}
+		case "model_limit":
+			if err := func() error {
+				s.ModelLimit.Reset()
+				if err := s.ModelLimit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_limit\"")
+			}
+		case "model_skill":
+			if err := func() error {
+				s.ModelSkill.Reset()
+				if err := s.ModelSkill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_skill\"")
+			}
+		case "model_mode":
+			if err := func() error {
+				s.ModelMode.Reset()
+				if err := s.ModelMode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_mode\"")
+			}
+		case "model_critical":
+			if err := func() error {
+				s.ModelCritical.Reset()
+				if err := s.ModelCritical.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical\"")
+			}
+		case "model_critical_d":
+			if err := func() error {
+				s.ModelCriticalD.Reset()
+				if err := s.ModelCriticalD.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical_d\"")
+			}
+		case "game":
+			if err := func() error {
+				s.Game.Reset()
+				if err := s.Game.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game\"")
+			}
+		case "game_test":
+			if err := func() error {
+				s.GameTest.Reset()
+				if err := s.GameTest.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_test\"")
+			}
+		case "game_end":
+			if err := func() error {
+				s.GameEnd.Reset()
+				if err := s.GameEnd.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_end\"")
+			}
+		case "game_account":
+			if err := func() error {
+				s.GameAccount.Reset()
+				if err := s.GameAccount.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_account\"")
+			}
+		case "game_lv":
+			if err := func() error {
+				s.GameLv.Reset()
+				if err := s.GameLv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_lv\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -7751,8 +9303,9 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [5]uint8{
+	for i, mask := range [6]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -8007,9 +9560,87 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 			s.Room.Encode(e)
 		}
 	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.ModelAt.Set {
+			e.FieldStart("model_at")
+			s.ModelAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.ModelAttack.Set {
+			e.FieldStart("model_attack")
+			s.ModelAttack.Encode(e)
+		}
+	}
+	{
+		if s.ModelLimit.Set {
+			e.FieldStart("model_limit")
+			s.ModelLimit.Encode(e)
+		}
+	}
+	{
+		if s.ModelSkill.Set {
+			e.FieldStart("model_skill")
+			s.ModelSkill.Encode(e)
+		}
+	}
+	{
+		if s.ModelMode.Set {
+			e.FieldStart("model_mode")
+			s.ModelMode.Encode(e)
+		}
+	}
+	{
+		if s.ModelCritical.Set {
+			e.FieldStart("model_critical")
+			s.ModelCritical.Encode(e)
+		}
+	}
+	{
+		if s.ModelCriticalD.Set {
+			e.FieldStart("model_critical_d")
+			s.ModelCriticalD.Encode(e)
+		}
+	}
+	{
+		if s.Game.Set {
+			e.FieldStart("game")
+			s.Game.Encode(e)
+		}
+	}
+	{
+		if s.GameTest.Set {
+			e.FieldStart("game_test")
+			s.GameTest.Encode(e)
+		}
+	}
+	{
+		if s.GameEnd.Set {
+			e.FieldStart("game_end")
+			s.GameEnd.Encode(e)
+		}
+	}
+	{
+		if s.GameAccount.Set {
+			e.FieldStart("game_account")
+			s.GameAccount.Encode(e)
+		}
+	}
+	{
+		if s.GameLv.Set {
+			e.FieldStart("game_lv")
+			s.GameLv.Encode(e)
+		}
+	}
 }
 
-var jsonFieldsNameOfUserUpdate = [33]string{
+var jsonFieldsNameOfUserUpdate = [46]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -8043,6 +9674,19 @@ var jsonFieldsNameOfUserUpdate = [33]string{
 	30: "ten_at",
 	31: "next",
 	32: "room",
+	33: "model",
+	34: "model_at",
+	35: "model_attack",
+	36: "model_limit",
+	37: "model_skill",
+	38: "model_mode",
+	39: "model_critical",
+	40: "model_critical_d",
+	41: "game",
+	42: "game_test",
+	43: "game_end",
+	44: "game_account",
+	45: "game_lv",
 }
 
 // Decode decodes UserUpdate from json.
@@ -8050,7 +9694,7 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserUpdate to nil")
 	}
-	var requiredBitSet [5]uint8
+	var requiredBitSet [6]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -8388,6 +10032,136 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"room\"")
 			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "model_at":
+			if err := func() error {
+				s.ModelAt.Reset()
+				if err := s.ModelAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_at\"")
+			}
+		case "model_attack":
+			if err := func() error {
+				s.ModelAttack.Reset()
+				if err := s.ModelAttack.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_attack\"")
+			}
+		case "model_limit":
+			if err := func() error {
+				s.ModelLimit.Reset()
+				if err := s.ModelLimit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_limit\"")
+			}
+		case "model_skill":
+			if err := func() error {
+				s.ModelSkill.Reset()
+				if err := s.ModelSkill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_skill\"")
+			}
+		case "model_mode":
+			if err := func() error {
+				s.ModelMode.Reset()
+				if err := s.ModelMode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_mode\"")
+			}
+		case "model_critical":
+			if err := func() error {
+				s.ModelCritical.Reset()
+				if err := s.ModelCritical.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical\"")
+			}
+		case "model_critical_d":
+			if err := func() error {
+				s.ModelCriticalD.Reset()
+				if err := s.ModelCriticalD.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical_d\"")
+			}
+		case "game":
+			if err := func() error {
+				s.Game.Reset()
+				if err := s.Game.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game\"")
+			}
+		case "game_test":
+			if err := func() error {
+				s.GameTest.Reset()
+				if err := s.GameTest.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_test\"")
+			}
+		case "game_end":
+			if err := func() error {
+				s.GameEnd.Reset()
+				if err := s.GameEnd.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_end\"")
+			}
+		case "game_account":
+			if err := func() error {
+				s.GameAccount.Reset()
+				if err := s.GameAccount.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_account\"")
+			}
+		case "game_lv":
+			if err := func() error {
+				s.GameLv.Reset()
+				if err := s.GameLv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_lv\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -8397,8 +10171,9 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [5]uint8{
+	for i, mask := range [6]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,

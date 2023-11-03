@@ -91,8 +91,21 @@ var (
 		{Name: "ten_post", Type: field.TypeString, Nullable: true},
 		{Name: "ten_get", Type: field.TypeString, Nullable: true},
 		{Name: "ten_at", Type: field.TypeTime, Nullable: true},
-		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20230911"},
+		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20231231"},
 		{Name: "room", Type: field.TypeInt, Nullable: true},
+		{Name: "model", Type: field.TypeBool, Nullable: true},
+		{Name: "model_at", Type: field.TypeTime, Nullable: true},
+		{Name: "model_attack", Type: field.TypeInt, Nullable: true},
+		{Name: "model_limit", Type: field.TypeInt, Nullable: true},
+		{Name: "model_skill", Type: field.TypeInt, Nullable: true},
+		{Name: "model_mode", Type: field.TypeInt, Nullable: true},
+		{Name: "model_critical", Type: field.TypeInt, Nullable: true},
+		{Name: "model_critical_d", Type: field.TypeInt, Nullable: true},
+		{Name: "game", Type: field.TypeBool, Nullable: true, Default: false},
+		{Name: "game_test", Type: field.TypeBool, Nullable: true, Default: false},
+		{Name: "game_end", Type: field.TypeBool, Nullable: true, Default: false},
+		{Name: "game_account", Type: field.TypeBool, Nullable: true, Default: false},
+		{Name: "game_lv", Type: field.TypeInt, Nullable: true},
 		{Name: "group_users", Type: field.TypeInt, Nullable: true},
 	}
 	// UsersTable holds the schema information for the "users" table.
@@ -103,7 +116,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "users_groups_users",
-				Columns:    []*schema.Column{UsersColumns[35]},
+				Columns:    []*schema.Column{UsersColumns[48]},
 				RefColumns: []*schema.Column{GroupsColumns[0]},
 				OnDelete:   schema.SetNull,
 			},

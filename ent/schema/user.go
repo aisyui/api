@@ -171,6 +171,51 @@ func (User) Fields() []ent.Field {
 		field.Int("room").
 		Optional(),
 
+		field.Bool("model").
+		Optional(),
+
+		field.Time("model_at").
+		Optional().
+		Default(func() time.Time {
+			return time.Now().In(jst)
+		}),
+
+		field.Int("model_attack").
+		Optional(),
+
+		field.Int("model_limit").
+		Optional(),
+
+		field.Int("model_skill").
+		Optional(),
+
+		field.Int("model_mode").
+		Optional(),
+
+		field.Int("model_critical").
+		Optional(),
+
+		field.Int("model_critical_d").
+		Optional(),
+
+		field.Bool("game").
+		Default(false).
+		Optional(),
+
+		field.Bool("game_test").
+		Default(false).
+		Optional(),
+
+		field.Bool("game_end").
+		Default(false).
+		Optional(),
+
+		field.Bool("game_account").
+		Default(false).
+		Optional(),
+
+		field.Int("game_lv").
+		Optional(),
 	}
 }
 

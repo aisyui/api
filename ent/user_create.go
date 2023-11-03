@@ -481,6 +481,188 @@ func (uc *UserCreate) SetNillableRoom(i *int) *UserCreate {
 	return uc
 }
 
+// SetModel sets the "model" field.
+func (uc *UserCreate) SetModel(b bool) *UserCreate {
+	uc.mutation.SetModel(b)
+	return uc
+}
+
+// SetNillableModel sets the "model" field if the given value is not nil.
+func (uc *UserCreate) SetNillableModel(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetModel(*b)
+	}
+	return uc
+}
+
+// SetModelAt sets the "model_at" field.
+func (uc *UserCreate) SetModelAt(t time.Time) *UserCreate {
+	uc.mutation.SetModelAt(t)
+	return uc
+}
+
+// SetNillableModelAt sets the "model_at" field if the given value is not nil.
+func (uc *UserCreate) SetNillableModelAt(t *time.Time) *UserCreate {
+	if t != nil {
+		uc.SetModelAt(*t)
+	}
+	return uc
+}
+
+// SetModelAttack sets the "model_attack" field.
+func (uc *UserCreate) SetModelAttack(i int) *UserCreate {
+	uc.mutation.SetModelAttack(i)
+	return uc
+}
+
+// SetNillableModelAttack sets the "model_attack" field if the given value is not nil.
+func (uc *UserCreate) SetNillableModelAttack(i *int) *UserCreate {
+	if i != nil {
+		uc.SetModelAttack(*i)
+	}
+	return uc
+}
+
+// SetModelLimit sets the "model_limit" field.
+func (uc *UserCreate) SetModelLimit(i int) *UserCreate {
+	uc.mutation.SetModelLimit(i)
+	return uc
+}
+
+// SetNillableModelLimit sets the "model_limit" field if the given value is not nil.
+func (uc *UserCreate) SetNillableModelLimit(i *int) *UserCreate {
+	if i != nil {
+		uc.SetModelLimit(*i)
+	}
+	return uc
+}
+
+// SetModelSkill sets the "model_skill" field.
+func (uc *UserCreate) SetModelSkill(i int) *UserCreate {
+	uc.mutation.SetModelSkill(i)
+	return uc
+}
+
+// SetNillableModelSkill sets the "model_skill" field if the given value is not nil.
+func (uc *UserCreate) SetNillableModelSkill(i *int) *UserCreate {
+	if i != nil {
+		uc.SetModelSkill(*i)
+	}
+	return uc
+}
+
+// SetModelMode sets the "model_mode" field.
+func (uc *UserCreate) SetModelMode(i int) *UserCreate {
+	uc.mutation.SetModelMode(i)
+	return uc
+}
+
+// SetNillableModelMode sets the "model_mode" field if the given value is not nil.
+func (uc *UserCreate) SetNillableModelMode(i *int) *UserCreate {
+	if i != nil {
+		uc.SetModelMode(*i)
+	}
+	return uc
+}
+
+// SetModelCritical sets the "model_critical" field.
+func (uc *UserCreate) SetModelCritical(i int) *UserCreate {
+	uc.mutation.SetModelCritical(i)
+	return uc
+}
+
+// SetNillableModelCritical sets the "model_critical" field if the given value is not nil.
+func (uc *UserCreate) SetNillableModelCritical(i *int) *UserCreate {
+	if i != nil {
+		uc.SetModelCritical(*i)
+	}
+	return uc
+}
+
+// SetModelCriticalD sets the "model_critical_d" field.
+func (uc *UserCreate) SetModelCriticalD(i int) *UserCreate {
+	uc.mutation.SetModelCriticalD(i)
+	return uc
+}
+
+// SetNillableModelCriticalD sets the "model_critical_d" field if the given value is not nil.
+func (uc *UserCreate) SetNillableModelCriticalD(i *int) *UserCreate {
+	if i != nil {
+		uc.SetModelCriticalD(*i)
+	}
+	return uc
+}
+
+// SetGame sets the "game" field.
+func (uc *UserCreate) SetGame(b bool) *UserCreate {
+	uc.mutation.SetGame(b)
+	return uc
+}
+
+// SetNillableGame sets the "game" field if the given value is not nil.
+func (uc *UserCreate) SetNillableGame(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetGame(*b)
+	}
+	return uc
+}
+
+// SetGameTest sets the "game_test" field.
+func (uc *UserCreate) SetGameTest(b bool) *UserCreate {
+	uc.mutation.SetGameTest(b)
+	return uc
+}
+
+// SetNillableGameTest sets the "game_test" field if the given value is not nil.
+func (uc *UserCreate) SetNillableGameTest(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetGameTest(*b)
+	}
+	return uc
+}
+
+// SetGameEnd sets the "game_end" field.
+func (uc *UserCreate) SetGameEnd(b bool) *UserCreate {
+	uc.mutation.SetGameEnd(b)
+	return uc
+}
+
+// SetNillableGameEnd sets the "game_end" field if the given value is not nil.
+func (uc *UserCreate) SetNillableGameEnd(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetGameEnd(*b)
+	}
+	return uc
+}
+
+// SetGameAccount sets the "game_account" field.
+func (uc *UserCreate) SetGameAccount(b bool) *UserCreate {
+	uc.mutation.SetGameAccount(b)
+	return uc
+}
+
+// SetNillableGameAccount sets the "game_account" field if the given value is not nil.
+func (uc *UserCreate) SetNillableGameAccount(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetGameAccount(*b)
+	}
+	return uc
+}
+
+// SetGameLv sets the "game_lv" field.
+func (uc *UserCreate) SetGameLv(i int) *UserCreate {
+	uc.mutation.SetGameLv(i)
+	return uc
+}
+
+// SetNillableGameLv sets the "game_lv" field if the given value is not nil.
+func (uc *UserCreate) SetNillableGameLv(i *int) *UserCreate {
+	if i != nil {
+		uc.SetGameLv(*i)
+	}
+	return uc
+}
+
 // AddCardIDs adds the "card" edge to the Card entity by IDs.
 func (uc *UserCreate) AddCardIDs(ids ...int) *UserCreate {
 	uc.mutation.AddCardIDs(ids...)
@@ -598,6 +780,26 @@ func (uc *UserCreate) defaults() {
 	if _, ok := uc.mutation.Next(); !ok {
 		v := user.DefaultNext
 		uc.mutation.SetNext(v)
+	}
+	if _, ok := uc.mutation.ModelAt(); !ok {
+		v := user.DefaultModelAt()
+		uc.mutation.SetModelAt(v)
+	}
+	if _, ok := uc.mutation.Game(); !ok {
+		v := user.DefaultGame
+		uc.mutation.SetGame(v)
+	}
+	if _, ok := uc.mutation.GameTest(); !ok {
+		v := user.DefaultGameTest
+		uc.mutation.SetGameTest(v)
+	}
+	if _, ok := uc.mutation.GameEnd(); !ok {
+		v := user.DefaultGameEnd
+		uc.mutation.SetGameEnd(v)
+	}
+	if _, ok := uc.mutation.GameAccount(); !ok {
+		v := user.DefaultGameAccount
+		uc.mutation.SetGameAccount(v)
 	}
 }
 
@@ -780,6 +982,58 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 	if value, ok := uc.mutation.Room(); ok {
 		_spec.SetField(user.FieldRoom, field.TypeInt, value)
 		_node.Room = value
+	}
+	if value, ok := uc.mutation.Model(); ok {
+		_spec.SetField(user.FieldModel, field.TypeBool, value)
+		_node.Model = value
+	}
+	if value, ok := uc.mutation.ModelAt(); ok {
+		_spec.SetField(user.FieldModelAt, field.TypeTime, value)
+		_node.ModelAt = value
+	}
+	if value, ok := uc.mutation.ModelAttack(); ok {
+		_spec.SetField(user.FieldModelAttack, field.TypeInt, value)
+		_node.ModelAttack = value
+	}
+	if value, ok := uc.mutation.ModelLimit(); ok {
+		_spec.SetField(user.FieldModelLimit, field.TypeInt, value)
+		_node.ModelLimit = value
+	}
+	if value, ok := uc.mutation.ModelSkill(); ok {
+		_spec.SetField(user.FieldModelSkill, field.TypeInt, value)
+		_node.ModelSkill = value
+	}
+	if value, ok := uc.mutation.ModelMode(); ok {
+		_spec.SetField(user.FieldModelMode, field.TypeInt, value)
+		_node.ModelMode = value
+	}
+	if value, ok := uc.mutation.ModelCritical(); ok {
+		_spec.SetField(user.FieldModelCritical, field.TypeInt, value)
+		_node.ModelCritical = value
+	}
+	if value, ok := uc.mutation.ModelCriticalD(); ok {
+		_spec.SetField(user.FieldModelCriticalD, field.TypeInt, value)
+		_node.ModelCriticalD = value
+	}
+	if value, ok := uc.mutation.Game(); ok {
+		_spec.SetField(user.FieldGame, field.TypeBool, value)
+		_node.Game = value
+	}
+	if value, ok := uc.mutation.GameTest(); ok {
+		_spec.SetField(user.FieldGameTest, field.TypeBool, value)
+		_node.GameTest = value
+	}
+	if value, ok := uc.mutation.GameEnd(); ok {
+		_spec.SetField(user.FieldGameEnd, field.TypeBool, value)
+		_node.GameEnd = value
+	}
+	if value, ok := uc.mutation.GameAccount(); ok {
+		_spec.SetField(user.FieldGameAccount, field.TypeBool, value)
+		_node.GameAccount = value
+	}
+	if value, ok := uc.mutation.GameLv(); ok {
+		_spec.SetField(user.FieldGameLv, field.TypeInt, value)
+		_node.GameLv = value
 	}
 	if nodes := uc.mutation.CardIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{

@@ -915,7 +915,7 @@ func encodeReadGroupResponse(response ReadGroupRes, w http.ResponseWriter, span 
 }
 
 func encodeReadUserResponse(response ReadUserRes, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Access-Control-Allow-Origin", "https://card.syui.ai")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	switch response := response.(type) {
 	case *UserRead:
 		w.Header().Set("Content-Type", "application/json")

@@ -885,6 +885,46 @@
                   "room": {
                     "type": "integer"
                   },
+                  "model": {
+                    "type": "boolean"
+                  },
+                  "model_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "model_attack": {
+                    "type": "integer"
+                  },
+                  "model_limit": {
+                    "type": "integer"
+                  },
+                  "model_skill": {
+                    "type": "integer"
+                  },
+                  "model_mode": {
+                    "type": "integer"
+                  },
+                  "model_critical": {
+                    "type": "integer"
+                  },
+                  "model_critical_d": {
+                    "type": "integer"
+                  },
+                  "game": {
+                    "type": "boolean"
+                  },
+                  "game_test": {
+                    "type": "boolean"
+                  },
+                  "game_end": {
+                    "type": "boolean"
+                  },
+                  "game_account": {
+                    "type": "boolean"
+                  },
+                  "game_lv": {
+                    "type": "integer"
+                  },
                   "card": {
                     "type": "array",
                     "items": {
@@ -1127,6 +1167,46 @@
                     "type": "string"
                   },
                   "room": {
+                    "type": "integer"
+                  },
+                  "model": {
+                    "type": "boolean"
+                  },
+                  "model_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "model_attack": {
+                    "type": "integer"
+                  },
+                  "model_limit": {
+                    "type": "integer"
+                  },
+                  "model_skill": {
+                    "type": "integer"
+                  },
+                  "model_mode": {
+                    "type": "integer"
+                  },
+                  "model_critical": {
+                    "type": "integer"
+                  },
+                  "model_critical_d": {
+                    "type": "integer"
+                  },
+                  "game": {
+                    "type": "boolean"
+                  },
+                  "game_test": {
+                    "type": "boolean"
+                  },
+                  "game_end": {
+                    "type": "boolean"
+                  },
+                  "game_account": {
+                    "type": "boolean"
+                  },
+                  "game_lv": {
                     "type": "integer"
                   },
                   "card": {
@@ -1559,6 +1639,46 @@
           },
           "room": {
             "type": "integer"
+          },
+          "model": {
+            "type": "boolean"
+          },
+          "model_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "model_attack": {
+            "type": "integer"
+          },
+          "model_limit": {
+            "type": "integer"
+          },
+          "model_skill": {
+            "type": "integer"
+          },
+          "model_mode": {
+            "type": "integer"
+          },
+          "model_critical": {
+            "type": "integer"
+          },
+          "model_critical_d": {
+            "type": "integer"
+          },
+          "game": {
+            "type": "boolean"
+          },
+          "game_test": {
+            "type": "boolean"
+          },
+          "game_end": {
+            "type": "boolean"
+          },
+          "game_account": {
+            "type": "boolean"
+          },
+          "game_lv": {
+            "type": "integer"
           }
         },
         "required": [
@@ -1760,6 +1880,46 @@
           },
           "room": {
             "type": "integer"
+          },
+          "model": {
+            "type": "boolean"
+          },
+          "model_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "model_attack": {
+            "type": "integer"
+          },
+          "model_limit": {
+            "type": "integer"
+          },
+          "model_skill": {
+            "type": "integer"
+          },
+          "model_mode": {
+            "type": "integer"
+          },
+          "model_critical": {
+            "type": "integer"
+          },
+          "model_critical_d": {
+            "type": "integer"
+          },
+          "game": {
+            "type": "boolean"
+          },
+          "game_test": {
+            "type": "boolean"
+          },
+          "game_end": {
+            "type": "boolean"
+          },
+          "game_account": {
+            "type": "boolean"
+          },
+          "game_lv": {
+            "type": "integer"
           }
         },
         "required": [
@@ -1881,6 +2041,46 @@
             "type": "string"
           },
           "room": {
+            "type": "integer"
+          },
+          "model": {
+            "type": "boolean"
+          },
+          "model_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "model_attack": {
+            "type": "integer"
+          },
+          "model_limit": {
+            "type": "integer"
+          },
+          "model_skill": {
+            "type": "integer"
+          },
+          "model_mode": {
+            "type": "integer"
+          },
+          "model_critical": {
+            "type": "integer"
+          },
+          "model_critical_d": {
+            "type": "integer"
+          },
+          "game": {
+            "type": "boolean"
+          },
+          "game_test": {
+            "type": "boolean"
+          },
+          "game_end": {
+            "type": "boolean"
+          },
+          "game_account": {
+            "type": "boolean"
+          },
+          "game_lv": {
             "type": "integer"
           },
           "card": {
@@ -2005,6 +2205,46 @@
           },
           "room": {
             "type": "integer"
+          },
+          "model": {
+            "type": "boolean"
+          },
+          "model_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "model_attack": {
+            "type": "integer"
+          },
+          "model_limit": {
+            "type": "integer"
+          },
+          "model_skill": {
+            "type": "integer"
+          },
+          "model_mode": {
+            "type": "integer"
+          },
+          "model_critical": {
+            "type": "integer"
+          },
+          "model_critical_d": {
+            "type": "integer"
+          },
+          "game": {
+            "type": "boolean"
+          },
+          "game_test": {
+            "type": "boolean"
+          },
+          "game_end": {
+            "type": "boolean"
+          },
+          "game_account": {
+            "type": "boolean"
+          },
+          "game_lv": {
+            "type": "integer"
           }
         },
         "required": [
@@ -2120,6 +2360,46 @@
             "type": "string"
           },
           "room": {
+            "type": "integer"
+          },
+          "model": {
+            "type": "boolean"
+          },
+          "model_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "model_attack": {
+            "type": "integer"
+          },
+          "model_limit": {
+            "type": "integer"
+          },
+          "model_skill": {
+            "type": "integer"
+          },
+          "model_mode": {
+            "type": "integer"
+          },
+          "model_critical": {
+            "type": "integer"
+          },
+          "model_critical_d": {
+            "type": "integer"
+          },
+          "game": {
+            "type": "boolean"
+          },
+          "game_test": {
+            "type": "boolean"
+          },
+          "game_end": {
+            "type": "boolean"
+          },
+          "game_account": {
+            "type": "boolean"
+          },
+          "game_lv": {
             "type": "integer"
           }
         },
@@ -2237,6 +2517,46 @@
           },
           "room": {
             "type": "integer"
+          },
+          "model": {
+            "type": "boolean"
+          },
+          "model_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "model_attack": {
+            "type": "integer"
+          },
+          "model_limit": {
+            "type": "integer"
+          },
+          "model_skill": {
+            "type": "integer"
+          },
+          "model_mode": {
+            "type": "integer"
+          },
+          "model_critical": {
+            "type": "integer"
+          },
+          "model_critical_d": {
+            "type": "integer"
+          },
+          "game": {
+            "type": "boolean"
+          },
+          "game_test": {
+            "type": "boolean"
+          },
+          "game_end": {
+            "type": "boolean"
+          },
+          "game_account": {
+            "type": "boolean"
+          },
+          "game_lv": {
+            "type": "integer"
           }
         },
         "required": [
@@ -2352,6 +2672,46 @@
             "type": "string"
           },
           "room": {
+            "type": "integer"
+          },
+          "model": {
+            "type": "boolean"
+          },
+          "model_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "model_attack": {
+            "type": "integer"
+          },
+          "model_limit": {
+            "type": "integer"
+          },
+          "model_skill": {
+            "type": "integer"
+          },
+          "model_mode": {
+            "type": "integer"
+          },
+          "model_critical": {
+            "type": "integer"
+          },
+          "model_critical_d": {
+            "type": "integer"
+          },
+          "game": {
+            "type": "boolean"
+          },
+          "game_test": {
+            "type": "boolean"
+          },
+          "game_end": {
+            "type": "boolean"
+          },
+          "game_account": {
+            "type": "boolean"
+          },
+          "game_lv": {
             "type": "integer"
           }
         },

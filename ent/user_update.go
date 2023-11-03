@@ -705,6 +705,315 @@ func (uu *UserUpdate) ClearRoom() *UserUpdate {
 	return uu
 }
 
+// SetModel sets the "model" field.
+func (uu *UserUpdate) SetModel(b bool) *UserUpdate {
+	uu.mutation.SetModel(b)
+	return uu
+}
+
+// SetNillableModel sets the "model" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableModel(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetModel(*b)
+	}
+	return uu
+}
+
+// ClearModel clears the value of the "model" field.
+func (uu *UserUpdate) ClearModel() *UserUpdate {
+	uu.mutation.ClearModel()
+	return uu
+}
+
+// SetModelAt sets the "model_at" field.
+func (uu *UserUpdate) SetModelAt(t time.Time) *UserUpdate {
+	uu.mutation.SetModelAt(t)
+	return uu
+}
+
+// SetNillableModelAt sets the "model_at" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableModelAt(t *time.Time) *UserUpdate {
+	if t != nil {
+		uu.SetModelAt(*t)
+	}
+	return uu
+}
+
+// ClearModelAt clears the value of the "model_at" field.
+func (uu *UserUpdate) ClearModelAt() *UserUpdate {
+	uu.mutation.ClearModelAt()
+	return uu
+}
+
+// SetModelAttack sets the "model_attack" field.
+func (uu *UserUpdate) SetModelAttack(i int) *UserUpdate {
+	uu.mutation.ResetModelAttack()
+	uu.mutation.SetModelAttack(i)
+	return uu
+}
+
+// SetNillableModelAttack sets the "model_attack" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableModelAttack(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetModelAttack(*i)
+	}
+	return uu
+}
+
+// AddModelAttack adds i to the "model_attack" field.
+func (uu *UserUpdate) AddModelAttack(i int) *UserUpdate {
+	uu.mutation.AddModelAttack(i)
+	return uu
+}
+
+// ClearModelAttack clears the value of the "model_attack" field.
+func (uu *UserUpdate) ClearModelAttack() *UserUpdate {
+	uu.mutation.ClearModelAttack()
+	return uu
+}
+
+// SetModelLimit sets the "model_limit" field.
+func (uu *UserUpdate) SetModelLimit(i int) *UserUpdate {
+	uu.mutation.ResetModelLimit()
+	uu.mutation.SetModelLimit(i)
+	return uu
+}
+
+// SetNillableModelLimit sets the "model_limit" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableModelLimit(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetModelLimit(*i)
+	}
+	return uu
+}
+
+// AddModelLimit adds i to the "model_limit" field.
+func (uu *UserUpdate) AddModelLimit(i int) *UserUpdate {
+	uu.mutation.AddModelLimit(i)
+	return uu
+}
+
+// ClearModelLimit clears the value of the "model_limit" field.
+func (uu *UserUpdate) ClearModelLimit() *UserUpdate {
+	uu.mutation.ClearModelLimit()
+	return uu
+}
+
+// SetModelSkill sets the "model_skill" field.
+func (uu *UserUpdate) SetModelSkill(i int) *UserUpdate {
+	uu.mutation.ResetModelSkill()
+	uu.mutation.SetModelSkill(i)
+	return uu
+}
+
+// SetNillableModelSkill sets the "model_skill" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableModelSkill(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetModelSkill(*i)
+	}
+	return uu
+}
+
+// AddModelSkill adds i to the "model_skill" field.
+func (uu *UserUpdate) AddModelSkill(i int) *UserUpdate {
+	uu.mutation.AddModelSkill(i)
+	return uu
+}
+
+// ClearModelSkill clears the value of the "model_skill" field.
+func (uu *UserUpdate) ClearModelSkill() *UserUpdate {
+	uu.mutation.ClearModelSkill()
+	return uu
+}
+
+// SetModelMode sets the "model_mode" field.
+func (uu *UserUpdate) SetModelMode(i int) *UserUpdate {
+	uu.mutation.ResetModelMode()
+	uu.mutation.SetModelMode(i)
+	return uu
+}
+
+// SetNillableModelMode sets the "model_mode" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableModelMode(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetModelMode(*i)
+	}
+	return uu
+}
+
+// AddModelMode adds i to the "model_mode" field.
+func (uu *UserUpdate) AddModelMode(i int) *UserUpdate {
+	uu.mutation.AddModelMode(i)
+	return uu
+}
+
+// ClearModelMode clears the value of the "model_mode" field.
+func (uu *UserUpdate) ClearModelMode() *UserUpdate {
+	uu.mutation.ClearModelMode()
+	return uu
+}
+
+// SetModelCritical sets the "model_critical" field.
+func (uu *UserUpdate) SetModelCritical(i int) *UserUpdate {
+	uu.mutation.ResetModelCritical()
+	uu.mutation.SetModelCritical(i)
+	return uu
+}
+
+// SetNillableModelCritical sets the "model_critical" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableModelCritical(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetModelCritical(*i)
+	}
+	return uu
+}
+
+// AddModelCritical adds i to the "model_critical" field.
+func (uu *UserUpdate) AddModelCritical(i int) *UserUpdate {
+	uu.mutation.AddModelCritical(i)
+	return uu
+}
+
+// ClearModelCritical clears the value of the "model_critical" field.
+func (uu *UserUpdate) ClearModelCritical() *UserUpdate {
+	uu.mutation.ClearModelCritical()
+	return uu
+}
+
+// SetModelCriticalD sets the "model_critical_d" field.
+func (uu *UserUpdate) SetModelCriticalD(i int) *UserUpdate {
+	uu.mutation.ResetModelCriticalD()
+	uu.mutation.SetModelCriticalD(i)
+	return uu
+}
+
+// SetNillableModelCriticalD sets the "model_critical_d" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableModelCriticalD(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetModelCriticalD(*i)
+	}
+	return uu
+}
+
+// AddModelCriticalD adds i to the "model_critical_d" field.
+func (uu *UserUpdate) AddModelCriticalD(i int) *UserUpdate {
+	uu.mutation.AddModelCriticalD(i)
+	return uu
+}
+
+// ClearModelCriticalD clears the value of the "model_critical_d" field.
+func (uu *UserUpdate) ClearModelCriticalD() *UserUpdate {
+	uu.mutation.ClearModelCriticalD()
+	return uu
+}
+
+// SetGame sets the "game" field.
+func (uu *UserUpdate) SetGame(b bool) *UserUpdate {
+	uu.mutation.SetGame(b)
+	return uu
+}
+
+// SetNillableGame sets the "game" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableGame(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetGame(*b)
+	}
+	return uu
+}
+
+// ClearGame clears the value of the "game" field.
+func (uu *UserUpdate) ClearGame() *UserUpdate {
+	uu.mutation.ClearGame()
+	return uu
+}
+
+// SetGameTest sets the "game_test" field.
+func (uu *UserUpdate) SetGameTest(b bool) *UserUpdate {
+	uu.mutation.SetGameTest(b)
+	return uu
+}
+
+// SetNillableGameTest sets the "game_test" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableGameTest(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetGameTest(*b)
+	}
+	return uu
+}
+
+// ClearGameTest clears the value of the "game_test" field.
+func (uu *UserUpdate) ClearGameTest() *UserUpdate {
+	uu.mutation.ClearGameTest()
+	return uu
+}
+
+// SetGameEnd sets the "game_end" field.
+func (uu *UserUpdate) SetGameEnd(b bool) *UserUpdate {
+	uu.mutation.SetGameEnd(b)
+	return uu
+}
+
+// SetNillableGameEnd sets the "game_end" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableGameEnd(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetGameEnd(*b)
+	}
+	return uu
+}
+
+// ClearGameEnd clears the value of the "game_end" field.
+func (uu *UserUpdate) ClearGameEnd() *UserUpdate {
+	uu.mutation.ClearGameEnd()
+	return uu
+}
+
+// SetGameAccount sets the "game_account" field.
+func (uu *UserUpdate) SetGameAccount(b bool) *UserUpdate {
+	uu.mutation.SetGameAccount(b)
+	return uu
+}
+
+// SetNillableGameAccount sets the "game_account" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableGameAccount(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetGameAccount(*b)
+	}
+	return uu
+}
+
+// ClearGameAccount clears the value of the "game_account" field.
+func (uu *UserUpdate) ClearGameAccount() *UserUpdate {
+	uu.mutation.ClearGameAccount()
+	return uu
+}
+
+// SetGameLv sets the "game_lv" field.
+func (uu *UserUpdate) SetGameLv(i int) *UserUpdate {
+	uu.mutation.ResetGameLv()
+	uu.mutation.SetGameLv(i)
+	return uu
+}
+
+// SetNillableGameLv sets the "game_lv" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableGameLv(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetGameLv(*i)
+	}
+	return uu
+}
+
+// AddGameLv adds i to the "game_lv" field.
+func (uu *UserUpdate) AddGameLv(i int) *UserUpdate {
+	uu.mutation.AddGameLv(i)
+	return uu
+}
+
+// ClearGameLv clears the value of the "game_lv" field.
+func (uu *UserUpdate) ClearGameLv() *UserUpdate {
+	uu.mutation.ClearGameLv()
+	return uu
+}
+
 // AddCardIDs adds the "card" edge to the Card entity by IDs.
 func (uu *UserUpdate) AddCardIDs(ids ...int) *UserUpdate {
 	uu.mutation.AddCardIDs(ids...)
@@ -994,6 +1303,105 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	}
 	if uu.mutation.RoomCleared() {
 		_spec.ClearField(user.FieldRoom, field.TypeInt)
+	}
+	if value, ok := uu.mutation.Model(); ok {
+		_spec.SetField(user.FieldModel, field.TypeBool, value)
+	}
+	if uu.mutation.ModelCleared() {
+		_spec.ClearField(user.FieldModel, field.TypeBool)
+	}
+	if value, ok := uu.mutation.ModelAt(); ok {
+		_spec.SetField(user.FieldModelAt, field.TypeTime, value)
+	}
+	if uu.mutation.ModelAtCleared() {
+		_spec.ClearField(user.FieldModelAt, field.TypeTime)
+	}
+	if value, ok := uu.mutation.ModelAttack(); ok {
+		_spec.SetField(user.FieldModelAttack, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedModelAttack(); ok {
+		_spec.AddField(user.FieldModelAttack, field.TypeInt, value)
+	}
+	if uu.mutation.ModelAttackCleared() {
+		_spec.ClearField(user.FieldModelAttack, field.TypeInt)
+	}
+	if value, ok := uu.mutation.ModelLimit(); ok {
+		_spec.SetField(user.FieldModelLimit, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedModelLimit(); ok {
+		_spec.AddField(user.FieldModelLimit, field.TypeInt, value)
+	}
+	if uu.mutation.ModelLimitCleared() {
+		_spec.ClearField(user.FieldModelLimit, field.TypeInt)
+	}
+	if value, ok := uu.mutation.ModelSkill(); ok {
+		_spec.SetField(user.FieldModelSkill, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedModelSkill(); ok {
+		_spec.AddField(user.FieldModelSkill, field.TypeInt, value)
+	}
+	if uu.mutation.ModelSkillCleared() {
+		_spec.ClearField(user.FieldModelSkill, field.TypeInt)
+	}
+	if value, ok := uu.mutation.ModelMode(); ok {
+		_spec.SetField(user.FieldModelMode, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedModelMode(); ok {
+		_spec.AddField(user.FieldModelMode, field.TypeInt, value)
+	}
+	if uu.mutation.ModelModeCleared() {
+		_spec.ClearField(user.FieldModelMode, field.TypeInt)
+	}
+	if value, ok := uu.mutation.ModelCritical(); ok {
+		_spec.SetField(user.FieldModelCritical, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedModelCritical(); ok {
+		_spec.AddField(user.FieldModelCritical, field.TypeInt, value)
+	}
+	if uu.mutation.ModelCriticalCleared() {
+		_spec.ClearField(user.FieldModelCritical, field.TypeInt)
+	}
+	if value, ok := uu.mutation.ModelCriticalD(); ok {
+		_spec.SetField(user.FieldModelCriticalD, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedModelCriticalD(); ok {
+		_spec.AddField(user.FieldModelCriticalD, field.TypeInt, value)
+	}
+	if uu.mutation.ModelCriticalDCleared() {
+		_spec.ClearField(user.FieldModelCriticalD, field.TypeInt)
+	}
+	if value, ok := uu.mutation.Game(); ok {
+		_spec.SetField(user.FieldGame, field.TypeBool, value)
+	}
+	if uu.mutation.GameCleared() {
+		_spec.ClearField(user.FieldGame, field.TypeBool)
+	}
+	if value, ok := uu.mutation.GameTest(); ok {
+		_spec.SetField(user.FieldGameTest, field.TypeBool, value)
+	}
+	if uu.mutation.GameTestCleared() {
+		_spec.ClearField(user.FieldGameTest, field.TypeBool)
+	}
+	if value, ok := uu.mutation.GameEnd(); ok {
+		_spec.SetField(user.FieldGameEnd, field.TypeBool, value)
+	}
+	if uu.mutation.GameEndCleared() {
+		_spec.ClearField(user.FieldGameEnd, field.TypeBool)
+	}
+	if value, ok := uu.mutation.GameAccount(); ok {
+		_spec.SetField(user.FieldGameAccount, field.TypeBool, value)
+	}
+	if uu.mutation.GameAccountCleared() {
+		_spec.ClearField(user.FieldGameAccount, field.TypeBool)
+	}
+	if value, ok := uu.mutation.GameLv(); ok {
+		_spec.SetField(user.FieldGameLv, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedGameLv(); ok {
+		_spec.AddField(user.FieldGameLv, field.TypeInt, value)
+	}
+	if uu.mutation.GameLvCleared() {
+		_spec.ClearField(user.FieldGameLv, field.TypeInt)
 	}
 	if uu.mutation.CardCleared() {
 		edge := &sqlgraph.EdgeSpec{
@@ -1736,6 +2144,315 @@ func (uuo *UserUpdateOne) ClearRoom() *UserUpdateOne {
 	return uuo
 }
 
+// SetModel sets the "model" field.
+func (uuo *UserUpdateOne) SetModel(b bool) *UserUpdateOne {
+	uuo.mutation.SetModel(b)
+	return uuo
+}
+
+// SetNillableModel sets the "model" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableModel(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetModel(*b)
+	}
+	return uuo
+}
+
+// ClearModel clears the value of the "model" field.
+func (uuo *UserUpdateOne) ClearModel() *UserUpdateOne {
+	uuo.mutation.ClearModel()
+	return uuo
+}
+
+// SetModelAt sets the "model_at" field.
+func (uuo *UserUpdateOne) SetModelAt(t time.Time) *UserUpdateOne {
+	uuo.mutation.SetModelAt(t)
+	return uuo
+}
+
+// SetNillableModelAt sets the "model_at" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableModelAt(t *time.Time) *UserUpdateOne {
+	if t != nil {
+		uuo.SetModelAt(*t)
+	}
+	return uuo
+}
+
+// ClearModelAt clears the value of the "model_at" field.
+func (uuo *UserUpdateOne) ClearModelAt() *UserUpdateOne {
+	uuo.mutation.ClearModelAt()
+	return uuo
+}
+
+// SetModelAttack sets the "model_attack" field.
+func (uuo *UserUpdateOne) SetModelAttack(i int) *UserUpdateOne {
+	uuo.mutation.ResetModelAttack()
+	uuo.mutation.SetModelAttack(i)
+	return uuo
+}
+
+// SetNillableModelAttack sets the "model_attack" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableModelAttack(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetModelAttack(*i)
+	}
+	return uuo
+}
+
+// AddModelAttack adds i to the "model_attack" field.
+func (uuo *UserUpdateOne) AddModelAttack(i int) *UserUpdateOne {
+	uuo.mutation.AddModelAttack(i)
+	return uuo
+}
+
+// ClearModelAttack clears the value of the "model_attack" field.
+func (uuo *UserUpdateOne) ClearModelAttack() *UserUpdateOne {
+	uuo.mutation.ClearModelAttack()
+	return uuo
+}
+
+// SetModelLimit sets the "model_limit" field.
+func (uuo *UserUpdateOne) SetModelLimit(i int) *UserUpdateOne {
+	uuo.mutation.ResetModelLimit()
+	uuo.mutation.SetModelLimit(i)
+	return uuo
+}
+
+// SetNillableModelLimit sets the "model_limit" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableModelLimit(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetModelLimit(*i)
+	}
+	return uuo
+}
+
+// AddModelLimit adds i to the "model_limit" field.
+func (uuo *UserUpdateOne) AddModelLimit(i int) *UserUpdateOne {
+	uuo.mutation.AddModelLimit(i)
+	return uuo
+}
+
+// ClearModelLimit clears the value of the "model_limit" field.
+func (uuo *UserUpdateOne) ClearModelLimit() *UserUpdateOne {
+	uuo.mutation.ClearModelLimit()
+	return uuo
+}
+
+// SetModelSkill sets the "model_skill" field.
+func (uuo *UserUpdateOne) SetModelSkill(i int) *UserUpdateOne {
+	uuo.mutation.ResetModelSkill()
+	uuo.mutation.SetModelSkill(i)
+	return uuo
+}
+
+// SetNillableModelSkill sets the "model_skill" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableModelSkill(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetModelSkill(*i)
+	}
+	return uuo
+}
+
+// AddModelSkill adds i to the "model_skill" field.
+func (uuo *UserUpdateOne) AddModelSkill(i int) *UserUpdateOne {
+	uuo.mutation.AddModelSkill(i)
+	return uuo
+}
+
+// ClearModelSkill clears the value of the "model_skill" field.
+func (uuo *UserUpdateOne) ClearModelSkill() *UserUpdateOne {
+	uuo.mutation.ClearModelSkill()
+	return uuo
+}
+
+// SetModelMode sets the "model_mode" field.
+func (uuo *UserUpdateOne) SetModelMode(i int) *UserUpdateOne {
+	uuo.mutation.ResetModelMode()
+	uuo.mutation.SetModelMode(i)
+	return uuo
+}
+
+// SetNillableModelMode sets the "model_mode" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableModelMode(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetModelMode(*i)
+	}
+	return uuo
+}
+
+// AddModelMode adds i to the "model_mode" field.
+func (uuo *UserUpdateOne) AddModelMode(i int) *UserUpdateOne {
+	uuo.mutation.AddModelMode(i)
+	return uuo
+}
+
+// ClearModelMode clears the value of the "model_mode" field.
+func (uuo *UserUpdateOne) ClearModelMode() *UserUpdateOne {
+	uuo.mutation.ClearModelMode()
+	return uuo
+}
+
+// SetModelCritical sets the "model_critical" field.
+func (uuo *UserUpdateOne) SetModelCritical(i int) *UserUpdateOne {
+	uuo.mutation.ResetModelCritical()
+	uuo.mutation.SetModelCritical(i)
+	return uuo
+}
+
+// SetNillableModelCritical sets the "model_critical" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableModelCritical(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetModelCritical(*i)
+	}
+	return uuo
+}
+
+// AddModelCritical adds i to the "model_critical" field.
+func (uuo *UserUpdateOne) AddModelCritical(i int) *UserUpdateOne {
+	uuo.mutation.AddModelCritical(i)
+	return uuo
+}
+
+// ClearModelCritical clears the value of the "model_critical" field.
+func (uuo *UserUpdateOne) ClearModelCritical() *UserUpdateOne {
+	uuo.mutation.ClearModelCritical()
+	return uuo
+}
+
+// SetModelCriticalD sets the "model_critical_d" field.
+func (uuo *UserUpdateOne) SetModelCriticalD(i int) *UserUpdateOne {
+	uuo.mutation.ResetModelCriticalD()
+	uuo.mutation.SetModelCriticalD(i)
+	return uuo
+}
+
+// SetNillableModelCriticalD sets the "model_critical_d" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableModelCriticalD(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetModelCriticalD(*i)
+	}
+	return uuo
+}
+
+// AddModelCriticalD adds i to the "model_critical_d" field.
+func (uuo *UserUpdateOne) AddModelCriticalD(i int) *UserUpdateOne {
+	uuo.mutation.AddModelCriticalD(i)
+	return uuo
+}
+
+// ClearModelCriticalD clears the value of the "model_critical_d" field.
+func (uuo *UserUpdateOne) ClearModelCriticalD() *UserUpdateOne {
+	uuo.mutation.ClearModelCriticalD()
+	return uuo
+}
+
+// SetGame sets the "game" field.
+func (uuo *UserUpdateOne) SetGame(b bool) *UserUpdateOne {
+	uuo.mutation.SetGame(b)
+	return uuo
+}
+
+// SetNillableGame sets the "game" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableGame(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetGame(*b)
+	}
+	return uuo
+}
+
+// ClearGame clears the value of the "game" field.
+func (uuo *UserUpdateOne) ClearGame() *UserUpdateOne {
+	uuo.mutation.ClearGame()
+	return uuo
+}
+
+// SetGameTest sets the "game_test" field.
+func (uuo *UserUpdateOne) SetGameTest(b bool) *UserUpdateOne {
+	uuo.mutation.SetGameTest(b)
+	return uuo
+}
+
+// SetNillableGameTest sets the "game_test" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableGameTest(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetGameTest(*b)
+	}
+	return uuo
+}
+
+// ClearGameTest clears the value of the "game_test" field.
+func (uuo *UserUpdateOne) ClearGameTest() *UserUpdateOne {
+	uuo.mutation.ClearGameTest()
+	return uuo
+}
+
+// SetGameEnd sets the "game_end" field.
+func (uuo *UserUpdateOne) SetGameEnd(b bool) *UserUpdateOne {
+	uuo.mutation.SetGameEnd(b)
+	return uuo
+}
+
+// SetNillableGameEnd sets the "game_end" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableGameEnd(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetGameEnd(*b)
+	}
+	return uuo
+}
+
+// ClearGameEnd clears the value of the "game_end" field.
+func (uuo *UserUpdateOne) ClearGameEnd() *UserUpdateOne {
+	uuo.mutation.ClearGameEnd()
+	return uuo
+}
+
+// SetGameAccount sets the "game_account" field.
+func (uuo *UserUpdateOne) SetGameAccount(b bool) *UserUpdateOne {
+	uuo.mutation.SetGameAccount(b)
+	return uuo
+}
+
+// SetNillableGameAccount sets the "game_account" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableGameAccount(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetGameAccount(*b)
+	}
+	return uuo
+}
+
+// ClearGameAccount clears the value of the "game_account" field.
+func (uuo *UserUpdateOne) ClearGameAccount() *UserUpdateOne {
+	uuo.mutation.ClearGameAccount()
+	return uuo
+}
+
+// SetGameLv sets the "game_lv" field.
+func (uuo *UserUpdateOne) SetGameLv(i int) *UserUpdateOne {
+	uuo.mutation.ResetGameLv()
+	uuo.mutation.SetGameLv(i)
+	return uuo
+}
+
+// SetNillableGameLv sets the "game_lv" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableGameLv(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetGameLv(*i)
+	}
+	return uuo
+}
+
+// AddGameLv adds i to the "game_lv" field.
+func (uuo *UserUpdateOne) AddGameLv(i int) *UserUpdateOne {
+	uuo.mutation.AddGameLv(i)
+	return uuo
+}
+
+// ClearGameLv clears the value of the "game_lv" field.
+func (uuo *UserUpdateOne) ClearGameLv() *UserUpdateOne {
+	uuo.mutation.ClearGameLv()
+	return uuo
+}
+
 // AddCardIDs adds the "card" edge to the Card entity by IDs.
 func (uuo *UserUpdateOne) AddCardIDs(ids ...int) *UserUpdateOne {
 	uuo.mutation.AddCardIDs(ids...)
@@ -2055,6 +2772,105 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	}
 	if uuo.mutation.RoomCleared() {
 		_spec.ClearField(user.FieldRoom, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.Model(); ok {
+		_spec.SetField(user.FieldModel, field.TypeBool, value)
+	}
+	if uuo.mutation.ModelCleared() {
+		_spec.ClearField(user.FieldModel, field.TypeBool)
+	}
+	if value, ok := uuo.mutation.ModelAt(); ok {
+		_spec.SetField(user.FieldModelAt, field.TypeTime, value)
+	}
+	if uuo.mutation.ModelAtCleared() {
+		_spec.ClearField(user.FieldModelAt, field.TypeTime)
+	}
+	if value, ok := uuo.mutation.ModelAttack(); ok {
+		_spec.SetField(user.FieldModelAttack, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedModelAttack(); ok {
+		_spec.AddField(user.FieldModelAttack, field.TypeInt, value)
+	}
+	if uuo.mutation.ModelAttackCleared() {
+		_spec.ClearField(user.FieldModelAttack, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.ModelLimit(); ok {
+		_spec.SetField(user.FieldModelLimit, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedModelLimit(); ok {
+		_spec.AddField(user.FieldModelLimit, field.TypeInt, value)
+	}
+	if uuo.mutation.ModelLimitCleared() {
+		_spec.ClearField(user.FieldModelLimit, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.ModelSkill(); ok {
+		_spec.SetField(user.FieldModelSkill, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedModelSkill(); ok {
+		_spec.AddField(user.FieldModelSkill, field.TypeInt, value)
+	}
+	if uuo.mutation.ModelSkillCleared() {
+		_spec.ClearField(user.FieldModelSkill, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.ModelMode(); ok {
+		_spec.SetField(user.FieldModelMode, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedModelMode(); ok {
+		_spec.AddField(user.FieldModelMode, field.TypeInt, value)
+	}
+	if uuo.mutation.ModelModeCleared() {
+		_spec.ClearField(user.FieldModelMode, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.ModelCritical(); ok {
+		_spec.SetField(user.FieldModelCritical, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedModelCritical(); ok {
+		_spec.AddField(user.FieldModelCritical, field.TypeInt, value)
+	}
+	if uuo.mutation.ModelCriticalCleared() {
+		_spec.ClearField(user.FieldModelCritical, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.ModelCriticalD(); ok {
+		_spec.SetField(user.FieldModelCriticalD, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedModelCriticalD(); ok {
+		_spec.AddField(user.FieldModelCriticalD, field.TypeInt, value)
+	}
+	if uuo.mutation.ModelCriticalDCleared() {
+		_spec.ClearField(user.FieldModelCriticalD, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.Game(); ok {
+		_spec.SetField(user.FieldGame, field.TypeBool, value)
+	}
+	if uuo.mutation.GameCleared() {
+		_spec.ClearField(user.FieldGame, field.TypeBool)
+	}
+	if value, ok := uuo.mutation.GameTest(); ok {
+		_spec.SetField(user.FieldGameTest, field.TypeBool, value)
+	}
+	if uuo.mutation.GameTestCleared() {
+		_spec.ClearField(user.FieldGameTest, field.TypeBool)
+	}
+	if value, ok := uuo.mutation.GameEnd(); ok {
+		_spec.SetField(user.FieldGameEnd, field.TypeBool, value)
+	}
+	if uuo.mutation.GameEndCleared() {
+		_spec.ClearField(user.FieldGameEnd, field.TypeBool)
+	}
+	if value, ok := uuo.mutation.GameAccount(); ok {
+		_spec.SetField(user.FieldGameAccount, field.TypeBool, value)
+	}
+	if uuo.mutation.GameAccountCleared() {
+		_spec.ClearField(user.FieldGameAccount, field.TypeBool)
+	}
+	if value, ok := uuo.mutation.GameLv(); ok {
+		_spec.SetField(user.FieldGameLv, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedGameLv(); ok {
+		_spec.AddField(user.FieldGameLv, field.TypeInt, value)
+	}
+	if uuo.mutation.GameLvCleared() {
+		_spec.ClearField(user.FieldGameLv, field.TypeInt)
 	}
 	if uuo.mutation.CardCleared() {
 		edge := &sqlgraph.EdgeSpec{

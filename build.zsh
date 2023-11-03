@@ -5,6 +5,7 @@ cd $d
 su=5000
 
 go generate ./...
+cp -rf $d/ent/openapi.json $d/tmp/
 sed -i '' "s/255/$su/g" $d/ent/ogent/oas_parameters_gen.go
 sed -i '' "s/255/$su/g" $d/ent/openapi.json
 

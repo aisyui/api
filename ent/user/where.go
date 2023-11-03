@@ -225,6 +225,71 @@ func Room(v int) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldRoom, v))
 }
 
+// Model applies equality check predicate on the "model" field. It's identical to ModelEQ.
+func Model(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModel, v))
+}
+
+// ModelAt applies equality check predicate on the "model_at" field. It's identical to ModelAtEQ.
+func ModelAt(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelAt, v))
+}
+
+// ModelAttack applies equality check predicate on the "model_attack" field. It's identical to ModelAttackEQ.
+func ModelAttack(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelAttack, v))
+}
+
+// ModelLimit applies equality check predicate on the "model_limit" field. It's identical to ModelLimitEQ.
+func ModelLimit(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelLimit, v))
+}
+
+// ModelSkill applies equality check predicate on the "model_skill" field. It's identical to ModelSkillEQ.
+func ModelSkill(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelSkill, v))
+}
+
+// ModelMode applies equality check predicate on the "model_mode" field. It's identical to ModelModeEQ.
+func ModelMode(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelMode, v))
+}
+
+// ModelCritical applies equality check predicate on the "model_critical" field. It's identical to ModelCriticalEQ.
+func ModelCritical(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelCritical, v))
+}
+
+// ModelCriticalD applies equality check predicate on the "model_critical_d" field. It's identical to ModelCriticalDEQ.
+func ModelCriticalD(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelCriticalD, v))
+}
+
+// Game applies equality check predicate on the "game" field. It's identical to GameEQ.
+func Game(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldGame, v))
+}
+
+// GameTest applies equality check predicate on the "game_test" field. It's identical to GameTestEQ.
+func GameTest(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldGameTest, v))
+}
+
+// GameEnd applies equality check predicate on the "game_end" field. It's identical to GameEndEQ.
+func GameEnd(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldGameEnd, v))
+}
+
+// GameAccount applies equality check predicate on the "game_account" field. It's identical to GameAccountEQ.
+func GameAccount(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldGameAccount, v))
+}
+
+// GameLv applies equality check predicate on the "game_lv" field. It's identical to GameLvEQ.
+func GameLv(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldGameLv, v))
+}
+
 // UsernameEQ applies the EQ predicate on the "username" field.
 func UsernameEQ(v string) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldUsername, v))
@@ -1858,6 +1923,506 @@ func RoomIsNil() predicate.User {
 // RoomNotNil applies the NotNil predicate on the "room" field.
 func RoomNotNil() predicate.User {
 	return predicate.User(sql.FieldNotNull(FieldRoom))
+}
+
+// ModelEQ applies the EQ predicate on the "model" field.
+func ModelEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModel, v))
+}
+
+// ModelNEQ applies the NEQ predicate on the "model" field.
+func ModelNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldModel, v))
+}
+
+// ModelIsNil applies the IsNil predicate on the "model" field.
+func ModelIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldModel))
+}
+
+// ModelNotNil applies the NotNil predicate on the "model" field.
+func ModelNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldModel))
+}
+
+// ModelAtEQ applies the EQ predicate on the "model_at" field.
+func ModelAtEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelAt, v))
+}
+
+// ModelAtNEQ applies the NEQ predicate on the "model_at" field.
+func ModelAtNEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldModelAt, v))
+}
+
+// ModelAtIn applies the In predicate on the "model_at" field.
+func ModelAtIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldIn(FieldModelAt, vs...))
+}
+
+// ModelAtNotIn applies the NotIn predicate on the "model_at" field.
+func ModelAtNotIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldModelAt, vs...))
+}
+
+// ModelAtGT applies the GT predicate on the "model_at" field.
+func ModelAtGT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGT(FieldModelAt, v))
+}
+
+// ModelAtGTE applies the GTE predicate on the "model_at" field.
+func ModelAtGTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldModelAt, v))
+}
+
+// ModelAtLT applies the LT predicate on the "model_at" field.
+func ModelAtLT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLT(FieldModelAt, v))
+}
+
+// ModelAtLTE applies the LTE predicate on the "model_at" field.
+func ModelAtLTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldModelAt, v))
+}
+
+// ModelAtIsNil applies the IsNil predicate on the "model_at" field.
+func ModelAtIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldModelAt))
+}
+
+// ModelAtNotNil applies the NotNil predicate on the "model_at" field.
+func ModelAtNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldModelAt))
+}
+
+// ModelAttackEQ applies the EQ predicate on the "model_attack" field.
+func ModelAttackEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelAttack, v))
+}
+
+// ModelAttackNEQ applies the NEQ predicate on the "model_attack" field.
+func ModelAttackNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldModelAttack, v))
+}
+
+// ModelAttackIn applies the In predicate on the "model_attack" field.
+func ModelAttackIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldModelAttack, vs...))
+}
+
+// ModelAttackNotIn applies the NotIn predicate on the "model_attack" field.
+func ModelAttackNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldModelAttack, vs...))
+}
+
+// ModelAttackGT applies the GT predicate on the "model_attack" field.
+func ModelAttackGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldModelAttack, v))
+}
+
+// ModelAttackGTE applies the GTE predicate on the "model_attack" field.
+func ModelAttackGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldModelAttack, v))
+}
+
+// ModelAttackLT applies the LT predicate on the "model_attack" field.
+func ModelAttackLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldModelAttack, v))
+}
+
+// ModelAttackLTE applies the LTE predicate on the "model_attack" field.
+func ModelAttackLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldModelAttack, v))
+}
+
+// ModelAttackIsNil applies the IsNil predicate on the "model_attack" field.
+func ModelAttackIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldModelAttack))
+}
+
+// ModelAttackNotNil applies the NotNil predicate on the "model_attack" field.
+func ModelAttackNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldModelAttack))
+}
+
+// ModelLimitEQ applies the EQ predicate on the "model_limit" field.
+func ModelLimitEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelLimit, v))
+}
+
+// ModelLimitNEQ applies the NEQ predicate on the "model_limit" field.
+func ModelLimitNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldModelLimit, v))
+}
+
+// ModelLimitIn applies the In predicate on the "model_limit" field.
+func ModelLimitIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldModelLimit, vs...))
+}
+
+// ModelLimitNotIn applies the NotIn predicate on the "model_limit" field.
+func ModelLimitNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldModelLimit, vs...))
+}
+
+// ModelLimitGT applies the GT predicate on the "model_limit" field.
+func ModelLimitGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldModelLimit, v))
+}
+
+// ModelLimitGTE applies the GTE predicate on the "model_limit" field.
+func ModelLimitGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldModelLimit, v))
+}
+
+// ModelLimitLT applies the LT predicate on the "model_limit" field.
+func ModelLimitLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldModelLimit, v))
+}
+
+// ModelLimitLTE applies the LTE predicate on the "model_limit" field.
+func ModelLimitLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldModelLimit, v))
+}
+
+// ModelLimitIsNil applies the IsNil predicate on the "model_limit" field.
+func ModelLimitIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldModelLimit))
+}
+
+// ModelLimitNotNil applies the NotNil predicate on the "model_limit" field.
+func ModelLimitNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldModelLimit))
+}
+
+// ModelSkillEQ applies the EQ predicate on the "model_skill" field.
+func ModelSkillEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelSkill, v))
+}
+
+// ModelSkillNEQ applies the NEQ predicate on the "model_skill" field.
+func ModelSkillNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldModelSkill, v))
+}
+
+// ModelSkillIn applies the In predicate on the "model_skill" field.
+func ModelSkillIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldModelSkill, vs...))
+}
+
+// ModelSkillNotIn applies the NotIn predicate on the "model_skill" field.
+func ModelSkillNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldModelSkill, vs...))
+}
+
+// ModelSkillGT applies the GT predicate on the "model_skill" field.
+func ModelSkillGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldModelSkill, v))
+}
+
+// ModelSkillGTE applies the GTE predicate on the "model_skill" field.
+func ModelSkillGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldModelSkill, v))
+}
+
+// ModelSkillLT applies the LT predicate on the "model_skill" field.
+func ModelSkillLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldModelSkill, v))
+}
+
+// ModelSkillLTE applies the LTE predicate on the "model_skill" field.
+func ModelSkillLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldModelSkill, v))
+}
+
+// ModelSkillIsNil applies the IsNil predicate on the "model_skill" field.
+func ModelSkillIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldModelSkill))
+}
+
+// ModelSkillNotNil applies the NotNil predicate on the "model_skill" field.
+func ModelSkillNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldModelSkill))
+}
+
+// ModelModeEQ applies the EQ predicate on the "model_mode" field.
+func ModelModeEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelMode, v))
+}
+
+// ModelModeNEQ applies the NEQ predicate on the "model_mode" field.
+func ModelModeNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldModelMode, v))
+}
+
+// ModelModeIn applies the In predicate on the "model_mode" field.
+func ModelModeIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldModelMode, vs...))
+}
+
+// ModelModeNotIn applies the NotIn predicate on the "model_mode" field.
+func ModelModeNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldModelMode, vs...))
+}
+
+// ModelModeGT applies the GT predicate on the "model_mode" field.
+func ModelModeGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldModelMode, v))
+}
+
+// ModelModeGTE applies the GTE predicate on the "model_mode" field.
+func ModelModeGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldModelMode, v))
+}
+
+// ModelModeLT applies the LT predicate on the "model_mode" field.
+func ModelModeLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldModelMode, v))
+}
+
+// ModelModeLTE applies the LTE predicate on the "model_mode" field.
+func ModelModeLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldModelMode, v))
+}
+
+// ModelModeIsNil applies the IsNil predicate on the "model_mode" field.
+func ModelModeIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldModelMode))
+}
+
+// ModelModeNotNil applies the NotNil predicate on the "model_mode" field.
+func ModelModeNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldModelMode))
+}
+
+// ModelCriticalEQ applies the EQ predicate on the "model_critical" field.
+func ModelCriticalEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelCritical, v))
+}
+
+// ModelCriticalNEQ applies the NEQ predicate on the "model_critical" field.
+func ModelCriticalNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldModelCritical, v))
+}
+
+// ModelCriticalIn applies the In predicate on the "model_critical" field.
+func ModelCriticalIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldModelCritical, vs...))
+}
+
+// ModelCriticalNotIn applies the NotIn predicate on the "model_critical" field.
+func ModelCriticalNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldModelCritical, vs...))
+}
+
+// ModelCriticalGT applies the GT predicate on the "model_critical" field.
+func ModelCriticalGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldModelCritical, v))
+}
+
+// ModelCriticalGTE applies the GTE predicate on the "model_critical" field.
+func ModelCriticalGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldModelCritical, v))
+}
+
+// ModelCriticalLT applies the LT predicate on the "model_critical" field.
+func ModelCriticalLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldModelCritical, v))
+}
+
+// ModelCriticalLTE applies the LTE predicate on the "model_critical" field.
+func ModelCriticalLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldModelCritical, v))
+}
+
+// ModelCriticalIsNil applies the IsNil predicate on the "model_critical" field.
+func ModelCriticalIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldModelCritical))
+}
+
+// ModelCriticalNotNil applies the NotNil predicate on the "model_critical" field.
+func ModelCriticalNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldModelCritical))
+}
+
+// ModelCriticalDEQ applies the EQ predicate on the "model_critical_d" field.
+func ModelCriticalDEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldModelCriticalD, v))
+}
+
+// ModelCriticalDNEQ applies the NEQ predicate on the "model_critical_d" field.
+func ModelCriticalDNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldModelCriticalD, v))
+}
+
+// ModelCriticalDIn applies the In predicate on the "model_critical_d" field.
+func ModelCriticalDIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldModelCriticalD, vs...))
+}
+
+// ModelCriticalDNotIn applies the NotIn predicate on the "model_critical_d" field.
+func ModelCriticalDNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldModelCriticalD, vs...))
+}
+
+// ModelCriticalDGT applies the GT predicate on the "model_critical_d" field.
+func ModelCriticalDGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldModelCriticalD, v))
+}
+
+// ModelCriticalDGTE applies the GTE predicate on the "model_critical_d" field.
+func ModelCriticalDGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldModelCriticalD, v))
+}
+
+// ModelCriticalDLT applies the LT predicate on the "model_critical_d" field.
+func ModelCriticalDLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldModelCriticalD, v))
+}
+
+// ModelCriticalDLTE applies the LTE predicate on the "model_critical_d" field.
+func ModelCriticalDLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldModelCriticalD, v))
+}
+
+// ModelCriticalDIsNil applies the IsNil predicate on the "model_critical_d" field.
+func ModelCriticalDIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldModelCriticalD))
+}
+
+// ModelCriticalDNotNil applies the NotNil predicate on the "model_critical_d" field.
+func ModelCriticalDNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldModelCriticalD))
+}
+
+// GameEQ applies the EQ predicate on the "game" field.
+func GameEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldGame, v))
+}
+
+// GameNEQ applies the NEQ predicate on the "game" field.
+func GameNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldGame, v))
+}
+
+// GameIsNil applies the IsNil predicate on the "game" field.
+func GameIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldGame))
+}
+
+// GameNotNil applies the NotNil predicate on the "game" field.
+func GameNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldGame))
+}
+
+// GameTestEQ applies the EQ predicate on the "game_test" field.
+func GameTestEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldGameTest, v))
+}
+
+// GameTestNEQ applies the NEQ predicate on the "game_test" field.
+func GameTestNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldGameTest, v))
+}
+
+// GameTestIsNil applies the IsNil predicate on the "game_test" field.
+func GameTestIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldGameTest))
+}
+
+// GameTestNotNil applies the NotNil predicate on the "game_test" field.
+func GameTestNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldGameTest))
+}
+
+// GameEndEQ applies the EQ predicate on the "game_end" field.
+func GameEndEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldGameEnd, v))
+}
+
+// GameEndNEQ applies the NEQ predicate on the "game_end" field.
+func GameEndNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldGameEnd, v))
+}
+
+// GameEndIsNil applies the IsNil predicate on the "game_end" field.
+func GameEndIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldGameEnd))
+}
+
+// GameEndNotNil applies the NotNil predicate on the "game_end" field.
+func GameEndNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldGameEnd))
+}
+
+// GameAccountEQ applies the EQ predicate on the "game_account" field.
+func GameAccountEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldGameAccount, v))
+}
+
+// GameAccountNEQ applies the NEQ predicate on the "game_account" field.
+func GameAccountNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldGameAccount, v))
+}
+
+// GameAccountIsNil applies the IsNil predicate on the "game_account" field.
+func GameAccountIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldGameAccount))
+}
+
+// GameAccountNotNil applies the NotNil predicate on the "game_account" field.
+func GameAccountNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldGameAccount))
+}
+
+// GameLvEQ applies the EQ predicate on the "game_lv" field.
+func GameLvEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldGameLv, v))
+}
+
+// GameLvNEQ applies the NEQ predicate on the "game_lv" field.
+func GameLvNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldGameLv, v))
+}
+
+// GameLvIn applies the In predicate on the "game_lv" field.
+func GameLvIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldGameLv, vs...))
+}
+
+// GameLvNotIn applies the NotIn predicate on the "game_lv" field.
+func GameLvNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldGameLv, vs...))
+}
+
+// GameLvGT applies the GT predicate on the "game_lv" field.
+func GameLvGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldGameLv, v))
+}
+
+// GameLvGTE applies the GTE predicate on the "game_lv" field.
+func GameLvGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldGameLv, v))
+}
+
+// GameLvLT applies the LT predicate on the "game_lv" field.
+func GameLvLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldGameLv, v))
+}
+
+// GameLvLTE applies the LTE predicate on the "game_lv" field.
+func GameLvLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldGameLv, v))
+}
+
+// GameLvIsNil applies the IsNil predicate on the "game_lv" field.
+func GameLvIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldGameLv))
+}
+
+// GameLvNotNil applies the NotNil predicate on the "game_lv" field.
+func GameLvNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldGameLv))
 }
 
 // HasCard applies the HasEdge predicate on the "card" edge.

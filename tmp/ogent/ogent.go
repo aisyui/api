@@ -603,6 +603,46 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	if v, ok := req.Next.Get(); ok {
 		b.SetNext(v)
 	}
+	if v, ok := req.Model.Get(); ok {
+		b.SetModel(v)
+	}
+	if v, ok := req.ModelAt.Get(); ok {
+		b.SetModelAt(v)
+	}
+	if v, ok := req.ModelAttack.Get(); ok {
+		b.SetModelAttack(v)
+	}
+	if v, ok := req.ModelCriticalD.Get(); ok {
+		b.SetModelCriticalD(v)
+	}
+	if v, ok := req.ModelCritical.Get(); ok {
+		b.SetModelCritical(v)
+	}
+	if v, ok := req.ModelLimit.Get(); ok {
+		b.SetModelLimit(v)
+	}
+	if v, ok := req.ModelSkill.Get(); ok {
+		b.SetModelSkill(v)
+	}
+	if v, ok := req.ModelMode.Get(); ok {
+		b.SetModelMode(v)
+	}
+	if v, ok := req.Game.Get(); ok {
+		b.SetGame(v)
+	}
+	if v, ok := req.GameTest.Get(); ok {
+		b.SetGameTest(v)
+	}
+	if v, ok := req.GameEnd.Get(); ok {
+		b.SetGameEnd(v)
+	}
+	if v, ok := req.GameAccount.Get(); ok {
+		b.SetGameAccount(v)
+	}
+	if v, ok := req.GameLv.Get(); ok {
+		b.SetGameLv(v)
+	}
+
 	// Add all edges.
 	b.AddCardIDs(req.Card...)
 	// Persist to storage.
@@ -759,6 +799,45 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			}
 			if v, ok := req.Next.Get(); ok {
 				b.SetNext(v)
+			}
+			if v, ok := req.Model.Get(); ok {
+				b.SetModel(v)
+			}
+			if v, ok := req.ModelAt.Get(); ok {
+				b.SetModelAt(v)
+			}
+			if v, ok := req.ModelAttack.Get(); ok {
+				b.SetModelAttack(v)
+			}
+			if v, ok := req.ModelCriticalD.Get(); ok {
+				b.SetModelCriticalD(v)
+			}
+			if v, ok := req.ModelCritical.Get(); ok {
+				b.SetModelCritical(v)
+			}
+			if v, ok := req.ModelLimit.Get(); ok {
+				b.SetModelLimit(v)
+			}
+			if v, ok := req.ModelSkill.Get(); ok {
+				b.SetModelSkill(v)
+			}
+			if v, ok := req.ModelMode.Get(); ok {
+				b.SetModelMode(v)
+			}
+			if v, ok := req.Game.Get(); ok {
+				b.SetGame(v)
+			}
+			if v, ok := req.GameTest.Get(); ok {
+				b.SetGameTest(v)
+			}
+			if v, ok := req.GameEnd.Get(); ok {
+				b.SetGameEnd(v)
+			}
+			if v, ok := req.GameAccount.Get(); ok {
+				b.SetGameAccount(v)
+			}
+			if v, ok := req.GameLv.Get(); ok {
+				b.SetGameLv(v)
 			}
 			// Add all edges.
 			if req.Card != nil {

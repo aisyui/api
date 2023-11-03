@@ -1665,58 +1665,78 @@ func (m *GroupMutation) ResetEdge(name string) error {
 // UserMutation represents an operation that mutates the User nodes in the graph.
 type UserMutation struct {
 	config
-	op            Op
-	typ           string
-	id            *int
-	username      *string
-	did           *string
-	member        *bool
-	book          *bool
-	manga         *bool
-	badge         *bool
-	bsky          *bool
-	mastodon      *bool
-	delete        *bool
-	handle        *bool
-	token         *string
-	password      *string
-	created_at    *time.Time
-	updated_at    *time.Time
-	raid_at       *time.Time
-	server_at     *time.Time
-	egg_at        *time.Time
-	luck          *int
-	addluck       *int
-	luck_at       *time.Time
-	like          *int
-	addlike       *int
-	like_rank     *int
-	addlike_rank  *int
-	like_at       *time.Time
-	fav           *int
-	addfav        *int
-	ten           *bool
-	ten_su        *int
-	addten_su     *int
-	ten_kai       *int
-	addten_kai    *int
-	aiten         *int
-	addaiten      *int
-	ten_card      *string
-	ten_delete    *string
-	ten_post      *string
-	ten_get       *string
-	ten_at        *time.Time
-	next          *string
-	room          *int
-	addroom       *int
-	clearedFields map[string]struct{}
-	card          map[int]struct{}
-	removedcard   map[int]struct{}
-	clearedcard   bool
-	done          bool
-	oldValue      func(context.Context) (*User, error)
-	predicates    []predicate.User
+	op                  Op
+	typ                 string
+	id                  *int
+	username            *string
+	did                 *string
+	member              *bool
+	book                *bool
+	manga               *bool
+	badge               *bool
+	bsky                *bool
+	mastodon            *bool
+	delete              *bool
+	handle              *bool
+	token               *string
+	password            *string
+	created_at          *time.Time
+	updated_at          *time.Time
+	raid_at             *time.Time
+	server_at           *time.Time
+	egg_at              *time.Time
+	luck                *int
+	addluck             *int
+	luck_at             *time.Time
+	like                *int
+	addlike             *int
+	like_rank           *int
+	addlike_rank        *int
+	like_at             *time.Time
+	fav                 *int
+	addfav              *int
+	ten                 *bool
+	ten_su              *int
+	addten_su           *int
+	ten_kai             *int
+	addten_kai          *int
+	aiten               *int
+	addaiten            *int
+	ten_card            *string
+	ten_delete          *string
+	ten_post            *string
+	ten_get             *string
+	ten_at              *time.Time
+	next                *string
+	room                *int
+	addroom             *int
+	model               *bool
+	model_at            *time.Time
+	model_attack        *int
+	addmodel_attack     *int
+	model_limit         *int
+	addmodel_limit      *int
+	model_skill         *int
+	addmodel_skill      *int
+	model_mode          *int
+	addmodel_mode       *int
+	model_critical      *int
+	addmodel_critical   *int
+	model_critical_d    *int
+	addmodel_critical_d *int
+	game                *bool
+	game_test           *bool
+	game_end            *bool
+	game_account        *bool
+	game_lv             *int
+	addgame_lv          *int
+	clearedFields       map[string]struct{}
+	card                map[int]struct{}
+	removedcard         map[int]struct{}
+	clearedcard         bool
+	done                bool
+	oldValue            func(context.Context) (*User, error)
+	predicates          []predicate.User
 }
 
 var _ ent.Mutation = (*UserMutation)(nil)
@@ -3625,6 +3645,790 @@ func (m *UserMutation) ResetRoom() {
 	delete(m.clearedFields, user.FieldRoom)
 }
 
+// SetModel sets the "model" field.
+func (m *UserMutation) SetModel(b bool) {
+	m.model = &b
+}
+
+// Model returns the value of the "model" field in the mutation.
+func (m *UserMutation) Model() (r bool, exists bool) {
+	v := m.model
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldModel returns the old "model" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldModel(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldModel is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldModel requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldModel: %w", err)
+	}
+	return oldValue.Model, nil
+}
+
+// ClearModel clears the value of the "model" field.
+func (m *UserMutation) ClearModel() {
+	m.model = nil
+	m.clearedFields[user.FieldModel] = struct{}{}
+}
+
+// ModelCleared returns if the "model" field was cleared in this mutation.
+func (m *UserMutation) ModelCleared() bool {
+	_, ok := m.clearedFields[user.FieldModel]
+	return ok
+}
+
+// ResetModel resets all changes to the "model" field.
+func (m *UserMutation) ResetModel() {
+	m.model = nil
+	delete(m.clearedFields, user.FieldModel)
+}
+
+// SetModelAt sets the "model_at" field.
+func (m *UserMutation) SetModelAt(t time.Time) {
+	m.model_at = &t
+}
+
+// ModelAt returns the value of the "model_at" field in the mutation.
+func (m *UserMutation) ModelAt() (r time.Time, exists bool) {
+	v := m.model_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldModelAt returns the old "model_at" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldModelAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldModelAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldModelAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldModelAt: %w", err)
+	}
+	return oldValue.ModelAt, nil
+}
+
+// ClearModelAt clears the value of the "model_at" field.
+func (m *UserMutation) ClearModelAt() {
+	m.model_at = nil
+	m.clearedFields[user.FieldModelAt] = struct{}{}
+}
+
+// ModelAtCleared returns if the "model_at" field was cleared in this mutation.
+func (m *UserMutation) ModelAtCleared() bool {
+	_, ok := m.clearedFields[user.FieldModelAt]
+	return ok
+}
+
+// ResetModelAt resets all changes to the "model_at" field.
+func (m *UserMutation) ResetModelAt() {
+	m.model_at = nil
+	delete(m.clearedFields, user.FieldModelAt)
+}
+
+// SetModelAttack sets the "model_attack" field.
+func (m *UserMutation) SetModelAttack(i int) {
+	m.model_attack = &i
+	m.addmodel_attack = nil
+}
+
+// ModelAttack returns the value of the "model_attack" field in the mutation.
+func (m *UserMutation) ModelAttack() (r int, exists bool) {
+	v := m.model_attack
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldModelAttack returns the old "model_attack" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldModelAttack(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldModelAttack is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldModelAttack requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldModelAttack: %w", err)
+	}
+	return oldValue.ModelAttack, nil
+}
+
+// AddModelAttack adds i to the "model_attack" field.
+func (m *UserMutation) AddModelAttack(i int) {
+	if m.addmodel_attack != nil {
+		*m.addmodel_attack += i
+	} else {
+		m.addmodel_attack = &i
+	}
+}
+
+// AddedModelAttack returns the value that was added to the "model_attack" field in this mutation.
+func (m *UserMutation) AddedModelAttack() (r int, exists bool) {
+	v := m.addmodel_attack
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearModelAttack clears the value of the "model_attack" field.
+func (m *UserMutation) ClearModelAttack() {
+	m.model_attack = nil
+	m.addmodel_attack = nil
+	m.clearedFields[user.FieldModelAttack] = struct{}{}
+}
+
+// ModelAttackCleared returns if the "model_attack" field was cleared in this mutation.
+func (m *UserMutation) ModelAttackCleared() bool {
+	_, ok := m.clearedFields[user.FieldModelAttack]
+	return ok
+}
+
+// ResetModelAttack resets all changes to the "model_attack" field.
+func (m *UserMutation) ResetModelAttack() {
+	m.model_attack = nil
+	m.addmodel_attack = nil
+	delete(m.clearedFields, user.FieldModelAttack)
+}
+
+// SetModelLimit sets the "model_limit" field.
+func (m *UserMutation) SetModelLimit(i int) {
+	m.model_limit = &i
+	m.addmodel_limit = nil
+}
+
+// ModelLimit returns the value of the "model_limit" field in the mutation.
+func (m *UserMutation) ModelLimit() (r int, exists bool) {
+	v := m.model_limit
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldModelLimit returns the old "model_limit" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldModelLimit(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldModelLimit is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldModelLimit requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldModelLimit: %w", err)
+	}
+	return oldValue.ModelLimit, nil
+}
+
+// AddModelLimit adds i to the "model_limit" field.
+func (m *UserMutation) AddModelLimit(i int) {
+	if m.addmodel_limit != nil {
+		*m.addmodel_limit += i
+	} else {
+		m.addmodel_limit = &i
+	}
+}
+
+// AddedModelLimit returns the value that was added to the "model_limit" field in this mutation.
+func (m *UserMutation) AddedModelLimit() (r int, exists bool) {
+	v := m.addmodel_limit
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearModelLimit clears the value of the "model_limit" field.
+func (m *UserMutation) ClearModelLimit() {
+	m.model_limit = nil
+	m.addmodel_limit = nil
+	m.clearedFields[user.FieldModelLimit] = struct{}{}
+}
+
+// ModelLimitCleared returns if the "model_limit" field was cleared in this mutation.
+func (m *UserMutation) ModelLimitCleared() bool {
+	_, ok := m.clearedFields[user.FieldModelLimit]
+	return ok
+}
+
+// ResetModelLimit resets all changes to the "model_limit" field.
+func (m *UserMutation) ResetModelLimit() {
+	m.model_limit = nil
+	m.addmodel_limit = nil
+	delete(m.clearedFields, user.FieldModelLimit)
+}
+
+// SetModelSkill sets the "model_skill" field.
+func (m *UserMutation) SetModelSkill(i int) {
+	m.model_skill = &i
+	m.addmodel_skill = nil
+}
+
+// ModelSkill returns the value of the "model_skill" field in the mutation.
+func (m *UserMutation) ModelSkill() (r int, exists bool) {
+	v := m.model_skill
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldModelSkill returns the old "model_skill" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldModelSkill(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldModelSkill is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldModelSkill requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldModelSkill: %w", err)
+	}
+	return oldValue.ModelSkill, nil
+}
+
+// AddModelSkill adds i to the "model_skill" field.
+func (m *UserMutation) AddModelSkill(i int) {
+	if m.addmodel_skill != nil {
+		*m.addmodel_skill += i
+	} else {
+		m.addmodel_skill = &i
+	}
+}
+
+// AddedModelSkill returns the value that was added to the "model_skill" field in this mutation.
+func (m *UserMutation) AddedModelSkill() (r int, exists bool) {
+	v := m.addmodel_skill
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearModelSkill clears the value of the "model_skill" field.
+func (m *UserMutation) ClearModelSkill() {
+	m.model_skill = nil
+	m.addmodel_skill = nil
+	m.clearedFields[user.FieldModelSkill] = struct{}{}
+}
+
+// ModelSkillCleared returns if the "model_skill" field was cleared in this mutation.
+func (m *UserMutation) ModelSkillCleared() bool {
+	_, ok := m.clearedFields[user.FieldModelSkill]
+	return ok
+}
+
+// ResetModelSkill resets all changes to the "model_skill" field.
+func (m *UserMutation) ResetModelSkill() {
+	m.model_skill = nil
+	m.addmodel_skill = nil
+	delete(m.clearedFields, user.FieldModelSkill)
+}
+
+// SetModelMode sets the "model_mode" field.
+func (m *UserMutation) SetModelMode(i int) {
+	m.model_mode = &i
+	m.addmodel_mode = nil
+}
+
+// ModelMode returns the value of the "model_mode" field in the mutation.
+func (m *UserMutation) ModelMode() (r int, exists bool) {
+	v := m.model_mode
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldModelMode returns the old "model_mode" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldModelMode(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldModelMode is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldModelMode requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldModelMode: %w", err)
+	}
+	return oldValue.ModelMode, nil
+}
+
+// AddModelMode adds i to the "model_mode" field.
+func (m *UserMutation) AddModelMode(i int) {
+	if m.addmodel_mode != nil {
+		*m.addmodel_mode += i
+	} else {
+		m.addmodel_mode = &i
+	}
+}
+
+// AddedModelMode returns the value that was added to the "model_mode" field in this mutation.
+func (m *UserMutation) AddedModelMode() (r int, exists bool) {
+	v := m.addmodel_mode
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearModelMode clears the value of the "model_mode" field.
+func (m *UserMutation) ClearModelMode() {
+	m.model_mode = nil
+	m.addmodel_mode = nil
+	m.clearedFields[user.FieldModelMode] = struct{}{}
+}
+
+// ModelModeCleared returns if the "model_mode" field was cleared in this mutation.
+func (m *UserMutation) ModelModeCleared() bool {
+	_, ok := m.clearedFields[user.FieldModelMode]
+	return ok
+}
+
+// ResetModelMode resets all changes to the "model_mode" field.
+func (m *UserMutation) ResetModelMode() {
+	m.model_mode = nil
+	m.addmodel_mode = nil
+	delete(m.clearedFields, user.FieldModelMode)
+}
+
+// SetModelCritical sets the "model_critical" field.
+func (m *UserMutation) SetModelCritical(i int) {
+	m.model_critical = &i
+	m.addmodel_critical = nil
+}
+
+// ModelCritical returns the value of the "model_critical" field in the mutation.
+func (m *UserMutation) ModelCritical() (r int, exists bool) {
+	v := m.model_critical
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldModelCritical returns the old "model_critical" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldModelCritical(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldModelCritical is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldModelCritical requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldModelCritical: %w", err)
+	}
+	return oldValue.ModelCritical, nil
+}
+
+// AddModelCritical adds i to the "model_critical" field.
+func (m *UserMutation) AddModelCritical(i int) {
+	if m.addmodel_critical != nil {
+		*m.addmodel_critical += i
+	} else {
+		m.addmodel_critical = &i
+	}
+}
+
+// AddedModelCritical returns the value that was added to the "model_critical" field in this mutation.
+func (m *UserMutation) AddedModelCritical() (r int, exists bool) {
+	v := m.addmodel_critical
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearModelCritical clears the value of the "model_critical" field.
+func (m *UserMutation) ClearModelCritical() {
+	m.model_critical = nil
+	m.addmodel_critical = nil
+	m.clearedFields[user.FieldModelCritical] = struct{}{}
+}
+
+// ModelCriticalCleared returns if the "model_critical" field was cleared in this mutation.
+func (m *UserMutation) ModelCriticalCleared() bool {
+	_, ok := m.clearedFields[user.FieldModelCritical]
+	return ok
+}
+
+// ResetModelCritical resets all changes to the "model_critical" field.
+func (m *UserMutation) ResetModelCritical() {
+	m.model_critical = nil
+	m.addmodel_critical = nil
+	delete(m.clearedFields, user.FieldModelCritical)
+}
+
+// SetModelCriticalD sets the "model_critical_d" field.
+func (m *UserMutation) SetModelCriticalD(i int) {
+	m.model_critical_d = &i
+	m.addmodel_critical_d = nil
+}
+
+// ModelCriticalD returns the value of the "model_critical_d" field in the mutation.
+func (m *UserMutation) ModelCriticalD() (r int, exists bool) {
+	v := m.model_critical_d
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldModelCriticalD returns the old "model_critical_d" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldModelCriticalD(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldModelCriticalD is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldModelCriticalD requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldModelCriticalD: %w", err)
+	}
+	return oldValue.ModelCriticalD, nil
+}
+
+// AddModelCriticalD adds i to the "model_critical_d" field.
+func (m *UserMutation) AddModelCriticalD(i int) {
+	if m.addmodel_critical_d != nil {
+		*m.addmodel_critical_d += i
+	} else {
+		m.addmodel_critical_d = &i
+	}
+}
+
+// AddedModelCriticalD returns the value that was added to the "model_critical_d" field in this mutation.
+func (m *UserMutation) AddedModelCriticalD() (r int, exists bool) {
+	v := m.addmodel_critical_d
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearModelCriticalD clears the value of the "model_critical_d" field.
+func (m *UserMutation) ClearModelCriticalD() {
+	m.model_critical_d = nil
+	m.addmodel_critical_d = nil
+	m.clearedFields[user.FieldModelCriticalD] = struct{}{}
+}
+
+// ModelCriticalDCleared returns if the "model_critical_d" field was cleared in this mutation.
+func (m *UserMutation) ModelCriticalDCleared() bool {
+	_, ok := m.clearedFields[user.FieldModelCriticalD]
+	return ok
+}
+
+// ResetModelCriticalD resets all changes to the "model_critical_d" field.
+func (m *UserMutation) ResetModelCriticalD() {
+	m.model_critical_d = nil
+	m.addmodel_critical_d = nil
+	delete(m.clearedFields, user.FieldModelCriticalD)
+}
+
+// SetGame sets the "game" field.
+func (m *UserMutation) SetGame(b bool) {
+	m.game = &b
+}
+
+// Game returns the value of the "game" field in the mutation.
+func (m *UserMutation) Game() (r bool, exists bool) {
+	v := m.game
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldGame returns the old "game" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldGame(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldGame is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldGame requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldGame: %w", err)
+	}
+	return oldValue.Game, nil
+}
+
+// ClearGame clears the value of the "game" field.
+func (m *UserMutation) ClearGame() {
+	m.game = nil
+	m.clearedFields[user.FieldGame] = struct{}{}
+}
+
+// GameCleared returns if the "game" field was cleared in this mutation.
+func (m *UserMutation) GameCleared() bool {
+	_, ok := m.clearedFields[user.FieldGame]
+	return ok
+}
+
+// ResetGame resets all changes to the "game" field.
+func (m *UserMutation) ResetGame() {
+	m.game = nil
+	delete(m.clearedFields, user.FieldGame)
+}
+
+// SetGameTest sets the "game_test" field.
+func (m *UserMutation) SetGameTest(b bool) {
+	m.game_test = &b
+}
+
+// GameTest returns the value of the "game_test" field in the mutation.
+func (m *UserMutation) GameTest() (r bool, exists bool) {
+	v := m.game_test
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldGameTest returns the old "game_test" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldGameTest(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldGameTest is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldGameTest requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldGameTest: %w", err)
+	}
+	return oldValue.GameTest, nil
+}
+
+// ClearGameTest clears the value of the "game_test" field.
+func (m *UserMutation) ClearGameTest() {
+	m.game_test = nil
+	m.clearedFields[user.FieldGameTest] = struct{}{}
+}
+
+// GameTestCleared returns if the "game_test" field was cleared in this mutation.
+func (m *UserMutation) GameTestCleared() bool {
+	_, ok := m.clearedFields[user.FieldGameTest]
+	return ok
+}
+
+// ResetGameTest resets all changes to the "game_test" field.
+func (m *UserMutation) ResetGameTest() {
+	m.game_test = nil
+	delete(m.clearedFields, user.FieldGameTest)
+}
+
+// SetGameEnd sets the "game_end" field.
+func (m *UserMutation) SetGameEnd(b bool) {
+	m.game_end = &b
+}
+
+// GameEnd returns the value of the "game_end" field in the mutation.
+func (m *UserMutation) GameEnd() (r bool, exists bool) {
+	v := m.game_end
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldGameEnd returns the old "game_end" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldGameEnd(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldGameEnd is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldGameEnd requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldGameEnd: %w", err)
+	}
+	return oldValue.GameEnd, nil
+}
+
+// ClearGameEnd clears the value of the "game_end" field.
+func (m *UserMutation) ClearGameEnd() {
+	m.game_end = nil
+	m.clearedFields[user.FieldGameEnd] = struct{}{}
+}
+
+// GameEndCleared returns if the "game_end" field was cleared in this mutation.
+func (m *UserMutation) GameEndCleared() bool {
+	_, ok := m.clearedFields[user.FieldGameEnd]
+	return ok
+}
+
+// ResetGameEnd resets all changes to the "game_end" field.
+func (m *UserMutation) ResetGameEnd() {
+	m.game_end = nil
+	delete(m.clearedFields, user.FieldGameEnd)
+}
+
+// SetGameAccount sets the "game_account" field.
+func (m *UserMutation) SetGameAccount(b bool) {
+	m.game_account = &b
+}
+
+// GameAccount returns the value of the "game_account" field in the mutation.
+func (m *UserMutation) GameAccount() (r bool, exists bool) {
+	v := m.game_account
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldGameAccount returns the old "game_account" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldGameAccount(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldGameAccount is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldGameAccount requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldGameAccount: %w", err)
+	}
+	return oldValue.GameAccount, nil
+}
+
+// ClearGameAccount clears the value of the "game_account" field.
+func (m *UserMutation) ClearGameAccount() {
+	m.game_account = nil
+	m.clearedFields[user.FieldGameAccount] = struct{}{}
+}
+
+// GameAccountCleared returns if the "game_account" field was cleared in this mutation.
+func (m *UserMutation) GameAccountCleared() bool {
+	_, ok := m.clearedFields[user.FieldGameAccount]
+	return ok
+}
+
+// ResetGameAccount resets all changes to the "game_account" field.
+func (m *UserMutation) ResetGameAccount() {
+	m.game_account = nil
+	delete(m.clearedFields, user.FieldGameAccount)
+}
+
+// SetGameLv sets the "game_lv" field.
+func (m *UserMutation) SetGameLv(i int) {
+	m.game_lv = &i
+	m.addgame_lv = nil
+}
+
+// GameLv returns the value of the "game_lv" field in the mutation.
+func (m *UserMutation) GameLv() (r int, exists bool) {
+	v := m.game_lv
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldGameLv returns the old "game_lv" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldGameLv(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldGameLv is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldGameLv requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldGameLv: %w", err)
+	}
+	return oldValue.GameLv, nil
+}
+
+// AddGameLv adds i to the "game_lv" field.
+func (m *UserMutation) AddGameLv(i int) {
+	if m.addgame_lv != nil {
+		*m.addgame_lv += i
+	} else {
+		m.addgame_lv = &i
+	}
+}
+
+// AddedGameLv returns the value that was added to the "game_lv" field in this mutation.
+func (m *UserMutation) AddedGameLv() (r int, exists bool) {
+	v := m.addgame_lv
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearGameLv clears the value of the "game_lv" field.
+func (m *UserMutation) ClearGameLv() {
+	m.game_lv = nil
+	m.addgame_lv = nil
+	m.clearedFields[user.FieldGameLv] = struct{}{}
+}
+
+// GameLvCleared returns if the "game_lv" field was cleared in this mutation.
+func (m *UserMutation) GameLvCleared() bool {
+	_, ok := m.clearedFields[user.FieldGameLv]
+	return ok
+}
+
+// ResetGameLv resets all changes to the "game_lv" field.
+func (m *UserMutation) ResetGameLv() {
+	m.game_lv = nil
+	m.addgame_lv = nil
+	delete(m.clearedFields, user.FieldGameLv)
+}
+
 // AddCardIDs adds the "card" edge to the Card entity by ids.
 func (m *UserMutation) AddCardIDs(ids ...int) {
 	if m.card == nil {
@@ -3713,7 +4517,7 @@ func (m *UserMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *UserMutation) Fields() []string {
-	fields := make([]string, 0, 34)
+	fields := make([]string, 0, 47)
 	if m.username != nil {
 		fields = append(fields, user.FieldUsername)
 	}
@@ -3816,6 +4620,45 @@ func (m *UserMutation) Fields() []string {
 	if m.room != nil {
 		fields = append(fields, user.FieldRoom)
 	}
+	if m.model != nil {
+		fields = append(fields, user.FieldModel)
+	}
+	if m.model_at != nil {
+		fields = append(fields, user.FieldModelAt)
+	}
+	if m.model_attack != nil {
+		fields = append(fields, user.FieldModelAttack)
+	}
+	if m.model_limit != nil {
+		fields = append(fields, user.FieldModelLimit)
+	}
+	if m.model_skill != nil {
+		fields = append(fields, user.FieldModelSkill)
+	}
+	if m.model_mode != nil {
+		fields = append(fields, user.FieldModelMode)
+	}
+	if m.model_critical != nil {
+		fields = append(fields, user.FieldModelCritical)
+	}
+	if m.model_critical_d != nil {
+		fields = append(fields, user.FieldModelCriticalD)
+	}
+	if m.game != nil {
+		fields = append(fields, user.FieldGame)
+	}
+	if m.game_test != nil {
+		fields = append(fields, user.FieldGameTest)
+	}
+	if m.game_end != nil {
+		fields = append(fields, user.FieldGameEnd)
+	}
+	if m.game_account != nil {
+		fields = append(fields, user.FieldGameAccount)
+	}
+	if m.game_lv != nil {
+		fields = append(fields, user.FieldGameLv)
+	}
 	return fields
 }
 
@@ -3892,6 +4735,32 @@ func (m *UserMutation) Field(name string) (ent.Value, bool) {
 		return m.Next()
 	case user.FieldRoom:
 		return m.Room()
+	case user.FieldModel:
+		return m.Model()
+	case user.FieldModelAt:
+		return m.ModelAt()
+	case user.FieldModelAttack:
+		return m.ModelAttack()
+	case user.FieldModelLimit:
+		return m.ModelLimit()
+	case user.FieldModelSkill:
+		return m.ModelSkill()
+	case user.FieldModelMode:
+		return m.ModelMode()
+	case user.FieldModelCritical:
+		return m.ModelCritical()
+	case user.FieldModelCriticalD:
+		return m.ModelCriticalD()
+	case user.FieldGame:
+		return m.Game()
+	case user.FieldGameTest:
+		return m.GameTest()
+	case user.FieldGameEnd:
+		return m.GameEnd()
+	case user.FieldGameAccount:
+		return m.GameAccount()
+	case user.FieldGameLv:
+		return m.GameLv()
 	}
 	return nil, false
 }
@@ -3969,6 +4838,32 @@ func (m *UserMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldNext(ctx)
 	case user.FieldRoom:
 		return m.OldRoom(ctx)
+	case user.FieldModel:
+		return m.OldModel(ctx)
+	case user.FieldModelAt:
+		return m.OldModelAt(ctx)
+	case user.FieldModelAttack:
+		return m.OldModelAttack(ctx)
+	case user.FieldModelLimit:
+		return m.OldModelLimit(ctx)
+	case user.FieldModelSkill:
+		return m.OldModelSkill(ctx)
+	case user.FieldModelMode:
+		return m.OldModelMode(ctx)
+	case user.FieldModelCritical:
+		return m.OldModelCritical(ctx)
+	case user.FieldModelCriticalD:
+		return m.OldModelCriticalD(ctx)
+	case user.FieldGame:
+		return m.OldGame(ctx)
+	case user.FieldGameTest:
+		return m.OldGameTest(ctx)
+	case user.FieldGameEnd:
+		return m.OldGameEnd(ctx)
+	case user.FieldGameAccount:
+		return m.OldGameAccount(ctx)
+	case user.FieldGameLv:
+		return m.OldGameLv(ctx)
 	}
 	return nil, fmt.Errorf("unknown User field %s", name)
 }
@@ -4216,6 +5111,97 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetRoom(v)
 		return nil
+	case user.FieldModel:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetModel(v)
+		return nil
+	case user.FieldModelAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetModelAt(v)
+		return nil
+	case user.FieldModelAttack:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetModelAttack(v)
+		return nil
+	case user.FieldModelLimit:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetModelLimit(v)
+		return nil
+	case user.FieldModelSkill:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetModelSkill(v)
+		return nil
+	case user.FieldModelMode:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetModelMode(v)
+		return nil
+	case user.FieldModelCritical:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetModelCritical(v)
+		return nil
+	case user.FieldModelCriticalD:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetModelCriticalD(v)
+		return nil
+	case user.FieldGame:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetGame(v)
+		return nil
+	case user.FieldGameTest:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetGameTest(v)
+		return nil
+	case user.FieldGameEnd:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetGameEnd(v)
+		return nil
+	case user.FieldGameAccount:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetGameAccount(v)
+		return nil
+	case user.FieldGameLv:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetGameLv(v)
+		return nil
 	}
 	return fmt.Errorf("unknown User field %s", name)
 }
@@ -4248,6 +5234,27 @@ func (m *UserMutation) AddedFields() []string {
 	if m.addroom != nil {
 		fields = append(fields, user.FieldRoom)
 	}
+	if m.addmodel_attack != nil {
+		fields = append(fields, user.FieldModelAttack)
+	}
+	if m.addmodel_limit != nil {
+		fields = append(fields, user.FieldModelLimit)
+	}
+	if m.addmodel_skill != nil {
+		fields = append(fields, user.FieldModelSkill)
+	}
+	if m.addmodel_mode != nil {
+		fields = append(fields, user.FieldModelMode)
+	}
+	if m.addmodel_critical != nil {
+		fields = append(fields, user.FieldModelCritical)
+	}
+	if m.addmodel_critical_d != nil {
+		fields = append(fields, user.FieldModelCriticalD)
+	}
+	if m.addgame_lv != nil {
+		fields = append(fields, user.FieldGameLv)
+	}
 	return fields
 }
 
@@ -4272,6 +5279,20 @@ func (m *UserMutation) AddedField(name string) (ent.Value, bool) {
 		return m.AddedAiten()
 	case user.FieldRoom:
 		return m.AddedRoom()
+	case user.FieldModelAttack:
+		return m.AddedModelAttack()
+	case user.FieldModelLimit:
+		return m.AddedModelLimit()
+	case user.FieldModelSkill:
+		return m.AddedModelSkill()
+	case user.FieldModelMode:
+		return m.AddedModelMode()
+	case user.FieldModelCritical:
+		return m.AddedModelCritical()
+	case user.FieldModelCriticalD:
+		return m.AddedModelCriticalD()
+	case user.FieldGameLv:
+		return m.AddedGameLv()
 	}
 	return nil, false
 }
@@ -4336,6 +5357,55 @@ func (m *UserMutation) AddField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddRoom(v)
+		return nil
+	case user.FieldModelAttack:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddModelAttack(v)
+		return nil
+	case user.FieldModelLimit:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddModelLimit(v)
+		return nil
+	case user.FieldModelSkill:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddModelSkill(v)
+		return nil
+	case user.FieldModelMode:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddModelMode(v)
+		return nil
+	case user.FieldModelCritical:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddModelCritical(v)
+		return nil
+	case user.FieldModelCriticalD:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddModelCriticalD(v)
+		return nil
+	case user.FieldGameLv:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddGameLv(v)
 		return nil
 	}
 	return fmt.Errorf("unknown User numeric field %s", name)
@@ -4440,6 +5510,45 @@ func (m *UserMutation) ClearedFields() []string {
 	}
 	if m.FieldCleared(user.FieldRoom) {
 		fields = append(fields, user.FieldRoom)
+	}
+	if m.FieldCleared(user.FieldModel) {
+		fields = append(fields, user.FieldModel)
+	}
+	if m.FieldCleared(user.FieldModelAt) {
+		fields = append(fields, user.FieldModelAt)
+	}
+	if m.FieldCleared(user.FieldModelAttack) {
+		fields = append(fields, user.FieldModelAttack)
+	}
+	if m.FieldCleared(user.FieldModelLimit) {
+		fields = append(fields, user.FieldModelLimit)
+	}
+	if m.FieldCleared(user.FieldModelSkill) {
+		fields = append(fields, user.FieldModelSkill)
+	}
+	if m.FieldCleared(user.FieldModelMode) {
+		fields = append(fields, user.FieldModelMode)
+	}
+	if m.FieldCleared(user.FieldModelCritical) {
+		fields = append(fields, user.FieldModelCritical)
+	}
+	if m.FieldCleared(user.FieldModelCriticalD) {
+		fields = append(fields, user.FieldModelCriticalD)
+	}
+	if m.FieldCleared(user.FieldGame) {
+		fields = append(fields, user.FieldGame)
+	}
+	if m.FieldCleared(user.FieldGameTest) {
+		fields = append(fields, user.FieldGameTest)
+	}
+	if m.FieldCleared(user.FieldGameEnd) {
+		fields = append(fields, user.FieldGameEnd)
+	}
+	if m.FieldCleared(user.FieldGameAccount) {
+		fields = append(fields, user.FieldGameAccount)
+	}
+	if m.FieldCleared(user.FieldGameLv) {
+		fields = append(fields, user.FieldGameLv)
 	}
 	return fields
 }
@@ -4551,6 +5660,45 @@ func (m *UserMutation) ClearField(name string) error {
 	case user.FieldRoom:
 		m.ClearRoom()
 		return nil
+	case user.FieldModel:
+		m.ClearModel()
+		return nil
+	case user.FieldModelAt:
+		m.ClearModelAt()
+		return nil
+	case user.FieldModelAttack:
+		m.ClearModelAttack()
+		return nil
+	case user.FieldModelLimit:
+		m.ClearModelLimit()
+		return nil
+	case user.FieldModelSkill:
+		m.ClearModelSkill()
+		return nil
+	case user.FieldModelMode:
+		m.ClearModelMode()
+		return nil
+	case user.FieldModelCritical:
+		m.ClearModelCritical()
+		return nil
+	case user.FieldModelCriticalD:
+		m.ClearModelCriticalD()
+		return nil
+	case user.FieldGame:
+		m.ClearGame()
+		return nil
+	case user.FieldGameTest:
+		m.ClearGameTest()
+		return nil
+	case user.FieldGameEnd:
+		m.ClearGameEnd()
+		return nil
+	case user.FieldGameAccount:
+		m.ClearGameAccount()
+		return nil
+	case user.FieldGameLv:
+		m.ClearGameLv()
+		return nil
 	}
 	return fmt.Errorf("unknown User nullable field %s", name)
 }
@@ -4660,6 +5808,45 @@ func (m *UserMutation) ResetField(name string) error {
 		return nil
 	case user.FieldRoom:
 		m.ResetRoom()
+		return nil
+	case user.FieldModel:
+		m.ResetModel()
+		return nil
+	case user.FieldModelAt:
+		m.ResetModelAt()
+		return nil
+	case user.FieldModelAttack:
+		m.ResetModelAttack()
+		return nil
+	case user.FieldModelLimit:
+		m.ResetModelLimit()
+		return nil
+	case user.FieldModelSkill:
+		m.ResetModelSkill()
+		return nil
+	case user.FieldModelMode:
+		m.ResetModelMode()
+		return nil
+	case user.FieldModelCritical:
+		m.ResetModelCritical()
+		return nil
+	case user.FieldModelCriticalD:
+		m.ResetModelCriticalD()
+		return nil
+	case user.FieldGame:
+		m.ResetGame()
+		return nil
+	case user.FieldGameTest:
+		m.ResetGameTest()
+		return nil
+	case user.FieldGameEnd:
+		m.ResetGameEnd()
+		return nil
+	case user.FieldGameAccount:
+		m.ResetGameAccount()
+		return nil
+	case user.FieldGameLv:
+		m.ResetGameLv()
 		return nil
 	}
 	return fmt.Errorf("unknown User field %s", name)

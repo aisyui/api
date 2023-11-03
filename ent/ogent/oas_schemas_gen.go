@@ -218,39 +218,52 @@ func (s *CardList) SetCreatedAt(val OptDateTime) {
 
 // Ref: #/components/schemas/Card_OwnerRead
 type CardOwnerRead struct {
-	ID        int         `json:"id"`
-	Username  string      `json:"username"`
-	Did       OptString   `json:"did"`
-	Member    OptBool     `json:"member"`
-	Book      OptBool     `json:"book"`
-	Manga     OptBool     `json:"manga"`
-	Badge     OptBool     `json:"badge"`
-	Bsky      OptBool     `json:"bsky"`
-	Mastodon  OptBool     `json:"mastodon"`
-	Delete    OptBool     `json:"delete"`
-	Handle    OptBool     `json:"handle"`
-	CreatedAt OptDateTime `json:"created_at"`
-	UpdatedAt OptDateTime `json:"updated_at"`
-	RaidAt    OptDateTime `json:"raid_at"`
-	ServerAt  OptDateTime `json:"server_at"`
-	EggAt     OptDateTime `json:"egg_at"`
-	Luck      OptInt      `json:"luck"`
-	LuckAt    OptDateTime `json:"luck_at"`
-	Like      OptInt      `json:"like"`
-	LikeRank  OptInt      `json:"like_rank"`
-	LikeAt    OptDateTime `json:"like_at"`
-	Fav       OptInt      `json:"fav"`
-	Ten       OptBool     `json:"ten"`
-	TenSu     OptInt      `json:"ten_su"`
-	TenKai    OptInt      `json:"ten_kai"`
-	Aiten     OptInt      `json:"aiten"`
-	TenCard   OptString   `json:"ten_card"`
-	TenDelete OptString   `json:"ten_delete"`
-	TenPost   OptString   `json:"ten_post"`
-	TenGet    OptString   `json:"ten_get"`
-	TenAt     OptDateTime `json:"ten_at"`
-	Next      OptString   `json:"next"`
-	Room      OptInt      `json:"room"`
+	ID             int         `json:"id"`
+	Username       string      `json:"username"`
+	Did            OptString   `json:"did"`
+	Member         OptBool     `json:"member"`
+	Book           OptBool     `json:"book"`
+	Manga          OptBool     `json:"manga"`
+	Badge          OptBool     `json:"badge"`
+	Bsky           OptBool     `json:"bsky"`
+	Mastodon       OptBool     `json:"mastodon"`
+	Delete         OptBool     `json:"delete"`
+	Handle         OptBool     `json:"handle"`
+	CreatedAt      OptDateTime `json:"created_at"`
+	UpdatedAt      OptDateTime `json:"updated_at"`
+	RaidAt         OptDateTime `json:"raid_at"`
+	ServerAt       OptDateTime `json:"server_at"`
+	EggAt          OptDateTime `json:"egg_at"`
+	Luck           OptInt      `json:"luck"`
+	LuckAt         OptDateTime `json:"luck_at"`
+	Like           OptInt      `json:"like"`
+	LikeRank       OptInt      `json:"like_rank"`
+	LikeAt         OptDateTime `json:"like_at"`
+	Fav            OptInt      `json:"fav"`
+	Ten            OptBool     `json:"ten"`
+	TenSu          OptInt      `json:"ten_su"`
+	TenKai         OptInt      `json:"ten_kai"`
+	Aiten          OptInt      `json:"aiten"`
+	TenCard        OptString   `json:"ten_card"`
+	TenDelete      OptString   `json:"ten_delete"`
+	TenPost        OptString   `json:"ten_post"`
+	TenGet         OptString   `json:"ten_get"`
+	TenAt          OptDateTime `json:"ten_at"`
+	Next           OptString   `json:"next"`
+	Room           OptInt      `json:"room"`
+	Model          OptBool     `json:"model"`
+	ModelAt        OptDateTime `json:"model_at"`
+	ModelAttack    OptInt      `json:"model_attack"`
+	ModelLimit     OptInt      `json:"model_limit"`
+	ModelSkill     OptInt      `json:"model_skill"`
+	ModelMode      OptInt      `json:"model_mode"`
+	ModelCritical  OptInt      `json:"model_critical"`
+	ModelCriticalD OptInt      `json:"model_critical_d"`
+	Game           OptBool     `json:"game"`
+	GameTest       OptBool     `json:"game_test"`
+	GameEnd        OptBool     `json:"game_end"`
+	GameAccount    OptBool     `json:"game_account"`
+	GameLv         OptInt      `json:"game_lv"`
 }
 
 // GetID returns the value of ID.
@@ -418,6 +431,71 @@ func (s *CardOwnerRead) GetRoom() OptInt {
 	return s.Room
 }
 
+// GetModel returns the value of Model.
+func (s *CardOwnerRead) GetModel() OptBool {
+	return s.Model
+}
+
+// GetModelAt returns the value of ModelAt.
+func (s *CardOwnerRead) GetModelAt() OptDateTime {
+	return s.ModelAt
+}
+
+// GetModelAttack returns the value of ModelAttack.
+func (s *CardOwnerRead) GetModelAttack() OptInt {
+	return s.ModelAttack
+}
+
+// GetModelLimit returns the value of ModelLimit.
+func (s *CardOwnerRead) GetModelLimit() OptInt {
+	return s.ModelLimit
+}
+
+// GetModelSkill returns the value of ModelSkill.
+func (s *CardOwnerRead) GetModelSkill() OptInt {
+	return s.ModelSkill
+}
+
+// GetModelMode returns the value of ModelMode.
+func (s *CardOwnerRead) GetModelMode() OptInt {
+	return s.ModelMode
+}
+
+// GetModelCritical returns the value of ModelCritical.
+func (s *CardOwnerRead) GetModelCritical() OptInt {
+	return s.ModelCritical
+}
+
+// GetModelCriticalD returns the value of ModelCriticalD.
+func (s *CardOwnerRead) GetModelCriticalD() OptInt {
+	return s.ModelCriticalD
+}
+
+// GetGame returns the value of Game.
+func (s *CardOwnerRead) GetGame() OptBool {
+	return s.Game
+}
+
+// GetGameTest returns the value of GameTest.
+func (s *CardOwnerRead) GetGameTest() OptBool {
+	return s.GameTest
+}
+
+// GetGameEnd returns the value of GameEnd.
+func (s *CardOwnerRead) GetGameEnd() OptBool {
+	return s.GameEnd
+}
+
+// GetGameAccount returns the value of GameAccount.
+func (s *CardOwnerRead) GetGameAccount() OptBool {
+	return s.GameAccount
+}
+
+// GetGameLv returns the value of GameLv.
+func (s *CardOwnerRead) GetGameLv() OptInt {
+	return s.GameLv
+}
+
 // SetID sets the value of ID.
 func (s *CardOwnerRead) SetID(val int) {
 	s.ID = val
@@ -581,6 +659,71 @@ func (s *CardOwnerRead) SetNext(val OptString) {
 // SetRoom sets the value of Room.
 func (s *CardOwnerRead) SetRoom(val OptInt) {
 	s.Room = val
+}
+
+// SetModel sets the value of Model.
+func (s *CardOwnerRead) SetModel(val OptBool) {
+	s.Model = val
+}
+
+// SetModelAt sets the value of ModelAt.
+func (s *CardOwnerRead) SetModelAt(val OptDateTime) {
+	s.ModelAt = val
+}
+
+// SetModelAttack sets the value of ModelAttack.
+func (s *CardOwnerRead) SetModelAttack(val OptInt) {
+	s.ModelAttack = val
+}
+
+// SetModelLimit sets the value of ModelLimit.
+func (s *CardOwnerRead) SetModelLimit(val OptInt) {
+	s.ModelLimit = val
+}
+
+// SetModelSkill sets the value of ModelSkill.
+func (s *CardOwnerRead) SetModelSkill(val OptInt) {
+	s.ModelSkill = val
+}
+
+// SetModelMode sets the value of ModelMode.
+func (s *CardOwnerRead) SetModelMode(val OptInt) {
+	s.ModelMode = val
+}
+
+// SetModelCritical sets the value of ModelCritical.
+func (s *CardOwnerRead) SetModelCritical(val OptInt) {
+	s.ModelCritical = val
+}
+
+// SetModelCriticalD sets the value of ModelCriticalD.
+func (s *CardOwnerRead) SetModelCriticalD(val OptInt) {
+	s.ModelCriticalD = val
+}
+
+// SetGame sets the value of Game.
+func (s *CardOwnerRead) SetGame(val OptBool) {
+	s.Game = val
+}
+
+// SetGameTest sets the value of GameTest.
+func (s *CardOwnerRead) SetGameTest(val OptBool) {
+	s.GameTest = val
+}
+
+// SetGameEnd sets the value of GameEnd.
+func (s *CardOwnerRead) SetGameEnd(val OptBool) {
+	s.GameEnd = val
+}
+
+// SetGameAccount sets the value of GameAccount.
+func (s *CardOwnerRead) SetGameAccount(val OptBool) {
+	s.GameAccount = val
+}
+
+// SetGameLv sets the value of GameLv.
+func (s *CardOwnerRead) SetGameLv(val OptInt) {
+	s.GameLv = val
 }
 
 func (*CardOwnerRead) readCardOwnerRes() {}
@@ -956,41 +1099,54 @@ func (s *CreateGroupReq) SetUsers(val []int) {
 }
 
 type CreateUserReq struct {
-	Username  string      `json:"username"`
-	Did       OptString   `json:"did"`
-	Member    OptBool     `json:"member"`
-	Book      OptBool     `json:"book"`
-	Manga     OptBool     `json:"manga"`
-	Badge     OptBool     `json:"badge"`
-	Bsky      OptBool     `json:"bsky"`
-	Mastodon  OptBool     `json:"mastodon"`
-	Delete    OptBool     `json:"delete"`
-	Handle    OptBool     `json:"handle"`
-	Token     OptString   `json:"token"`
-	Password  string      `json:"password"`
-	CreatedAt OptDateTime `json:"created_at"`
-	UpdatedAt OptDateTime `json:"updated_at"`
-	RaidAt    OptDateTime `json:"raid_at"`
-	ServerAt  OptDateTime `json:"server_at"`
-	EggAt     OptDateTime `json:"egg_at"`
-	Luck      OptInt      `json:"luck"`
-	LuckAt    OptDateTime `json:"luck_at"`
-	Like      OptInt      `json:"like"`
-	LikeRank  OptInt      `json:"like_rank"`
-	LikeAt    OptDateTime `json:"like_at"`
-	Fav       OptInt      `json:"fav"`
-	Ten       OptBool     `json:"ten"`
-	TenSu     OptInt      `json:"ten_su"`
-	TenKai    OptInt      `json:"ten_kai"`
-	Aiten     OptInt      `json:"aiten"`
-	TenCard   OptString   `json:"ten_card"`
-	TenDelete OptString   `json:"ten_delete"`
-	TenPost   OptString   `json:"ten_post"`
-	TenGet    OptString   `json:"ten_get"`
-	TenAt     OptDateTime `json:"ten_at"`
-	Next      OptString   `json:"next"`
-	Room      OptInt      `json:"room"`
-	Card      []int       `json:"card"`
+	Username       string      `json:"username"`
+	Did            OptString   `json:"did"`
+	Member         OptBool     `json:"member"`
+	Book           OptBool     `json:"book"`
+	Manga          OptBool     `json:"manga"`
+	Badge          OptBool     `json:"badge"`
+	Bsky           OptBool     `json:"bsky"`
+	Mastodon       OptBool     `json:"mastodon"`
+	Delete         OptBool     `json:"delete"`
+	Handle         OptBool     `json:"handle"`
+	Token          OptString   `json:"token"`
+	Password       string      `json:"password"`
+	CreatedAt      OptDateTime `json:"created_at"`
+	UpdatedAt      OptDateTime `json:"updated_at"`
+	RaidAt         OptDateTime `json:"raid_at"`
+	ServerAt       OptDateTime `json:"server_at"`
+	EggAt          OptDateTime `json:"egg_at"`
+	Luck           OptInt      `json:"luck"`
+	LuckAt         OptDateTime `json:"luck_at"`
+	Like           OptInt      `json:"like"`
+	LikeRank       OptInt      `json:"like_rank"`
+	LikeAt         OptDateTime `json:"like_at"`
+	Fav            OptInt      `json:"fav"`
+	Ten            OptBool     `json:"ten"`
+	TenSu          OptInt      `json:"ten_su"`
+	TenKai         OptInt      `json:"ten_kai"`
+	Aiten          OptInt      `json:"aiten"`
+	TenCard        OptString   `json:"ten_card"`
+	TenDelete      OptString   `json:"ten_delete"`
+	TenPost        OptString   `json:"ten_post"`
+	TenGet         OptString   `json:"ten_get"`
+	TenAt          OptDateTime `json:"ten_at"`
+	Next           OptString   `json:"next"`
+	Room           OptInt      `json:"room"`
+	Model          OptBool     `json:"model"`
+	ModelAt        OptDateTime `json:"model_at"`
+	ModelAttack    OptInt      `json:"model_attack"`
+	ModelLimit     OptInt      `json:"model_limit"`
+	ModelSkill     OptInt      `json:"model_skill"`
+	ModelMode      OptInt      `json:"model_mode"`
+	ModelCritical  OptInt      `json:"model_critical"`
+	ModelCriticalD OptInt      `json:"model_critical_d"`
+	Game           OptBool     `json:"game"`
+	GameTest       OptBool     `json:"game_test"`
+	GameEnd        OptBool     `json:"game_end"`
+	GameAccount    OptBool     `json:"game_account"`
+	GameLv         OptInt      `json:"game_lv"`
+	Card           []int       `json:"card"`
 }
 
 // GetUsername returns the value of Username.
@@ -1161,6 +1317,71 @@ func (s *CreateUserReq) GetNext() OptString {
 // GetRoom returns the value of Room.
 func (s *CreateUserReq) GetRoom() OptInt {
 	return s.Room
+}
+
+// GetModel returns the value of Model.
+func (s *CreateUserReq) GetModel() OptBool {
+	return s.Model
+}
+
+// GetModelAt returns the value of ModelAt.
+func (s *CreateUserReq) GetModelAt() OptDateTime {
+	return s.ModelAt
+}
+
+// GetModelAttack returns the value of ModelAttack.
+func (s *CreateUserReq) GetModelAttack() OptInt {
+	return s.ModelAttack
+}
+
+// GetModelLimit returns the value of ModelLimit.
+func (s *CreateUserReq) GetModelLimit() OptInt {
+	return s.ModelLimit
+}
+
+// GetModelSkill returns the value of ModelSkill.
+func (s *CreateUserReq) GetModelSkill() OptInt {
+	return s.ModelSkill
+}
+
+// GetModelMode returns the value of ModelMode.
+func (s *CreateUserReq) GetModelMode() OptInt {
+	return s.ModelMode
+}
+
+// GetModelCritical returns the value of ModelCritical.
+func (s *CreateUserReq) GetModelCritical() OptInt {
+	return s.ModelCritical
+}
+
+// GetModelCriticalD returns the value of ModelCriticalD.
+func (s *CreateUserReq) GetModelCriticalD() OptInt {
+	return s.ModelCriticalD
+}
+
+// GetGame returns the value of Game.
+func (s *CreateUserReq) GetGame() OptBool {
+	return s.Game
+}
+
+// GetGameTest returns the value of GameTest.
+func (s *CreateUserReq) GetGameTest() OptBool {
+	return s.GameTest
+}
+
+// GetGameEnd returns the value of GameEnd.
+func (s *CreateUserReq) GetGameEnd() OptBool {
+	return s.GameEnd
+}
+
+// GetGameAccount returns the value of GameAccount.
+func (s *CreateUserReq) GetGameAccount() OptBool {
+	return s.GameAccount
+}
+
+// GetGameLv returns the value of GameLv.
+func (s *CreateUserReq) GetGameLv() OptInt {
+	return s.GameLv
 }
 
 // GetCard returns the value of Card.
@@ -1338,6 +1559,71 @@ func (s *CreateUserReq) SetRoom(val OptInt) {
 	s.Room = val
 }
 
+// SetModel sets the value of Model.
+func (s *CreateUserReq) SetModel(val OptBool) {
+	s.Model = val
+}
+
+// SetModelAt sets the value of ModelAt.
+func (s *CreateUserReq) SetModelAt(val OptDateTime) {
+	s.ModelAt = val
+}
+
+// SetModelAttack sets the value of ModelAttack.
+func (s *CreateUserReq) SetModelAttack(val OptInt) {
+	s.ModelAttack = val
+}
+
+// SetModelLimit sets the value of ModelLimit.
+func (s *CreateUserReq) SetModelLimit(val OptInt) {
+	s.ModelLimit = val
+}
+
+// SetModelSkill sets the value of ModelSkill.
+func (s *CreateUserReq) SetModelSkill(val OptInt) {
+	s.ModelSkill = val
+}
+
+// SetModelMode sets the value of ModelMode.
+func (s *CreateUserReq) SetModelMode(val OptInt) {
+	s.ModelMode = val
+}
+
+// SetModelCritical sets the value of ModelCritical.
+func (s *CreateUserReq) SetModelCritical(val OptInt) {
+	s.ModelCritical = val
+}
+
+// SetModelCriticalD sets the value of ModelCriticalD.
+func (s *CreateUserReq) SetModelCriticalD(val OptInt) {
+	s.ModelCriticalD = val
+}
+
+// SetGame sets the value of Game.
+func (s *CreateUserReq) SetGame(val OptBool) {
+	s.Game = val
+}
+
+// SetGameTest sets the value of GameTest.
+func (s *CreateUserReq) SetGameTest(val OptBool) {
+	s.GameTest = val
+}
+
+// SetGameEnd sets the value of GameEnd.
+func (s *CreateUserReq) SetGameEnd(val OptBool) {
+	s.GameEnd = val
+}
+
+// SetGameAccount sets the value of GameAccount.
+func (s *CreateUserReq) SetGameAccount(val OptBool) {
+	s.GameAccount = val
+}
+
+// SetGameLv sets the value of GameLv.
+func (s *CreateUserReq) SetGameLv(val OptInt) {
+	s.GameLv = val
+}
+
 // SetCard sets the value of Card.
 func (s *CreateUserReq) SetCard(val []int) {
 	s.Card = val
@@ -1476,39 +1762,52 @@ func (*GroupUpdate) updateGroupRes() {}
 
 // Ref: #/components/schemas/Group_UsersList
 type GroupUsersList struct {
-	ID        int         `json:"id"`
-	Username  string      `json:"username"`
-	Did       OptString   `json:"did"`
-	Member    OptBool     `json:"member"`
-	Book      OptBool     `json:"book"`
-	Manga     OptBool     `json:"manga"`
-	Badge     OptBool     `json:"badge"`
-	Bsky      OptBool     `json:"bsky"`
-	Mastodon  OptBool     `json:"mastodon"`
-	Delete    OptBool     `json:"delete"`
-	Handle    OptBool     `json:"handle"`
-	CreatedAt OptDateTime `json:"created_at"`
-	UpdatedAt OptDateTime `json:"updated_at"`
-	RaidAt    OptDateTime `json:"raid_at"`
-	ServerAt  OptDateTime `json:"server_at"`
-	EggAt     OptDateTime `json:"egg_at"`
-	Luck      OptInt      `json:"luck"`
-	LuckAt    OptDateTime `json:"luck_at"`
-	Like      OptInt      `json:"like"`
-	LikeRank  OptInt      `json:"like_rank"`
-	LikeAt    OptDateTime `json:"like_at"`
-	Fav       OptInt      `json:"fav"`
-	Ten       OptBool     `json:"ten"`
-	TenSu     OptInt      `json:"ten_su"`
-	TenKai    OptInt      `json:"ten_kai"`
-	Aiten     OptInt      `json:"aiten"`
-	TenCard   OptString   `json:"ten_card"`
-	TenDelete OptString   `json:"ten_delete"`
-	TenPost   OptString   `json:"ten_post"`
-	TenGet    OptString   `json:"ten_get"`
-	TenAt     OptDateTime `json:"ten_at"`
-	Next      OptString   `json:"next"`
-	Room      OptInt      `json:"room"`
+	ID             int         `json:"id"`
+	Username       string      `json:"username"`
+	Did            OptString   `json:"did"`
+	Member         OptBool     `json:"member"`
+	Book           OptBool     `json:"book"`
+	Manga          OptBool     `json:"manga"`
+	Badge          OptBool     `json:"badge"`
+	Bsky           OptBool     `json:"bsky"`
+	Mastodon       OptBool     `json:"mastodon"`
+	Delete         OptBool     `json:"delete"`
+	Handle         OptBool     `json:"handle"`
+	CreatedAt      OptDateTime `json:"created_at"`
+	UpdatedAt      OptDateTime `json:"updated_at"`
+	RaidAt         OptDateTime `json:"raid_at"`
+	ServerAt       OptDateTime `json:"server_at"`
+	EggAt          OptDateTime `json:"egg_at"`
+	Luck           OptInt      `json:"luck"`
+	LuckAt         OptDateTime `json:"luck_at"`
+	Like           OptInt      `json:"like"`
+	LikeRank       OptInt      `json:"like_rank"`
+	LikeAt         OptDateTime `json:"like_at"`
+	Fav            OptInt      `json:"fav"`
+	Ten            OptBool     `json:"ten"`
+	TenSu          OptInt      `json:"ten_su"`
+	TenKai         OptInt      `json:"ten_kai"`
+	Aiten          OptInt      `json:"aiten"`
+	TenCard        OptString   `json:"ten_card"`
+	TenDelete      OptString   `json:"ten_delete"`
+	TenPost        OptString   `json:"ten_post"`
+	TenGet         OptString   `json:"ten_get"`
+	TenAt          OptDateTime `json:"ten_at"`
+	Next           OptString   `json:"next"`
+	Room           OptInt      `json:"room"`
+	Model          OptBool     `json:"model"`
+	ModelAt        OptDateTime `json:"model_at"`
+	ModelAttack    OptInt      `json:"model_attack"`
+	ModelLimit     OptInt      `json:"model_limit"`
+	ModelSkill     OptInt      `json:"model_skill"`
+	ModelMode      OptInt      `json:"model_mode"`
+	ModelCritical  OptInt      `json:"model_critical"`
+	ModelCriticalD OptInt      `json:"model_critical_d"`
+	Game           OptBool     `json:"game"`
+	GameTest       OptBool     `json:"game_test"`
+	GameEnd        OptBool     `json:"game_end"`
+	GameAccount    OptBool     `json:"game_account"`
+	GameLv         OptInt      `json:"game_lv"`
 }
 
 // GetID returns the value of ID.
@@ -1676,6 +1975,71 @@ func (s *GroupUsersList) GetRoom() OptInt {
 	return s.Room
 }
 
+// GetModel returns the value of Model.
+func (s *GroupUsersList) GetModel() OptBool {
+	return s.Model
+}
+
+// GetModelAt returns the value of ModelAt.
+func (s *GroupUsersList) GetModelAt() OptDateTime {
+	return s.ModelAt
+}
+
+// GetModelAttack returns the value of ModelAttack.
+func (s *GroupUsersList) GetModelAttack() OptInt {
+	return s.ModelAttack
+}
+
+// GetModelLimit returns the value of ModelLimit.
+func (s *GroupUsersList) GetModelLimit() OptInt {
+	return s.ModelLimit
+}
+
+// GetModelSkill returns the value of ModelSkill.
+func (s *GroupUsersList) GetModelSkill() OptInt {
+	return s.ModelSkill
+}
+
+// GetModelMode returns the value of ModelMode.
+func (s *GroupUsersList) GetModelMode() OptInt {
+	return s.ModelMode
+}
+
+// GetModelCritical returns the value of ModelCritical.
+func (s *GroupUsersList) GetModelCritical() OptInt {
+	return s.ModelCritical
+}
+
+// GetModelCriticalD returns the value of ModelCriticalD.
+func (s *GroupUsersList) GetModelCriticalD() OptInt {
+	return s.ModelCriticalD
+}
+
+// GetGame returns the value of Game.
+func (s *GroupUsersList) GetGame() OptBool {
+	return s.Game
+}
+
+// GetGameTest returns the value of GameTest.
+func (s *GroupUsersList) GetGameTest() OptBool {
+	return s.GameTest
+}
+
+// GetGameEnd returns the value of GameEnd.
+func (s *GroupUsersList) GetGameEnd() OptBool {
+	return s.GameEnd
+}
+
+// GetGameAccount returns the value of GameAccount.
+func (s *GroupUsersList) GetGameAccount() OptBool {
+	return s.GameAccount
+}
+
+// GetGameLv returns the value of GameLv.
+func (s *GroupUsersList) GetGameLv() OptInt {
+	return s.GameLv
+}
+
 // SetID sets the value of ID.
 func (s *GroupUsersList) SetID(val int) {
 	s.ID = val
@@ -1839,6 +2203,71 @@ func (s *GroupUsersList) SetNext(val OptString) {
 // SetRoom sets the value of Room.
 func (s *GroupUsersList) SetRoom(val OptInt) {
 	s.Room = val
+}
+
+// SetModel sets the value of Model.
+func (s *GroupUsersList) SetModel(val OptBool) {
+	s.Model = val
+}
+
+// SetModelAt sets the value of ModelAt.
+func (s *GroupUsersList) SetModelAt(val OptDateTime) {
+	s.ModelAt = val
+}
+
+// SetModelAttack sets the value of ModelAttack.
+func (s *GroupUsersList) SetModelAttack(val OptInt) {
+	s.ModelAttack = val
+}
+
+// SetModelLimit sets the value of ModelLimit.
+func (s *GroupUsersList) SetModelLimit(val OptInt) {
+	s.ModelLimit = val
+}
+
+// SetModelSkill sets the value of ModelSkill.
+func (s *GroupUsersList) SetModelSkill(val OptInt) {
+	s.ModelSkill = val
+}
+
+// SetModelMode sets the value of ModelMode.
+func (s *GroupUsersList) SetModelMode(val OptInt) {
+	s.ModelMode = val
+}
+
+// SetModelCritical sets the value of ModelCritical.
+func (s *GroupUsersList) SetModelCritical(val OptInt) {
+	s.ModelCritical = val
+}
+
+// SetModelCriticalD sets the value of ModelCriticalD.
+func (s *GroupUsersList) SetModelCriticalD(val OptInt) {
+	s.ModelCriticalD = val
+}
+
+// SetGame sets the value of Game.
+func (s *GroupUsersList) SetGame(val OptBool) {
+	s.Game = val
+}
+
+// SetGameTest sets the value of GameTest.
+func (s *GroupUsersList) SetGameTest(val OptBool) {
+	s.GameTest = val
+}
+
+// SetGameEnd sets the value of GameEnd.
+func (s *GroupUsersList) SetGameEnd(val OptBool) {
+	s.GameEnd = val
+}
+
+// SetGameAccount sets the value of GameAccount.
+func (s *GroupUsersList) SetGameAccount(val OptBool) {
+	s.GameAccount = val
+}
+
+// SetGameLv sets the value of GameLv.
+func (s *GroupUsersList) SetGameLv(val OptInt) {
+	s.GameLv = val
 }
 
 type ListCardOKApplicationJSON []CardList
@@ -2390,38 +2819,51 @@ func (s *UpdateGroupReq) SetUsers(val []int) {
 }
 
 type UpdateUserReq struct {
-	Did       OptString   `json:"did"`
-	Member    OptBool     `json:"member"`
-	Book      OptBool     `json:"book"`
-	Manga     OptBool     `json:"manga"`
-	Badge     OptBool     `json:"badge"`
-	Bsky      OptBool     `json:"bsky"`
-	Mastodon  OptBool     `json:"mastodon"`
-	Delete    OptBool     `json:"delete"`
-	Handle    OptBool     `json:"handle"`
-	Token     OptString   `json:"token"`
-	UpdatedAt OptDateTime `json:"updated_at"`
-	RaidAt    OptDateTime `json:"raid_at"`
-	ServerAt  OptDateTime `json:"server_at"`
-	EggAt     OptDateTime `json:"egg_at"`
-	Luck      OptInt      `json:"luck"`
-	LuckAt    OptDateTime `json:"luck_at"`
-	Like      OptInt      `json:"like"`
-	LikeRank  OptInt      `json:"like_rank"`
-	LikeAt    OptDateTime `json:"like_at"`
-	Fav       OptInt      `json:"fav"`
-	Ten       OptBool     `json:"ten"`
-	TenSu     OptInt      `json:"ten_su"`
-	TenKai    OptInt      `json:"ten_kai"`
-	Aiten     OptInt      `json:"aiten"`
-	TenCard   OptString   `json:"ten_card"`
-	TenDelete OptString   `json:"ten_delete"`
-	TenPost   OptString   `json:"ten_post"`
-	TenGet    OptString   `json:"ten_get"`
-	TenAt     OptDateTime `json:"ten_at"`
-	Next      OptString   `json:"next"`
-	Room      OptInt      `json:"room"`
-	Card      []int       `json:"card"`
+	Did            OptString   `json:"did"`
+	Member         OptBool     `json:"member"`
+	Book           OptBool     `json:"book"`
+	Manga          OptBool     `json:"manga"`
+	Badge          OptBool     `json:"badge"`
+	Bsky           OptBool     `json:"bsky"`
+	Mastodon       OptBool     `json:"mastodon"`
+	Delete         OptBool     `json:"delete"`
+	Handle         OptBool     `json:"handle"`
+	Token          OptString   `json:"token"`
+	UpdatedAt      OptDateTime `json:"updated_at"`
+	RaidAt         OptDateTime `json:"raid_at"`
+	ServerAt       OptDateTime `json:"server_at"`
+	EggAt          OptDateTime `json:"egg_at"`
+	Luck           OptInt      `json:"luck"`
+	LuckAt         OptDateTime `json:"luck_at"`
+	Like           OptInt      `json:"like"`
+	LikeRank       OptInt      `json:"like_rank"`
+	LikeAt         OptDateTime `json:"like_at"`
+	Fav            OptInt      `json:"fav"`
+	Ten            OptBool     `json:"ten"`
+	TenSu          OptInt      `json:"ten_su"`
+	TenKai         OptInt      `json:"ten_kai"`
+	Aiten          OptInt      `json:"aiten"`
+	TenCard        OptString   `json:"ten_card"`
+	TenDelete      OptString   `json:"ten_delete"`
+	TenPost        OptString   `json:"ten_post"`
+	TenGet         OptString   `json:"ten_get"`
+	TenAt          OptDateTime `json:"ten_at"`
+	Next           OptString   `json:"next"`
+	Room           OptInt      `json:"room"`
+	Model          OptBool     `json:"model"`
+	ModelAt        OptDateTime `json:"model_at"`
+	ModelAttack    OptInt      `json:"model_attack"`
+	ModelLimit     OptInt      `json:"model_limit"`
+	ModelSkill     OptInt      `json:"model_skill"`
+	ModelMode      OptInt      `json:"model_mode"`
+	ModelCritical  OptInt      `json:"model_critical"`
+	ModelCriticalD OptInt      `json:"model_critical_d"`
+	Game           OptBool     `json:"game"`
+	GameTest       OptBool     `json:"game_test"`
+	GameEnd        OptBool     `json:"game_end"`
+	GameAccount    OptBool     `json:"game_account"`
+	GameLv         OptInt      `json:"game_lv"`
+	Card           []int       `json:"card"`
 }
 
 // GetDid returns the value of Did.
@@ -2577,6 +3019,71 @@ func (s *UpdateUserReq) GetNext() OptString {
 // GetRoom returns the value of Room.
 func (s *UpdateUserReq) GetRoom() OptInt {
 	return s.Room
+}
+
+// GetModel returns the value of Model.
+func (s *UpdateUserReq) GetModel() OptBool {
+	return s.Model
+}
+
+// GetModelAt returns the value of ModelAt.
+func (s *UpdateUserReq) GetModelAt() OptDateTime {
+	return s.ModelAt
+}
+
+// GetModelAttack returns the value of ModelAttack.
+func (s *UpdateUserReq) GetModelAttack() OptInt {
+	return s.ModelAttack
+}
+
+// GetModelLimit returns the value of ModelLimit.
+func (s *UpdateUserReq) GetModelLimit() OptInt {
+	return s.ModelLimit
+}
+
+// GetModelSkill returns the value of ModelSkill.
+func (s *UpdateUserReq) GetModelSkill() OptInt {
+	return s.ModelSkill
+}
+
+// GetModelMode returns the value of ModelMode.
+func (s *UpdateUserReq) GetModelMode() OptInt {
+	return s.ModelMode
+}
+
+// GetModelCritical returns the value of ModelCritical.
+func (s *UpdateUserReq) GetModelCritical() OptInt {
+	return s.ModelCritical
+}
+
+// GetModelCriticalD returns the value of ModelCriticalD.
+func (s *UpdateUserReq) GetModelCriticalD() OptInt {
+	return s.ModelCriticalD
+}
+
+// GetGame returns the value of Game.
+func (s *UpdateUserReq) GetGame() OptBool {
+	return s.Game
+}
+
+// GetGameTest returns the value of GameTest.
+func (s *UpdateUserReq) GetGameTest() OptBool {
+	return s.GameTest
+}
+
+// GetGameEnd returns the value of GameEnd.
+func (s *UpdateUserReq) GetGameEnd() OptBool {
+	return s.GameEnd
+}
+
+// GetGameAccount returns the value of GameAccount.
+func (s *UpdateUserReq) GetGameAccount() OptBool {
+	return s.GameAccount
+}
+
+// GetGameLv returns the value of GameLv.
+func (s *UpdateUserReq) GetGameLv() OptInt {
+	return s.GameLv
 }
 
 // GetCard returns the value of Card.
@@ -2739,6 +3246,71 @@ func (s *UpdateUserReq) SetRoom(val OptInt) {
 	s.Room = val
 }
 
+// SetModel sets the value of Model.
+func (s *UpdateUserReq) SetModel(val OptBool) {
+	s.Model = val
+}
+
+// SetModelAt sets the value of ModelAt.
+func (s *UpdateUserReq) SetModelAt(val OptDateTime) {
+	s.ModelAt = val
+}
+
+// SetModelAttack sets the value of ModelAttack.
+func (s *UpdateUserReq) SetModelAttack(val OptInt) {
+	s.ModelAttack = val
+}
+
+// SetModelLimit sets the value of ModelLimit.
+func (s *UpdateUserReq) SetModelLimit(val OptInt) {
+	s.ModelLimit = val
+}
+
+// SetModelSkill sets the value of ModelSkill.
+func (s *UpdateUserReq) SetModelSkill(val OptInt) {
+	s.ModelSkill = val
+}
+
+// SetModelMode sets the value of ModelMode.
+func (s *UpdateUserReq) SetModelMode(val OptInt) {
+	s.ModelMode = val
+}
+
+// SetModelCritical sets the value of ModelCritical.
+func (s *UpdateUserReq) SetModelCritical(val OptInt) {
+	s.ModelCritical = val
+}
+
+// SetModelCriticalD sets the value of ModelCriticalD.
+func (s *UpdateUserReq) SetModelCriticalD(val OptInt) {
+	s.ModelCriticalD = val
+}
+
+// SetGame sets the value of Game.
+func (s *UpdateUserReq) SetGame(val OptBool) {
+	s.Game = val
+}
+
+// SetGameTest sets the value of GameTest.
+func (s *UpdateUserReq) SetGameTest(val OptBool) {
+	s.GameTest = val
+}
+
+// SetGameEnd sets the value of GameEnd.
+func (s *UpdateUserReq) SetGameEnd(val OptBool) {
+	s.GameEnd = val
+}
+
+// SetGameAccount sets the value of GameAccount.
+func (s *UpdateUserReq) SetGameAccount(val OptBool) {
+	s.GameAccount = val
+}
+
+// SetGameLv sets the value of GameLv.
+func (s *UpdateUserReq) SetGameLv(val OptInt) {
+	s.GameLv = val
+}
+
 // SetCard sets the value of Card.
 func (s *UpdateUserReq) SetCard(val []int) {
 	s.Card = val
@@ -2849,39 +3421,52 @@ func (s *UserCardList) SetCreatedAt(val OptDateTime) {
 
 // Ref: #/components/schemas/UserCreate
 type UserCreate struct {
-	ID        int         `json:"id"`
-	Username  string      `json:"username"`
-	Did       OptString   `json:"did"`
-	Member    OptBool     `json:"member"`
-	Book      OptBool     `json:"book"`
-	Manga     OptBool     `json:"manga"`
-	Badge     OptBool     `json:"badge"`
-	Bsky      OptBool     `json:"bsky"`
-	Mastodon  OptBool     `json:"mastodon"`
-	Delete    OptBool     `json:"delete"`
-	Handle    OptBool     `json:"handle"`
-	CreatedAt OptDateTime `json:"created_at"`
-	UpdatedAt OptDateTime `json:"updated_at"`
-	RaidAt    OptDateTime `json:"raid_at"`
-	ServerAt  OptDateTime `json:"server_at"`
-	EggAt     OptDateTime `json:"egg_at"`
-	Luck      OptInt      `json:"luck"`
-	LuckAt    OptDateTime `json:"luck_at"`
-	Like      OptInt      `json:"like"`
-	LikeRank  OptInt      `json:"like_rank"`
-	LikeAt    OptDateTime `json:"like_at"`
-	Fav       OptInt      `json:"fav"`
-	Ten       OptBool     `json:"ten"`
-	TenSu     OptInt      `json:"ten_su"`
-	TenKai    OptInt      `json:"ten_kai"`
-	Aiten     OptInt      `json:"aiten"`
-	TenCard   OptString   `json:"ten_card"`
-	TenDelete OptString   `json:"ten_delete"`
-	TenPost   OptString   `json:"ten_post"`
-	TenGet    OptString   `json:"ten_get"`
-	TenAt     OptDateTime `json:"ten_at"`
-	Next      OptString   `json:"next"`
-	Room      OptInt      `json:"room"`
+	ID             int         `json:"id"`
+	Username       string      `json:"username"`
+	Did            OptString   `json:"did"`
+	Member         OptBool     `json:"member"`
+	Book           OptBool     `json:"book"`
+	Manga          OptBool     `json:"manga"`
+	Badge          OptBool     `json:"badge"`
+	Bsky           OptBool     `json:"bsky"`
+	Mastodon       OptBool     `json:"mastodon"`
+	Delete         OptBool     `json:"delete"`
+	Handle         OptBool     `json:"handle"`
+	CreatedAt      OptDateTime `json:"created_at"`
+	UpdatedAt      OptDateTime `json:"updated_at"`
+	RaidAt         OptDateTime `json:"raid_at"`
+	ServerAt       OptDateTime `json:"server_at"`
+	EggAt          OptDateTime `json:"egg_at"`
+	Luck           OptInt      `json:"luck"`
+	LuckAt         OptDateTime `json:"luck_at"`
+	Like           OptInt      `json:"like"`
+	LikeRank       OptInt      `json:"like_rank"`
+	LikeAt         OptDateTime `json:"like_at"`
+	Fav            OptInt      `json:"fav"`
+	Ten            OptBool     `json:"ten"`
+	TenSu          OptInt      `json:"ten_su"`
+	TenKai         OptInt      `json:"ten_kai"`
+	Aiten          OptInt      `json:"aiten"`
+	TenCard        OptString   `json:"ten_card"`
+	TenDelete      OptString   `json:"ten_delete"`
+	TenPost        OptString   `json:"ten_post"`
+	TenGet         OptString   `json:"ten_get"`
+	TenAt          OptDateTime `json:"ten_at"`
+	Next           OptString   `json:"next"`
+	Room           OptInt      `json:"room"`
+	Model          OptBool     `json:"model"`
+	ModelAt        OptDateTime `json:"model_at"`
+	ModelAttack    OptInt      `json:"model_attack"`
+	ModelLimit     OptInt      `json:"model_limit"`
+	ModelSkill     OptInt      `json:"model_skill"`
+	ModelMode      OptInt      `json:"model_mode"`
+	ModelCritical  OptInt      `json:"model_critical"`
+	ModelCriticalD OptInt      `json:"model_critical_d"`
+	Game           OptBool     `json:"game"`
+	GameTest       OptBool     `json:"game_test"`
+	GameEnd        OptBool     `json:"game_end"`
+	GameAccount    OptBool     `json:"game_account"`
+	GameLv         OptInt      `json:"game_lv"`
 }
 
 // GetID returns the value of ID.
@@ -3049,6 +3634,71 @@ func (s *UserCreate) GetRoom() OptInt {
 	return s.Room
 }
 
+// GetModel returns the value of Model.
+func (s *UserCreate) GetModel() OptBool {
+	return s.Model
+}
+
+// GetModelAt returns the value of ModelAt.
+func (s *UserCreate) GetModelAt() OptDateTime {
+	return s.ModelAt
+}
+
+// GetModelAttack returns the value of ModelAttack.
+func (s *UserCreate) GetModelAttack() OptInt {
+	return s.ModelAttack
+}
+
+// GetModelLimit returns the value of ModelLimit.
+func (s *UserCreate) GetModelLimit() OptInt {
+	return s.ModelLimit
+}
+
+// GetModelSkill returns the value of ModelSkill.
+func (s *UserCreate) GetModelSkill() OptInt {
+	return s.ModelSkill
+}
+
+// GetModelMode returns the value of ModelMode.
+func (s *UserCreate) GetModelMode() OptInt {
+	return s.ModelMode
+}
+
+// GetModelCritical returns the value of ModelCritical.
+func (s *UserCreate) GetModelCritical() OptInt {
+	return s.ModelCritical
+}
+
+// GetModelCriticalD returns the value of ModelCriticalD.
+func (s *UserCreate) GetModelCriticalD() OptInt {
+	return s.ModelCriticalD
+}
+
+// GetGame returns the value of Game.
+func (s *UserCreate) GetGame() OptBool {
+	return s.Game
+}
+
+// GetGameTest returns the value of GameTest.
+func (s *UserCreate) GetGameTest() OptBool {
+	return s.GameTest
+}
+
+// GetGameEnd returns the value of GameEnd.
+func (s *UserCreate) GetGameEnd() OptBool {
+	return s.GameEnd
+}
+
+// GetGameAccount returns the value of GameAccount.
+func (s *UserCreate) GetGameAccount() OptBool {
+	return s.GameAccount
+}
+
+// GetGameLv returns the value of GameLv.
+func (s *UserCreate) GetGameLv() OptInt {
+	return s.GameLv
+}
+
 // SetID sets the value of ID.
 func (s *UserCreate) SetID(val int) {
 	s.ID = val
@@ -3214,43 +3864,121 @@ func (s *UserCreate) SetRoom(val OptInt) {
 	s.Room = val
 }
 
+// SetModel sets the value of Model.
+func (s *UserCreate) SetModel(val OptBool) {
+	s.Model = val
+}
+
+// SetModelAt sets the value of ModelAt.
+func (s *UserCreate) SetModelAt(val OptDateTime) {
+	s.ModelAt = val
+}
+
+// SetModelAttack sets the value of ModelAttack.
+func (s *UserCreate) SetModelAttack(val OptInt) {
+	s.ModelAttack = val
+}
+
+// SetModelLimit sets the value of ModelLimit.
+func (s *UserCreate) SetModelLimit(val OptInt) {
+	s.ModelLimit = val
+}
+
+// SetModelSkill sets the value of ModelSkill.
+func (s *UserCreate) SetModelSkill(val OptInt) {
+	s.ModelSkill = val
+}
+
+// SetModelMode sets the value of ModelMode.
+func (s *UserCreate) SetModelMode(val OptInt) {
+	s.ModelMode = val
+}
+
+// SetModelCritical sets the value of ModelCritical.
+func (s *UserCreate) SetModelCritical(val OptInt) {
+	s.ModelCritical = val
+}
+
+// SetModelCriticalD sets the value of ModelCriticalD.
+func (s *UserCreate) SetModelCriticalD(val OptInt) {
+	s.ModelCriticalD = val
+}
+
+// SetGame sets the value of Game.
+func (s *UserCreate) SetGame(val OptBool) {
+	s.Game = val
+}
+
+// SetGameTest sets the value of GameTest.
+func (s *UserCreate) SetGameTest(val OptBool) {
+	s.GameTest = val
+}
+
+// SetGameEnd sets the value of GameEnd.
+func (s *UserCreate) SetGameEnd(val OptBool) {
+	s.GameEnd = val
+}
+
+// SetGameAccount sets the value of GameAccount.
+func (s *UserCreate) SetGameAccount(val OptBool) {
+	s.GameAccount = val
+}
+
+// SetGameLv sets the value of GameLv.
+func (s *UserCreate) SetGameLv(val OptInt) {
+	s.GameLv = val
+}
+
 func (*UserCreate) createUserRes() {}
 
 // Ref: #/components/schemas/UserList
 type UserList struct {
-	ID        int         `json:"id"`
-	Username  string      `json:"username"`
-	Did       OptString   `json:"did"`
-	Member    OptBool     `json:"member"`
-	Book      OptBool     `json:"book"`
-	Manga     OptBool     `json:"manga"`
-	Badge     OptBool     `json:"badge"`
-	Bsky      OptBool     `json:"bsky"`
-	Mastodon  OptBool     `json:"mastodon"`
-	Delete    OptBool     `json:"delete"`
-	Handle    OptBool     `json:"handle"`
-	CreatedAt OptDateTime `json:"created_at"`
-	UpdatedAt OptDateTime `json:"updated_at"`
-	RaidAt    OptDateTime `json:"raid_at"`
-	ServerAt  OptDateTime `json:"server_at"`
-	EggAt     OptDateTime `json:"egg_at"`
-	Luck      OptInt      `json:"luck"`
-	LuckAt    OptDateTime `json:"luck_at"`
-	Like      OptInt      `json:"like"`
-	LikeRank  OptInt      `json:"like_rank"`
-	LikeAt    OptDateTime `json:"like_at"`
-	Fav       OptInt      `json:"fav"`
-	Ten       OptBool     `json:"ten"`
-	TenSu     OptInt      `json:"ten_su"`
-	TenKai    OptInt      `json:"ten_kai"`
-	Aiten     OptInt      `json:"aiten"`
-	TenCard   OptString   `json:"ten_card"`
-	TenDelete OptString   `json:"ten_delete"`
-	TenPost   OptString   `json:"ten_post"`
-	TenGet    OptString   `json:"ten_get"`
-	TenAt     OptDateTime `json:"ten_at"`
-	Next      OptString   `json:"next"`
-	Room      OptInt      `json:"room"`
+	ID             int         `json:"id"`
+	Username       string      `json:"username"`
+	Did            OptString   `json:"did"`
+	Member         OptBool     `json:"member"`
+	Book           OptBool     `json:"book"`
+	Manga          OptBool     `json:"manga"`
+	Badge          OptBool     `json:"badge"`
+	Bsky           OptBool     `json:"bsky"`
+	Mastodon       OptBool     `json:"mastodon"`
+	Delete         OptBool     `json:"delete"`
+	Handle         OptBool     `json:"handle"`
+	CreatedAt      OptDateTime `json:"created_at"`
+	UpdatedAt      OptDateTime `json:"updated_at"`
+	RaidAt         OptDateTime `json:"raid_at"`
+	ServerAt       OptDateTime `json:"server_at"`
+	EggAt          OptDateTime `json:"egg_at"`
+	Luck           OptInt      `json:"luck"`
+	LuckAt         OptDateTime `json:"luck_at"`
+	Like           OptInt      `json:"like"`
+	LikeRank       OptInt      `json:"like_rank"`
+	LikeAt         OptDateTime `json:"like_at"`
+	Fav            OptInt      `json:"fav"`
+	Ten            OptBool     `json:"ten"`
+	TenSu          OptInt      `json:"ten_su"`
+	TenKai         OptInt      `json:"ten_kai"`
+	Aiten          OptInt      `json:"aiten"`
+	TenCard        OptString   `json:"ten_card"`
+	TenDelete      OptString   `json:"ten_delete"`
+	TenPost        OptString   `json:"ten_post"`
+	TenGet         OptString   `json:"ten_get"`
+	TenAt          OptDateTime `json:"ten_at"`
+	Next           OptString   `json:"next"`
+	Room           OptInt      `json:"room"`
+	Model          OptBool     `json:"model"`
+	ModelAt        OptDateTime `json:"model_at"`
+	ModelAttack    OptInt      `json:"model_attack"`
+	ModelLimit     OptInt      `json:"model_limit"`
+	ModelSkill     OptInt      `json:"model_skill"`
+	ModelMode      OptInt      `json:"model_mode"`
+	ModelCritical  OptInt      `json:"model_critical"`
+	ModelCriticalD OptInt      `json:"model_critical_d"`
+	Game           OptBool     `json:"game"`
+	GameTest       OptBool     `json:"game_test"`
+	GameEnd        OptBool     `json:"game_end"`
+	GameAccount    OptBool     `json:"game_account"`
+	GameLv         OptInt      `json:"game_lv"`
 }
 
 // GetID returns the value of ID.
@@ -3418,6 +4146,71 @@ func (s *UserList) GetRoom() OptInt {
 	return s.Room
 }
 
+// GetModel returns the value of Model.
+func (s *UserList) GetModel() OptBool {
+	return s.Model
+}
+
+// GetModelAt returns the value of ModelAt.
+func (s *UserList) GetModelAt() OptDateTime {
+	return s.ModelAt
+}
+
+// GetModelAttack returns the value of ModelAttack.
+func (s *UserList) GetModelAttack() OptInt {
+	return s.ModelAttack
+}
+
+// GetModelLimit returns the value of ModelLimit.
+func (s *UserList) GetModelLimit() OptInt {
+	return s.ModelLimit
+}
+
+// GetModelSkill returns the value of ModelSkill.
+func (s *UserList) GetModelSkill() OptInt {
+	return s.ModelSkill
+}
+
+// GetModelMode returns the value of ModelMode.
+func (s *UserList) GetModelMode() OptInt {
+	return s.ModelMode
+}
+
+// GetModelCritical returns the value of ModelCritical.
+func (s *UserList) GetModelCritical() OptInt {
+	return s.ModelCritical
+}
+
+// GetModelCriticalD returns the value of ModelCriticalD.
+func (s *UserList) GetModelCriticalD() OptInt {
+	return s.ModelCriticalD
+}
+
+// GetGame returns the value of Game.
+func (s *UserList) GetGame() OptBool {
+	return s.Game
+}
+
+// GetGameTest returns the value of GameTest.
+func (s *UserList) GetGameTest() OptBool {
+	return s.GameTest
+}
+
+// GetGameEnd returns the value of GameEnd.
+func (s *UserList) GetGameEnd() OptBool {
+	return s.GameEnd
+}
+
+// GetGameAccount returns the value of GameAccount.
+func (s *UserList) GetGameAccount() OptBool {
+	return s.GameAccount
+}
+
+// GetGameLv returns the value of GameLv.
+func (s *UserList) GetGameLv() OptInt {
+	return s.GameLv
+}
+
 // SetID sets the value of ID.
 func (s *UserList) SetID(val int) {
 	s.ID = val
@@ -3583,41 +4376,119 @@ func (s *UserList) SetRoom(val OptInt) {
 	s.Room = val
 }
 
+// SetModel sets the value of Model.
+func (s *UserList) SetModel(val OptBool) {
+	s.Model = val
+}
+
+// SetModelAt sets the value of ModelAt.
+func (s *UserList) SetModelAt(val OptDateTime) {
+	s.ModelAt = val
+}
+
+// SetModelAttack sets the value of ModelAttack.
+func (s *UserList) SetModelAttack(val OptInt) {
+	s.ModelAttack = val
+}
+
+// SetModelLimit sets the value of ModelLimit.
+func (s *UserList) SetModelLimit(val OptInt) {
+	s.ModelLimit = val
+}
+
+// SetModelSkill sets the value of ModelSkill.
+func (s *UserList) SetModelSkill(val OptInt) {
+	s.ModelSkill = val
+}
+
+// SetModelMode sets the value of ModelMode.
+func (s *UserList) SetModelMode(val OptInt) {
+	s.ModelMode = val
+}
+
+// SetModelCritical sets the value of ModelCritical.
+func (s *UserList) SetModelCritical(val OptInt) {
+	s.ModelCritical = val
+}
+
+// SetModelCriticalD sets the value of ModelCriticalD.
+func (s *UserList) SetModelCriticalD(val OptInt) {
+	s.ModelCriticalD = val
+}
+
+// SetGame sets the value of Game.
+func (s *UserList) SetGame(val OptBool) {
+	s.Game = val
+}
+
+// SetGameTest sets the value of GameTest.
+func (s *UserList) SetGameTest(val OptBool) {
+	s.GameTest = val
+}
+
+// SetGameEnd sets the value of GameEnd.
+func (s *UserList) SetGameEnd(val OptBool) {
+	s.GameEnd = val
+}
+
+// SetGameAccount sets the value of GameAccount.
+func (s *UserList) SetGameAccount(val OptBool) {
+	s.GameAccount = val
+}
+
+// SetGameLv sets the value of GameLv.
+func (s *UserList) SetGameLv(val OptInt) {
+	s.GameLv = val
+}
+
 // Ref: #/components/schemas/UserRead
 type UserRead struct {
-	ID        int         `json:"id"`
-	Username  string      `json:"username"`
-	Did       OptString   `json:"did"`
-	Member    OptBool     `json:"member"`
-	Book      OptBool     `json:"book"`
-	Manga     OptBool     `json:"manga"`
-	Badge     OptBool     `json:"badge"`
-	Bsky      OptBool     `json:"bsky"`
-	Mastodon  OptBool     `json:"mastodon"`
-	Delete    OptBool     `json:"delete"`
-	Handle    OptBool     `json:"handle"`
-	CreatedAt OptDateTime `json:"created_at"`
-	UpdatedAt OptDateTime `json:"updated_at"`
-	RaidAt    OptDateTime `json:"raid_at"`
-	ServerAt  OptDateTime `json:"server_at"`
-	EggAt     OptDateTime `json:"egg_at"`
-	Luck      OptInt      `json:"luck"`
-	LuckAt    OptDateTime `json:"luck_at"`
-	Like      OptInt      `json:"like"`
-	LikeRank  OptInt      `json:"like_rank"`
-	LikeAt    OptDateTime `json:"like_at"`
-	Fav       OptInt      `json:"fav"`
-	Ten       OptBool     `json:"ten"`
-	TenSu     OptInt      `json:"ten_su"`
-	TenKai    OptInt      `json:"ten_kai"`
-	Aiten     OptInt      `json:"aiten"`
-	TenCard   OptString   `json:"ten_card"`
-	TenDelete OptString   `json:"ten_delete"`
-	TenPost   OptString   `json:"ten_post"`
-	TenGet    OptString   `json:"ten_get"`
-	TenAt     OptDateTime `json:"ten_at"`
-	Next      OptString   `json:"next"`
-	Room      OptInt      `json:"room"`
+	ID             int         `json:"id"`
+	Username       string      `json:"username"`
+	Did            OptString   `json:"did"`
+	Member         OptBool     `json:"member"`
+	Book           OptBool     `json:"book"`
+	Manga          OptBool     `json:"manga"`
+	Badge          OptBool     `json:"badge"`
+	Bsky           OptBool     `json:"bsky"`
+	Mastodon       OptBool     `json:"mastodon"`
+	Delete         OptBool     `json:"delete"`
+	Handle         OptBool     `json:"handle"`
+	CreatedAt      OptDateTime `json:"created_at"`
+	UpdatedAt      OptDateTime `json:"updated_at"`
+	RaidAt         OptDateTime `json:"raid_at"`
+	ServerAt       OptDateTime `json:"server_at"`
+	EggAt          OptDateTime `json:"egg_at"`
+	Luck           OptInt      `json:"luck"`
+	LuckAt         OptDateTime `json:"luck_at"`
+	Like           OptInt      `json:"like"`
+	LikeRank       OptInt      `json:"like_rank"`
+	LikeAt         OptDateTime `json:"like_at"`
+	Fav            OptInt      `json:"fav"`
+	Ten            OptBool     `json:"ten"`
+	TenSu          OptInt      `json:"ten_su"`
+	TenKai         OptInt      `json:"ten_kai"`
+	Aiten          OptInt      `json:"aiten"`
+	TenCard        OptString   `json:"ten_card"`
+	TenDelete      OptString   `json:"ten_delete"`
+	TenPost        OptString   `json:"ten_post"`
+	TenGet         OptString   `json:"ten_get"`
+	TenAt          OptDateTime `json:"ten_at"`
+	Next           OptString   `json:"next"`
+	Room           OptInt      `json:"room"`
+	Model          OptBool     `json:"model"`
+	ModelAt        OptDateTime `json:"model_at"`
+	ModelAttack    OptInt      `json:"model_attack"`
+	ModelLimit     OptInt      `json:"model_limit"`
+	ModelSkill     OptInt      `json:"model_skill"`
+	ModelMode      OptInt      `json:"model_mode"`
+	ModelCritical  OptInt      `json:"model_critical"`
+	ModelCriticalD OptInt      `json:"model_critical_d"`
+	Game           OptBool     `json:"game"`
+	GameTest       OptBool     `json:"game_test"`
+	GameEnd        OptBool     `json:"game_end"`
+	GameAccount    OptBool     `json:"game_account"`
+	GameLv         OptInt      `json:"game_lv"`
 }
 
 // GetID returns the value of ID.
@@ -3785,6 +4656,71 @@ func (s *UserRead) GetRoom() OptInt {
 	return s.Room
 }
 
+// GetModel returns the value of Model.
+func (s *UserRead) GetModel() OptBool {
+	return s.Model
+}
+
+// GetModelAt returns the value of ModelAt.
+func (s *UserRead) GetModelAt() OptDateTime {
+	return s.ModelAt
+}
+
+// GetModelAttack returns the value of ModelAttack.
+func (s *UserRead) GetModelAttack() OptInt {
+	return s.ModelAttack
+}
+
+// GetModelLimit returns the value of ModelLimit.
+func (s *UserRead) GetModelLimit() OptInt {
+	return s.ModelLimit
+}
+
+// GetModelSkill returns the value of ModelSkill.
+func (s *UserRead) GetModelSkill() OptInt {
+	return s.ModelSkill
+}
+
+// GetModelMode returns the value of ModelMode.
+func (s *UserRead) GetModelMode() OptInt {
+	return s.ModelMode
+}
+
+// GetModelCritical returns the value of ModelCritical.
+func (s *UserRead) GetModelCritical() OptInt {
+	return s.ModelCritical
+}
+
+// GetModelCriticalD returns the value of ModelCriticalD.
+func (s *UserRead) GetModelCriticalD() OptInt {
+	return s.ModelCriticalD
+}
+
+// GetGame returns the value of Game.
+func (s *UserRead) GetGame() OptBool {
+	return s.Game
+}
+
+// GetGameTest returns the value of GameTest.
+func (s *UserRead) GetGameTest() OptBool {
+	return s.GameTest
+}
+
+// GetGameEnd returns the value of GameEnd.
+func (s *UserRead) GetGameEnd() OptBool {
+	return s.GameEnd
+}
+
+// GetGameAccount returns the value of GameAccount.
+func (s *UserRead) GetGameAccount() OptBool {
+	return s.GameAccount
+}
+
+// GetGameLv returns the value of GameLv.
+func (s *UserRead) GetGameLv() OptInt {
+	return s.GameLv
+}
+
 // SetID sets the value of ID.
 func (s *UserRead) SetID(val int) {
 	s.ID = val
@@ -3950,43 +4886,121 @@ func (s *UserRead) SetRoom(val OptInt) {
 	s.Room = val
 }
 
+// SetModel sets the value of Model.
+func (s *UserRead) SetModel(val OptBool) {
+	s.Model = val
+}
+
+// SetModelAt sets the value of ModelAt.
+func (s *UserRead) SetModelAt(val OptDateTime) {
+	s.ModelAt = val
+}
+
+// SetModelAttack sets the value of ModelAttack.
+func (s *UserRead) SetModelAttack(val OptInt) {
+	s.ModelAttack = val
+}
+
+// SetModelLimit sets the value of ModelLimit.
+func (s *UserRead) SetModelLimit(val OptInt) {
+	s.ModelLimit = val
+}
+
+// SetModelSkill sets the value of ModelSkill.
+func (s *UserRead) SetModelSkill(val OptInt) {
+	s.ModelSkill = val
+}
+
+// SetModelMode sets the value of ModelMode.
+func (s *UserRead) SetModelMode(val OptInt) {
+	s.ModelMode = val
+}
+
+// SetModelCritical sets the value of ModelCritical.
+func (s *UserRead) SetModelCritical(val OptInt) {
+	s.ModelCritical = val
+}
+
+// SetModelCriticalD sets the value of ModelCriticalD.
+func (s *UserRead) SetModelCriticalD(val OptInt) {
+	s.ModelCriticalD = val
+}
+
+// SetGame sets the value of Game.
+func (s *UserRead) SetGame(val OptBool) {
+	s.Game = val
+}
+
+// SetGameTest sets the value of GameTest.
+func (s *UserRead) SetGameTest(val OptBool) {
+	s.GameTest = val
+}
+
+// SetGameEnd sets the value of GameEnd.
+func (s *UserRead) SetGameEnd(val OptBool) {
+	s.GameEnd = val
+}
+
+// SetGameAccount sets the value of GameAccount.
+func (s *UserRead) SetGameAccount(val OptBool) {
+	s.GameAccount = val
+}
+
+// SetGameLv sets the value of GameLv.
+func (s *UserRead) SetGameLv(val OptInt) {
+	s.GameLv = val
+}
+
 func (*UserRead) readUserRes() {}
 
 // Ref: #/components/schemas/UserUpdate
 type UserUpdate struct {
-	ID        int         `json:"id"`
-	Username  string      `json:"username"`
-	Did       OptString   `json:"did"`
-	Member    OptBool     `json:"member"`
-	Book      OptBool     `json:"book"`
-	Manga     OptBool     `json:"manga"`
-	Badge     OptBool     `json:"badge"`
-	Bsky      OptBool     `json:"bsky"`
-	Mastodon  OptBool     `json:"mastodon"`
-	Delete    OptBool     `json:"delete"`
-	Handle    OptBool     `json:"handle"`
-	CreatedAt OptDateTime `json:"created_at"`
-	UpdatedAt OptDateTime `json:"updated_at"`
-	RaidAt    OptDateTime `json:"raid_at"`
-	ServerAt  OptDateTime `json:"server_at"`
-	EggAt     OptDateTime `json:"egg_at"`
-	Luck      OptInt      `json:"luck"`
-	LuckAt    OptDateTime `json:"luck_at"`
-	Like      OptInt      `json:"like"`
-	LikeRank  OptInt      `json:"like_rank"`
-	LikeAt    OptDateTime `json:"like_at"`
-	Fav       OptInt      `json:"fav"`
-	Ten       OptBool     `json:"ten"`
-	TenSu     OptInt      `json:"ten_su"`
-	TenKai    OptInt      `json:"ten_kai"`
-	Aiten     OptInt      `json:"aiten"`
-	TenCard   OptString   `json:"ten_card"`
-	TenDelete OptString   `json:"ten_delete"`
-	TenPost   OptString   `json:"ten_post"`
-	TenGet    OptString   `json:"ten_get"`
-	TenAt     OptDateTime `json:"ten_at"`
-	Next      OptString   `json:"next"`
-	Room      OptInt      `json:"room"`
+	ID             int         `json:"id"`
+	Username       string      `json:"username"`
+	Did            OptString   `json:"did"`
+	Member         OptBool     `json:"member"`
+	Book           OptBool     `json:"book"`
+	Manga          OptBool     `json:"manga"`
+	Badge          OptBool     `json:"badge"`
+	Bsky           OptBool     `json:"bsky"`
+	Mastodon       OptBool     `json:"mastodon"`
+	Delete         OptBool     `json:"delete"`
+	Handle         OptBool     `json:"handle"`
+	CreatedAt      OptDateTime `json:"created_at"`
+	UpdatedAt      OptDateTime `json:"updated_at"`
+	RaidAt         OptDateTime `json:"raid_at"`
+	ServerAt       OptDateTime `json:"server_at"`
+	EggAt          OptDateTime `json:"egg_at"`
+	Luck           OptInt      `json:"luck"`
+	LuckAt         OptDateTime `json:"luck_at"`
+	Like           OptInt      `json:"like"`
+	LikeRank       OptInt      `json:"like_rank"`
+	LikeAt         OptDateTime `json:"like_at"`
+	Fav            OptInt      `json:"fav"`
+	Ten            OptBool     `json:"ten"`
+	TenSu          OptInt      `json:"ten_su"`
+	TenKai         OptInt      `json:"ten_kai"`
+	Aiten          OptInt      `json:"aiten"`
+	TenCard        OptString   `json:"ten_card"`
+	TenDelete      OptString   `json:"ten_delete"`
+	TenPost        OptString   `json:"ten_post"`
+	TenGet         OptString   `json:"ten_get"`
+	TenAt          OptDateTime `json:"ten_at"`
+	Next           OptString   `json:"next"`
+	Room           OptInt      `json:"room"`
+	Model          OptBool     `json:"model"`
+	ModelAt        OptDateTime `json:"model_at"`
+	ModelAttack    OptInt      `json:"model_attack"`
+	ModelLimit     OptInt      `json:"model_limit"`
+	ModelSkill     OptInt      `json:"model_skill"`
+	ModelMode      OptInt      `json:"model_mode"`
+	ModelCritical  OptInt      `json:"model_critical"`
+	ModelCriticalD OptInt      `json:"model_critical_d"`
+	Game           OptBool     `json:"game"`
+	GameTest       OptBool     `json:"game_test"`
+	GameEnd        OptBool     `json:"game_end"`
+	GameAccount    OptBool     `json:"game_account"`
+	GameLv         OptInt      `json:"game_lv"`
 }
 
 // GetID returns the value of ID.
@@ -4154,6 +5168,71 @@ func (s *UserUpdate) GetRoom() OptInt {
 	return s.Room
 }
 
+// GetModel returns the value of Model.
+func (s *UserUpdate) GetModel() OptBool {
+	return s.Model
+}
+
+// GetModelAt returns the value of ModelAt.
+func (s *UserUpdate) GetModelAt() OptDateTime {
+	return s.ModelAt
+}
+
+// GetModelAttack returns the value of ModelAttack.
+func (s *UserUpdate) GetModelAttack() OptInt {
+	return s.ModelAttack
+}
+
+// GetModelLimit returns the value of ModelLimit.
+func (s *UserUpdate) GetModelLimit() OptInt {
+	return s.ModelLimit
+}
+
+// GetModelSkill returns the value of ModelSkill.
+func (s *UserUpdate) GetModelSkill() OptInt {
+	return s.ModelSkill
+}
+
+// GetModelMode returns the value of ModelMode.
+func (s *UserUpdate) GetModelMode() OptInt {
+	return s.ModelMode
+}
+
+// GetModelCritical returns the value of ModelCritical.
+func (s *UserUpdate) GetModelCritical() OptInt {
+	return s.ModelCritical
+}
+
+// GetModelCriticalD returns the value of ModelCriticalD.
+func (s *UserUpdate) GetModelCriticalD() OptInt {
+	return s.ModelCriticalD
+}
+
+// GetGame returns the value of Game.
+func (s *UserUpdate) GetGame() OptBool {
+	return s.Game
+}
+
+// GetGameTest returns the value of GameTest.
+func (s *UserUpdate) GetGameTest() OptBool {
+	return s.GameTest
+}
+
+// GetGameEnd returns the value of GameEnd.
+func (s *UserUpdate) GetGameEnd() OptBool {
+	return s.GameEnd
+}
+
+// GetGameAccount returns the value of GameAccount.
+func (s *UserUpdate) GetGameAccount() OptBool {
+	return s.GameAccount
+}
+
+// GetGameLv returns the value of GameLv.
+func (s *UserUpdate) GetGameLv() OptInt {
+	return s.GameLv
+}
+
 // SetID sets the value of ID.
 func (s *UserUpdate) SetID(val int) {
 	s.ID = val
@@ -4317,6 +5396,71 @@ func (s *UserUpdate) SetNext(val OptString) {
 // SetRoom sets the value of Room.
 func (s *UserUpdate) SetRoom(val OptInt) {
 	s.Room = val
+}
+
+// SetModel sets the value of Model.
+func (s *UserUpdate) SetModel(val OptBool) {
+	s.Model = val
+}
+
+// SetModelAt sets the value of ModelAt.
+func (s *UserUpdate) SetModelAt(val OptDateTime) {
+	s.ModelAt = val
+}
+
+// SetModelAttack sets the value of ModelAttack.
+func (s *UserUpdate) SetModelAttack(val OptInt) {
+	s.ModelAttack = val
+}
+
+// SetModelLimit sets the value of ModelLimit.
+func (s *UserUpdate) SetModelLimit(val OptInt) {
+	s.ModelLimit = val
+}
+
+// SetModelSkill sets the value of ModelSkill.
+func (s *UserUpdate) SetModelSkill(val OptInt) {
+	s.ModelSkill = val
+}
+
+// SetModelMode sets the value of ModelMode.
+func (s *UserUpdate) SetModelMode(val OptInt) {
+	s.ModelMode = val
+}
+
+// SetModelCritical sets the value of ModelCritical.
+func (s *UserUpdate) SetModelCritical(val OptInt) {
+	s.ModelCritical = val
+}
+
+// SetModelCriticalD sets the value of ModelCriticalD.
+func (s *UserUpdate) SetModelCriticalD(val OptInt) {
+	s.ModelCriticalD = val
+}
+
+// SetGame sets the value of Game.
+func (s *UserUpdate) SetGame(val OptBool) {
+	s.Game = val
+}
+
+// SetGameTest sets the value of GameTest.
+func (s *UserUpdate) SetGameTest(val OptBool) {
+	s.GameTest = val
+}
+
+// SetGameEnd sets the value of GameEnd.
+func (s *UserUpdate) SetGameEnd(val OptBool) {
+	s.GameEnd = val
+}
+
+// SetGameAccount sets the value of GameAccount.
+func (s *UserUpdate) SetGameAccount(val OptBool) {
+	s.GameAccount = val
+}
+
+// SetGameLv sets the value of GameLv.
+func (s *UserUpdate) SetGameLv(val OptInt) {
+	s.GameLv = val
 }
 
 func (*UserUpdate) updateUserRes() {}

@@ -142,4 +142,24 @@ func init() {
 	userDescNext := userFields[32].Descriptor()
 	// user.DefaultNext holds the default value on creation for the next field.
 	user.DefaultNext = userDescNext.Default.(string)
+	// userDescModelAt is the schema descriptor for model_at field.
+	userDescModelAt := userFields[35].Descriptor()
+	// user.DefaultModelAt holds the default value on creation for the model_at field.
+	user.DefaultModelAt = userDescModelAt.Default.(func() time.Time)
+	// userDescGame is the schema descriptor for game field.
+	userDescGame := userFields[42].Descriptor()
+	// user.DefaultGame holds the default value on creation for the game field.
+	user.DefaultGame = userDescGame.Default.(bool)
+	// userDescGameTest is the schema descriptor for game_test field.
+	userDescGameTest := userFields[43].Descriptor()
+	// user.DefaultGameTest holds the default value on creation for the game_test field.
+	user.DefaultGameTest = userDescGameTest.Default.(bool)
+	// userDescGameEnd is the schema descriptor for game_end field.
+	userDescGameEnd := userFields[44].Descriptor()
+	// user.DefaultGameEnd holds the default value on creation for the game_end field.
+	user.DefaultGameEnd = userDescGameEnd.Default.(bool)
+	// userDescGameAccount is the schema descriptor for game_account field.
+	userDescGameAccount := userFields[45].Descriptor()
+	// user.DefaultGameAccount holds the default value on creation for the game_account field.
+	user.DefaultGameAccount = userDescGameAccount.Default.(bool)
 }

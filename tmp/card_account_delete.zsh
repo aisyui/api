@@ -8,5 +8,12 @@ if [ -z "$1" ];then
 fi
 
 id=$1
-curl -X PATCH -H "Content-Type: application/json" -d "{\"delete\":true,\"token\":\"$token\"}" -s $host/users/$id
+s=$2
+if [ -n "$2" ];then
+	s=$2
+else
+	s=true
+fi
+
+curl -X PATCH -H "Content-Type: application/json" -d "{\"delete\":$s,\"token\":\"$token\"}" -s $host/users/$id
 

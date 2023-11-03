@@ -182,6 +182,19 @@ func NewCardOwnerRead(e *ent.User) *CardOwnerRead {
 	ret.TenAt = NewOptDateTime(e.TenAt)
 	ret.Next = NewOptString(e.Next)
 	ret.Room = NewOptInt(e.Room)
+	ret.Model = NewOptBool(e.Model)
+	ret.ModelAt = NewOptDateTime(e.ModelAt)
+	ret.ModelAttack = NewOptInt(e.ModelAttack)
+	ret.ModelLimit = NewOptInt(e.ModelLimit)
+	ret.ModelSkill = NewOptInt(e.ModelSkill)
+	ret.ModelMode = NewOptInt(e.ModelMode)
+	ret.ModelCritical = NewOptInt(e.ModelCritical)
+	ret.ModelCriticalD = NewOptInt(e.ModelCriticalD)
+	ret.Game = NewOptBool(e.Game)
+	ret.GameTest = NewOptBool(e.GameTest)
+	ret.GameEnd = NewOptBool(e.GameEnd)
+	ret.GameAccount = NewOptBool(e.GameAccount)
+	ret.GameLv = NewOptInt(e.GameLv)
 	return &ret
 }
 
@@ -353,6 +366,19 @@ func NewGroupUsersList(e *ent.User) *GroupUsersList {
 	ret.TenAt = NewOptDateTime(e.TenAt)
 	ret.Next = NewOptString(e.Next)
 	ret.Room = NewOptInt(e.Room)
+	ret.Model = NewOptBool(e.Model)
+	ret.ModelAt = NewOptDateTime(e.ModelAt)
+	ret.ModelAttack = NewOptInt(e.ModelAttack)
+	ret.ModelLimit = NewOptInt(e.ModelLimit)
+	ret.ModelSkill = NewOptInt(e.ModelSkill)
+	ret.ModelMode = NewOptInt(e.ModelMode)
+	ret.ModelCritical = NewOptInt(e.ModelCritical)
+	ret.ModelCriticalD = NewOptInt(e.ModelCriticalD)
+	ret.Game = NewOptBool(e.Game)
+	ret.GameTest = NewOptBool(e.GameTest)
+	ret.GameEnd = NewOptBool(e.GameEnd)
+	ret.GameAccount = NewOptBool(e.GameAccount)
+	ret.GameLv = NewOptInt(e.GameLv)
 	return &ret
 }
 
@@ -412,6 +438,19 @@ func NewUserCreate(e *ent.User) *UserCreate {
 	ret.TenAt = NewOptDateTime(e.TenAt)
 	ret.Next = NewOptString(e.Next)
 	ret.Room = NewOptInt(e.Room)
+	ret.Model = NewOptBool(e.Model)
+	ret.ModelAt = NewOptDateTime(e.ModelAt)
+	ret.ModelAttack = NewOptInt(e.ModelAttack)
+	ret.ModelLimit = NewOptInt(e.ModelLimit)
+	ret.ModelSkill = NewOptInt(e.ModelSkill)
+	ret.ModelMode = NewOptInt(e.ModelMode)
+	ret.ModelCritical = NewOptInt(e.ModelCritical)
+	ret.ModelCriticalD = NewOptInt(e.ModelCriticalD)
+	ret.Game = NewOptBool(e.Game)
+	ret.GameTest = NewOptBool(e.GameTest)
+	ret.GameEnd = NewOptBool(e.GameEnd)
+	ret.GameAccount = NewOptBool(e.GameAccount)
+	ret.GameLv = NewOptInt(e.GameLv)
 	return &ret
 }
 
@@ -471,6 +510,19 @@ func NewUserList(e *ent.User) *UserList {
 	ret.TenAt = NewOptDateTime(e.TenAt)
 	ret.Next = NewOptString(e.Next)
 	ret.Room = NewOptInt(e.Room)
+	ret.Model = NewOptBool(e.Model)
+	ret.ModelAt = NewOptDateTime(e.ModelAt)
+	ret.ModelAttack = NewOptInt(e.ModelAttack)
+	ret.ModelLimit = NewOptInt(e.ModelLimit)
+	ret.ModelSkill = NewOptInt(e.ModelSkill)
+	ret.ModelMode = NewOptInt(e.ModelMode)
+	ret.ModelCritical = NewOptInt(e.ModelCritical)
+	ret.ModelCriticalD = NewOptInt(e.ModelCriticalD)
+	ret.Game = NewOptBool(e.Game)
+	ret.GameTest = NewOptBool(e.GameTest)
+	ret.GameEnd = NewOptBool(e.GameEnd)
+	ret.GameAccount = NewOptBool(e.GameAccount)
+	ret.GameLv = NewOptInt(e.GameLv)
 	return &ret
 }
 
@@ -530,6 +582,19 @@ func NewUserRead(e *ent.User) *UserRead {
 	ret.TenAt = NewOptDateTime(e.TenAt)
 	ret.Next = NewOptString(e.Next)
 	ret.Room = NewOptInt(e.Room)
+	ret.Model = NewOptBool(e.Model)
+	ret.ModelAt = NewOptDateTime(e.ModelAt)
+	ret.ModelAttack = NewOptInt(e.ModelAttack)
+	ret.ModelLimit = NewOptInt(e.ModelLimit)
+	ret.ModelSkill = NewOptInt(e.ModelSkill)
+	ret.ModelMode = NewOptInt(e.ModelMode)
+	ret.ModelCritical = NewOptInt(e.ModelCritical)
+	ret.ModelCriticalD = NewOptInt(e.ModelCriticalD)
+	ret.Game = NewOptBool(e.Game)
+	ret.GameTest = NewOptBool(e.GameTest)
+	ret.GameEnd = NewOptBool(e.GameEnd)
+	ret.GameAccount = NewOptBool(e.GameAccount)
+	ret.GameLv = NewOptInt(e.GameLv)
 	return &ret
 }
 
@@ -589,6 +654,19 @@ func NewUserUpdate(e *ent.User) *UserUpdate {
 	ret.TenAt = NewOptDateTime(e.TenAt)
 	ret.Next = NewOptString(e.Next)
 	ret.Room = NewOptInt(e.Room)
+	ret.Model = NewOptBool(e.Model)
+	ret.ModelAt = NewOptDateTime(e.ModelAt)
+	ret.ModelAttack = NewOptInt(e.ModelAttack)
+	ret.ModelLimit = NewOptInt(e.ModelLimit)
+	ret.ModelSkill = NewOptInt(e.ModelSkill)
+	ret.ModelMode = NewOptInt(e.ModelMode)
+	ret.ModelCritical = NewOptInt(e.ModelCritical)
+	ret.ModelCriticalD = NewOptInt(e.ModelCriticalD)
+	ret.Game = NewOptBool(e.Game)
+	ret.GameTest = NewOptBool(e.GameTest)
+	ret.GameEnd = NewOptBool(e.GameEnd)
+	ret.GameAccount = NewOptBool(e.GameAccount)
+	ret.GameLv = NewOptInt(e.GameLv)
 	return &ret
 }
 

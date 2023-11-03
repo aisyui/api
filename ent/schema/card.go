@@ -58,6 +58,7 @@ func (Card) Fields() []ent.Field {
 				card = 6
 			}			
 
+			//var card = rand.Intn(91)
 			return card
 		}).
 		Optional(),

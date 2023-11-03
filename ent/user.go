@@ -84,6 +84,32 @@ type User struct {
 	Next string `json:"next,omitempty"`
 	// Room holds the value of the "room" field.
 	Room int `json:"room,omitempty"`
+	// Model holds the value of the "model" field.
+	Model bool `json:"model,omitempty"`
+	// ModelAt holds the value of the "model_at" field.
+	ModelAt time.Time `json:"model_at,omitempty"`
+	// ModelAttack holds the value of the "model_attack" field.
+	ModelAttack int `json:"model_attack,omitempty"`
+	// ModelLimit holds the value of the "model_limit" field.
+	ModelLimit int `json:"model_limit,omitempty"`
+	// ModelSkill holds the value of the "model_skill" field.
+	ModelSkill int `json:"model_skill,omitempty"`
+	// ModelMode holds the value of the "model_mode" field.
+	ModelMode int `json:"model_mode,omitempty"`
+	// ModelCritical holds the value of the "model_critical" field.
+	ModelCritical int `json:"model_critical,omitempty"`
+	// ModelCriticalD holds the value of the "model_critical_d" field.
+	ModelCriticalD int `json:"model_critical_d,omitempty"`
+	// Game holds the value of the "game" field.
+	Game bool `json:"game,omitempty"`
+	// GameTest holds the value of the "game_test" field.
+	GameTest bool `json:"game_test,omitempty"`
+	// GameEnd holds the value of the "game_end" field.
+	GameEnd bool `json:"game_end,omitempty"`
+	// GameAccount holds the value of the "game_account" field.
+	GameAccount bool `json:"game_account,omitempty"`
+	// GameLv holds the value of the "game_lv" field.
+	GameLv int `json:"game_lv,omitempty"`
 	// Edges holds the relations/edges for other nodes in the graph.
 	// The values are being populated by the UserQuery when eager-loading is set.
 	Edges       UserEdges `json:"edges"`
@@ -113,13 +139,13 @@ func (*User) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case user.FieldMember, user.FieldBook, user.FieldManga, user.FieldBadge, user.FieldBsky, user.FieldMastodon, user.FieldDelete, user.FieldHandle, user.FieldTen:
+		case user.FieldMember, user.FieldBook, user.FieldManga, user.FieldBadge, user.FieldBsky, user.FieldMastodon, user.FieldDelete, user.FieldHandle, user.FieldTen, user.FieldModel, user.FieldGame, user.FieldGameTest, user.FieldGameEnd, user.FieldGameAccount:
 			values[i] = new(sql.NullBool)
-		case user.FieldID, user.FieldLuck, user.FieldLike, user.FieldLikeRank, user.FieldFav, user.FieldTenSu, user.FieldTenKai, user.FieldAiten, user.FieldRoom:
+		case user.FieldID, user.FieldLuck, user.FieldLike, user.FieldLikeRank, user.FieldFav, user.FieldTenSu, user.FieldTenKai, user.FieldAiten, user.FieldRoom, user.FieldModelAttack, user.FieldModelLimit, user.FieldModelSkill, user.FieldModelMode, user.FieldModelCritical, user.FieldModelCriticalD, user.FieldGameLv:
 			values[i] = new(sql.NullInt64)
 		case user.FieldUsername, user.FieldDid, user.FieldToken, user.FieldPassword, user.FieldTenCard, user.FieldTenDelete, user.FieldTenPost, user.FieldTenGet, user.FieldNext:
 			values[i] = new(sql.NullString)
-		case user.FieldCreatedAt, user.FieldUpdatedAt, user.FieldRaidAt, user.FieldServerAt, user.FieldEggAt, user.FieldLuckAt, user.FieldLikeAt, user.FieldTenAt:
+		case user.FieldCreatedAt, user.FieldUpdatedAt, user.FieldRaidAt, user.FieldServerAt, user.FieldEggAt, user.FieldLuckAt, user.FieldLikeAt, user.FieldTenAt, user.FieldModelAt:
 			values[i] = new(sql.NullTime)
 		case user.ForeignKeys[0]: // group_users
 			values[i] = new(sql.NullInt64)
@@ -348,6 +374,84 @@ func (u *User) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				u.Room = int(value.Int64)
 			}
+		case user.FieldModel:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field model", values[i])
+			} else if value.Valid {
+				u.Model = value.Bool
+			}
+		case user.FieldModelAt:
+			if value, ok := values[i].(*sql.NullTime); !ok {
+				return fmt.Errorf("unexpected type %T for field model_at", values[i])
+			} else if value.Valid {
+				u.ModelAt = value.Time
+			}
+		case user.FieldModelAttack:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field model_attack", values[i])
+			} else if value.Valid {
+				u.ModelAttack = int(value.Int64)
+			}
+		case user.FieldModelLimit:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field model_limit", values[i])
+			} else if value.Valid {
+				u.ModelLimit = int(value.Int64)
+			}
+		case user.FieldModelSkill:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field model_skill", values[i])
+			} else if value.Valid {
+				u.ModelSkill = int(value.Int64)
+			}
+		case user.FieldModelMode:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field model_mode", values[i])
+			} else if value.Valid {
+				u.ModelMode = int(value.Int64)
+			}
+		case user.FieldModelCritical:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field model_critical", values[i])
+			} else if value.Valid {
+				u.ModelCritical = int(value.Int64)
+			}
+		case user.FieldModelCriticalD:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field model_critical_d", values[i])
+			} else if value.Valid {
+				u.ModelCriticalD = int(value.Int64)
+			}
+		case user.FieldGame:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field game", values[i])
+			} else if value.Valid {
+				u.Game = value.Bool
+			}
+		case user.FieldGameTest:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field game_test", values[i])
+			} else if value.Valid {
+				u.GameTest = value.Bool
+			}
+		case user.FieldGameEnd:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field game_end", values[i])
+			} else if value.Valid {
+				u.GameEnd = value.Bool
+			}
+		case user.FieldGameAccount:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field game_account", values[i])
+			} else if value.Valid {
+				u.GameAccount = value.Bool
+			}
+		case user.FieldGameLv:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field game_lv", values[i])
+			} else if value.Valid {
+				u.GameLv = int(value.Int64)
+			}
 		case user.ForeignKeys[0]:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for edge-field group_users", value)
@@ -487,6 +591,45 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("room=")
 	builder.WriteString(fmt.Sprintf("%v", u.Room))
+	builder.WriteString(", ")
+	builder.WriteString("model=")
+	builder.WriteString(fmt.Sprintf("%v", u.Model))
+	builder.WriteString(", ")
+	builder.WriteString("model_at=")
+	builder.WriteString(u.ModelAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("model_attack=")
+	builder.WriteString(fmt.Sprintf("%v", u.ModelAttack))
+	builder.WriteString(", ")
+	builder.WriteString("model_limit=")
+	builder.WriteString(fmt.Sprintf("%v", u.ModelLimit))
+	builder.WriteString(", ")
+	builder.WriteString("model_skill=")
+	builder.WriteString(fmt.Sprintf("%v", u.ModelSkill))
+	builder.WriteString(", ")
+	builder.WriteString("model_mode=")
+	builder.WriteString(fmt.Sprintf("%v", u.ModelMode))
+	builder.WriteString(", ")
+	builder.WriteString("model_critical=")
+	builder.WriteString(fmt.Sprintf("%v", u.ModelCritical))
+	builder.WriteString(", ")
+	builder.WriteString("model_critical_d=")
+	builder.WriteString(fmt.Sprintf("%v", u.ModelCriticalD))
+	builder.WriteString(", ")
+	builder.WriteString("game=")
+	builder.WriteString(fmt.Sprintf("%v", u.Game))
+	builder.WriteString(", ")
+	builder.WriteString("game_test=")
+	builder.WriteString(fmt.Sprintf("%v", u.GameTest))
+	builder.WriteString(", ")
+	builder.WriteString("game_end=")
+	builder.WriteString(fmt.Sprintf("%v", u.GameEnd))
+	builder.WriteString(", ")
+	builder.WriteString("game_account=")
+	builder.WriteString(fmt.Sprintf("%v", u.GameAccount))
+	builder.WriteString(", ")
+	builder.WriteString("game_lv=")
+	builder.WriteString(fmt.Sprintf("%v", u.GameLv))
 	builder.WriteByte(')')
 	return builder.String()
 }

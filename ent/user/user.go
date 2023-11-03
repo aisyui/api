@@ -79,6 +79,32 @@ const (
 	FieldNext = "next"
 	// FieldRoom holds the string denoting the room field in the database.
 	FieldRoom = "room"
+	// FieldModel holds the string denoting the model field in the database.
+	FieldModel = "model"
+	// FieldModelAt holds the string denoting the model_at field in the database.
+	FieldModelAt = "model_at"
+	// FieldModelAttack holds the string denoting the model_attack field in the database.
+	FieldModelAttack = "model_attack"
+	// FieldModelLimit holds the string denoting the model_limit field in the database.
+	FieldModelLimit = "model_limit"
+	// FieldModelSkill holds the string denoting the model_skill field in the database.
+	FieldModelSkill = "model_skill"
+	// FieldModelMode holds the string denoting the model_mode field in the database.
+	FieldModelMode = "model_mode"
+	// FieldModelCritical holds the string denoting the model_critical field in the database.
+	FieldModelCritical = "model_critical"
+	// FieldModelCriticalD holds the string denoting the model_critical_d field in the database.
+	FieldModelCriticalD = "model_critical_d"
+	// FieldGame holds the string denoting the game field in the database.
+	FieldGame = "game"
+	// FieldGameTest holds the string denoting the game_test field in the database.
+	FieldGameTest = "game_test"
+	// FieldGameEnd holds the string denoting the game_end field in the database.
+	FieldGameEnd = "game_end"
+	// FieldGameAccount holds the string denoting the game_account field in the database.
+	FieldGameAccount = "game_account"
+	// FieldGameLv holds the string denoting the game_lv field in the database.
+	FieldGameLv = "game_lv"
 	// EdgeCard holds the string denoting the card edge name in mutations.
 	EdgeCard = "card"
 	// Table holds the table name of the user in the database.
@@ -129,6 +155,19 @@ var Columns = []string{
 	FieldTenAt,
 	FieldNext,
 	FieldRoom,
+	FieldModel,
+	FieldModelAt,
+	FieldModelAttack,
+	FieldModelLimit,
+	FieldModelSkill,
+	FieldModelMode,
+	FieldModelCritical,
+	FieldModelCriticalD,
+	FieldGame,
+	FieldGameTest,
+	FieldGameEnd,
+	FieldGameAccount,
+	FieldGameLv,
 }
 
 // ForeignKeys holds the SQL foreign-keys that are owned by the "users"
@@ -191,4 +230,14 @@ var (
 	DefaultTenAt func() time.Time
 	// DefaultNext holds the default value on creation for the "next" field.
 	DefaultNext string
+	// DefaultModelAt holds the default value on creation for the "model_at" field.
+	DefaultModelAt func() time.Time
+	// DefaultGame holds the default value on creation for the "game" field.
+	DefaultGame bool
+	// DefaultGameTest holds the default value on creation for the "game_test" field.
+	DefaultGameTest bool
+	// DefaultGameEnd holds the default value on creation for the "game_end" field.
+	DefaultGameEnd bool
+	// DefaultGameAccount holds the default value on creation for the "game_account" field.
+	DefaultGameAccount bool
 )
