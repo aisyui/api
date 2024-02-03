@@ -56,6 +56,44 @@ var (
 			},
 		},
 	}
+	// UesColumns holds the columns for the "ues" table.
+	UesColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeInt, Increment: true},
+		{Name: "limit", Type: field.TypeBool, Nullable: true, Default: false},
+		{Name: "limit_boss", Type: field.TypeBool, Nullable: true, Default: false},
+		{Name: "limit_item", Type: field.TypeBool, Nullable: true, Default: false},
+		{Name: "password", Type: field.TypeString},
+		{Name: "lv", Type: field.TypeInt, Nullable: true},
+		{Name: "lv_point", Type: field.TypeInt, Nullable: true},
+		{Name: "model", Type: field.TypeInt, Nullable: true},
+		{Name: "sword", Type: field.TypeInt, Nullable: true},
+		{Name: "card", Type: field.TypeInt, Nullable: true},
+		{Name: "mode", Type: field.TypeString, Nullable: true},
+		{Name: "token", Type: field.TypeString, Nullable: true},
+		{Name: "cp", Type: field.TypeInt, Nullable: true},
+		{Name: "count", Type: field.TypeInt, Nullable: true},
+		{Name: "location_x", Type: field.TypeInt, Nullable: true},
+		{Name: "location_y", Type: field.TypeInt, Nullable: true},
+		{Name: "location_z", Type: field.TypeInt, Nullable: true},
+		{Name: "location_n", Type: field.TypeInt, Nullable: true},
+		{Name: "author", Type: field.TypeString, Nullable: true},
+		{Name: "created_at", Type: field.TypeTime, Nullable: true},
+		{Name: "user_ue", Type: field.TypeInt},
+	}
+	// UesTable holds the schema information for the "ues" table.
+	UesTable = &schema.Table{
+		Name:       "ues",
+		Columns:    UesColumns,
+		PrimaryKey: []*schema.Column{UesColumns[0]},
+		ForeignKeys: []*schema.ForeignKey{
+			{
+				Symbol:     "ues_users_ue",
+				Columns:    []*schema.Column{UesColumns[20]},
+				RefColumns: []*schema.Column{UsersColumns[0]},
+				OnDelete:   schema.NoAction,
+			},
+		},
+	}
 	// UsersColumns holds the columns for the "users" table.
 	UsersColumns = []*schema.Column{
 		{Name: "id", Type: field.TypeInt, Increment: true},
@@ -91,7 +129,7 @@ var (
 		{Name: "ten_post", Type: field.TypeString, Nullable: true},
 		{Name: "ten_get", Type: field.TypeString, Nullable: true},
 		{Name: "ten_at", Type: field.TypeTime, Nullable: true},
-		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20231231"},
+		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20240203"},
 		{Name: "room", Type: field.TypeInt, Nullable: true},
 		{Name: "model", Type: field.TypeBool, Nullable: true},
 		{Name: "model_at", Type: field.TypeTime, Nullable: true},
@@ -133,11 +171,13 @@ var (
 	Tables = []*schema.Table{
 		CardsTable,
 		GroupsTable,
+		UesTable,
 		UsersTable,
 	}
 )
 
 func init() {
 	CardsTable.ForeignKeys[0].RefTable = UsersTable
+	UesTable.ForeignKeys[0].RefTable = UsersTable
 	UsersTable.ForeignKeys[0].RefTable = GroupsTable
 }

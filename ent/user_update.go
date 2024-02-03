@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"t/ent/card"
 	"t/ent/predicate"
+	"t/ent/ue"
 	"t/ent/user"
 	"time"
 
@@ -1029,6 +1030,21 @@ func (uu *UserUpdate) AddCard(c ...*Card) *UserUpdate {
 	return uu.AddCardIDs(ids...)
 }
 
+// AddUeIDs adds the "ue" edge to the Ue entity by IDs.
+func (uu *UserUpdate) AddUeIDs(ids ...int) *UserUpdate {
+	uu.mutation.AddUeIDs(ids...)
+	return uu
+}
+
+// AddUe adds the "ue" edges to the Ue entity.
+func (uu *UserUpdate) AddUe(u ...*Ue) *UserUpdate {
+	ids := make([]int, len(u))
+	for i := range u {
+		ids[i] = u[i].ID
+	}
+	return uu.AddUeIDs(ids...)
+}
+
 // Mutation returns the UserMutation object of the builder.
 func (uu *UserUpdate) Mutation() *UserMutation {
 	return uu.mutation
@@ -1053,6 +1069,27 @@ func (uu *UserUpdate) RemoveCard(c ...*Card) *UserUpdate {
 		ids[i] = c[i].ID
 	}
 	return uu.RemoveCardIDs(ids...)
+}
+
+// ClearUe clears all "ue" edges to the Ue entity.
+func (uu *UserUpdate) ClearUe() *UserUpdate {
+	uu.mutation.ClearUe()
+	return uu
+}
+
+// RemoveUeIDs removes the "ue" edge to Ue entities by IDs.
+func (uu *UserUpdate) RemoveUeIDs(ids ...int) *UserUpdate {
+	uu.mutation.RemoveUeIDs(ids...)
+	return uu
+}
+
+// RemoveUe removes "ue" edges to Ue entities.
+func (uu *UserUpdate) RemoveUe(u ...*Ue) *UserUpdate {
+	ids := make([]int, len(u))
+	for i := range u {
+		ids[i] = u[i].ID
+	}
+	return uu.RemoveUeIDs(ids...)
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
@@ -1441,6 +1478,51 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(card.FieldID, field.TypeInt),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
+	if uu.mutation.UeCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   user.UeTable,
+			Columns: []string{user.UeColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(ue.FieldID, field.TypeInt),
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := uu.mutation.RemovedUeIDs(); len(nodes) > 0 && !uu.mutation.UeCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   user.UeTable,
+			Columns: []string{user.UeColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(ue.FieldID, field.TypeInt),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := uu.mutation.UeIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   user.UeTable,
+			Columns: []string{user.UeColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(ue.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {
@@ -2468,6 +2550,21 @@ func (uuo *UserUpdateOne) AddCard(c ...*Card) *UserUpdateOne {
 	return uuo.AddCardIDs(ids...)
 }
 
+// AddUeIDs adds the "ue" edge to the Ue entity by IDs.
+func (uuo *UserUpdateOne) AddUeIDs(ids ...int) *UserUpdateOne {
+	uuo.mutation.AddUeIDs(ids...)
+	return uuo
+}
+
+// AddUe adds the "ue" edges to the Ue entity.
+func (uuo *UserUpdateOne) AddUe(u ...*Ue) *UserUpdateOne {
+	ids := make([]int, len(u))
+	for i := range u {
+		ids[i] = u[i].ID
+	}
+	return uuo.AddUeIDs(ids...)
+}
+
 // Mutation returns the UserMutation object of the builder.
 func (uuo *UserUpdateOne) Mutation() *UserMutation {
 	return uuo.mutation
@@ -2492,6 +2589,27 @@ func (uuo *UserUpdateOne) RemoveCard(c ...*Card) *UserUpdateOne {
 		ids[i] = c[i].ID
 	}
 	return uuo.RemoveCardIDs(ids...)
+}
+
+// ClearUe clears all "ue" edges to the Ue entity.
+func (uuo *UserUpdateOne) ClearUe() *UserUpdateOne {
+	uuo.mutation.ClearUe()
+	return uuo
+}
+
+// RemoveUeIDs removes the "ue" edge to Ue entities by IDs.
+func (uuo *UserUpdateOne) RemoveUeIDs(ids ...int) *UserUpdateOne {
+	uuo.mutation.RemoveUeIDs(ids...)
+	return uuo
+}
+
+// RemoveUe removes "ue" edges to Ue entities.
+func (uuo *UserUpdateOne) RemoveUe(u ...*Ue) *UserUpdateOne {
+	ids := make([]int, len(u))
+	for i := range u {
+		ids[i] = u[i].ID
+	}
+	return uuo.RemoveUeIDs(ids...)
 }
 
 // Where appends a list predicates to the UserUpdate builder.
@@ -2910,6 +3028,51 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(card.FieldID, field.TypeInt),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
+	if uuo.mutation.UeCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   user.UeTable,
+			Columns: []string{user.UeColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(ue.FieldID, field.TypeInt),
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := uuo.mutation.RemovedUeIDs(); len(nodes) > 0 && !uuo.mutation.UeCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   user.UeTable,
+			Columns: []string{user.UeColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(ue.FieldID, field.TypeInt),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := uuo.mutation.UeIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   user.UeTable,
+			Columns: []string{user.UeColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(ue.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

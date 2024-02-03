@@ -2233,6 +2233,429 @@ func (s *CreateGroupReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
+func (s *CreateUeReq) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *CreateUeReq) encodeFields(e *jx.Encoder) {
+	{
+		if s.Limit.Set {
+			e.FieldStart("limit")
+			s.Limit.Encode(e)
+		}
+	}
+	{
+		if s.LimitBoss.Set {
+			e.FieldStart("limit_boss")
+			s.LimitBoss.Encode(e)
+		}
+	}
+	{
+		if s.LimitItem.Set {
+			e.FieldStart("limit_item")
+			s.LimitItem.Encode(e)
+		}
+	}
+	{
+
+		e.FieldStart("password")
+		e.Str(s.Password)
+	}
+	{
+		if s.Lv.Set {
+			e.FieldStart("lv")
+			s.Lv.Encode(e)
+		}
+	}
+	{
+		if s.LvPoint.Set {
+			e.FieldStart("lv_point")
+			s.LvPoint.Encode(e)
+		}
+	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.Sword.Set {
+			e.FieldStart("sword")
+			s.Sword.Encode(e)
+		}
+	}
+	{
+		if s.Card.Set {
+			e.FieldStart("card")
+			s.Card.Encode(e)
+		}
+	}
+	{
+		if s.Mode.Set {
+			e.FieldStart("mode")
+			s.Mode.Encode(e)
+		}
+	}
+	{
+		if s.Token.Set {
+			e.FieldStart("token")
+			s.Token.Encode(e)
+		}
+	}
+	{
+		if s.Cp.Set {
+			e.FieldStart("cp")
+			s.Cp.Encode(e)
+		}
+	}
+	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.LocationX.Set {
+			e.FieldStart("location_x")
+			s.LocationX.Encode(e)
+		}
+	}
+	{
+		if s.LocationY.Set {
+			e.FieldStart("location_y")
+			s.LocationY.Encode(e)
+		}
+	}
+	{
+		if s.LocationZ.Set {
+			e.FieldStart("location_z")
+			s.LocationZ.Encode(e)
+		}
+	}
+	{
+		if s.LocationN.Set {
+			e.FieldStart("location_n")
+			s.LocationN.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
+		if s.CreatedAt.Set {
+			e.FieldStart("created_at")
+			s.CreatedAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+
+		e.FieldStart("owner")
+		e.Int(s.Owner)
+	}
+}
+
+var jsonFieldsNameOfCreateUeReq = [20]string{
+	0:  "limit",
+	1:  "limit_boss",
+	2:  "limit_item",
+	3:  "password",
+	4:  "lv",
+	5:  "lv_point",
+	6:  "model",
+	7:  "sword",
+	8:  "card",
+	9:  "mode",
+	10: "token",
+	11: "cp",
+	12: "count",
+	13: "location_x",
+	14: "location_y",
+	15: "location_z",
+	16: "location_n",
+	17: "author",
+	18: "created_at",
+	19: "owner",
+}
+
+// Decode decodes CreateUeReq from json.
+func (s *CreateUeReq) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode CreateUeReq to nil")
+	}
+	var requiredBitSet [3]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "limit":
+			if err := func() error {
+				s.Limit.Reset()
+				if err := s.Limit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit\"")
+			}
+		case "limit_boss":
+			if err := func() error {
+				s.LimitBoss.Reset()
+				if err := s.LimitBoss.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_boss\"")
+			}
+		case "limit_item":
+			if err := func() error {
+				s.LimitItem.Reset()
+				if err := s.LimitItem.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_item\"")
+			}
+		case "password":
+			requiredBitSet[0] |= 1 << 3
+			if err := func() error {
+				v, err := d.Str()
+				s.Password = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"password\"")
+			}
+		case "lv":
+			if err := func() error {
+				s.Lv.Reset()
+				if err := s.Lv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv\"")
+			}
+		case "lv_point":
+			if err := func() error {
+				s.LvPoint.Reset()
+				if err := s.LvPoint.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv_point\"")
+			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "sword":
+			if err := func() error {
+				s.Sword.Reset()
+				if err := s.Sword.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"sword\"")
+			}
+		case "card":
+			if err := func() error {
+				s.Card.Reset()
+				if err := s.Card.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "mode":
+			if err := func() error {
+				s.Mode.Reset()
+				if err := s.Mode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mode\"")
+			}
+		case "token":
+			if err := func() error {
+				s.Token.Reset()
+				if err := s.Token.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"token\"")
+			}
+		case "cp":
+			if err := func() error {
+				s.Cp.Reset()
+				if err := s.Cp.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cp\"")
+			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "location_x":
+			if err := func() error {
+				s.LocationX.Reset()
+				if err := s.LocationX.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_x\"")
+			}
+		case "location_y":
+			if err := func() error {
+				s.LocationY.Reset()
+				if err := s.LocationY.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_y\"")
+			}
+		case "location_z":
+			if err := func() error {
+				s.LocationZ.Reset()
+				if err := s.LocationZ.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_z\"")
+			}
+		case "location_n":
+			if err := func() error {
+				s.LocationN.Reset()
+				if err := s.LocationN.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_n\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
+			}
+		case "created_at":
+			if err := func() error {
+				s.CreatedAt.Reset()
+				if err := s.CreatedAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"created_at\"")
+			}
+		case "owner":
+			requiredBitSet[2] |= 1 << 3
+			if err := func() error {
+				v, err := d.Int()
+				s.Owner = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"owner\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode CreateUeReq")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [3]uint8{
+		0b00001000,
+		0b00000000,
+		0b00001000,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfCreateUeReq) {
+					name = jsonFieldsNameOfCreateUeReq[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *CreateUeReq) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *CreateUeReq) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
 func (s *CreateUserReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
@@ -2531,9 +2954,19 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
+	{
+		if s.Ue != nil {
+			e.FieldStart("ue")
+			e.ArrStart()
+			for _, elem := range s.Ue {
+				e.Int(elem)
+			}
+			e.ArrEnd()
+		}
+	}
 }
 
-var jsonFieldsNameOfCreateUserReq = [48]string{
+var jsonFieldsNameOfCreateUserReq = [49]string{
 	0:  "username",
 	1:  "did",
 	2:  "member",
@@ -2582,6 +3015,7 @@ var jsonFieldsNameOfCreateUserReq = [48]string{
 	45: "game_account",
 	46: "game_lv",
 	47: "card",
+	48: "ue",
 }
 
 // Decode decodes CreateUserReq from json.
@@ -2589,7 +3023,7 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CreateUserReq to nil")
 	}
-	var requiredBitSet [6]uint8
+	var requiredBitSet [7]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -3086,6 +3520,25 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
 			}
+		case "ue":
+			if err := func() error {
+				s.Ue = make([]int, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int
+					v, err := d.Int()
+					elem = int(v)
+					if err != nil {
+						return err
+					}
+					s.Ue = append(s.Ue, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ue\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -3095,9 +3548,10 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [6]uint8{
+	for i, mask := range [7]uint8{
 		0b00000001,
 		0b00001000,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -4625,6 +5079,56 @@ func (s *ListGroupUsersOKApplicationJSON) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes ListUeOKApplicationJSON as json.
+func (s ListUeOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []UeList(s)
+
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ListUeOKApplicationJSON from json.
+func (s *ListUeOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode ListUeOKApplicationJSON to nil")
+	}
+	var unwrapped []UeList
+	if err := func() error {
+		unwrapped = make([]UeList, 0)
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem UeList
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ListUeOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s ListUeOKApplicationJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ListUeOKApplicationJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes ListUserCardOKApplicationJSON as json.
 func (s ListUserCardOKApplicationJSON) Encode(e *jx.Encoder) {
 	unwrapped := []UserCardList(s)
@@ -4721,6 +5225,56 @@ func (s ListUserOKApplicationJSON) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *ListUserOKApplicationJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes ListUserUeOKApplicationJSON as json.
+func (s ListUserUeOKApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := []UserUeList(s)
+
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		elem.Encode(e)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes ListUserUeOKApplicationJSON from json.
+func (s *ListUserUeOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode ListUserUeOKApplicationJSON to nil")
+	}
+	var unwrapped []UserUeList
+	if err := func() error {
+		unwrapped = make([]UserUeList, 0)
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem UserUeList
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ListUserUeOKApplicationJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s ListUserUeOKApplicationJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ListUserUeOKApplicationJSON) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -5402,6 +5956,2426 @@ func (s *R500) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
+func (s *UeCreate) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *UeCreate) encodeFields(e *jx.Encoder) {
+	{
+
+		e.FieldStart("id")
+		e.Int(s.ID)
+	}
+	{
+		if s.Limit.Set {
+			e.FieldStart("limit")
+			s.Limit.Encode(e)
+		}
+	}
+	{
+		if s.LimitBoss.Set {
+			e.FieldStart("limit_boss")
+			s.LimitBoss.Encode(e)
+		}
+	}
+	{
+		if s.LimitItem.Set {
+			e.FieldStart("limit_item")
+			s.LimitItem.Encode(e)
+		}
+	}
+	{
+		if s.Lv.Set {
+			e.FieldStart("lv")
+			s.Lv.Encode(e)
+		}
+	}
+	{
+		if s.LvPoint.Set {
+			e.FieldStart("lv_point")
+			s.LvPoint.Encode(e)
+		}
+	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.Sword.Set {
+			e.FieldStart("sword")
+			s.Sword.Encode(e)
+		}
+	}
+	{
+		if s.Card.Set {
+			e.FieldStart("card")
+			s.Card.Encode(e)
+		}
+	}
+	{
+		if s.Mode.Set {
+			e.FieldStart("mode")
+			s.Mode.Encode(e)
+		}
+	}
+	{
+		if s.Cp.Set {
+			e.FieldStart("cp")
+			s.Cp.Encode(e)
+		}
+	}
+	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.LocationX.Set {
+			e.FieldStart("location_x")
+			s.LocationX.Encode(e)
+		}
+	}
+	{
+		if s.LocationY.Set {
+			e.FieldStart("location_y")
+			s.LocationY.Encode(e)
+		}
+	}
+	{
+		if s.LocationZ.Set {
+			e.FieldStart("location_z")
+			s.LocationZ.Encode(e)
+		}
+	}
+	{
+		if s.LocationN.Set {
+			e.FieldStart("location_n")
+			s.LocationN.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
+		if s.CreatedAt.Set {
+			e.FieldStart("created_at")
+			s.CreatedAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+}
+
+var jsonFieldsNameOfUeCreate = [18]string{
+	0:  "id",
+	1:  "limit",
+	2:  "limit_boss",
+	3:  "limit_item",
+	4:  "lv",
+	5:  "lv_point",
+	6:  "model",
+	7:  "sword",
+	8:  "card",
+	9:  "mode",
+	10: "cp",
+	11: "count",
+	12: "location_x",
+	13: "location_y",
+	14: "location_z",
+	15: "location_n",
+	16: "author",
+	17: "created_at",
+}
+
+// Decode decodes UeCreate from json.
+func (s *UeCreate) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode UeCreate to nil")
+	}
+	var requiredBitSet [3]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "id":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Int()
+				s.ID = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"id\"")
+			}
+		case "limit":
+			if err := func() error {
+				s.Limit.Reset()
+				if err := s.Limit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit\"")
+			}
+		case "limit_boss":
+			if err := func() error {
+				s.LimitBoss.Reset()
+				if err := s.LimitBoss.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_boss\"")
+			}
+		case "limit_item":
+			if err := func() error {
+				s.LimitItem.Reset()
+				if err := s.LimitItem.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_item\"")
+			}
+		case "lv":
+			if err := func() error {
+				s.Lv.Reset()
+				if err := s.Lv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv\"")
+			}
+		case "lv_point":
+			if err := func() error {
+				s.LvPoint.Reset()
+				if err := s.LvPoint.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv_point\"")
+			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "sword":
+			if err := func() error {
+				s.Sword.Reset()
+				if err := s.Sword.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"sword\"")
+			}
+		case "card":
+			if err := func() error {
+				s.Card.Reset()
+				if err := s.Card.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "mode":
+			if err := func() error {
+				s.Mode.Reset()
+				if err := s.Mode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mode\"")
+			}
+		case "cp":
+			if err := func() error {
+				s.Cp.Reset()
+				if err := s.Cp.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cp\"")
+			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "location_x":
+			if err := func() error {
+				s.LocationX.Reset()
+				if err := s.LocationX.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_x\"")
+			}
+		case "location_y":
+			if err := func() error {
+				s.LocationY.Reset()
+				if err := s.LocationY.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_y\"")
+			}
+		case "location_z":
+			if err := func() error {
+				s.LocationZ.Reset()
+				if err := s.LocationZ.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_z\"")
+			}
+		case "location_n":
+			if err := func() error {
+				s.LocationN.Reset()
+				if err := s.LocationN.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_n\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
+			}
+		case "created_at":
+			if err := func() error {
+				s.CreatedAt.Reset()
+				if err := s.CreatedAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"created_at\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode UeCreate")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [3]uint8{
+		0b00000001,
+		0b00000000,
+		0b00000000,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfUeCreate) {
+					name = jsonFieldsNameOfUeCreate[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *UeCreate) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UeCreate) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *UeList) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *UeList) encodeFields(e *jx.Encoder) {
+	{
+
+		e.FieldStart("id")
+		e.Int(s.ID)
+	}
+	{
+		if s.Limit.Set {
+			e.FieldStart("limit")
+			s.Limit.Encode(e)
+		}
+	}
+	{
+		if s.LimitBoss.Set {
+			e.FieldStart("limit_boss")
+			s.LimitBoss.Encode(e)
+		}
+	}
+	{
+		if s.LimitItem.Set {
+			e.FieldStart("limit_item")
+			s.LimitItem.Encode(e)
+		}
+	}
+	{
+		if s.Lv.Set {
+			e.FieldStart("lv")
+			s.Lv.Encode(e)
+		}
+	}
+	{
+		if s.LvPoint.Set {
+			e.FieldStart("lv_point")
+			s.LvPoint.Encode(e)
+		}
+	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.Sword.Set {
+			e.FieldStart("sword")
+			s.Sword.Encode(e)
+		}
+	}
+	{
+		if s.Card.Set {
+			e.FieldStart("card")
+			s.Card.Encode(e)
+		}
+	}
+	{
+		if s.Mode.Set {
+			e.FieldStart("mode")
+			s.Mode.Encode(e)
+		}
+	}
+	{
+		if s.Cp.Set {
+			e.FieldStart("cp")
+			s.Cp.Encode(e)
+		}
+	}
+	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.LocationX.Set {
+			e.FieldStart("location_x")
+			s.LocationX.Encode(e)
+		}
+	}
+	{
+		if s.LocationY.Set {
+			e.FieldStart("location_y")
+			s.LocationY.Encode(e)
+		}
+	}
+	{
+		if s.LocationZ.Set {
+			e.FieldStart("location_z")
+			s.LocationZ.Encode(e)
+		}
+	}
+	{
+		if s.LocationN.Set {
+			e.FieldStart("location_n")
+			s.LocationN.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
+		if s.CreatedAt.Set {
+			e.FieldStart("created_at")
+			s.CreatedAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+}
+
+var jsonFieldsNameOfUeList = [18]string{
+	0:  "id",
+	1:  "limit",
+	2:  "limit_boss",
+	3:  "limit_item",
+	4:  "lv",
+	5:  "lv_point",
+	6:  "model",
+	7:  "sword",
+	8:  "card",
+	9:  "mode",
+	10: "cp",
+	11: "count",
+	12: "location_x",
+	13: "location_y",
+	14: "location_z",
+	15: "location_n",
+	16: "author",
+	17: "created_at",
+}
+
+// Decode decodes UeList from json.
+func (s *UeList) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode UeList to nil")
+	}
+	var requiredBitSet [3]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "id":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Int()
+				s.ID = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"id\"")
+			}
+		case "limit":
+			if err := func() error {
+				s.Limit.Reset()
+				if err := s.Limit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit\"")
+			}
+		case "limit_boss":
+			if err := func() error {
+				s.LimitBoss.Reset()
+				if err := s.LimitBoss.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_boss\"")
+			}
+		case "limit_item":
+			if err := func() error {
+				s.LimitItem.Reset()
+				if err := s.LimitItem.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_item\"")
+			}
+		case "lv":
+			if err := func() error {
+				s.Lv.Reset()
+				if err := s.Lv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv\"")
+			}
+		case "lv_point":
+			if err := func() error {
+				s.LvPoint.Reset()
+				if err := s.LvPoint.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv_point\"")
+			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "sword":
+			if err := func() error {
+				s.Sword.Reset()
+				if err := s.Sword.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"sword\"")
+			}
+		case "card":
+			if err := func() error {
+				s.Card.Reset()
+				if err := s.Card.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "mode":
+			if err := func() error {
+				s.Mode.Reset()
+				if err := s.Mode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mode\"")
+			}
+		case "cp":
+			if err := func() error {
+				s.Cp.Reset()
+				if err := s.Cp.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cp\"")
+			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "location_x":
+			if err := func() error {
+				s.LocationX.Reset()
+				if err := s.LocationX.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_x\"")
+			}
+		case "location_y":
+			if err := func() error {
+				s.LocationY.Reset()
+				if err := s.LocationY.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_y\"")
+			}
+		case "location_z":
+			if err := func() error {
+				s.LocationZ.Reset()
+				if err := s.LocationZ.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_z\"")
+			}
+		case "location_n":
+			if err := func() error {
+				s.LocationN.Reset()
+				if err := s.LocationN.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_n\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
+			}
+		case "created_at":
+			if err := func() error {
+				s.CreatedAt.Reset()
+				if err := s.CreatedAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"created_at\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode UeList")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [3]uint8{
+		0b00000001,
+		0b00000000,
+		0b00000000,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfUeList) {
+					name = jsonFieldsNameOfUeList[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *UeList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UeList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *UeOwnerRead) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *UeOwnerRead) encodeFields(e *jx.Encoder) {
+	{
+
+		e.FieldStart("id")
+		e.Int(s.ID)
+	}
+	{
+
+		e.FieldStart("username")
+		e.Str(s.Username)
+	}
+	{
+		if s.Did.Set {
+			e.FieldStart("did")
+			s.Did.Encode(e)
+		}
+	}
+	{
+		if s.Member.Set {
+			e.FieldStart("member")
+			s.Member.Encode(e)
+		}
+	}
+	{
+		if s.Book.Set {
+			e.FieldStart("book")
+			s.Book.Encode(e)
+		}
+	}
+	{
+		if s.Manga.Set {
+			e.FieldStart("manga")
+			s.Manga.Encode(e)
+		}
+	}
+	{
+		if s.Badge.Set {
+			e.FieldStart("badge")
+			s.Badge.Encode(e)
+		}
+	}
+	{
+		if s.Bsky.Set {
+			e.FieldStart("bsky")
+			s.Bsky.Encode(e)
+		}
+	}
+	{
+		if s.Mastodon.Set {
+			e.FieldStart("mastodon")
+			s.Mastodon.Encode(e)
+		}
+	}
+	{
+		if s.Delete.Set {
+			e.FieldStart("delete")
+			s.Delete.Encode(e)
+		}
+	}
+	{
+		if s.Handle.Set {
+			e.FieldStart("handle")
+			s.Handle.Encode(e)
+		}
+	}
+	{
+		if s.CreatedAt.Set {
+			e.FieldStart("created_at")
+			s.CreatedAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.UpdatedAt.Set {
+			e.FieldStart("updated_at")
+			s.UpdatedAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.RaidAt.Set {
+			e.FieldStart("raid_at")
+			s.RaidAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.ServerAt.Set {
+			e.FieldStart("server_at")
+			s.ServerAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.EggAt.Set {
+			e.FieldStart("egg_at")
+			s.EggAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Luck.Set {
+			e.FieldStart("luck")
+			s.Luck.Encode(e)
+		}
+	}
+	{
+		if s.LuckAt.Set {
+			e.FieldStart("luck_at")
+			s.LuckAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Like.Set {
+			e.FieldStart("like")
+			s.Like.Encode(e)
+		}
+	}
+	{
+		if s.LikeRank.Set {
+			e.FieldStart("like_rank")
+			s.LikeRank.Encode(e)
+		}
+	}
+	{
+		if s.LikeAt.Set {
+			e.FieldStart("like_at")
+			s.LikeAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Fav.Set {
+			e.FieldStart("fav")
+			s.Fav.Encode(e)
+		}
+	}
+	{
+		if s.Ten.Set {
+			e.FieldStart("ten")
+			s.Ten.Encode(e)
+		}
+	}
+	{
+		if s.TenSu.Set {
+			e.FieldStart("ten_su")
+			s.TenSu.Encode(e)
+		}
+	}
+	{
+		if s.TenKai.Set {
+			e.FieldStart("ten_kai")
+			s.TenKai.Encode(e)
+		}
+	}
+	{
+		if s.Aiten.Set {
+			e.FieldStart("aiten")
+			s.Aiten.Encode(e)
+		}
+	}
+	{
+		if s.TenCard.Set {
+			e.FieldStart("ten_card")
+			s.TenCard.Encode(e)
+		}
+	}
+	{
+		if s.TenDelete.Set {
+			e.FieldStart("ten_delete")
+			s.TenDelete.Encode(e)
+		}
+	}
+	{
+		if s.TenPost.Set {
+			e.FieldStart("ten_post")
+			s.TenPost.Encode(e)
+		}
+	}
+	{
+		if s.TenGet.Set {
+			e.FieldStart("ten_get")
+			s.TenGet.Encode(e)
+		}
+	}
+	{
+		if s.TenAt.Set {
+			e.FieldStart("ten_at")
+			s.TenAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Next.Set {
+			e.FieldStart("next")
+			s.Next.Encode(e)
+		}
+	}
+	{
+		if s.Room.Set {
+			e.FieldStart("room")
+			s.Room.Encode(e)
+		}
+	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.ModelAt.Set {
+			e.FieldStart("model_at")
+			s.ModelAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.ModelAttack.Set {
+			e.FieldStart("model_attack")
+			s.ModelAttack.Encode(e)
+		}
+	}
+	{
+		if s.ModelLimit.Set {
+			e.FieldStart("model_limit")
+			s.ModelLimit.Encode(e)
+		}
+	}
+	{
+		if s.ModelSkill.Set {
+			e.FieldStart("model_skill")
+			s.ModelSkill.Encode(e)
+		}
+	}
+	{
+		if s.ModelMode.Set {
+			e.FieldStart("model_mode")
+			s.ModelMode.Encode(e)
+		}
+	}
+	{
+		if s.ModelCritical.Set {
+			e.FieldStart("model_critical")
+			s.ModelCritical.Encode(e)
+		}
+	}
+	{
+		if s.ModelCriticalD.Set {
+			e.FieldStart("model_critical_d")
+			s.ModelCriticalD.Encode(e)
+		}
+	}
+	{
+		if s.Game.Set {
+			e.FieldStart("game")
+			s.Game.Encode(e)
+		}
+	}
+	{
+		if s.GameTest.Set {
+			e.FieldStart("game_test")
+			s.GameTest.Encode(e)
+		}
+	}
+	{
+		if s.GameEnd.Set {
+			e.FieldStart("game_end")
+			s.GameEnd.Encode(e)
+		}
+	}
+	{
+		if s.GameAccount.Set {
+			e.FieldStart("game_account")
+			s.GameAccount.Encode(e)
+		}
+	}
+	{
+		if s.GameLv.Set {
+			e.FieldStart("game_lv")
+			s.GameLv.Encode(e)
+		}
+	}
+}
+
+var jsonFieldsNameOfUeOwnerRead = [46]string{
+	0:  "id",
+	1:  "username",
+	2:  "did",
+	3:  "member",
+	4:  "book",
+	5:  "manga",
+	6:  "badge",
+	7:  "bsky",
+	8:  "mastodon",
+	9:  "delete",
+	10: "handle",
+	11: "created_at",
+	12: "updated_at",
+	13: "raid_at",
+	14: "server_at",
+	15: "egg_at",
+	16: "luck",
+	17: "luck_at",
+	18: "like",
+	19: "like_rank",
+	20: "like_at",
+	21: "fav",
+	22: "ten",
+	23: "ten_su",
+	24: "ten_kai",
+	25: "aiten",
+	26: "ten_card",
+	27: "ten_delete",
+	28: "ten_post",
+	29: "ten_get",
+	30: "ten_at",
+	31: "next",
+	32: "room",
+	33: "model",
+	34: "model_at",
+	35: "model_attack",
+	36: "model_limit",
+	37: "model_skill",
+	38: "model_mode",
+	39: "model_critical",
+	40: "model_critical_d",
+	41: "game",
+	42: "game_test",
+	43: "game_end",
+	44: "game_account",
+	45: "game_lv",
+}
+
+// Decode decodes UeOwnerRead from json.
+func (s *UeOwnerRead) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode UeOwnerRead to nil")
+	}
+	var requiredBitSet [6]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "id":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Int()
+				s.ID = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"id\"")
+			}
+		case "username":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				v, err := d.Str()
+				s.Username = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"username\"")
+			}
+		case "did":
+			if err := func() error {
+				s.Did.Reset()
+				if err := s.Did.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"did\"")
+			}
+		case "member":
+			if err := func() error {
+				s.Member.Reset()
+				if err := s.Member.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"member\"")
+			}
+		case "book":
+			if err := func() error {
+				s.Book.Reset()
+				if err := s.Book.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"book\"")
+			}
+		case "manga":
+			if err := func() error {
+				s.Manga.Reset()
+				if err := s.Manga.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"manga\"")
+			}
+		case "badge":
+			if err := func() error {
+				s.Badge.Reset()
+				if err := s.Badge.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"badge\"")
+			}
+		case "bsky":
+			if err := func() error {
+				s.Bsky.Reset()
+				if err := s.Bsky.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bsky\"")
+			}
+		case "mastodon":
+			if err := func() error {
+				s.Mastodon.Reset()
+				if err := s.Mastodon.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mastodon\"")
+			}
+		case "delete":
+			if err := func() error {
+				s.Delete.Reset()
+				if err := s.Delete.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"delete\"")
+			}
+		case "handle":
+			if err := func() error {
+				s.Handle.Reset()
+				if err := s.Handle.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"handle\"")
+			}
+		case "created_at":
+			if err := func() error {
+				s.CreatedAt.Reset()
+				if err := s.CreatedAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"created_at\"")
+			}
+		case "updated_at":
+			if err := func() error {
+				s.UpdatedAt.Reset()
+				if err := s.UpdatedAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"updated_at\"")
+			}
+		case "raid_at":
+			if err := func() error {
+				s.RaidAt.Reset()
+				if err := s.RaidAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"raid_at\"")
+			}
+		case "server_at":
+			if err := func() error {
+				s.ServerAt.Reset()
+				if err := s.ServerAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"server_at\"")
+			}
+		case "egg_at":
+			if err := func() error {
+				s.EggAt.Reset()
+				if err := s.EggAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"egg_at\"")
+			}
+		case "luck":
+			if err := func() error {
+				s.Luck.Reset()
+				if err := s.Luck.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck\"")
+			}
+		case "luck_at":
+			if err := func() error {
+				s.LuckAt.Reset()
+				if err := s.LuckAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"luck_at\"")
+			}
+		case "like":
+			if err := func() error {
+				s.Like.Reset()
+				if err := s.Like.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like\"")
+			}
+		case "like_rank":
+			if err := func() error {
+				s.LikeRank.Reset()
+				if err := s.LikeRank.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_rank\"")
+			}
+		case "like_at":
+			if err := func() error {
+				s.LikeAt.Reset()
+				if err := s.LikeAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"like_at\"")
+			}
+		case "fav":
+			if err := func() error {
+				s.Fav.Reset()
+				if err := s.Fav.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"fav\"")
+			}
+		case "ten":
+			if err := func() error {
+				s.Ten.Reset()
+				if err := s.Ten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten\"")
+			}
+		case "ten_su":
+			if err := func() error {
+				s.TenSu.Reset()
+				if err := s.TenSu.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_su\"")
+			}
+		case "ten_kai":
+			if err := func() error {
+				s.TenKai.Reset()
+				if err := s.TenKai.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_kai\"")
+			}
+		case "aiten":
+			if err := func() error {
+				s.Aiten.Reset()
+				if err := s.Aiten.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"aiten\"")
+			}
+		case "ten_card":
+			if err := func() error {
+				s.TenCard.Reset()
+				if err := s.TenCard.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_card\"")
+			}
+		case "ten_delete":
+			if err := func() error {
+				s.TenDelete.Reset()
+				if err := s.TenDelete.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_delete\"")
+			}
+		case "ten_post":
+			if err := func() error {
+				s.TenPost.Reset()
+				if err := s.TenPost.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_post\"")
+			}
+		case "ten_get":
+			if err := func() error {
+				s.TenGet.Reset()
+				if err := s.TenGet.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_get\"")
+			}
+		case "ten_at":
+			if err := func() error {
+				s.TenAt.Reset()
+				if err := s.TenAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ten_at\"")
+			}
+		case "next":
+			if err := func() error {
+				s.Next.Reset()
+				if err := s.Next.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"next\"")
+			}
+		case "room":
+			if err := func() error {
+				s.Room.Reset()
+				if err := s.Room.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"room\"")
+			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "model_at":
+			if err := func() error {
+				s.ModelAt.Reset()
+				if err := s.ModelAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_at\"")
+			}
+		case "model_attack":
+			if err := func() error {
+				s.ModelAttack.Reset()
+				if err := s.ModelAttack.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_attack\"")
+			}
+		case "model_limit":
+			if err := func() error {
+				s.ModelLimit.Reset()
+				if err := s.ModelLimit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_limit\"")
+			}
+		case "model_skill":
+			if err := func() error {
+				s.ModelSkill.Reset()
+				if err := s.ModelSkill.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_skill\"")
+			}
+		case "model_mode":
+			if err := func() error {
+				s.ModelMode.Reset()
+				if err := s.ModelMode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_mode\"")
+			}
+		case "model_critical":
+			if err := func() error {
+				s.ModelCritical.Reset()
+				if err := s.ModelCritical.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical\"")
+			}
+		case "model_critical_d":
+			if err := func() error {
+				s.ModelCriticalD.Reset()
+				if err := s.ModelCriticalD.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model_critical_d\"")
+			}
+		case "game":
+			if err := func() error {
+				s.Game.Reset()
+				if err := s.Game.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game\"")
+			}
+		case "game_test":
+			if err := func() error {
+				s.GameTest.Reset()
+				if err := s.GameTest.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_test\"")
+			}
+		case "game_end":
+			if err := func() error {
+				s.GameEnd.Reset()
+				if err := s.GameEnd.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_end\"")
+			}
+		case "game_account":
+			if err := func() error {
+				s.GameAccount.Reset()
+				if err := s.GameAccount.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_account\"")
+			}
+		case "game_lv":
+			if err := func() error {
+				s.GameLv.Reset()
+				if err := s.GameLv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"game_lv\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode UeOwnerRead")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [6]uint8{
+		0b00000011,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfUeOwnerRead) {
+					name = jsonFieldsNameOfUeOwnerRead[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *UeOwnerRead) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UeOwnerRead) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *UeRead) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *UeRead) encodeFields(e *jx.Encoder) {
+	{
+
+		e.FieldStart("id")
+		e.Int(s.ID)
+	}
+	{
+		if s.Limit.Set {
+			e.FieldStart("limit")
+			s.Limit.Encode(e)
+		}
+	}
+	{
+		if s.LimitBoss.Set {
+			e.FieldStart("limit_boss")
+			s.LimitBoss.Encode(e)
+		}
+	}
+	{
+		if s.LimitItem.Set {
+			e.FieldStart("limit_item")
+			s.LimitItem.Encode(e)
+		}
+	}
+	{
+		if s.Lv.Set {
+			e.FieldStart("lv")
+			s.Lv.Encode(e)
+		}
+	}
+	{
+		if s.LvPoint.Set {
+			e.FieldStart("lv_point")
+			s.LvPoint.Encode(e)
+		}
+	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.Sword.Set {
+			e.FieldStart("sword")
+			s.Sword.Encode(e)
+		}
+	}
+	{
+		if s.Card.Set {
+			e.FieldStart("card")
+			s.Card.Encode(e)
+		}
+	}
+	{
+		if s.Mode.Set {
+			e.FieldStart("mode")
+			s.Mode.Encode(e)
+		}
+	}
+	{
+		if s.Cp.Set {
+			e.FieldStart("cp")
+			s.Cp.Encode(e)
+		}
+	}
+	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.LocationX.Set {
+			e.FieldStart("location_x")
+			s.LocationX.Encode(e)
+		}
+	}
+	{
+		if s.LocationY.Set {
+			e.FieldStart("location_y")
+			s.LocationY.Encode(e)
+		}
+	}
+	{
+		if s.LocationZ.Set {
+			e.FieldStart("location_z")
+			s.LocationZ.Encode(e)
+		}
+	}
+	{
+		if s.LocationN.Set {
+			e.FieldStart("location_n")
+			s.LocationN.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
+		if s.CreatedAt.Set {
+			e.FieldStart("created_at")
+			s.CreatedAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+}
+
+var jsonFieldsNameOfUeRead = [18]string{
+	0:  "id",
+	1:  "limit",
+	2:  "limit_boss",
+	3:  "limit_item",
+	4:  "lv",
+	5:  "lv_point",
+	6:  "model",
+	7:  "sword",
+	8:  "card",
+	9:  "mode",
+	10: "cp",
+	11: "count",
+	12: "location_x",
+	13: "location_y",
+	14: "location_z",
+	15: "location_n",
+	16: "author",
+	17: "created_at",
+}
+
+// Decode decodes UeRead from json.
+func (s *UeRead) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode UeRead to nil")
+	}
+	var requiredBitSet [3]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "id":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Int()
+				s.ID = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"id\"")
+			}
+		case "limit":
+			if err := func() error {
+				s.Limit.Reset()
+				if err := s.Limit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit\"")
+			}
+		case "limit_boss":
+			if err := func() error {
+				s.LimitBoss.Reset()
+				if err := s.LimitBoss.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_boss\"")
+			}
+		case "limit_item":
+			if err := func() error {
+				s.LimitItem.Reset()
+				if err := s.LimitItem.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_item\"")
+			}
+		case "lv":
+			if err := func() error {
+				s.Lv.Reset()
+				if err := s.Lv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv\"")
+			}
+		case "lv_point":
+			if err := func() error {
+				s.LvPoint.Reset()
+				if err := s.LvPoint.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv_point\"")
+			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "sword":
+			if err := func() error {
+				s.Sword.Reset()
+				if err := s.Sword.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"sword\"")
+			}
+		case "card":
+			if err := func() error {
+				s.Card.Reset()
+				if err := s.Card.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "mode":
+			if err := func() error {
+				s.Mode.Reset()
+				if err := s.Mode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mode\"")
+			}
+		case "cp":
+			if err := func() error {
+				s.Cp.Reset()
+				if err := s.Cp.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cp\"")
+			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "location_x":
+			if err := func() error {
+				s.LocationX.Reset()
+				if err := s.LocationX.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_x\"")
+			}
+		case "location_y":
+			if err := func() error {
+				s.LocationY.Reset()
+				if err := s.LocationY.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_y\"")
+			}
+		case "location_z":
+			if err := func() error {
+				s.LocationZ.Reset()
+				if err := s.LocationZ.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_z\"")
+			}
+		case "location_n":
+			if err := func() error {
+				s.LocationN.Reset()
+				if err := s.LocationN.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_n\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
+			}
+		case "created_at":
+			if err := func() error {
+				s.CreatedAt.Reset()
+				if err := s.CreatedAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"created_at\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode UeRead")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [3]uint8{
+		0b00000001,
+		0b00000000,
+		0b00000000,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfUeRead) {
+					name = jsonFieldsNameOfUeRead[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *UeRead) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UeRead) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *UeUpdate) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *UeUpdate) encodeFields(e *jx.Encoder) {
+	{
+
+		e.FieldStart("id")
+		e.Int(s.ID)
+	}
+	{
+		if s.Limit.Set {
+			e.FieldStart("limit")
+			s.Limit.Encode(e)
+		}
+	}
+	{
+		if s.LimitBoss.Set {
+			e.FieldStart("limit_boss")
+			s.LimitBoss.Encode(e)
+		}
+	}
+	{
+		if s.LimitItem.Set {
+			e.FieldStart("limit_item")
+			s.LimitItem.Encode(e)
+		}
+	}
+	{
+		if s.Lv.Set {
+			e.FieldStart("lv")
+			s.Lv.Encode(e)
+		}
+	}
+	{
+		if s.LvPoint.Set {
+			e.FieldStart("lv_point")
+			s.LvPoint.Encode(e)
+		}
+	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.Sword.Set {
+			e.FieldStart("sword")
+			s.Sword.Encode(e)
+		}
+	}
+	{
+		if s.Card.Set {
+			e.FieldStart("card")
+			s.Card.Encode(e)
+		}
+	}
+	{
+		if s.Mode.Set {
+			e.FieldStart("mode")
+			s.Mode.Encode(e)
+		}
+	}
+	{
+		if s.Cp.Set {
+			e.FieldStart("cp")
+			s.Cp.Encode(e)
+		}
+	}
+	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.LocationX.Set {
+			e.FieldStart("location_x")
+			s.LocationX.Encode(e)
+		}
+	}
+	{
+		if s.LocationY.Set {
+			e.FieldStart("location_y")
+			s.LocationY.Encode(e)
+		}
+	}
+	{
+		if s.LocationZ.Set {
+			e.FieldStart("location_z")
+			s.LocationZ.Encode(e)
+		}
+	}
+	{
+		if s.LocationN.Set {
+			e.FieldStart("location_n")
+			s.LocationN.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
+		if s.CreatedAt.Set {
+			e.FieldStart("created_at")
+			s.CreatedAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+}
+
+var jsonFieldsNameOfUeUpdate = [18]string{
+	0:  "id",
+	1:  "limit",
+	2:  "limit_boss",
+	3:  "limit_item",
+	4:  "lv",
+	5:  "lv_point",
+	6:  "model",
+	7:  "sword",
+	8:  "card",
+	9:  "mode",
+	10: "cp",
+	11: "count",
+	12: "location_x",
+	13: "location_y",
+	14: "location_z",
+	15: "location_n",
+	16: "author",
+	17: "created_at",
+}
+
+// Decode decodes UeUpdate from json.
+func (s *UeUpdate) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode UeUpdate to nil")
+	}
+	var requiredBitSet [3]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "id":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Int()
+				s.ID = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"id\"")
+			}
+		case "limit":
+			if err := func() error {
+				s.Limit.Reset()
+				if err := s.Limit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit\"")
+			}
+		case "limit_boss":
+			if err := func() error {
+				s.LimitBoss.Reset()
+				if err := s.LimitBoss.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_boss\"")
+			}
+		case "limit_item":
+			if err := func() error {
+				s.LimitItem.Reset()
+				if err := s.LimitItem.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_item\"")
+			}
+		case "lv":
+			if err := func() error {
+				s.Lv.Reset()
+				if err := s.Lv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv\"")
+			}
+		case "lv_point":
+			if err := func() error {
+				s.LvPoint.Reset()
+				if err := s.LvPoint.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv_point\"")
+			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "sword":
+			if err := func() error {
+				s.Sword.Reset()
+				if err := s.Sword.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"sword\"")
+			}
+		case "card":
+			if err := func() error {
+				s.Card.Reset()
+				if err := s.Card.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "mode":
+			if err := func() error {
+				s.Mode.Reset()
+				if err := s.Mode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mode\"")
+			}
+		case "cp":
+			if err := func() error {
+				s.Cp.Reset()
+				if err := s.Cp.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cp\"")
+			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "location_x":
+			if err := func() error {
+				s.LocationX.Reset()
+				if err := s.LocationX.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_x\"")
+			}
+		case "location_y":
+			if err := func() error {
+				s.LocationY.Reset()
+				if err := s.LocationY.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_y\"")
+			}
+		case "location_z":
+			if err := func() error {
+				s.LocationZ.Reset()
+				if err := s.LocationZ.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_z\"")
+			}
+		case "location_n":
+			if err := func() error {
+				s.LocationN.Reset()
+				if err := s.LocationN.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_n\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
+			}
+		case "created_at":
+			if err := func() error {
+				s.CreatedAt.Reset()
+				if err := s.CreatedAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"created_at\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode UeUpdate")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [3]uint8{
+		0b00000001,
+		0b00000000,
+		0b00000000,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfUeUpdate) {
+					name = jsonFieldsNameOfUeUpdate[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *UeUpdate) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UeUpdate) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
 func (s *UpdateCardReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
@@ -5694,6 +8668,358 @@ func (s *UpdateGroupReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
+func (s *UpdateUeReq) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *UpdateUeReq) encodeFields(e *jx.Encoder) {
+	{
+		if s.Limit.Set {
+			e.FieldStart("limit")
+			s.Limit.Encode(e)
+		}
+	}
+	{
+		if s.LimitBoss.Set {
+			e.FieldStart("limit_boss")
+			s.LimitBoss.Encode(e)
+		}
+	}
+	{
+		if s.LimitItem.Set {
+			e.FieldStart("limit_item")
+			s.LimitItem.Encode(e)
+		}
+	}
+	{
+		if s.Lv.Set {
+			e.FieldStart("lv")
+			s.Lv.Encode(e)
+		}
+	}
+	{
+		if s.LvPoint.Set {
+			e.FieldStart("lv_point")
+			s.LvPoint.Encode(e)
+		}
+	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.Sword.Set {
+			e.FieldStart("sword")
+			s.Sword.Encode(e)
+		}
+	}
+	{
+		if s.Card.Set {
+			e.FieldStart("card")
+			s.Card.Encode(e)
+		}
+	}
+	{
+		if s.Mode.Set {
+			e.FieldStart("mode")
+			s.Mode.Encode(e)
+		}
+	}
+	{
+		if s.Token.Set {
+			e.FieldStart("token")
+			s.Token.Encode(e)
+		}
+	}
+	{
+		if s.Cp.Set {
+			e.FieldStart("cp")
+			s.Cp.Encode(e)
+		}
+	}
+	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.LocationX.Set {
+			e.FieldStart("location_x")
+			s.LocationX.Encode(e)
+		}
+	}
+	{
+		if s.LocationY.Set {
+			e.FieldStart("location_y")
+			s.LocationY.Encode(e)
+		}
+	}
+	{
+		if s.LocationZ.Set {
+			e.FieldStart("location_z")
+			s.LocationZ.Encode(e)
+		}
+	}
+	{
+		if s.LocationN.Set {
+			e.FieldStart("location_n")
+			s.LocationN.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
+		if s.Owner.Set {
+			e.FieldStart("owner")
+			s.Owner.Encode(e)
+		}
+	}
+}
+
+var jsonFieldsNameOfUpdateUeReq = [18]string{
+	0:  "limit",
+	1:  "limit_boss",
+	2:  "limit_item",
+	3:  "lv",
+	4:  "lv_point",
+	5:  "model",
+	6:  "sword",
+	7:  "card",
+	8:  "mode",
+	9:  "token",
+	10: "cp",
+	11: "count",
+	12: "location_x",
+	13: "location_y",
+	14: "location_z",
+	15: "location_n",
+	16: "author",
+	17: "owner",
+}
+
+// Decode decodes UpdateUeReq from json.
+func (s *UpdateUeReq) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode UpdateUeReq to nil")
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "limit":
+			if err := func() error {
+				s.Limit.Reset()
+				if err := s.Limit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit\"")
+			}
+		case "limit_boss":
+			if err := func() error {
+				s.LimitBoss.Reset()
+				if err := s.LimitBoss.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_boss\"")
+			}
+		case "limit_item":
+			if err := func() error {
+				s.LimitItem.Reset()
+				if err := s.LimitItem.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_item\"")
+			}
+		case "lv":
+			if err := func() error {
+				s.Lv.Reset()
+				if err := s.Lv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv\"")
+			}
+		case "lv_point":
+			if err := func() error {
+				s.LvPoint.Reset()
+				if err := s.LvPoint.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv_point\"")
+			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "sword":
+			if err := func() error {
+				s.Sword.Reset()
+				if err := s.Sword.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"sword\"")
+			}
+		case "card":
+			if err := func() error {
+				s.Card.Reset()
+				if err := s.Card.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "mode":
+			if err := func() error {
+				s.Mode.Reset()
+				if err := s.Mode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mode\"")
+			}
+		case "token":
+			if err := func() error {
+				s.Token.Reset()
+				if err := s.Token.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"token\"")
+			}
+		case "cp":
+			if err := func() error {
+				s.Cp.Reset()
+				if err := s.Cp.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cp\"")
+			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "location_x":
+			if err := func() error {
+				s.LocationX.Reset()
+				if err := s.LocationX.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_x\"")
+			}
+		case "location_y":
+			if err := func() error {
+				s.LocationY.Reset()
+				if err := s.LocationY.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_y\"")
+			}
+		case "location_z":
+			if err := func() error {
+				s.LocationZ.Reset()
+				if err := s.LocationZ.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_z\"")
+			}
+		case "location_n":
+			if err := func() error {
+				s.LocationN.Reset()
+				if err := s.LocationN.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_n\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
+			}
+		case "owner":
+			if err := func() error {
+				s.Owner.Reset()
+				if err := s.Owner.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"owner\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode UpdateUeReq")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *UpdateUeReq) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UpdateUeReq) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
 func (s *UpdateUserReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
@@ -5976,9 +9302,19 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
+	{
+		if s.Ue != nil {
+			e.FieldStart("ue")
+			e.ArrStart()
+			for _, elem := range s.Ue {
+				e.Int(elem)
+			}
+			e.ArrEnd()
+		}
+	}
 }
 
-var jsonFieldsNameOfUpdateUserReq = [45]string{
+var jsonFieldsNameOfUpdateUserReq = [46]string{
 	0:  "did",
 	1:  "member",
 	2:  "book",
@@ -6024,6 +9360,7 @@ var jsonFieldsNameOfUpdateUserReq = [45]string{
 	42: "game_account",
 	43: "game_lv",
 	44: "card",
+	45: "ue",
 }
 
 // Decode decodes UpdateUserReq from json.
@@ -6492,6 +9829,25 @@ func (s *UpdateUserReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "ue":
+			if err := func() error {
+				s.Ue = make([]int, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int
+					v, err := d.Int()
+					elem = int(v)
+					if err != nil {
+						return err
+					}
+					s.Ue = append(s.Ue, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ue\"")
 			}
 		default:
 			return d.Skip()
@@ -9351,6 +12707,394 @@ func (s *UserRead) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *UserRead) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *UserUeList) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *UserUeList) encodeFields(e *jx.Encoder) {
+	{
+
+		e.FieldStart("id")
+		e.Int(s.ID)
+	}
+	{
+		if s.Limit.Set {
+			e.FieldStart("limit")
+			s.Limit.Encode(e)
+		}
+	}
+	{
+		if s.LimitBoss.Set {
+			e.FieldStart("limit_boss")
+			s.LimitBoss.Encode(e)
+		}
+	}
+	{
+		if s.LimitItem.Set {
+			e.FieldStart("limit_item")
+			s.LimitItem.Encode(e)
+		}
+	}
+	{
+		if s.Lv.Set {
+			e.FieldStart("lv")
+			s.Lv.Encode(e)
+		}
+	}
+	{
+		if s.LvPoint.Set {
+			e.FieldStart("lv_point")
+			s.LvPoint.Encode(e)
+		}
+	}
+	{
+		if s.Model.Set {
+			e.FieldStart("model")
+			s.Model.Encode(e)
+		}
+	}
+	{
+		if s.Sword.Set {
+			e.FieldStart("sword")
+			s.Sword.Encode(e)
+		}
+	}
+	{
+		if s.Card.Set {
+			e.FieldStart("card")
+			s.Card.Encode(e)
+		}
+	}
+	{
+		if s.Mode.Set {
+			e.FieldStart("mode")
+			s.Mode.Encode(e)
+		}
+	}
+	{
+		if s.Cp.Set {
+			e.FieldStart("cp")
+			s.Cp.Encode(e)
+		}
+	}
+	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+	{
+		if s.LocationX.Set {
+			e.FieldStart("location_x")
+			s.LocationX.Encode(e)
+		}
+	}
+	{
+		if s.LocationY.Set {
+			e.FieldStart("location_y")
+			s.LocationY.Encode(e)
+		}
+	}
+	{
+		if s.LocationZ.Set {
+			e.FieldStart("location_z")
+			s.LocationZ.Encode(e)
+		}
+	}
+	{
+		if s.LocationN.Set {
+			e.FieldStart("location_n")
+			s.LocationN.Encode(e)
+		}
+	}
+	{
+		if s.Author.Set {
+			e.FieldStart("author")
+			s.Author.Encode(e)
+		}
+	}
+	{
+		if s.CreatedAt.Set {
+			e.FieldStart("created_at")
+			s.CreatedAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+}
+
+var jsonFieldsNameOfUserUeList = [18]string{
+	0:  "id",
+	1:  "limit",
+	2:  "limit_boss",
+	3:  "limit_item",
+	4:  "lv",
+	5:  "lv_point",
+	6:  "model",
+	7:  "sword",
+	8:  "card",
+	9:  "mode",
+	10: "cp",
+	11: "count",
+	12: "location_x",
+	13: "location_y",
+	14: "location_z",
+	15: "location_n",
+	16: "author",
+	17: "created_at",
+}
+
+// Decode decodes UserUeList from json.
+func (s *UserUeList) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode UserUeList to nil")
+	}
+	var requiredBitSet [3]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "id":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Int()
+				s.ID = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"id\"")
+			}
+		case "limit":
+			if err := func() error {
+				s.Limit.Reset()
+				if err := s.Limit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit\"")
+			}
+		case "limit_boss":
+			if err := func() error {
+				s.LimitBoss.Reset()
+				if err := s.LimitBoss.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_boss\"")
+			}
+		case "limit_item":
+			if err := func() error {
+				s.LimitItem.Reset()
+				if err := s.LimitItem.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"limit_item\"")
+			}
+		case "lv":
+			if err := func() error {
+				s.Lv.Reset()
+				if err := s.Lv.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv\"")
+			}
+		case "lv_point":
+			if err := func() error {
+				s.LvPoint.Reset()
+				if err := s.LvPoint.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lv_point\"")
+			}
+		case "model":
+			if err := func() error {
+				s.Model.Reset()
+				if err := s.Model.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"model\"")
+			}
+		case "sword":
+			if err := func() error {
+				s.Sword.Reset()
+				if err := s.Sword.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"sword\"")
+			}
+		case "card":
+			if err := func() error {
+				s.Card.Reset()
+				if err := s.Card.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"card\"")
+			}
+		case "mode":
+			if err := func() error {
+				s.Mode.Reset()
+				if err := s.Mode.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mode\"")
+			}
+		case "cp":
+			if err := func() error {
+				s.Cp.Reset()
+				if err := s.Cp.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cp\"")
+			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		case "location_x":
+			if err := func() error {
+				s.LocationX.Reset()
+				if err := s.LocationX.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_x\"")
+			}
+		case "location_y":
+			if err := func() error {
+				s.LocationY.Reset()
+				if err := s.LocationY.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_y\"")
+			}
+		case "location_z":
+			if err := func() error {
+				s.LocationZ.Reset()
+				if err := s.LocationZ.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_z\"")
+			}
+		case "location_n":
+			if err := func() error {
+				s.LocationN.Reset()
+				if err := s.LocationN.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"location_n\"")
+			}
+		case "author":
+			if err := func() error {
+				s.Author.Reset()
+				if err := s.Author.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"author\"")
+			}
+		case "created_at":
+			if err := func() error {
+				s.CreatedAt.Reset()
+				if err := s.CreatedAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"created_at\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode UserUeList")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [3]uint8{
+		0b00000001,
+		0b00000000,
+		0b00000000,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfUserUeList) {
+					name = jsonFieldsNameOfUserUeList[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *UserUeList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UserUeList) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

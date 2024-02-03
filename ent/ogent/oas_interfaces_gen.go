@@ -9,6 +9,10 @@ type CreateGroupRes interface {
 	createGroupRes()
 }
 
+type CreateUeRes interface {
+	createUeRes()
+}
+
 type CreateUserRes interface {
 	createUserRes()
 }
@@ -19,6 +23,10 @@ type DeleteCardRes interface {
 
 type DeleteGroupRes interface {
 	deleteGroupRes()
+}
+
+type DeleteUeRes interface {
+	deleteUeRes()
 }
 
 type DeleteUserRes interface {
@@ -37,12 +45,20 @@ type ListGroupUsersRes interface {
 	listGroupUsersRes()
 }
 
+type ListUeRes interface {
+	listUeRes()
+}
+
 type ListUserCardRes interface {
 	listUserCardRes()
 }
 
 type ListUserRes interface {
 	listUserRes()
+}
+
+type ListUserUeRes interface {
+	listUserUeRes()
 }
 
 type ReadCardOwnerRes interface {
@@ -57,6 +73,14 @@ type ReadGroupRes interface {
 	readGroupRes()
 }
 
+type ReadUeOwnerRes interface {
+	readUeOwnerRes()
+}
+
+type ReadUeRes interface {
+	readUeRes()
+}
+
 type ReadUserRes interface {
 	readUserRes()
 }
@@ -67,6 +91,10 @@ type UpdateCardRes interface {
 
 type UpdateGroupRes interface {
 	updateGroupRes()
+}
+
+type UpdateUeRes interface {
+	updateUeRes()
 }
 
 type UpdateUserRes interface {

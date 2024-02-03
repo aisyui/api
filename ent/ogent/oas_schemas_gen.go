@@ -1098,6 +1098,229 @@ func (s *CreateGroupReq) SetUsers(val []int) {
 	s.Users = val
 }
 
+type CreateUeReq struct {
+	Limit     OptBool     `json:"limit"`
+	LimitBoss OptBool     `json:"limit_boss"`
+	LimitItem OptBool     `json:"limit_item"`
+	Password  string      `json:"password"`
+	Lv        OptInt      `json:"lv"`
+	LvPoint   OptInt      `json:"lv_point"`
+	Model     OptInt      `json:"model"`
+	Sword     OptInt      `json:"sword"`
+	Card      OptInt      `json:"card"`
+	Mode      OptString   `json:"mode"`
+	Token     OptString   `json:"token"`
+	Cp        OptInt      `json:"cp"`
+	Count     OptInt      `json:"count"`
+	LocationX OptInt      `json:"location_x"`
+	LocationY OptInt      `json:"location_y"`
+	LocationZ OptInt      `json:"location_z"`
+	LocationN OptInt      `json:"location_n"`
+	Author    OptString   `json:"author"`
+	CreatedAt OptDateTime `json:"created_at"`
+	Owner     int         `json:"owner"`
+}
+
+// GetLimit returns the value of Limit.
+func (s *CreateUeReq) GetLimit() OptBool {
+	return s.Limit
+}
+
+// GetLimitBoss returns the value of LimitBoss.
+func (s *CreateUeReq) GetLimitBoss() OptBool {
+	return s.LimitBoss
+}
+
+// GetLimitItem returns the value of LimitItem.
+func (s *CreateUeReq) GetLimitItem() OptBool {
+	return s.LimitItem
+}
+
+// GetPassword returns the value of Password.
+func (s *CreateUeReq) GetPassword() string {
+	return s.Password
+}
+
+// GetLv returns the value of Lv.
+func (s *CreateUeReq) GetLv() OptInt {
+	return s.Lv
+}
+
+// GetLvPoint returns the value of LvPoint.
+func (s *CreateUeReq) GetLvPoint() OptInt {
+	return s.LvPoint
+}
+
+// GetModel returns the value of Model.
+func (s *CreateUeReq) GetModel() OptInt {
+	return s.Model
+}
+
+// GetSword returns the value of Sword.
+func (s *CreateUeReq) GetSword() OptInt {
+	return s.Sword
+}
+
+// GetCard returns the value of Card.
+func (s *CreateUeReq) GetCard() OptInt {
+	return s.Card
+}
+
+// GetMode returns the value of Mode.
+func (s *CreateUeReq) GetMode() OptString {
+	return s.Mode
+}
+
+// GetToken returns the value of Token.
+func (s *CreateUeReq) GetToken() OptString {
+	return s.Token
+}
+
+// GetCp returns the value of Cp.
+func (s *CreateUeReq) GetCp() OptInt {
+	return s.Cp
+}
+
+// GetCount returns the value of Count.
+func (s *CreateUeReq) GetCount() OptInt {
+	return s.Count
+}
+
+// GetLocationX returns the value of LocationX.
+func (s *CreateUeReq) GetLocationX() OptInt {
+	return s.LocationX
+}
+
+// GetLocationY returns the value of LocationY.
+func (s *CreateUeReq) GetLocationY() OptInt {
+	return s.LocationY
+}
+
+// GetLocationZ returns the value of LocationZ.
+func (s *CreateUeReq) GetLocationZ() OptInt {
+	return s.LocationZ
+}
+
+// GetLocationN returns the value of LocationN.
+func (s *CreateUeReq) GetLocationN() OptInt {
+	return s.LocationN
+}
+
+// GetAuthor returns the value of Author.
+func (s *CreateUeReq) GetAuthor() OptString {
+	return s.Author
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *CreateUeReq) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// GetOwner returns the value of Owner.
+func (s *CreateUeReq) GetOwner() int {
+	return s.Owner
+}
+
+// SetLimit sets the value of Limit.
+func (s *CreateUeReq) SetLimit(val OptBool) {
+	s.Limit = val
+}
+
+// SetLimitBoss sets the value of LimitBoss.
+func (s *CreateUeReq) SetLimitBoss(val OptBool) {
+	s.LimitBoss = val
+}
+
+// SetLimitItem sets the value of LimitItem.
+func (s *CreateUeReq) SetLimitItem(val OptBool) {
+	s.LimitItem = val
+}
+
+// SetPassword sets the value of Password.
+func (s *CreateUeReq) SetPassword(val string) {
+	s.Password = val
+}
+
+// SetLv sets the value of Lv.
+func (s *CreateUeReq) SetLv(val OptInt) {
+	s.Lv = val
+}
+
+// SetLvPoint sets the value of LvPoint.
+func (s *CreateUeReq) SetLvPoint(val OptInt) {
+	s.LvPoint = val
+}
+
+// SetModel sets the value of Model.
+func (s *CreateUeReq) SetModel(val OptInt) {
+	s.Model = val
+}
+
+// SetSword sets the value of Sword.
+func (s *CreateUeReq) SetSword(val OptInt) {
+	s.Sword = val
+}
+
+// SetCard sets the value of Card.
+func (s *CreateUeReq) SetCard(val OptInt) {
+	s.Card = val
+}
+
+// SetMode sets the value of Mode.
+func (s *CreateUeReq) SetMode(val OptString) {
+	s.Mode = val
+}
+
+// SetToken sets the value of Token.
+func (s *CreateUeReq) SetToken(val OptString) {
+	s.Token = val
+}
+
+// SetCp sets the value of Cp.
+func (s *CreateUeReq) SetCp(val OptInt) {
+	s.Cp = val
+}
+
+// SetCount sets the value of Count.
+func (s *CreateUeReq) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetLocationX sets the value of LocationX.
+func (s *CreateUeReq) SetLocationX(val OptInt) {
+	s.LocationX = val
+}
+
+// SetLocationY sets the value of LocationY.
+func (s *CreateUeReq) SetLocationY(val OptInt) {
+	s.LocationY = val
+}
+
+// SetLocationZ sets the value of LocationZ.
+func (s *CreateUeReq) SetLocationZ(val OptInt) {
+	s.LocationZ = val
+}
+
+// SetLocationN sets the value of LocationN.
+func (s *CreateUeReq) SetLocationN(val OptInt) {
+	s.LocationN = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *CreateUeReq) SetAuthor(val OptString) {
+	s.Author = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *CreateUeReq) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+// SetOwner sets the value of Owner.
+func (s *CreateUeReq) SetOwner(val int) {
+	s.Owner = val
+}
+
 type CreateUserReq struct {
 	Username       string      `json:"username"`
 	Did            OptString   `json:"did"`
@@ -1147,6 +1370,7 @@ type CreateUserReq struct {
 	GameAccount    OptBool     `json:"game_account"`
 	GameLv         OptInt      `json:"game_lv"`
 	Card           []int       `json:"card"`
+	Ue             []int       `json:"ue"`
 }
 
 // GetUsername returns the value of Username.
@@ -1389,6 +1613,11 @@ func (s *CreateUserReq) GetCard() []int {
 	return s.Card
 }
 
+// GetUe returns the value of Ue.
+func (s *CreateUserReq) GetUe() []int {
+	return s.Ue
+}
+
 // SetUsername sets the value of Username.
 func (s *CreateUserReq) SetUsername(val string) {
 	s.Username = val
@@ -1629,6 +1858,11 @@ func (s *CreateUserReq) SetCard(val []int) {
 	s.Card = val
 }
 
+// SetUe sets the value of Ue.
+func (s *CreateUserReq) SetUe(val []int) {
+	s.Ue = val
+}
+
 // DeleteCardNoContent is response for DeleteCard operation.
 type DeleteCardNoContent struct{}
 
@@ -1638,6 +1872,11 @@ func (*DeleteCardNoContent) deleteCardRes() {}
 type DeleteGroupNoContent struct{}
 
 func (*DeleteGroupNoContent) deleteGroupRes() {}
+
+// DeleteUeNoContent is response for DeleteUe operation.
+type DeleteUeNoContent struct{}
+
+func (*DeleteUeNoContent) deleteUeRes() {}
 
 // DeleteUserNoContent is response for DeleteUser operation.
 type DeleteUserNoContent struct{}
@@ -2282,6 +2521,10 @@ type ListGroupUsersOKApplicationJSON []GroupUsersList
 
 func (*ListGroupUsersOKApplicationJSON) listGroupUsersRes() {}
 
+type ListUeOKApplicationJSON []UeList
+
+func (*ListUeOKApplicationJSON) listUeRes() {}
+
 type ListUserCardOKApplicationJSON []UserCardList
 
 func (*ListUserCardOKApplicationJSON) listUserCardRes() {}
@@ -2289,6 +2532,10 @@ func (*ListUserCardOKApplicationJSON) listUserCardRes() {}
 type ListUserOKApplicationJSON []UserList
 
 func (*ListUserOKApplicationJSON) listUserRes() {}
+
+type ListUserUeOKApplicationJSON []UserUeList
+
+func (*ListUserUeOKApplicationJSON) listUserUeRes() {}
 
 // NewOptBool returns new OptBool with value set to v.
 func NewOptBool(v bool) OptBool {
@@ -2512,21 +2759,28 @@ func (s *R400) SetErrors(val jx.Raw) {
 
 func (*R400) createCardRes()     {}
 func (*R400) createGroupRes()    {}
+func (*R400) createUeRes()       {}
 func (*R400) createUserRes()     {}
 func (*R400) deleteCardRes()     {}
 func (*R400) deleteGroupRes()    {}
+func (*R400) deleteUeRes()       {}
 func (*R400) deleteUserRes()     {}
 func (*R400) listCardRes()       {}
 func (*R400) listGroupRes()      {}
 func (*R400) listGroupUsersRes() {}
+func (*R400) listUeRes()         {}
 func (*R400) listUserCardRes()   {}
 func (*R400) listUserRes()       {}
+func (*R400) listUserUeRes()     {}
 func (*R400) readCardOwnerRes()  {}
 func (*R400) readCardRes()       {}
 func (*R400) readGroupRes()      {}
+func (*R400) readUeOwnerRes()    {}
+func (*R400) readUeRes()         {}
 func (*R400) readUserRes()       {}
 func (*R400) updateCardRes()     {}
 func (*R400) updateGroupRes()    {}
+func (*R400) updateUeRes()       {}
 func (*R400) updateUserRes()     {}
 
 type R404 struct {
@@ -2567,18 +2821,24 @@ func (s *R404) SetErrors(val jx.Raw) {
 
 func (*R404) deleteCardRes()     {}
 func (*R404) deleteGroupRes()    {}
+func (*R404) deleteUeRes()       {}
 func (*R404) deleteUserRes()     {}
 func (*R404) listCardRes()       {}
 func (*R404) listGroupRes()      {}
 func (*R404) listGroupUsersRes() {}
+func (*R404) listUeRes()         {}
 func (*R404) listUserCardRes()   {}
 func (*R404) listUserRes()       {}
+func (*R404) listUserUeRes()     {}
 func (*R404) readCardOwnerRes()  {}
 func (*R404) readCardRes()       {}
 func (*R404) readGroupRes()      {}
+func (*R404) readUeOwnerRes()    {}
+func (*R404) readUeRes()         {}
 func (*R404) readUserRes()       {}
 func (*R404) updateCardRes()     {}
 func (*R404) updateGroupRes()    {}
+func (*R404) updateUeRes()       {}
 func (*R404) updateUserRes()     {}
 
 type R409 struct {
@@ -2619,21 +2879,28 @@ func (s *R409) SetErrors(val jx.Raw) {
 
 func (*R409) createCardRes()     {}
 func (*R409) createGroupRes()    {}
+func (*R409) createUeRes()       {}
 func (*R409) createUserRes()     {}
 func (*R409) deleteCardRes()     {}
 func (*R409) deleteGroupRes()    {}
+func (*R409) deleteUeRes()       {}
 func (*R409) deleteUserRes()     {}
 func (*R409) listCardRes()       {}
 func (*R409) listGroupRes()      {}
 func (*R409) listGroupUsersRes() {}
+func (*R409) listUeRes()         {}
 func (*R409) listUserCardRes()   {}
 func (*R409) listUserRes()       {}
+func (*R409) listUserUeRes()     {}
 func (*R409) readCardOwnerRes()  {}
 func (*R409) readCardRes()       {}
 func (*R409) readGroupRes()      {}
+func (*R409) readUeOwnerRes()    {}
+func (*R409) readUeRes()         {}
 func (*R409) readUserRes()       {}
 func (*R409) updateCardRes()     {}
 func (*R409) updateGroupRes()    {}
+func (*R409) updateUeRes()       {}
 func (*R409) updateUserRes()     {}
 
 type R500 struct {
@@ -2674,22 +2941,1355 @@ func (s *R500) SetErrors(val jx.Raw) {
 
 func (*R500) createCardRes()     {}
 func (*R500) createGroupRes()    {}
+func (*R500) createUeRes()       {}
 func (*R500) createUserRes()     {}
 func (*R500) deleteCardRes()     {}
 func (*R500) deleteGroupRes()    {}
+func (*R500) deleteUeRes()       {}
 func (*R500) deleteUserRes()     {}
 func (*R500) listCardRes()       {}
 func (*R500) listGroupRes()      {}
 func (*R500) listGroupUsersRes() {}
+func (*R500) listUeRes()         {}
 func (*R500) listUserCardRes()   {}
 func (*R500) listUserRes()       {}
+func (*R500) listUserUeRes()     {}
 func (*R500) readCardOwnerRes()  {}
 func (*R500) readCardRes()       {}
 func (*R500) readGroupRes()      {}
+func (*R500) readUeOwnerRes()    {}
+func (*R500) readUeRes()         {}
 func (*R500) readUserRes()       {}
 func (*R500) updateCardRes()     {}
 func (*R500) updateGroupRes()    {}
+func (*R500) updateUeRes()       {}
 func (*R500) updateUserRes()     {}
+
+// Ref: #/components/schemas/UeCreate
+type UeCreate struct {
+	ID        int         `json:"id"`
+	Limit     OptBool     `json:"limit"`
+	LimitBoss OptBool     `json:"limit_boss"`
+	LimitItem OptBool     `json:"limit_item"`
+	Lv        OptInt      `json:"lv"`
+	LvPoint   OptInt      `json:"lv_point"`
+	Model     OptInt      `json:"model"`
+	Sword     OptInt      `json:"sword"`
+	Card      OptInt      `json:"card"`
+	Mode      OptString   `json:"mode"`
+	Cp        OptInt      `json:"cp"`
+	Count     OptInt      `json:"count"`
+	LocationX OptInt      `json:"location_x"`
+	LocationY OptInt      `json:"location_y"`
+	LocationZ OptInt      `json:"location_z"`
+	LocationN OptInt      `json:"location_n"`
+	Author    OptString   `json:"author"`
+	CreatedAt OptDateTime `json:"created_at"`
+}
+
+// GetID returns the value of ID.
+func (s *UeCreate) GetID() int {
+	return s.ID
+}
+
+// GetLimit returns the value of Limit.
+func (s *UeCreate) GetLimit() OptBool {
+	return s.Limit
+}
+
+// GetLimitBoss returns the value of LimitBoss.
+func (s *UeCreate) GetLimitBoss() OptBool {
+	return s.LimitBoss
+}
+
+// GetLimitItem returns the value of LimitItem.
+func (s *UeCreate) GetLimitItem() OptBool {
+	return s.LimitItem
+}
+
+// GetLv returns the value of Lv.
+func (s *UeCreate) GetLv() OptInt {
+	return s.Lv
+}
+
+// GetLvPoint returns the value of LvPoint.
+func (s *UeCreate) GetLvPoint() OptInt {
+	return s.LvPoint
+}
+
+// GetModel returns the value of Model.
+func (s *UeCreate) GetModel() OptInt {
+	return s.Model
+}
+
+// GetSword returns the value of Sword.
+func (s *UeCreate) GetSword() OptInt {
+	return s.Sword
+}
+
+// GetCard returns the value of Card.
+func (s *UeCreate) GetCard() OptInt {
+	return s.Card
+}
+
+// GetMode returns the value of Mode.
+func (s *UeCreate) GetMode() OptString {
+	return s.Mode
+}
+
+// GetCp returns the value of Cp.
+func (s *UeCreate) GetCp() OptInt {
+	return s.Cp
+}
+
+// GetCount returns the value of Count.
+func (s *UeCreate) GetCount() OptInt {
+	return s.Count
+}
+
+// GetLocationX returns the value of LocationX.
+func (s *UeCreate) GetLocationX() OptInt {
+	return s.LocationX
+}
+
+// GetLocationY returns the value of LocationY.
+func (s *UeCreate) GetLocationY() OptInt {
+	return s.LocationY
+}
+
+// GetLocationZ returns the value of LocationZ.
+func (s *UeCreate) GetLocationZ() OptInt {
+	return s.LocationZ
+}
+
+// GetLocationN returns the value of LocationN.
+func (s *UeCreate) GetLocationN() OptInt {
+	return s.LocationN
+}
+
+// GetAuthor returns the value of Author.
+func (s *UeCreate) GetAuthor() OptString {
+	return s.Author
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *UeCreate) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// SetID sets the value of ID.
+func (s *UeCreate) SetID(val int) {
+	s.ID = val
+}
+
+// SetLimit sets the value of Limit.
+func (s *UeCreate) SetLimit(val OptBool) {
+	s.Limit = val
+}
+
+// SetLimitBoss sets the value of LimitBoss.
+func (s *UeCreate) SetLimitBoss(val OptBool) {
+	s.LimitBoss = val
+}
+
+// SetLimitItem sets the value of LimitItem.
+func (s *UeCreate) SetLimitItem(val OptBool) {
+	s.LimitItem = val
+}
+
+// SetLv sets the value of Lv.
+func (s *UeCreate) SetLv(val OptInt) {
+	s.Lv = val
+}
+
+// SetLvPoint sets the value of LvPoint.
+func (s *UeCreate) SetLvPoint(val OptInt) {
+	s.LvPoint = val
+}
+
+// SetModel sets the value of Model.
+func (s *UeCreate) SetModel(val OptInt) {
+	s.Model = val
+}
+
+// SetSword sets the value of Sword.
+func (s *UeCreate) SetSword(val OptInt) {
+	s.Sword = val
+}
+
+// SetCard sets the value of Card.
+func (s *UeCreate) SetCard(val OptInt) {
+	s.Card = val
+}
+
+// SetMode sets the value of Mode.
+func (s *UeCreate) SetMode(val OptString) {
+	s.Mode = val
+}
+
+// SetCp sets the value of Cp.
+func (s *UeCreate) SetCp(val OptInt) {
+	s.Cp = val
+}
+
+// SetCount sets the value of Count.
+func (s *UeCreate) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetLocationX sets the value of LocationX.
+func (s *UeCreate) SetLocationX(val OptInt) {
+	s.LocationX = val
+}
+
+// SetLocationY sets the value of LocationY.
+func (s *UeCreate) SetLocationY(val OptInt) {
+	s.LocationY = val
+}
+
+// SetLocationZ sets the value of LocationZ.
+func (s *UeCreate) SetLocationZ(val OptInt) {
+	s.LocationZ = val
+}
+
+// SetLocationN sets the value of LocationN.
+func (s *UeCreate) SetLocationN(val OptInt) {
+	s.LocationN = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *UeCreate) SetAuthor(val OptString) {
+	s.Author = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *UeCreate) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+func (*UeCreate) createUeRes() {}
+
+// Ref: #/components/schemas/UeList
+type UeList struct {
+	ID        int         `json:"id"`
+	Limit     OptBool     `json:"limit"`
+	LimitBoss OptBool     `json:"limit_boss"`
+	LimitItem OptBool     `json:"limit_item"`
+	Lv        OptInt      `json:"lv"`
+	LvPoint   OptInt      `json:"lv_point"`
+	Model     OptInt      `json:"model"`
+	Sword     OptInt      `json:"sword"`
+	Card      OptInt      `json:"card"`
+	Mode      OptString   `json:"mode"`
+	Cp        OptInt      `json:"cp"`
+	Count     OptInt      `json:"count"`
+	LocationX OptInt      `json:"location_x"`
+	LocationY OptInt      `json:"location_y"`
+	LocationZ OptInt      `json:"location_z"`
+	LocationN OptInt      `json:"location_n"`
+	Author    OptString   `json:"author"`
+	CreatedAt OptDateTime `json:"created_at"`
+}
+
+// GetID returns the value of ID.
+func (s *UeList) GetID() int {
+	return s.ID
+}
+
+// GetLimit returns the value of Limit.
+func (s *UeList) GetLimit() OptBool {
+	return s.Limit
+}
+
+// GetLimitBoss returns the value of LimitBoss.
+func (s *UeList) GetLimitBoss() OptBool {
+	return s.LimitBoss
+}
+
+// GetLimitItem returns the value of LimitItem.
+func (s *UeList) GetLimitItem() OptBool {
+	return s.LimitItem
+}
+
+// GetLv returns the value of Lv.
+func (s *UeList) GetLv() OptInt {
+	return s.Lv
+}
+
+// GetLvPoint returns the value of LvPoint.
+func (s *UeList) GetLvPoint() OptInt {
+	return s.LvPoint
+}
+
+// GetModel returns the value of Model.
+func (s *UeList) GetModel() OptInt {
+	return s.Model
+}
+
+// GetSword returns the value of Sword.
+func (s *UeList) GetSword() OptInt {
+	return s.Sword
+}
+
+// GetCard returns the value of Card.
+func (s *UeList) GetCard() OptInt {
+	return s.Card
+}
+
+// GetMode returns the value of Mode.
+func (s *UeList) GetMode() OptString {
+	return s.Mode
+}
+
+// GetCp returns the value of Cp.
+func (s *UeList) GetCp() OptInt {
+	return s.Cp
+}
+
+// GetCount returns the value of Count.
+func (s *UeList) GetCount() OptInt {
+	return s.Count
+}
+
+// GetLocationX returns the value of LocationX.
+func (s *UeList) GetLocationX() OptInt {
+	return s.LocationX
+}
+
+// GetLocationY returns the value of LocationY.
+func (s *UeList) GetLocationY() OptInt {
+	return s.LocationY
+}
+
+// GetLocationZ returns the value of LocationZ.
+func (s *UeList) GetLocationZ() OptInt {
+	return s.LocationZ
+}
+
+// GetLocationN returns the value of LocationN.
+func (s *UeList) GetLocationN() OptInt {
+	return s.LocationN
+}
+
+// GetAuthor returns the value of Author.
+func (s *UeList) GetAuthor() OptString {
+	return s.Author
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *UeList) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// SetID sets the value of ID.
+func (s *UeList) SetID(val int) {
+	s.ID = val
+}
+
+// SetLimit sets the value of Limit.
+func (s *UeList) SetLimit(val OptBool) {
+	s.Limit = val
+}
+
+// SetLimitBoss sets the value of LimitBoss.
+func (s *UeList) SetLimitBoss(val OptBool) {
+	s.LimitBoss = val
+}
+
+// SetLimitItem sets the value of LimitItem.
+func (s *UeList) SetLimitItem(val OptBool) {
+	s.LimitItem = val
+}
+
+// SetLv sets the value of Lv.
+func (s *UeList) SetLv(val OptInt) {
+	s.Lv = val
+}
+
+// SetLvPoint sets the value of LvPoint.
+func (s *UeList) SetLvPoint(val OptInt) {
+	s.LvPoint = val
+}
+
+// SetModel sets the value of Model.
+func (s *UeList) SetModel(val OptInt) {
+	s.Model = val
+}
+
+// SetSword sets the value of Sword.
+func (s *UeList) SetSword(val OptInt) {
+	s.Sword = val
+}
+
+// SetCard sets the value of Card.
+func (s *UeList) SetCard(val OptInt) {
+	s.Card = val
+}
+
+// SetMode sets the value of Mode.
+func (s *UeList) SetMode(val OptString) {
+	s.Mode = val
+}
+
+// SetCp sets the value of Cp.
+func (s *UeList) SetCp(val OptInt) {
+	s.Cp = val
+}
+
+// SetCount sets the value of Count.
+func (s *UeList) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetLocationX sets the value of LocationX.
+func (s *UeList) SetLocationX(val OptInt) {
+	s.LocationX = val
+}
+
+// SetLocationY sets the value of LocationY.
+func (s *UeList) SetLocationY(val OptInt) {
+	s.LocationY = val
+}
+
+// SetLocationZ sets the value of LocationZ.
+func (s *UeList) SetLocationZ(val OptInt) {
+	s.LocationZ = val
+}
+
+// SetLocationN sets the value of LocationN.
+func (s *UeList) SetLocationN(val OptInt) {
+	s.LocationN = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *UeList) SetAuthor(val OptString) {
+	s.Author = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *UeList) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+// Ref: #/components/schemas/Ue_OwnerRead
+type UeOwnerRead struct {
+	ID             int         `json:"id"`
+	Username       string      `json:"username"`
+	Did            OptString   `json:"did"`
+	Member         OptBool     `json:"member"`
+	Book           OptBool     `json:"book"`
+	Manga          OptBool     `json:"manga"`
+	Badge          OptBool     `json:"badge"`
+	Bsky           OptBool     `json:"bsky"`
+	Mastodon       OptBool     `json:"mastodon"`
+	Delete         OptBool     `json:"delete"`
+	Handle         OptBool     `json:"handle"`
+	CreatedAt      OptDateTime `json:"created_at"`
+	UpdatedAt      OptDateTime `json:"updated_at"`
+	RaidAt         OptDateTime `json:"raid_at"`
+	ServerAt       OptDateTime `json:"server_at"`
+	EggAt          OptDateTime `json:"egg_at"`
+	Luck           OptInt      `json:"luck"`
+	LuckAt         OptDateTime `json:"luck_at"`
+	Like           OptInt      `json:"like"`
+	LikeRank       OptInt      `json:"like_rank"`
+	LikeAt         OptDateTime `json:"like_at"`
+	Fav            OptInt      `json:"fav"`
+	Ten            OptBool     `json:"ten"`
+	TenSu          OptInt      `json:"ten_su"`
+	TenKai         OptInt      `json:"ten_kai"`
+	Aiten          OptInt      `json:"aiten"`
+	TenCard        OptString   `json:"ten_card"`
+	TenDelete      OptString   `json:"ten_delete"`
+	TenPost        OptString   `json:"ten_post"`
+	TenGet         OptString   `json:"ten_get"`
+	TenAt          OptDateTime `json:"ten_at"`
+	Next           OptString   `json:"next"`
+	Room           OptInt      `json:"room"`
+	Model          OptBool     `json:"model"`
+	ModelAt        OptDateTime `json:"model_at"`
+	ModelAttack    OptInt      `json:"model_attack"`
+	ModelLimit     OptInt      `json:"model_limit"`
+	ModelSkill     OptInt      `json:"model_skill"`
+	ModelMode      OptInt      `json:"model_mode"`
+	ModelCritical  OptInt      `json:"model_critical"`
+	ModelCriticalD OptInt      `json:"model_critical_d"`
+	Game           OptBool     `json:"game"`
+	GameTest       OptBool     `json:"game_test"`
+	GameEnd        OptBool     `json:"game_end"`
+	GameAccount    OptBool     `json:"game_account"`
+	GameLv         OptInt      `json:"game_lv"`
+}
+
+// GetID returns the value of ID.
+func (s *UeOwnerRead) GetID() int {
+	return s.ID
+}
+
+// GetUsername returns the value of Username.
+func (s *UeOwnerRead) GetUsername() string {
+	return s.Username
+}
+
+// GetDid returns the value of Did.
+func (s *UeOwnerRead) GetDid() OptString {
+	return s.Did
+}
+
+// GetMember returns the value of Member.
+func (s *UeOwnerRead) GetMember() OptBool {
+	return s.Member
+}
+
+// GetBook returns the value of Book.
+func (s *UeOwnerRead) GetBook() OptBool {
+	return s.Book
+}
+
+// GetManga returns the value of Manga.
+func (s *UeOwnerRead) GetManga() OptBool {
+	return s.Manga
+}
+
+// GetBadge returns the value of Badge.
+func (s *UeOwnerRead) GetBadge() OptBool {
+	return s.Badge
+}
+
+// GetBsky returns the value of Bsky.
+func (s *UeOwnerRead) GetBsky() OptBool {
+	return s.Bsky
+}
+
+// GetMastodon returns the value of Mastodon.
+func (s *UeOwnerRead) GetMastodon() OptBool {
+	return s.Mastodon
+}
+
+// GetDelete returns the value of Delete.
+func (s *UeOwnerRead) GetDelete() OptBool {
+	return s.Delete
+}
+
+// GetHandle returns the value of Handle.
+func (s *UeOwnerRead) GetHandle() OptBool {
+	return s.Handle
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *UeOwnerRead) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// GetUpdatedAt returns the value of UpdatedAt.
+func (s *UeOwnerRead) GetUpdatedAt() OptDateTime {
+	return s.UpdatedAt
+}
+
+// GetRaidAt returns the value of RaidAt.
+func (s *UeOwnerRead) GetRaidAt() OptDateTime {
+	return s.RaidAt
+}
+
+// GetServerAt returns the value of ServerAt.
+func (s *UeOwnerRead) GetServerAt() OptDateTime {
+	return s.ServerAt
+}
+
+// GetEggAt returns the value of EggAt.
+func (s *UeOwnerRead) GetEggAt() OptDateTime {
+	return s.EggAt
+}
+
+// GetLuck returns the value of Luck.
+func (s *UeOwnerRead) GetLuck() OptInt {
+	return s.Luck
+}
+
+// GetLuckAt returns the value of LuckAt.
+func (s *UeOwnerRead) GetLuckAt() OptDateTime {
+	return s.LuckAt
+}
+
+// GetLike returns the value of Like.
+func (s *UeOwnerRead) GetLike() OptInt {
+	return s.Like
+}
+
+// GetLikeRank returns the value of LikeRank.
+func (s *UeOwnerRead) GetLikeRank() OptInt {
+	return s.LikeRank
+}
+
+// GetLikeAt returns the value of LikeAt.
+func (s *UeOwnerRead) GetLikeAt() OptDateTime {
+	return s.LikeAt
+}
+
+// GetFav returns the value of Fav.
+func (s *UeOwnerRead) GetFav() OptInt {
+	return s.Fav
+}
+
+// GetTen returns the value of Ten.
+func (s *UeOwnerRead) GetTen() OptBool {
+	return s.Ten
+}
+
+// GetTenSu returns the value of TenSu.
+func (s *UeOwnerRead) GetTenSu() OptInt {
+	return s.TenSu
+}
+
+// GetTenKai returns the value of TenKai.
+func (s *UeOwnerRead) GetTenKai() OptInt {
+	return s.TenKai
+}
+
+// GetAiten returns the value of Aiten.
+func (s *UeOwnerRead) GetAiten() OptInt {
+	return s.Aiten
+}
+
+// GetTenCard returns the value of TenCard.
+func (s *UeOwnerRead) GetTenCard() OptString {
+	return s.TenCard
+}
+
+// GetTenDelete returns the value of TenDelete.
+func (s *UeOwnerRead) GetTenDelete() OptString {
+	return s.TenDelete
+}
+
+// GetTenPost returns the value of TenPost.
+func (s *UeOwnerRead) GetTenPost() OptString {
+	return s.TenPost
+}
+
+// GetTenGet returns the value of TenGet.
+func (s *UeOwnerRead) GetTenGet() OptString {
+	return s.TenGet
+}
+
+// GetTenAt returns the value of TenAt.
+func (s *UeOwnerRead) GetTenAt() OptDateTime {
+	return s.TenAt
+}
+
+// GetNext returns the value of Next.
+func (s *UeOwnerRead) GetNext() OptString {
+	return s.Next
+}
+
+// GetRoom returns the value of Room.
+func (s *UeOwnerRead) GetRoom() OptInt {
+	return s.Room
+}
+
+// GetModel returns the value of Model.
+func (s *UeOwnerRead) GetModel() OptBool {
+	return s.Model
+}
+
+// GetModelAt returns the value of ModelAt.
+func (s *UeOwnerRead) GetModelAt() OptDateTime {
+	return s.ModelAt
+}
+
+// GetModelAttack returns the value of ModelAttack.
+func (s *UeOwnerRead) GetModelAttack() OptInt {
+	return s.ModelAttack
+}
+
+// GetModelLimit returns the value of ModelLimit.
+func (s *UeOwnerRead) GetModelLimit() OptInt {
+	return s.ModelLimit
+}
+
+// GetModelSkill returns the value of ModelSkill.
+func (s *UeOwnerRead) GetModelSkill() OptInt {
+	return s.ModelSkill
+}
+
+// GetModelMode returns the value of ModelMode.
+func (s *UeOwnerRead) GetModelMode() OptInt {
+	return s.ModelMode
+}
+
+// GetModelCritical returns the value of ModelCritical.
+func (s *UeOwnerRead) GetModelCritical() OptInt {
+	return s.ModelCritical
+}
+
+// GetModelCriticalD returns the value of ModelCriticalD.
+func (s *UeOwnerRead) GetModelCriticalD() OptInt {
+	return s.ModelCriticalD
+}
+
+// GetGame returns the value of Game.
+func (s *UeOwnerRead) GetGame() OptBool {
+	return s.Game
+}
+
+// GetGameTest returns the value of GameTest.
+func (s *UeOwnerRead) GetGameTest() OptBool {
+	return s.GameTest
+}
+
+// GetGameEnd returns the value of GameEnd.
+func (s *UeOwnerRead) GetGameEnd() OptBool {
+	return s.GameEnd
+}
+
+// GetGameAccount returns the value of GameAccount.
+func (s *UeOwnerRead) GetGameAccount() OptBool {
+	return s.GameAccount
+}
+
+// GetGameLv returns the value of GameLv.
+func (s *UeOwnerRead) GetGameLv() OptInt {
+	return s.GameLv
+}
+
+// SetID sets the value of ID.
+func (s *UeOwnerRead) SetID(val int) {
+	s.ID = val
+}
+
+// SetUsername sets the value of Username.
+func (s *UeOwnerRead) SetUsername(val string) {
+	s.Username = val
+}
+
+// SetDid sets the value of Did.
+func (s *UeOwnerRead) SetDid(val OptString) {
+	s.Did = val
+}
+
+// SetMember sets the value of Member.
+func (s *UeOwnerRead) SetMember(val OptBool) {
+	s.Member = val
+}
+
+// SetBook sets the value of Book.
+func (s *UeOwnerRead) SetBook(val OptBool) {
+	s.Book = val
+}
+
+// SetManga sets the value of Manga.
+func (s *UeOwnerRead) SetManga(val OptBool) {
+	s.Manga = val
+}
+
+// SetBadge sets the value of Badge.
+func (s *UeOwnerRead) SetBadge(val OptBool) {
+	s.Badge = val
+}
+
+// SetBsky sets the value of Bsky.
+func (s *UeOwnerRead) SetBsky(val OptBool) {
+	s.Bsky = val
+}
+
+// SetMastodon sets the value of Mastodon.
+func (s *UeOwnerRead) SetMastodon(val OptBool) {
+	s.Mastodon = val
+}
+
+// SetDelete sets the value of Delete.
+func (s *UeOwnerRead) SetDelete(val OptBool) {
+	s.Delete = val
+}
+
+// SetHandle sets the value of Handle.
+func (s *UeOwnerRead) SetHandle(val OptBool) {
+	s.Handle = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *UeOwnerRead) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+// SetUpdatedAt sets the value of UpdatedAt.
+func (s *UeOwnerRead) SetUpdatedAt(val OptDateTime) {
+	s.UpdatedAt = val
+}
+
+// SetRaidAt sets the value of RaidAt.
+func (s *UeOwnerRead) SetRaidAt(val OptDateTime) {
+	s.RaidAt = val
+}
+
+// SetServerAt sets the value of ServerAt.
+func (s *UeOwnerRead) SetServerAt(val OptDateTime) {
+	s.ServerAt = val
+}
+
+// SetEggAt sets the value of EggAt.
+func (s *UeOwnerRead) SetEggAt(val OptDateTime) {
+	s.EggAt = val
+}
+
+// SetLuck sets the value of Luck.
+func (s *UeOwnerRead) SetLuck(val OptInt) {
+	s.Luck = val
+}
+
+// SetLuckAt sets the value of LuckAt.
+func (s *UeOwnerRead) SetLuckAt(val OptDateTime) {
+	s.LuckAt = val
+}
+
+// SetLike sets the value of Like.
+func (s *UeOwnerRead) SetLike(val OptInt) {
+	s.Like = val
+}
+
+// SetLikeRank sets the value of LikeRank.
+func (s *UeOwnerRead) SetLikeRank(val OptInt) {
+	s.LikeRank = val
+}
+
+// SetLikeAt sets the value of LikeAt.
+func (s *UeOwnerRead) SetLikeAt(val OptDateTime) {
+	s.LikeAt = val
+}
+
+// SetFav sets the value of Fav.
+func (s *UeOwnerRead) SetFav(val OptInt) {
+	s.Fav = val
+}
+
+// SetTen sets the value of Ten.
+func (s *UeOwnerRead) SetTen(val OptBool) {
+	s.Ten = val
+}
+
+// SetTenSu sets the value of TenSu.
+func (s *UeOwnerRead) SetTenSu(val OptInt) {
+	s.TenSu = val
+}
+
+// SetTenKai sets the value of TenKai.
+func (s *UeOwnerRead) SetTenKai(val OptInt) {
+	s.TenKai = val
+}
+
+// SetAiten sets the value of Aiten.
+func (s *UeOwnerRead) SetAiten(val OptInt) {
+	s.Aiten = val
+}
+
+// SetTenCard sets the value of TenCard.
+func (s *UeOwnerRead) SetTenCard(val OptString) {
+	s.TenCard = val
+}
+
+// SetTenDelete sets the value of TenDelete.
+func (s *UeOwnerRead) SetTenDelete(val OptString) {
+	s.TenDelete = val
+}
+
+// SetTenPost sets the value of TenPost.
+func (s *UeOwnerRead) SetTenPost(val OptString) {
+	s.TenPost = val
+}
+
+// SetTenGet sets the value of TenGet.
+func (s *UeOwnerRead) SetTenGet(val OptString) {
+	s.TenGet = val
+}
+
+// SetTenAt sets the value of TenAt.
+func (s *UeOwnerRead) SetTenAt(val OptDateTime) {
+	s.TenAt = val
+}
+
+// SetNext sets the value of Next.
+func (s *UeOwnerRead) SetNext(val OptString) {
+	s.Next = val
+}
+
+// SetRoom sets the value of Room.
+func (s *UeOwnerRead) SetRoom(val OptInt) {
+	s.Room = val
+}
+
+// SetModel sets the value of Model.
+func (s *UeOwnerRead) SetModel(val OptBool) {
+	s.Model = val
+}
+
+// SetModelAt sets the value of ModelAt.
+func (s *UeOwnerRead) SetModelAt(val OptDateTime) {
+	s.ModelAt = val
+}
+
+// SetModelAttack sets the value of ModelAttack.
+func (s *UeOwnerRead) SetModelAttack(val OptInt) {
+	s.ModelAttack = val
+}
+
+// SetModelLimit sets the value of ModelLimit.
+func (s *UeOwnerRead) SetModelLimit(val OptInt) {
+	s.ModelLimit = val
+}
+
+// SetModelSkill sets the value of ModelSkill.
+func (s *UeOwnerRead) SetModelSkill(val OptInt) {
+	s.ModelSkill = val
+}
+
+// SetModelMode sets the value of ModelMode.
+func (s *UeOwnerRead) SetModelMode(val OptInt) {
+	s.ModelMode = val
+}
+
+// SetModelCritical sets the value of ModelCritical.
+func (s *UeOwnerRead) SetModelCritical(val OptInt) {
+	s.ModelCritical = val
+}
+
+// SetModelCriticalD sets the value of ModelCriticalD.
+func (s *UeOwnerRead) SetModelCriticalD(val OptInt) {
+	s.ModelCriticalD = val
+}
+
+// SetGame sets the value of Game.
+func (s *UeOwnerRead) SetGame(val OptBool) {
+	s.Game = val
+}
+
+// SetGameTest sets the value of GameTest.
+func (s *UeOwnerRead) SetGameTest(val OptBool) {
+	s.GameTest = val
+}
+
+// SetGameEnd sets the value of GameEnd.
+func (s *UeOwnerRead) SetGameEnd(val OptBool) {
+	s.GameEnd = val
+}
+
+// SetGameAccount sets the value of GameAccount.
+func (s *UeOwnerRead) SetGameAccount(val OptBool) {
+	s.GameAccount = val
+}
+
+// SetGameLv sets the value of GameLv.
+func (s *UeOwnerRead) SetGameLv(val OptInt) {
+	s.GameLv = val
+}
+
+func (*UeOwnerRead) readUeOwnerRes() {}
+
+// Ref: #/components/schemas/UeRead
+type UeRead struct {
+	ID        int         `json:"id"`
+	Limit     OptBool     `json:"limit"`
+	LimitBoss OptBool     `json:"limit_boss"`
+	LimitItem OptBool     `json:"limit_item"`
+	Lv        OptInt      `json:"lv"`
+	LvPoint   OptInt      `json:"lv_point"`
+	Model     OptInt      `json:"model"`
+	Sword     OptInt      `json:"sword"`
+	Card      OptInt      `json:"card"`
+	Mode      OptString   `json:"mode"`
+	Cp        OptInt      `json:"cp"`
+	Count     OptInt      `json:"count"`
+	LocationX OptInt      `json:"location_x"`
+	LocationY OptInt      `json:"location_y"`
+	LocationZ OptInt      `json:"location_z"`
+	LocationN OptInt      `json:"location_n"`
+	Author    OptString   `json:"author"`
+	CreatedAt OptDateTime `json:"created_at"`
+}
+
+// GetID returns the value of ID.
+func (s *UeRead) GetID() int {
+	return s.ID
+}
+
+// GetLimit returns the value of Limit.
+func (s *UeRead) GetLimit() OptBool {
+	return s.Limit
+}
+
+// GetLimitBoss returns the value of LimitBoss.
+func (s *UeRead) GetLimitBoss() OptBool {
+	return s.LimitBoss
+}
+
+// GetLimitItem returns the value of LimitItem.
+func (s *UeRead) GetLimitItem() OptBool {
+	return s.LimitItem
+}
+
+// GetLv returns the value of Lv.
+func (s *UeRead) GetLv() OptInt {
+	return s.Lv
+}
+
+// GetLvPoint returns the value of LvPoint.
+func (s *UeRead) GetLvPoint() OptInt {
+	return s.LvPoint
+}
+
+// GetModel returns the value of Model.
+func (s *UeRead) GetModel() OptInt {
+	return s.Model
+}
+
+// GetSword returns the value of Sword.
+func (s *UeRead) GetSword() OptInt {
+	return s.Sword
+}
+
+// GetCard returns the value of Card.
+func (s *UeRead) GetCard() OptInt {
+	return s.Card
+}
+
+// GetMode returns the value of Mode.
+func (s *UeRead) GetMode() OptString {
+	return s.Mode
+}
+
+// GetCp returns the value of Cp.
+func (s *UeRead) GetCp() OptInt {
+	return s.Cp
+}
+
+// GetCount returns the value of Count.
+func (s *UeRead) GetCount() OptInt {
+	return s.Count
+}
+
+// GetLocationX returns the value of LocationX.
+func (s *UeRead) GetLocationX() OptInt {
+	return s.LocationX
+}
+
+// GetLocationY returns the value of LocationY.
+func (s *UeRead) GetLocationY() OptInt {
+	return s.LocationY
+}
+
+// GetLocationZ returns the value of LocationZ.
+func (s *UeRead) GetLocationZ() OptInt {
+	return s.LocationZ
+}
+
+// GetLocationN returns the value of LocationN.
+func (s *UeRead) GetLocationN() OptInt {
+	return s.LocationN
+}
+
+// GetAuthor returns the value of Author.
+func (s *UeRead) GetAuthor() OptString {
+	return s.Author
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *UeRead) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// SetID sets the value of ID.
+func (s *UeRead) SetID(val int) {
+	s.ID = val
+}
+
+// SetLimit sets the value of Limit.
+func (s *UeRead) SetLimit(val OptBool) {
+	s.Limit = val
+}
+
+// SetLimitBoss sets the value of LimitBoss.
+func (s *UeRead) SetLimitBoss(val OptBool) {
+	s.LimitBoss = val
+}
+
+// SetLimitItem sets the value of LimitItem.
+func (s *UeRead) SetLimitItem(val OptBool) {
+	s.LimitItem = val
+}
+
+// SetLv sets the value of Lv.
+func (s *UeRead) SetLv(val OptInt) {
+	s.Lv = val
+}
+
+// SetLvPoint sets the value of LvPoint.
+func (s *UeRead) SetLvPoint(val OptInt) {
+	s.LvPoint = val
+}
+
+// SetModel sets the value of Model.
+func (s *UeRead) SetModel(val OptInt) {
+	s.Model = val
+}
+
+// SetSword sets the value of Sword.
+func (s *UeRead) SetSword(val OptInt) {
+	s.Sword = val
+}
+
+// SetCard sets the value of Card.
+func (s *UeRead) SetCard(val OptInt) {
+	s.Card = val
+}
+
+// SetMode sets the value of Mode.
+func (s *UeRead) SetMode(val OptString) {
+	s.Mode = val
+}
+
+// SetCp sets the value of Cp.
+func (s *UeRead) SetCp(val OptInt) {
+	s.Cp = val
+}
+
+// SetCount sets the value of Count.
+func (s *UeRead) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetLocationX sets the value of LocationX.
+func (s *UeRead) SetLocationX(val OptInt) {
+	s.LocationX = val
+}
+
+// SetLocationY sets the value of LocationY.
+func (s *UeRead) SetLocationY(val OptInt) {
+	s.LocationY = val
+}
+
+// SetLocationZ sets the value of LocationZ.
+func (s *UeRead) SetLocationZ(val OptInt) {
+	s.LocationZ = val
+}
+
+// SetLocationN sets the value of LocationN.
+func (s *UeRead) SetLocationN(val OptInt) {
+	s.LocationN = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *UeRead) SetAuthor(val OptString) {
+	s.Author = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *UeRead) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+func (*UeRead) readUeRes() {}
+
+// Ref: #/components/schemas/UeUpdate
+type UeUpdate struct {
+	ID        int         `json:"id"`
+	Limit     OptBool     `json:"limit"`
+	LimitBoss OptBool     `json:"limit_boss"`
+	LimitItem OptBool     `json:"limit_item"`
+	Lv        OptInt      `json:"lv"`
+	LvPoint   OptInt      `json:"lv_point"`
+	Model     OptInt      `json:"model"`
+	Sword     OptInt      `json:"sword"`
+	Card      OptInt      `json:"card"`
+	Mode      OptString   `json:"mode"`
+	Cp        OptInt      `json:"cp"`
+	Count     OptInt      `json:"count"`
+	LocationX OptInt      `json:"location_x"`
+	LocationY OptInt      `json:"location_y"`
+	LocationZ OptInt      `json:"location_z"`
+	LocationN OptInt      `json:"location_n"`
+	Author    OptString   `json:"author"`
+	CreatedAt OptDateTime `json:"created_at"`
+}
+
+// GetID returns the value of ID.
+func (s *UeUpdate) GetID() int {
+	return s.ID
+}
+
+// GetLimit returns the value of Limit.
+func (s *UeUpdate) GetLimit() OptBool {
+	return s.Limit
+}
+
+// GetLimitBoss returns the value of LimitBoss.
+func (s *UeUpdate) GetLimitBoss() OptBool {
+	return s.LimitBoss
+}
+
+// GetLimitItem returns the value of LimitItem.
+func (s *UeUpdate) GetLimitItem() OptBool {
+	return s.LimitItem
+}
+
+// GetLv returns the value of Lv.
+func (s *UeUpdate) GetLv() OptInt {
+	return s.Lv
+}
+
+// GetLvPoint returns the value of LvPoint.
+func (s *UeUpdate) GetLvPoint() OptInt {
+	return s.LvPoint
+}
+
+// GetModel returns the value of Model.
+func (s *UeUpdate) GetModel() OptInt {
+	return s.Model
+}
+
+// GetSword returns the value of Sword.
+func (s *UeUpdate) GetSword() OptInt {
+	return s.Sword
+}
+
+// GetCard returns the value of Card.
+func (s *UeUpdate) GetCard() OptInt {
+	return s.Card
+}
+
+// GetMode returns the value of Mode.
+func (s *UeUpdate) GetMode() OptString {
+	return s.Mode
+}
+
+// GetCp returns the value of Cp.
+func (s *UeUpdate) GetCp() OptInt {
+	return s.Cp
+}
+
+// GetCount returns the value of Count.
+func (s *UeUpdate) GetCount() OptInt {
+	return s.Count
+}
+
+// GetLocationX returns the value of LocationX.
+func (s *UeUpdate) GetLocationX() OptInt {
+	return s.LocationX
+}
+
+// GetLocationY returns the value of LocationY.
+func (s *UeUpdate) GetLocationY() OptInt {
+	return s.LocationY
+}
+
+// GetLocationZ returns the value of LocationZ.
+func (s *UeUpdate) GetLocationZ() OptInt {
+	return s.LocationZ
+}
+
+// GetLocationN returns the value of LocationN.
+func (s *UeUpdate) GetLocationN() OptInt {
+	return s.LocationN
+}
+
+// GetAuthor returns the value of Author.
+func (s *UeUpdate) GetAuthor() OptString {
+	return s.Author
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *UeUpdate) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// SetID sets the value of ID.
+func (s *UeUpdate) SetID(val int) {
+	s.ID = val
+}
+
+// SetLimit sets the value of Limit.
+func (s *UeUpdate) SetLimit(val OptBool) {
+	s.Limit = val
+}
+
+// SetLimitBoss sets the value of LimitBoss.
+func (s *UeUpdate) SetLimitBoss(val OptBool) {
+	s.LimitBoss = val
+}
+
+// SetLimitItem sets the value of LimitItem.
+func (s *UeUpdate) SetLimitItem(val OptBool) {
+	s.LimitItem = val
+}
+
+// SetLv sets the value of Lv.
+func (s *UeUpdate) SetLv(val OptInt) {
+	s.Lv = val
+}
+
+// SetLvPoint sets the value of LvPoint.
+func (s *UeUpdate) SetLvPoint(val OptInt) {
+	s.LvPoint = val
+}
+
+// SetModel sets the value of Model.
+func (s *UeUpdate) SetModel(val OptInt) {
+	s.Model = val
+}
+
+// SetSword sets the value of Sword.
+func (s *UeUpdate) SetSword(val OptInt) {
+	s.Sword = val
+}
+
+// SetCard sets the value of Card.
+func (s *UeUpdate) SetCard(val OptInt) {
+	s.Card = val
+}
+
+// SetMode sets the value of Mode.
+func (s *UeUpdate) SetMode(val OptString) {
+	s.Mode = val
+}
+
+// SetCp sets the value of Cp.
+func (s *UeUpdate) SetCp(val OptInt) {
+	s.Cp = val
+}
+
+// SetCount sets the value of Count.
+func (s *UeUpdate) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetLocationX sets the value of LocationX.
+func (s *UeUpdate) SetLocationX(val OptInt) {
+	s.LocationX = val
+}
+
+// SetLocationY sets the value of LocationY.
+func (s *UeUpdate) SetLocationY(val OptInt) {
+	s.LocationY = val
+}
+
+// SetLocationZ sets the value of LocationZ.
+func (s *UeUpdate) SetLocationZ(val OptInt) {
+	s.LocationZ = val
+}
+
+// SetLocationN sets the value of LocationN.
+func (s *UeUpdate) SetLocationN(val OptInt) {
+	s.LocationN = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *UeUpdate) SetAuthor(val OptString) {
+	s.Author = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *UeUpdate) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
+
+func (*UeUpdate) updateUeRes() {}
 
 type UpdateCardReq struct {
 	Card   OptInt    `json:"card"`
@@ -2818,6 +4418,207 @@ func (s *UpdateGroupReq) SetUsers(val []int) {
 	s.Users = val
 }
 
+type UpdateUeReq struct {
+	Limit     OptBool   `json:"limit"`
+	LimitBoss OptBool   `json:"limit_boss"`
+	LimitItem OptBool   `json:"limit_item"`
+	Lv        OptInt    `json:"lv"`
+	LvPoint   OptInt    `json:"lv_point"`
+	Model     OptInt    `json:"model"`
+	Sword     OptInt    `json:"sword"`
+	Card      OptInt    `json:"card"`
+	Mode      OptString `json:"mode"`
+	Token     OptString `json:"token"`
+	Cp        OptInt    `json:"cp"`
+	Count     OptInt    `json:"count"`
+	LocationX OptInt    `json:"location_x"`
+	LocationY OptInt    `json:"location_y"`
+	LocationZ OptInt    `json:"location_z"`
+	LocationN OptInt    `json:"location_n"`
+	Author    OptString `json:"author"`
+	Owner     OptInt    `json:"owner"`
+}
+
+// GetLimit returns the value of Limit.
+func (s *UpdateUeReq) GetLimit() OptBool {
+	return s.Limit
+}
+
+// GetLimitBoss returns the value of LimitBoss.
+func (s *UpdateUeReq) GetLimitBoss() OptBool {
+	return s.LimitBoss
+}
+
+// GetLimitItem returns the value of LimitItem.
+func (s *UpdateUeReq) GetLimitItem() OptBool {
+	return s.LimitItem
+}
+
+// GetLv returns the value of Lv.
+func (s *UpdateUeReq) GetLv() OptInt {
+	return s.Lv
+}
+
+// GetLvPoint returns the value of LvPoint.
+func (s *UpdateUeReq) GetLvPoint() OptInt {
+	return s.LvPoint
+}
+
+// GetModel returns the value of Model.
+func (s *UpdateUeReq) GetModel() OptInt {
+	return s.Model
+}
+
+// GetSword returns the value of Sword.
+func (s *UpdateUeReq) GetSword() OptInt {
+	return s.Sword
+}
+
+// GetCard returns the value of Card.
+func (s *UpdateUeReq) GetCard() OptInt {
+	return s.Card
+}
+
+// GetMode returns the value of Mode.
+func (s *UpdateUeReq) GetMode() OptString {
+	return s.Mode
+}
+
+// GetToken returns the value of Token.
+func (s *UpdateUeReq) GetToken() OptString {
+	return s.Token
+}
+
+// GetCp returns the value of Cp.
+func (s *UpdateUeReq) GetCp() OptInt {
+	return s.Cp
+}
+
+// GetCount returns the value of Count.
+func (s *UpdateUeReq) GetCount() OptInt {
+	return s.Count
+}
+
+// GetLocationX returns the value of LocationX.
+func (s *UpdateUeReq) GetLocationX() OptInt {
+	return s.LocationX
+}
+
+// GetLocationY returns the value of LocationY.
+func (s *UpdateUeReq) GetLocationY() OptInt {
+	return s.LocationY
+}
+
+// GetLocationZ returns the value of LocationZ.
+func (s *UpdateUeReq) GetLocationZ() OptInt {
+	return s.LocationZ
+}
+
+// GetLocationN returns the value of LocationN.
+func (s *UpdateUeReq) GetLocationN() OptInt {
+	return s.LocationN
+}
+
+// GetAuthor returns the value of Author.
+func (s *UpdateUeReq) GetAuthor() OptString {
+	return s.Author
+}
+
+// GetOwner returns the value of Owner.
+func (s *UpdateUeReq) GetOwner() OptInt {
+	return s.Owner
+}
+
+// SetLimit sets the value of Limit.
+func (s *UpdateUeReq) SetLimit(val OptBool) {
+	s.Limit = val
+}
+
+// SetLimitBoss sets the value of LimitBoss.
+func (s *UpdateUeReq) SetLimitBoss(val OptBool) {
+	s.LimitBoss = val
+}
+
+// SetLimitItem sets the value of LimitItem.
+func (s *UpdateUeReq) SetLimitItem(val OptBool) {
+	s.LimitItem = val
+}
+
+// SetLv sets the value of Lv.
+func (s *UpdateUeReq) SetLv(val OptInt) {
+	s.Lv = val
+}
+
+// SetLvPoint sets the value of LvPoint.
+func (s *UpdateUeReq) SetLvPoint(val OptInt) {
+	s.LvPoint = val
+}
+
+// SetModel sets the value of Model.
+func (s *UpdateUeReq) SetModel(val OptInt) {
+	s.Model = val
+}
+
+// SetSword sets the value of Sword.
+func (s *UpdateUeReq) SetSword(val OptInt) {
+	s.Sword = val
+}
+
+// SetCard sets the value of Card.
+func (s *UpdateUeReq) SetCard(val OptInt) {
+	s.Card = val
+}
+
+// SetMode sets the value of Mode.
+func (s *UpdateUeReq) SetMode(val OptString) {
+	s.Mode = val
+}
+
+// SetToken sets the value of Token.
+func (s *UpdateUeReq) SetToken(val OptString) {
+	s.Token = val
+}
+
+// SetCp sets the value of Cp.
+func (s *UpdateUeReq) SetCp(val OptInt) {
+	s.Cp = val
+}
+
+// SetCount sets the value of Count.
+func (s *UpdateUeReq) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetLocationX sets the value of LocationX.
+func (s *UpdateUeReq) SetLocationX(val OptInt) {
+	s.LocationX = val
+}
+
+// SetLocationY sets the value of LocationY.
+func (s *UpdateUeReq) SetLocationY(val OptInt) {
+	s.LocationY = val
+}
+
+// SetLocationZ sets the value of LocationZ.
+func (s *UpdateUeReq) SetLocationZ(val OptInt) {
+	s.LocationZ = val
+}
+
+// SetLocationN sets the value of LocationN.
+func (s *UpdateUeReq) SetLocationN(val OptInt) {
+	s.LocationN = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *UpdateUeReq) SetAuthor(val OptString) {
+	s.Author = val
+}
+
+// SetOwner sets the value of Owner.
+func (s *UpdateUeReq) SetOwner(val OptInt) {
+	s.Owner = val
+}
+
 type UpdateUserReq struct {
 	Did            OptString   `json:"did"`
 	Member         OptBool     `json:"member"`
@@ -2864,6 +4665,7 @@ type UpdateUserReq struct {
 	GameAccount    OptBool     `json:"game_account"`
 	GameLv         OptInt      `json:"game_lv"`
 	Card           []int       `json:"card"`
+	Ue             []int       `json:"ue"`
 }
 
 // GetDid returns the value of Did.
@@ -3091,6 +4893,11 @@ func (s *UpdateUserReq) GetCard() []int {
 	return s.Card
 }
 
+// GetUe returns the value of Ue.
+func (s *UpdateUserReq) GetUe() []int {
+	return s.Ue
+}
+
 // SetDid sets the value of Did.
 func (s *UpdateUserReq) SetDid(val OptString) {
 	s.Did = val
@@ -3314,6 +5121,11 @@ func (s *UpdateUserReq) SetGameLv(val OptInt) {
 // SetCard sets the value of Card.
 func (s *UpdateUserReq) SetCard(val []int) {
 	s.Card = val
+}
+
+// SetUe sets the value of Ue.
+func (s *UpdateUserReq) SetUe(val []int) {
+	s.Ue = val
 }
 
 // Ref: #/components/schemas/User_CardList
@@ -4952,6 +6764,208 @@ func (s *UserRead) SetGameLv(val OptInt) {
 }
 
 func (*UserRead) readUserRes() {}
+
+// Ref: #/components/schemas/User_UeList
+type UserUeList struct {
+	ID        int         `json:"id"`
+	Limit     OptBool     `json:"limit"`
+	LimitBoss OptBool     `json:"limit_boss"`
+	LimitItem OptBool     `json:"limit_item"`
+	Lv        OptInt      `json:"lv"`
+	LvPoint   OptInt      `json:"lv_point"`
+	Model     OptInt      `json:"model"`
+	Sword     OptInt      `json:"sword"`
+	Card      OptInt      `json:"card"`
+	Mode      OptString   `json:"mode"`
+	Cp        OptInt      `json:"cp"`
+	Count     OptInt      `json:"count"`
+	LocationX OptInt      `json:"location_x"`
+	LocationY OptInt      `json:"location_y"`
+	LocationZ OptInt      `json:"location_z"`
+	LocationN OptInt      `json:"location_n"`
+	Author    OptString   `json:"author"`
+	CreatedAt OptDateTime `json:"created_at"`
+}
+
+// GetID returns the value of ID.
+func (s *UserUeList) GetID() int {
+	return s.ID
+}
+
+// GetLimit returns the value of Limit.
+func (s *UserUeList) GetLimit() OptBool {
+	return s.Limit
+}
+
+// GetLimitBoss returns the value of LimitBoss.
+func (s *UserUeList) GetLimitBoss() OptBool {
+	return s.LimitBoss
+}
+
+// GetLimitItem returns the value of LimitItem.
+func (s *UserUeList) GetLimitItem() OptBool {
+	return s.LimitItem
+}
+
+// GetLv returns the value of Lv.
+func (s *UserUeList) GetLv() OptInt {
+	return s.Lv
+}
+
+// GetLvPoint returns the value of LvPoint.
+func (s *UserUeList) GetLvPoint() OptInt {
+	return s.LvPoint
+}
+
+// GetModel returns the value of Model.
+func (s *UserUeList) GetModel() OptInt {
+	return s.Model
+}
+
+// GetSword returns the value of Sword.
+func (s *UserUeList) GetSword() OptInt {
+	return s.Sword
+}
+
+// GetCard returns the value of Card.
+func (s *UserUeList) GetCard() OptInt {
+	return s.Card
+}
+
+// GetMode returns the value of Mode.
+func (s *UserUeList) GetMode() OptString {
+	return s.Mode
+}
+
+// GetCp returns the value of Cp.
+func (s *UserUeList) GetCp() OptInt {
+	return s.Cp
+}
+
+// GetCount returns the value of Count.
+func (s *UserUeList) GetCount() OptInt {
+	return s.Count
+}
+
+// GetLocationX returns the value of LocationX.
+func (s *UserUeList) GetLocationX() OptInt {
+	return s.LocationX
+}
+
+// GetLocationY returns the value of LocationY.
+func (s *UserUeList) GetLocationY() OptInt {
+	return s.LocationY
+}
+
+// GetLocationZ returns the value of LocationZ.
+func (s *UserUeList) GetLocationZ() OptInt {
+	return s.LocationZ
+}
+
+// GetLocationN returns the value of LocationN.
+func (s *UserUeList) GetLocationN() OptInt {
+	return s.LocationN
+}
+
+// GetAuthor returns the value of Author.
+func (s *UserUeList) GetAuthor() OptString {
+	return s.Author
+}
+
+// GetCreatedAt returns the value of CreatedAt.
+func (s *UserUeList) GetCreatedAt() OptDateTime {
+	return s.CreatedAt
+}
+
+// SetID sets the value of ID.
+func (s *UserUeList) SetID(val int) {
+	s.ID = val
+}
+
+// SetLimit sets the value of Limit.
+func (s *UserUeList) SetLimit(val OptBool) {
+	s.Limit = val
+}
+
+// SetLimitBoss sets the value of LimitBoss.
+func (s *UserUeList) SetLimitBoss(val OptBool) {
+	s.LimitBoss = val
+}
+
+// SetLimitItem sets the value of LimitItem.
+func (s *UserUeList) SetLimitItem(val OptBool) {
+	s.LimitItem = val
+}
+
+// SetLv sets the value of Lv.
+func (s *UserUeList) SetLv(val OptInt) {
+	s.Lv = val
+}
+
+// SetLvPoint sets the value of LvPoint.
+func (s *UserUeList) SetLvPoint(val OptInt) {
+	s.LvPoint = val
+}
+
+// SetModel sets the value of Model.
+func (s *UserUeList) SetModel(val OptInt) {
+	s.Model = val
+}
+
+// SetSword sets the value of Sword.
+func (s *UserUeList) SetSword(val OptInt) {
+	s.Sword = val
+}
+
+// SetCard sets the value of Card.
+func (s *UserUeList) SetCard(val OptInt) {
+	s.Card = val
+}
+
+// SetMode sets the value of Mode.
+func (s *UserUeList) SetMode(val OptString) {
+	s.Mode = val
+}
+
+// SetCp sets the value of Cp.
+func (s *UserUeList) SetCp(val OptInt) {
+	s.Cp = val
+}
+
+// SetCount sets the value of Count.
+func (s *UserUeList) SetCount(val OptInt) {
+	s.Count = val
+}
+
+// SetLocationX sets the value of LocationX.
+func (s *UserUeList) SetLocationX(val OptInt) {
+	s.LocationX = val
+}
+
+// SetLocationY sets the value of LocationY.
+func (s *UserUeList) SetLocationY(val OptInt) {
+	s.LocationY = val
+}
+
+// SetLocationZ sets the value of LocationZ.
+func (s *UserUeList) SetLocationZ(val OptInt) {
+	s.LocationZ = val
+}
+
+// SetLocationN sets the value of LocationN.
+func (s *UserUeList) SetLocationN(val OptInt) {
+	s.LocationN = val
+}
+
+// SetAuthor sets the value of Author.
+func (s *UserUeList) SetAuthor(val OptString) {
+	s.Author = val
+}
+
+// SetCreatedAt sets the value of CreatedAt.
+func (s *UserUeList) SetCreatedAt(val OptDateTime) {
+	s.CreatedAt = val
+}
 
 // Ref: #/components/schemas/UserUpdate
 type UserUpdate struct {

@@ -9,10 +9,10 @@ import (
 	"t/ent"
 	"t/ent/card"
 	"t/ent/group"
+	"t/ent/ue"
 	"t/ent/user"
-
-	"github.com/go-faster/jx"
 	"os"
+	"github.com/go-faster/jx"
 )
 
 // origin-config
@@ -48,8 +48,14 @@ func (h *OgentHandler) CreateCard(ctx context.Context, req *CreateCardReq) (Crea
 	if v, ok := req.Status.Get(); ok {
 		b.SetStatus(v)
 	}
+	if v, ok := req.Token.Get(); ok {
+		b.SetToken(v)
+	}
 	if v, ok := req.Cp.Get(); ok {
 		b.SetCp(v)
+	}
+	if v, ok := req.URL.Get(); ok {
+		b.SetURL(v)
 	}
 	if v, ok := req.Count.Get(); ok {
 		b.SetCount(v)
@@ -57,20 +63,16 @@ func (h *OgentHandler) CreateCard(ctx context.Context, req *CreateCardReq) (Crea
 	if v, ok := req.Author.Get(); ok {
 		b.SetAuthor(v)
 	}
-	if v, ok := req.URL.Get(); ok {
-		b.SetURL(v)
-	}
 	if v, ok := req.CreatedAt.Get(); ok {
 		b.SetCreatedAt(v)
 	}
 	// Add all edges.
-	//b.SetOwnerID(req.Owner)
-	// origin-config
 	if req.Password == password {
 		b.SetOwnerID(req.Owner)
 	} else {
 		b.SetOwnerID(0)
 	}
+	//b.SetOwnerID(req.Owner)
 	// Persist to storage.
 	e, err := b.Save(ctx)
 	if err != nil {
@@ -131,33 +133,32 @@ func (h *OgentHandler) ReadCard(ctx context.Context, params ReadCardParams) (Rea
 // UpdateCard handles PATCH /cards/{id} requests.
 func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, params UpdateCardParams) (UpdateCardRes, error) {
 	b := h.client.Card.UpdateOneID(params.ID)
+	// Add all fields.
+	if v, ok := req.Card.Get(); ok {
+		b.SetCard(v)
+	}
+	if v, ok := req.Skill.Get(); ok {
+		b.SetSkill(v)
+	}
+	if v, ok := req.Status.Get(); ok {
+		b.SetStatus(v)
+	}
+	if v, ok := req.Cp.Get(); ok {
+		b.SetCp(v)
+	}
+	if v, ok := req.URL.Get(); ok {
+		b.SetURL(v)
+	}
+	if v, ok := req.Count.Get(); ok {
+		b.SetCount(v)
+	}
+	if v, ok := req.Author.Get(); ok {
+		b.SetAuthor(v)
+	}
+	// Add all edges.
 	if v, ok := req.Token.Get(); ok {
 		if v == token {
 			b.SetToken(v)
-			if v, ok := req.Skill.Get(); ok {
-				b.SetSkill(v)
-			}
-			if v, ok := req.URL.Get(); ok {
-				b.SetURL(v)
-			}
-			if v, ok := req.Status.Get(); ok {
-				b.SetStatus(v)
-			}
-			if v, ok := req.Count.Get(); ok {
-				b.SetCount(v)
-			}
-			if v, ok := req.Author.Get(); ok {
-				b.SetAuthor(v)
-			}
-			if v, ok := req.Token.Get(); ok {
-				b.SetToken(v)
-			}
-			if v, ok := req.Cp.Get(); ok {
-				b.SetCp(v)
-			}
-			if v, ok := req.Card.Get(); ok {
-				b.SetCard(v)
-			}
 			if v, ok := req.Owner.Get(); ok {
 				b.SetOwnerID(v)
 			}
@@ -197,8 +198,8 @@ func (h *OgentHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, param
 
 // DeleteCard handles DELETE /cards/{id} requests.
 func (h *OgentHandler) DeleteCard(ctx context.Context, params DeleteCardParams) (DeleteCardRes, error) {
-	err := h.client.Card.DeleteOneID(0).Exec(ctx)
 	//err := h.client.Card.DeleteOneID(params.ID).Exec(ctx)
+	err := h.client.Card.DeleteOneID(0).Exec(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):
@@ -289,7 +290,7 @@ func (h *OgentHandler) ReadCardOwner(ctx context.Context, params ReadCardOwnerPa
 func (h *OgentHandler) CreateGroup(ctx context.Context, req *CreateGroupReq) (CreateGroupRes, error) {
 	b := h.client.Group.Create()
 	// Add all fields.
-	b.SetName("")
+	b.SetName(req.Name)
 	b.SetPassword(req.Password)
 	// Add all edges.
 	b.AddUserIDs(req.Users...)
@@ -353,6 +354,7 @@ func (h *OgentHandler) ReadGroup(ctx context.Context, params ReadGroupParams) (R
 // UpdateGroup handles PATCH /groups/{id} requests.
 func (h *OgentHandler) UpdateGroup(ctx context.Context, req *UpdateGroupReq, params UpdateGroupParams) (UpdateGroupRes, error) {
 	b := h.client.Group.UpdateOneID(0)
+	//b := h.client.Group.UpdateOneID(params.ID)
 	// Add all fields.
 	if v, ok := req.Name.Get(); ok {
 		b.SetName(v)
@@ -395,6 +397,7 @@ func (h *OgentHandler) UpdateGroup(ctx context.Context, req *UpdateGroupReq, par
 // DeleteGroup handles DELETE /groups/{id} requests.
 func (h *OgentHandler) DeleteGroup(ctx context.Context, params DeleteGroupParams) (DeleteGroupRes, error) {
 	err := h.client.Group.DeleteOneID(0).Exec(ctx)
+	//err := h.client.Group.DeleteOneID(params.ID).Exec(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):
@@ -491,39 +494,317 @@ func (h *OgentHandler) ListGroupUsers(ctx context.Context, params ListGroupUsers
 	return (*ListGroupUsersOKApplicationJSON)(&r), nil
 }
 
+// CreateUe handles POST /ues requests.
+func (h *OgentHandler) CreateUe(ctx context.Context, req *CreateUeReq) (CreateUeRes, error) {
+	b := h.client.Ue.Create()
+	// Add all fields.
+	if v, ok := req.Limit.Get(); ok {
+		b.SetLimit(v)
+	}
+	if v, ok := req.LimitBoss.Get(); ok {
+		b.SetLimitBoss(v)
+	}
+	if v, ok := req.LimitItem.Get(); ok {
+		b.SetLimitItem(v)
+	}
+	b.SetPassword(req.Password)
+	if v, ok := req.Lv.Get(); ok {
+		b.SetLv(v)
+	}
+	if v, ok := req.LvPoint.Get(); ok {
+		b.SetLvPoint(v)
+	}
+	if v, ok := req.Model.Get(); ok {
+		b.SetModel(v)
+	}
+	if v, ok := req.Sword.Get(); ok {
+		b.SetSword(v)
+	}
+	if v, ok := req.Card.Get(); ok {
+		b.SetCard(v)
+	}
+	if v, ok := req.Mode.Get(); ok {
+		b.SetMode(v)
+	}
+	if v, ok := req.Token.Get(); ok {
+		b.SetToken(v)
+	}
+	if v, ok := req.Cp.Get(); ok {
+		b.SetCp(v)
+	}
+	if v, ok := req.Count.Get(); ok {
+		b.SetCount(v)
+	}
+	if v, ok := req.LocationX.Get(); ok {
+		b.SetLocationX(v)
+	}
+	if v, ok := req.LocationY.Get(); ok {
+		b.SetLocationY(v)
+	}
+	if v, ok := req.LocationZ.Get(); ok {
+		b.SetLocationZ(v)
+	}
+	if v, ok := req.LocationN.Get(); ok {
+		b.SetLocationN(v)
+	}
+	if v, ok := req.Author.Get(); ok {
+		b.SetAuthor(v)
+	}
+	if v, ok := req.CreatedAt.Get(); ok {
+		b.SetCreatedAt(v)
+	}
+	// Add all edges.
+	//b.SetOwnerID(req.Owner)
+	if req.Password == password {
+		b.SetOwnerID(req.Owner)
+	} else {
+		b.SetOwnerID(0)
+	}
+	// Persist to storage.
+	e, err := b.Save(ctx)
+	if err != nil {
+		switch {
+		case ent.IsNotSingular(err):
+			return &R409{
+				Code:   http.StatusConflict,
+				Status: http.StatusText(http.StatusConflict),
+				Errors: rawError(err),
+			}, nil
+		case ent.IsConstraintError(err):
+			return &R409{
+				Code:   http.StatusConflict,
+				Status: http.StatusText(http.StatusConflict),
+				Errors: rawError(err),
+			}, nil
+		default:
+			// Let the server handle the error.
+			return nil, err
+		}
+	}
+	// Reload the entity to attach all eager-loaded edges.
+	q := h.client.Ue.Query().Where(ue.ID(e.ID))
+	e, err = q.Only(ctx)
+	if err != nil {
+		// This should never happen.
+		return nil, err
+	}
+	return NewUeCreate(e), nil
+}
+
+// ReadUe handles GET /ues/{id} requests.
+func (h *OgentHandler) ReadUe(ctx context.Context, params ReadUeParams) (ReadUeRes, error) {
+	q := h.client.Ue.Query().Where(ue.IDEQ(params.ID))
+	e, err := q.Only(ctx)
+	if err != nil {
+		switch {
+		case ent.IsNotFound(err):
+			return &R404{
+				Code:   http.StatusNotFound,
+				Status: http.StatusText(http.StatusNotFound),
+				Errors: rawError(err),
+			}, nil
+		case ent.IsNotSingular(err):
+			return &R409{
+				Code:   http.StatusConflict,
+				Status: http.StatusText(http.StatusConflict),
+				Errors: rawError(err),
+			}, nil
+		default:
+			// Let the server handle the error.
+			return nil, err
+		}
+	}
+	return NewUeRead(e), nil
+}
+
+// UpdateUe handles PATCH /ues/{id} requests.
+func (h *OgentHandler) UpdateUe(ctx context.Context, req *UpdateUeReq, params UpdateUeParams) (UpdateUeRes, error) {
+	b := h.client.Ue.UpdateOneID(params.ID)
+	// Add all fields.
+	if v, ok := req.Limit.Get(); ok {
+		b.SetLimit(v)
+	}
+	if v, ok := req.LimitBoss.Get(); ok {
+		b.SetLimitBoss(v)
+	}
+	if v, ok := req.LimitItem.Get(); ok {
+		b.SetLimitItem(v)
+	}
+	if v, ok := req.Lv.Get(); ok {
+		b.SetLv(v)
+	}
+	if v, ok := req.LvPoint.Get(); ok {
+		b.SetLvPoint(v)
+	}
+	if v, ok := req.Model.Get(); ok {
+		b.SetModel(v)
+	}
+	if v, ok := req.Sword.Get(); ok {
+		b.SetSword(v)
+	}
+	if v, ok := req.Card.Get(); ok {
+		b.SetCard(v)
+	}
+	if v, ok := req.Mode.Get(); ok {
+		b.SetMode(v)
+	}
+	if v, ok := req.Cp.Get(); ok {
+		b.SetCp(v)
+	}
+	if v, ok := req.Count.Get(); ok {
+		b.SetCount(v)
+	}
+	if v, ok := req.LocationX.Get(); ok {
+		b.SetLocationX(v)
+	}
+	if v, ok := req.LocationY.Get(); ok {
+		b.SetLocationY(v)
+	}
+	if v, ok := req.LocationZ.Get(); ok {
+		b.SetLocationZ(v)
+	}
+	if v, ok := req.LocationN.Get(); ok {
+		b.SetLocationN(v)
+	}
+	if v, ok := req.Author.Get(); ok {
+		b.SetAuthor(v)
+	}
+	// Add all edges.
+	if v, ok := req.Token.Get(); ok {
+		if v == token {
+			b.SetToken(v)
+			if v, ok := req.Owner.Get(); ok {
+				b.SetOwnerID(v)
+			}
+		}
+	}
+
+	// Persist to storage.
+	e, err := b.Save(ctx)
+	if err != nil {
+		switch {
+		case ent.IsNotFound(err):
+			return &R404{
+				Code:   http.StatusNotFound,
+				Status: http.StatusText(http.StatusNotFound),
+				Errors: rawError(err),
+			}, nil
+		case ent.IsConstraintError(err):
+			return &R409{
+				Code:   http.StatusConflict,
+				Status: http.StatusText(http.StatusConflict),
+				Errors: rawError(err),
+			}, nil
+		default:
+			// Let the server handle the error.
+			return nil, err
+		}
+	}
+	// Reload the entity to attach all eager-loaded edges.
+	q := h.client.Ue.Query().Where(ue.ID(e.ID))
+	e, err = q.Only(ctx)
+	if err != nil {
+		// This should never happen.
+		return nil, err
+	}
+	return NewUeUpdate(e), nil
+}
+
+// DeleteUe handles DELETE /ues/{id} requests.
+func (h *OgentHandler) DeleteUe(ctx context.Context, params DeleteUeParams) (DeleteUeRes, error) {
+	err := h.client.Ue.DeleteOneID(0).Exec(ctx)
+	//err := h.client.Ue.DeleteOneID(params.ID).Exec(ctx)
+	if err != nil {
+		switch {
+		case ent.IsNotFound(err):
+			return &R404{
+				Code:   http.StatusNotFound,
+				Status: http.StatusText(http.StatusNotFound),
+				Errors: rawError(err),
+			}, nil
+		case ent.IsConstraintError(err):
+			return &R409{
+				Code:   http.StatusConflict,
+				Status: http.StatusText(http.StatusConflict),
+				Errors: rawError(err),
+			}, nil
+		default:
+			// Let the server handle the error.
+			return nil, err
+		}
+	}
+	return new(DeleteUeNoContent), nil
+
+}
+
+// ListUe handles GET /ues requests.
+func (h *OgentHandler) ListUe(ctx context.Context, params ListUeParams) (ListUeRes, error) {
+	q := h.client.Ue.Query()
+	page := 1
+	if v, ok := params.Page.Get(); ok {
+		page = v
+	}
+	itemsPerPage := 30
+	if v, ok := params.ItemsPerPage.Get(); ok {
+		itemsPerPage = v
+	}
+	q.Limit(itemsPerPage).Offset((page - 1) * itemsPerPage)
+
+	es, err := q.All(ctx)
+	if err != nil {
+		switch {
+		case ent.IsNotFound(err):
+			return &R404{
+				Code:   http.StatusNotFound,
+				Status: http.StatusText(http.StatusNotFound),
+				Errors: rawError(err),
+			}, nil
+		case ent.IsNotSingular(err):
+			return &R409{
+				Code:   http.StatusConflict,
+				Status: http.StatusText(http.StatusConflict),
+				Errors: rawError(err),
+			}, nil
+		default:
+			// Let the server handle the error.
+			return nil, err
+		}
+	}
+	r := NewUeLists(es)
+	return (*ListUeOKApplicationJSON)(&r), nil
+}
+
+// ReadUeOwner handles GET /ues/{id}/owner requests.
+func (h *OgentHandler) ReadUeOwner(ctx context.Context, params ReadUeOwnerParams) (ReadUeOwnerRes, error) {
+	q := h.client.Ue.Query().Where(ue.IDEQ(params.ID)).QueryOwner()
+	e, err := q.Only(ctx)
+	if err != nil {
+		switch {
+		case ent.IsNotFound(err):
+			return &R404{
+				Code:   http.StatusNotFound,
+				Status: http.StatusText(http.StatusNotFound),
+				Errors: rawError(err),
+			}, nil
+		case ent.IsNotSingular(err):
+			return &R409{
+				Code:   http.StatusConflict,
+				Status: http.StatusText(http.StatusConflict),
+				Errors: rawError(err),
+			}, nil
+		default:
+			// Let the server handle the error.
+			return nil, err
+		}
+	}
+	return NewUeOwnerRead(e), nil
+}
+
 // CreateUser handles POST /users requests.
 func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (CreateUserRes, error) {
 	b := h.client.User.Create()
-
-	// Add all fields.
-	//b.SetUsername(req.Username)
-	//origin-config
-	if req.Password == password {
-		b.SetUsername(req.Username)
-	} else {
-		b.SetUsername("")
-	}
-
-	b.SetPassword(req.Password)
-
-	if v, ok := req.ServerAt.Get(); ok {
-		b.SetServerAt(v)
-	}
-
-	if v, ok := req.Room.Get(); ok {
-		b.SetRoom(v)
-	}
-	if v, ok := req.Fav.Get(); ok {
-		b.SetFav(v)
-	}
-	if v, ok := req.Did.Get(); ok {
+		if v, ok := req.Did.Get(); ok {
 		b.SetDid(v)
-	}
-	if v, ok := req.Bsky.Get(); ok {
-		b.SetBsky(v)
-	}
-	if v, ok := req.Mastodon.Get(); ok {
-		b.SetMastodon(v)
 	}
 	if v, ok := req.Member.Get(); ok {
 		b.SetMember(v)
@@ -537,6 +818,12 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	if v, ok := req.Badge.Get(); ok {
 		b.SetBadge(v)
 	}
+	if v, ok := req.Bsky.Get(); ok {
+		b.SetBsky(v)
+	}
+	if v, ok := req.Mastodon.Get(); ok {
+		b.SetMastodon(v)
+	}
 	if v, ok := req.Delete.Get(); ok {
 		b.SetDelete(v)
 	}
@@ -546,9 +833,7 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	if v, ok := req.Token.Get(); ok {
 		b.SetToken(v)
 	}
-	if v, ok := req.EggAt.Get(); ok {
-		b.SetEggAt(v)
-	}
+	b.SetPassword(req.Password)
 	if v, ok := req.CreatedAt.Get(); ok {
 		b.SetCreatedAt(v)
 	}
@@ -558,11 +843,14 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	if v, ok := req.RaidAt.Get(); ok {
 		b.SetRaidAt(v)
 	}
+	if v, ok := req.ServerAt.Get(); ok {
+		b.SetServerAt(v)
+	}
+	if v, ok := req.EggAt.Get(); ok {
+		b.SetEggAt(v)
+	}
 	if v, ok := req.Luck.Get(); ok {
 		b.SetLuck(v)
-	}
-	if v, ok := req.Aiten.Get(); ok {
-		b.SetAiten(v)
 	}
 	if v, ok := req.LuckAt.Get(); ok {
 		b.SetLuckAt(v)
@@ -576,6 +864,9 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	if v, ok := req.LikeAt.Get(); ok {
 		b.SetLikeAt(v)
 	}
+	if v, ok := req.Fav.Get(); ok {
+		b.SetFav(v)
+	}
 	if v, ok := req.Ten.Get(); ok {
 		b.SetTen(v)
 	}
@@ -584,6 +875,9 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	}
 	if v, ok := req.TenKai.Get(); ok {
 		b.SetTenKai(v)
+	}
+	if v, ok := req.Aiten.Get(); ok {
+		b.SetAiten(v)
 	}
 	if v, ok := req.TenCard.Get(); ok {
 		b.SetTenCard(v)
@@ -603,6 +897,9 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	if v, ok := req.Next.Get(); ok {
 		b.SetNext(v)
 	}
+	if v, ok := req.Room.Get(); ok {
+		b.SetRoom(v)
+	}
 	if v, ok := req.Model.Get(); ok {
 		b.SetModel(v)
 	}
@@ -612,12 +909,6 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	if v, ok := req.ModelAttack.Get(); ok {
 		b.SetModelAttack(v)
 	}
-	if v, ok := req.ModelCriticalD.Get(); ok {
-		b.SetModelCriticalD(v)
-	}
-	if v, ok := req.ModelCritical.Get(); ok {
-		b.SetModelCritical(v)
-	}
 	if v, ok := req.ModelLimit.Get(); ok {
 		b.SetModelLimit(v)
 	}
@@ -626,6 +917,12 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	}
 	if v, ok := req.ModelMode.Get(); ok {
 		b.SetModelMode(v)
+	}
+	if v, ok := req.ModelCritical.Get(); ok {
+		b.SetModelCritical(v)
+	}
+	if v, ok := req.ModelCriticalD.Get(); ok {
+		b.SetModelCriticalD(v)
 	}
 	if v, ok := req.Game.Get(); ok {
 		b.SetGame(v)
@@ -643,8 +940,16 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 		b.SetGameLv(v)
 	}
 
+	// Add all fields.
+	//b.SetUsername(req.Username)
+	if req.Password == password {
+		b.SetUsername(req.Username)
+	} else {
+		b.SetUsername("")
+	}
 	// Add all edges.
 	b.AddCardIDs(req.Card...)
+	b.AddUeIDs(req.Ue...)
 	// Persist to storage.
 	e, err := b.Save(ctx)
 	if err != nil {
@@ -705,20 +1010,9 @@ func (h *OgentHandler) ReadUser(ctx context.Context, params ReadUserParams) (Rea
 // UpdateUser handles PATCH /users/{id} requests.
 func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, params UpdateUserParams) (UpdateUserRes, error) {
 	b := h.client.User.UpdateOneID(params.ID)
-
 	if v, ok := req.Token.Get(); ok {
 		if v == token {
-			b.SetToken(v)
-
-			if v, ok := req.ServerAt.Get(); ok {
-				b.SetServerAt(v)
-			}
-			if v, ok := req.Room.Get(); ok {
-				b.SetRoom(v)
-			}
-			if v, ok := req.Fav.Get(); ok {
-				b.SetFav(v)
-			}
+			// Add all fields.
 			if v, ok := req.Did.Get(); ok {
 				b.SetDid(v)
 			}
@@ -746,17 +1040,17 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			if v, ok := req.Handle.Get(); ok {
 				b.SetHandle(v)
 			}
-			if v, ok := req.EggAt.Get(); ok {
-				b.SetEggAt(v)
-			}
 			if v, ok := req.UpdatedAt.Get(); ok {
 				b.SetUpdatedAt(v)
 			}
 			if v, ok := req.RaidAt.Get(); ok {
 				b.SetRaidAt(v)
 			}
-			if v, ok := req.Aiten.Get(); ok {
-				b.SetAiten(v)
+			if v, ok := req.ServerAt.Get(); ok {
+				b.SetServerAt(v)
+			}
+			if v, ok := req.EggAt.Get(); ok {
+				b.SetEggAt(v)
 			}
 			if v, ok := req.Luck.Get(); ok {
 				b.SetLuck(v)
@@ -773,6 +1067,9 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			if v, ok := req.LikeAt.Get(); ok {
 				b.SetLikeAt(v)
 			}
+			if v, ok := req.Fav.Get(); ok {
+				b.SetFav(v)
+			}
 			if v, ok := req.Ten.Get(); ok {
 				b.SetTen(v)
 			}
@@ -781,6 +1078,9 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			}
 			if v, ok := req.TenKai.Get(); ok {
 				b.SetTenKai(v)
+			}
+			if v, ok := req.Aiten.Get(); ok {
+				b.SetAiten(v)
 			}
 			if v, ok := req.TenCard.Get(); ok {
 				b.SetTenCard(v)
@@ -800,6 +1100,9 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			if v, ok := req.Next.Get(); ok {
 				b.SetNext(v)
 			}
+			if v, ok := req.Room.Get(); ok {
+				b.SetRoom(v)
+			}
 			if v, ok := req.Model.Get(); ok {
 				b.SetModel(v)
 			}
@@ -809,12 +1112,6 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			if v, ok := req.ModelAttack.Get(); ok {
 				b.SetModelAttack(v)
 			}
-			if v, ok := req.ModelCriticalD.Get(); ok {
-				b.SetModelCriticalD(v)
-			}
-			if v, ok := req.ModelCritical.Get(); ok {
-				b.SetModelCritical(v)
-			}
 			if v, ok := req.ModelLimit.Get(); ok {
 				b.SetModelLimit(v)
 			}
@@ -823,6 +1120,12 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			}
 			if v, ok := req.ModelMode.Get(); ok {
 				b.SetModelMode(v)
+			}
+			if v, ok := req.ModelCritical.Get(); ok {
+				b.SetModelCritical(v)
+			}
+			if v, ok := req.ModelCriticalD.Get(); ok {
+				b.SetModelCriticalD(v)
 			}
 			if v, ok := req.Game.Get(); ok {
 				b.SetGame(v)
@@ -843,9 +1146,12 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			if req.Card != nil {
 				b.ClearCard().AddCardIDs(req.Card...)
 			}
+			if req.Ue != nil {
+				b.ClearUe().AddUeIDs(req.Ue...)
+			}
+			b.SetToken(v)
 		}
 	}
-
 	// Persist to storage.
 	e, err := b.Save(ctx)
 	if err != nil {
@@ -880,6 +1186,7 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 // DeleteUser handles DELETE /users/{id} requests.
 func (h *OgentHandler) DeleteUser(ctx context.Context, params DeleteUserParams) (DeleteUserRes, error) {
 	err := h.client.User.DeleteOneID(0).Exec(ctx)
+	//err := h.client.User.DeleteOneID(params.ID).Exec(ctx)
 	if err != nil {
 		switch {
 		case ent.IsNotFound(err):
@@ -974,4 +1281,40 @@ func (h *OgentHandler) ListUserCard(ctx context.Context, params ListUserCardPara
 	}
 	r := NewUserCardLists(es)
 	return (*ListUserCardOKApplicationJSON)(&r), nil
+}
+
+// ListUserUe handles GET /users/{id}/ue requests.
+func (h *OgentHandler) ListUserUe(ctx context.Context, params ListUserUeParams) (ListUserUeRes, error) {
+	q := h.client.User.Query().Where(user.IDEQ(params.ID)).QueryUe()
+	page := 1
+	if v, ok := params.Page.Get(); ok {
+		page = v
+	}
+	itemsPerPage := 30
+	if v, ok := params.ItemsPerPage.Get(); ok {
+		itemsPerPage = v
+	}
+	q.Limit(itemsPerPage).Offset((page - 1) * itemsPerPage)
+	es, err := q.All(ctx)
+	if err != nil {
+		switch {
+		case ent.IsNotFound(err):
+			return &R404{
+				Code:   http.StatusNotFound,
+				Status: http.StatusText(http.StatusNotFound),
+				Errors: rawError(err),
+			}, nil
+		case ent.IsNotSingular(err):
+			return &R409{
+				Code:   http.StatusConflict,
+				Status: http.StatusText(http.StatusConflict),
+				Errors: rawError(err),
+			}, nil
+		default:
+			// Let the server handle the error.
+			return nil, err
+		}
+	}
+	r := NewUserUeLists(es)
+	return (*ListUserUeOKApplicationJSON)(&r), nil
 }

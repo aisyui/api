@@ -39,6 +39,20 @@ func encodeCreateGroupRequest(
 	return nil
 }
 
+func encodeCreateUeRequest(
+	req *CreateUeReq,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
 func encodeCreateUserRequest(
 	req *CreateUserReq,
 	r *http.Request,
@@ -69,6 +83,20 @@ func encodeUpdateCardRequest(
 
 func encodeUpdateGroupRequest(
 	req *UpdateGroupReq,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeUpdateUeRequest(
+	req *UpdateUeReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"

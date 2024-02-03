@@ -20,6 +20,12 @@ type Handler interface {
 	//
 	// POST /groups
 	CreateGroup(ctx context.Context, req *CreateGroupReq) (CreateGroupRes, error)
+	// CreateUe implements createUe operation.
+	//
+	// Creates a new Ue and persists it to storage.
+	//
+	// POST /ues
+	CreateUe(ctx context.Context, req *CreateUeReq) (CreateUeRes, error)
 	// CreateUser implements createUser operation.
 	//
 	// Creates a new User and persists it to storage.
@@ -38,6 +44,12 @@ type Handler interface {
 	//
 	// DELETE /groups/{id}
 	DeleteGroup(ctx context.Context, params DeleteGroupParams) (DeleteGroupRes, error)
+	// DeleteUe implements deleteUe operation.
+	//
+	// Deletes the Ue with the requested ID.
+	//
+	// DELETE /ues/{id}
+	DeleteUe(ctx context.Context, params DeleteUeParams) (DeleteUeRes, error)
 	// DeleteUser implements deleteUser operation.
 	//
 	// Deletes the User with the requested ID.
@@ -74,6 +86,12 @@ type Handler interface {
 	//
 	// GET /groups/{id}/users
 	ListGroupUsers(ctx context.Context, params ListGroupUsersParams) (ListGroupUsersRes, error)
+	// ListUe implements listUe operation.
+	//
+	// List Ues.
+	//
+	// GET /ues
+	ListUe(ctx context.Context, params ListUeParams) (ListUeRes, error)
 	// ListUser implements listUser operation.
 	//
 	// List Users.
@@ -86,6 +104,12 @@ type Handler interface {
 	//
 	// GET /users/{id}/card
 	ListUserCard(ctx context.Context, params ListUserCardParams) (ListUserCardRes, error)
+	// ListUserUe implements listUserUe operation.
+	//
+	// List attached Ues.
+	//
+	// GET /users/{id}/ue
+	ListUserUe(ctx context.Context, params ListUserUeParams) (ListUserUeRes, error)
 	// ReadCard implements readCard operation.
 	//
 	// Finds the Card with the requested ID and returns it.
@@ -104,6 +128,18 @@ type Handler interface {
 	//
 	// GET /groups/{id}
 	ReadGroup(ctx context.Context, params ReadGroupParams) (ReadGroupRes, error)
+	// ReadUe implements readUe operation.
+	//
+	// Finds the Ue with the requested ID and returns it.
+	//
+	// GET /ues/{id}
+	ReadUe(ctx context.Context, params ReadUeParams) (ReadUeRes, error)
+	// ReadUeOwner implements readUeOwner operation.
+	//
+	// Find the attached User of the Ue with the given ID.
+	//
+	// GET /ues/{id}/owner
+	ReadUeOwner(ctx context.Context, params ReadUeOwnerParams) (ReadUeOwnerRes, error)
 	// ReadUser implements readUser operation.
 	//
 	// Finds the User with the requested ID and returns it.
@@ -122,6 +158,12 @@ type Handler interface {
 	//
 	// PATCH /groups/{id}
 	UpdateGroup(ctx context.Context, req *UpdateGroupReq, params UpdateGroupParams) (UpdateGroupRes, error)
+	// UpdateUe implements updateUe operation.
+	//
+	// Updates a Ue and persists changes to storage.
+	//
+	// PATCH /ues/{id}
+	UpdateUe(ctx context.Context, req *UpdateUeReq, params UpdateUeParams) (UpdateUeRes, error)
 	// UpdateUser implements updateUser operation.
 	//
 	// Updates a User and persists changes to storage.

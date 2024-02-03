@@ -229,6 +229,8 @@ func (User) Indexes() []ent.Index {
 func (User) Edges() []ent.Edge {
 	return []ent.Edge{
 		edge.To("card", Card.Type),
+		edge.To("ue", Ue.Type),
 			//Unique(),
 	}
 }
+

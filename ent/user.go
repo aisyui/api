@@ -120,9 +120,11 @@ type User struct {
 type UserEdges struct {
 	// Card holds the value of the card edge.
 	Card []*Card `json:"card,omitempty"`
+	// Ue holds the value of the ue edge.
+	Ue []*Ue `json:"ue,omitempty"`
 	// loadedTypes holds the information for reporting if a
 	// type was loaded (or requested) in eager-loading or not.
-	loadedTypes [1]bool
+	loadedTypes [2]bool
 }
 
 // CardOrErr returns the Card value or an error if the edge
@@ -132,6 +134,15 @@ func (e UserEdges) CardOrErr() ([]*Card, error) {
 		return e.Card, nil
 	}
 	return nil, &NotLoadedError{edge: "card"}
+}
+
+// UeOrErr returns the Ue value or an error if the edge
+// was not loaded in eager-loading.
+func (e UserEdges) UeOrErr() ([]*Ue, error) {
+	if e.loadedTypes[1] {
+		return e.Ue, nil
+	}
+	return nil, &NotLoadedError{edge: "ue"}
 }
 
 // scanValues returns the types for scanning values from sql.Rows.
@@ -467,6 +478,11 @@ func (u *User) assignValues(columns []string, values []any) error {
 // QueryCard queries the "card" edge of the User entity.
 func (u *User) QueryCard() *CardQuery {
 	return NewUserClient(u.config).QueryCard(u)
+}
+
+// QueryUe queries the "ue" edge of the User entity.
+func (u *User) QueryUe() *UeQuery {
+	return NewUserClient(u.config).QueryUe(u)
 }
 
 // Update returns a builder for updating this User.

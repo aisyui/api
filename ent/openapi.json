@@ -704,6 +704,407 @@
         }
       }
     },
+    "/ues": {
+      "get": {
+        "tags": [
+          "Ue"
+        ],
+        "summary": "List Ues",
+        "description": "List Ues.",
+        "operationId": "listUe",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer",
+              "maximum": 5000,
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result Ue list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UeList"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Ue"
+        ],
+        "summary": "Create a new Ue",
+        "description": "Creates a new Ue and persists it to storage.",
+        "operationId": "createUe",
+        "requestBody": {
+          "description": "Ue to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "limit": {
+                    "type": "boolean"
+                  },
+                  "limit_boss": {
+                    "type": "boolean"
+                  },
+                  "limit_item": {
+                    "type": "boolean"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "lv": {
+                    "type": "integer"
+                  },
+                  "lv_point": {
+                    "type": "integer"
+                  },
+                  "model": {
+                    "type": "integer"
+                  },
+                  "sword": {
+                    "type": "integer"
+                  },
+                  "card": {
+                    "type": "integer"
+                  },
+                  "mode": {
+                    "type": "string"
+                  },
+                  "token": {
+                    "type": "string"
+                  },
+                  "cp": {
+                    "type": "integer"
+                  },
+                  "count": {
+                    "type": "integer"
+                  },
+                  "location_x": {
+                    "type": "integer"
+                  },
+                  "location_y": {
+                    "type": "integer"
+                  },
+                  "location_z": {
+                    "type": "integer"
+                  },
+                  "location_n": {
+                    "type": "integer"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "owner": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "password",
+                  "owner"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Ue created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UeCreate"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ues/{id}": {
+      "get": {
+        "tags": [
+          "Ue"
+        ],
+        "summary": "Find a Ue by ID",
+        "description": "Finds the Ue with the requested ID and returns it.",
+        "operationId": "readUe",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Ue",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ue with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UeRead"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Ue"
+        ],
+        "summary": "Deletes a Ue by ID",
+        "description": "Deletes the Ue with the requested ID.",
+        "operationId": "deleteUe",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Ue",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ue with requested ID was deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Ue"
+        ],
+        "summary": "Updates a Ue",
+        "description": "Updates a Ue and persists changes to storage.",
+        "operationId": "updateUe",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Ue",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Ue properties to update",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "limit": {
+                    "type": "boolean"
+                  },
+                  "limit_boss": {
+                    "type": "boolean"
+                  },
+                  "limit_item": {
+                    "type": "boolean"
+                  },
+                  "lv": {
+                    "type": "integer"
+                  },
+                  "lv_point": {
+                    "type": "integer"
+                  },
+                  "model": {
+                    "type": "integer"
+                  },
+                  "sword": {
+                    "type": "integer"
+                  },
+                  "card": {
+                    "type": "integer"
+                  },
+                  "mode": {
+                    "type": "string"
+                  },
+                  "token": {
+                    "type": "string"
+                  },
+                  "cp": {
+                    "type": "integer"
+                  },
+                  "count": {
+                    "type": "integer"
+                  },
+                  "location_x": {
+                    "type": "integer"
+                  },
+                  "location_y": {
+                    "type": "integer"
+                  },
+                  "location_z": {
+                    "type": "integer"
+                  },
+                  "location_n": {
+                    "type": "integer"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "owner": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Ue updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UeUpdate"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/ues/{id}/owner": {
+      "get": {
+        "tags": [
+          "Ue"
+        ],
+        "summary": "Find the attached User",
+        "description": "Find the attached User of the Ue with the given ID",
+        "operationId": "readUeOwner",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Ue",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User attached to Ue with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ue_OwnerRead"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
     "/users": {
       "get": {
         "tags": [
@@ -926,6 +1327,12 @@
                     "type": "integer"
                   },
                   "card": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "ue": {
                     "type": "array",
                     "items": {
                       "type": "integer"
@@ -1214,6 +1621,12 @@
                     "items": {
                       "type": "integer"
                     }
+                  },
+                  "ue": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
                   }
                 }
               }
@@ -1335,6 +1748,70 @@
           }
         }
       ]
+    },
+    "/users/{id}/ue": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "List attached Ues",
+        "description": "List attached Ues.",
+        "operationId": "listUserUe",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the User",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result Users list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User_UeList"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1927,6 +2404,488 @@
           "username"
         ]
       },
+      "Ue": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "boolean"
+          },
+          "limit_boss": {
+            "type": "boolean"
+          },
+          "limit_item": {
+            "type": "boolean"
+          },
+          "password": {
+            "type": "string"
+          },
+          "lv": {
+            "type": "integer"
+          },
+          "lv_point": {
+            "type": "integer"
+          },
+          "model": {
+            "type": "integer"
+          },
+          "sword": {
+            "type": "integer"
+          },
+          "card": {
+            "type": "integer"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          },
+          "cp": {
+            "type": "integer"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "location_x": {
+            "type": "integer"
+          },
+          "location_y": {
+            "type": "integer"
+          },
+          "location_z": {
+            "type": "integer"
+          },
+          "location_n": {
+            "type": "integer"
+          },
+          "author": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "required": [
+          "id",
+          "password",
+          "owner"
+        ]
+      },
+      "UeCreate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "boolean"
+          },
+          "limit_boss": {
+            "type": "boolean"
+          },
+          "limit_item": {
+            "type": "boolean"
+          },
+          "lv": {
+            "type": "integer"
+          },
+          "lv_point": {
+            "type": "integer"
+          },
+          "model": {
+            "type": "integer"
+          },
+          "sword": {
+            "type": "integer"
+          },
+          "card": {
+            "type": "integer"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "cp": {
+            "type": "integer"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "location_x": {
+            "type": "integer"
+          },
+          "location_y": {
+            "type": "integer"
+          },
+          "location_z": {
+            "type": "integer"
+          },
+          "location_n": {
+            "type": "integer"
+          },
+          "author": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "UeList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "boolean"
+          },
+          "limit_boss": {
+            "type": "boolean"
+          },
+          "limit_item": {
+            "type": "boolean"
+          },
+          "lv": {
+            "type": "integer"
+          },
+          "lv_point": {
+            "type": "integer"
+          },
+          "model": {
+            "type": "integer"
+          },
+          "sword": {
+            "type": "integer"
+          },
+          "card": {
+            "type": "integer"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "cp": {
+            "type": "integer"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "location_x": {
+            "type": "integer"
+          },
+          "location_y": {
+            "type": "integer"
+          },
+          "location_z": {
+            "type": "integer"
+          },
+          "location_n": {
+            "type": "integer"
+          },
+          "author": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "UeRead": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "boolean"
+          },
+          "limit_boss": {
+            "type": "boolean"
+          },
+          "limit_item": {
+            "type": "boolean"
+          },
+          "lv": {
+            "type": "integer"
+          },
+          "lv_point": {
+            "type": "integer"
+          },
+          "model": {
+            "type": "integer"
+          },
+          "sword": {
+            "type": "integer"
+          },
+          "card": {
+            "type": "integer"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "cp": {
+            "type": "integer"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "location_x": {
+            "type": "integer"
+          },
+          "location_y": {
+            "type": "integer"
+          },
+          "location_z": {
+            "type": "integer"
+          },
+          "location_n": {
+            "type": "integer"
+          },
+          "author": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "UeUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "boolean"
+          },
+          "limit_boss": {
+            "type": "boolean"
+          },
+          "limit_item": {
+            "type": "boolean"
+          },
+          "lv": {
+            "type": "integer"
+          },
+          "lv_point": {
+            "type": "integer"
+          },
+          "model": {
+            "type": "integer"
+          },
+          "sword": {
+            "type": "integer"
+          },
+          "card": {
+            "type": "integer"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "cp": {
+            "type": "integer"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "location_x": {
+            "type": "integer"
+          },
+          "location_y": {
+            "type": "integer"
+          },
+          "location_z": {
+            "type": "integer"
+          },
+          "location_n": {
+            "type": "integer"
+          },
+          "author": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "Ue_OwnerRead": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "username": {
+            "type": "string"
+          },
+          "did": {
+            "type": "string"
+          },
+          "member": {
+            "type": "boolean"
+          },
+          "book": {
+            "type": "boolean"
+          },
+          "manga": {
+            "type": "boolean"
+          },
+          "badge": {
+            "type": "boolean"
+          },
+          "bsky": {
+            "type": "boolean"
+          },
+          "mastodon": {
+            "type": "boolean"
+          },
+          "delete": {
+            "type": "boolean"
+          },
+          "handle": {
+            "type": "boolean"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "raid_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "server_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "egg_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "luck": {
+            "type": "integer"
+          },
+          "luck_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "like": {
+            "type": "integer"
+          },
+          "like_rank": {
+            "type": "integer"
+          },
+          "like_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fav": {
+            "type": "integer"
+          },
+          "ten": {
+            "type": "boolean"
+          },
+          "ten_su": {
+            "type": "integer"
+          },
+          "ten_kai": {
+            "type": "integer"
+          },
+          "aiten": {
+            "type": "integer"
+          },
+          "ten_card": {
+            "type": "string"
+          },
+          "ten_delete": {
+            "type": "string"
+          },
+          "ten_post": {
+            "type": "string"
+          },
+          "ten_get": {
+            "type": "string"
+          },
+          "ten_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "next": {
+            "type": "string"
+          },
+          "room": {
+            "type": "integer"
+          },
+          "model": {
+            "type": "boolean"
+          },
+          "model_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "model_attack": {
+            "type": "integer"
+          },
+          "model_limit": {
+            "type": "integer"
+          },
+          "model_skill": {
+            "type": "integer"
+          },
+          "model_mode": {
+            "type": "integer"
+          },
+          "model_critical": {
+            "type": "integer"
+          },
+          "model_critical_d": {
+            "type": "integer"
+          },
+          "game": {
+            "type": "boolean"
+          },
+          "game_test": {
+            "type": "boolean"
+          },
+          "game_end": {
+            "type": "boolean"
+          },
+          "game_account": {
+            "type": "boolean"
+          },
+          "game_lv": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "username"
+        ]
+      },
       "User": {
         "type": "object",
         "properties": {
@@ -2087,6 +3046,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Card"
+            }
+          },
+          "ue": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Ue"
             }
           }
         },
@@ -2742,6 +3707,69 @@
             "type": "string"
           },
           "count": {
+            "type": "integer"
+          },
+          "author": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "User_UeList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "boolean"
+          },
+          "limit_boss": {
+            "type": "boolean"
+          },
+          "limit_item": {
+            "type": "boolean"
+          },
+          "lv": {
+            "type": "integer"
+          },
+          "lv_point": {
+            "type": "integer"
+          },
+          "model": {
+            "type": "integer"
+          },
+          "sword": {
+            "type": "integer"
+          },
+          "card": {
+            "type": "integer"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "cp": {
+            "type": "integer"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "location_x": {
+            "type": "integer"
+          },
+          "location_y": {
+            "type": "integer"
+          },
+          "location_z": {
+            "type": "integer"
+          },
+          "location_n": {
             "type": "integer"
           },
           "author": {

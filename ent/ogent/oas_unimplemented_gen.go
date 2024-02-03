@@ -31,6 +31,15 @@ func (UnimplementedHandler) CreateGroup(ctx context.Context, req *CreateGroupReq
 	return r, ht.ErrNotImplemented
 }
 
+// CreateUe implements createUe operation.
+//
+// Creates a new Ue and persists it to storage.
+//
+// POST /ues
+func (UnimplementedHandler) CreateUe(ctx context.Context, req *CreateUeReq) (r CreateUeRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // CreateUser implements createUser operation.
 //
 // Creates a new User and persists it to storage.
@@ -55,6 +64,15 @@ func (UnimplementedHandler) DeleteCard(ctx context.Context, params DeleteCardPar
 //
 // DELETE /groups/{id}
 func (UnimplementedHandler) DeleteGroup(ctx context.Context, params DeleteGroupParams) (r DeleteGroupRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// DeleteUe implements deleteUe operation.
+//
+// Deletes the Ue with the requested ID.
+//
+// DELETE /ues/{id}
+func (UnimplementedHandler) DeleteUe(ctx context.Context, params DeleteUeParams) (r DeleteUeRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -112,6 +130,15 @@ func (UnimplementedHandler) ListGroupUsers(ctx context.Context, params ListGroup
 	return r, ht.ErrNotImplemented
 }
 
+// ListUe implements listUe operation.
+//
+// List Ues.
+//
+// GET /ues
+func (UnimplementedHandler) ListUe(ctx context.Context, params ListUeParams) (r ListUeRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // ListUser implements listUser operation.
 //
 // List Users.
@@ -127,6 +154,15 @@ func (UnimplementedHandler) ListUser(ctx context.Context, params ListUserParams)
 //
 // GET /users/{id}/card
 func (UnimplementedHandler) ListUserCard(ctx context.Context, params ListUserCardParams) (r ListUserCardRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ListUserUe implements listUserUe operation.
+//
+// List attached Ues.
+//
+// GET /users/{id}/ue
+func (UnimplementedHandler) ListUserUe(ctx context.Context, params ListUserUeParams) (r ListUserUeRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -157,6 +193,24 @@ func (UnimplementedHandler) ReadGroup(ctx context.Context, params ReadGroupParam
 	return r, ht.ErrNotImplemented
 }
 
+// ReadUe implements readUe operation.
+//
+// Finds the Ue with the requested ID and returns it.
+//
+// GET /ues/{id}
+func (UnimplementedHandler) ReadUe(ctx context.Context, params ReadUeParams) (r ReadUeRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ReadUeOwner implements readUeOwner operation.
+//
+// Find the attached User of the Ue with the given ID.
+//
+// GET /ues/{id}/owner
+func (UnimplementedHandler) ReadUeOwner(ctx context.Context, params ReadUeOwnerParams) (r ReadUeOwnerRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // ReadUser implements readUser operation.
 //
 // Finds the User with the requested ID and returns it.
@@ -181,6 +235,15 @@ func (UnimplementedHandler) UpdateCard(ctx context.Context, req *UpdateCardReq, 
 //
 // PATCH /groups/{id}
 func (UnimplementedHandler) UpdateGroup(ctx context.Context, req *UpdateGroupReq, params UpdateGroupParams) (r UpdateGroupRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// UpdateUe implements updateUe operation.
+//
+// Updates a Ue and persists changes to storage.
+//
+// PATCH /ues/{id}
+func (UnimplementedHandler) UpdateUe(ctx context.Context, req *UpdateUeReq, params UpdateUeParams) (r UpdateUeRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

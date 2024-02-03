@@ -400,6 +400,254 @@ func (u *GroupUsersList) Elem() GroupUsersList {
 	return *u
 }
 
+func NewUeCreate(e *ent.Ue) *UeCreate {
+	if e == nil {
+		return nil
+	}
+	var ret UeCreate
+	ret.ID = e.ID
+	ret.Limit = NewOptBool(e.Limit)
+	ret.LimitBoss = NewOptBool(e.LimitBoss)
+	ret.LimitItem = NewOptBool(e.LimitItem)
+	ret.Lv = NewOptInt(e.Lv)
+	ret.LvPoint = NewOptInt(e.LvPoint)
+	ret.Model = NewOptInt(e.Model)
+	ret.Sword = NewOptInt(e.Sword)
+	ret.Card = NewOptInt(e.Card)
+	ret.Mode = NewOptString(e.Mode)
+	ret.Cp = NewOptInt(e.Cp)
+	ret.Count = NewOptInt(e.Count)
+	ret.LocationX = NewOptInt(e.LocationX)
+	ret.LocationY = NewOptInt(e.LocationY)
+	ret.LocationZ = NewOptInt(e.LocationZ)
+	ret.LocationN = NewOptInt(e.LocationN)
+	ret.Author = NewOptString(e.Author)
+	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
+	return &ret
+}
+
+func NewUeCreates(es []*ent.Ue) []UeCreate {
+	if len(es) == 0 {
+		return nil
+	}
+	r := make([]UeCreate, len(es))
+	for i, e := range es {
+		r[i] = NewUeCreate(e).Elem()
+	}
+	return r
+}
+
+func (u *UeCreate) Elem() UeCreate {
+	if u == nil {
+		return UeCreate{}
+	}
+	return *u
+}
+
+func NewUeList(e *ent.Ue) *UeList {
+	if e == nil {
+		return nil
+	}
+	var ret UeList
+	ret.ID = e.ID
+	ret.Limit = NewOptBool(e.Limit)
+	ret.LimitBoss = NewOptBool(e.LimitBoss)
+	ret.LimitItem = NewOptBool(e.LimitItem)
+	ret.Lv = NewOptInt(e.Lv)
+	ret.LvPoint = NewOptInt(e.LvPoint)
+	ret.Model = NewOptInt(e.Model)
+	ret.Sword = NewOptInt(e.Sword)
+	ret.Card = NewOptInt(e.Card)
+	ret.Mode = NewOptString(e.Mode)
+	ret.Cp = NewOptInt(e.Cp)
+	ret.Count = NewOptInt(e.Count)
+	ret.LocationX = NewOptInt(e.LocationX)
+	ret.LocationY = NewOptInt(e.LocationY)
+	ret.LocationZ = NewOptInt(e.LocationZ)
+	ret.LocationN = NewOptInt(e.LocationN)
+	ret.Author = NewOptString(e.Author)
+	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
+	return &ret
+}
+
+func NewUeLists(es []*ent.Ue) []UeList {
+	if len(es) == 0 {
+		return nil
+	}
+	r := make([]UeList, len(es))
+	for i, e := range es {
+		r[i] = NewUeList(e).Elem()
+	}
+	return r
+}
+
+func (u *UeList) Elem() UeList {
+	if u == nil {
+		return UeList{}
+	}
+	return *u
+}
+
+func NewUeRead(e *ent.Ue) *UeRead {
+	if e == nil {
+		return nil
+	}
+	var ret UeRead
+	ret.ID = e.ID
+	ret.Limit = NewOptBool(e.Limit)
+	ret.LimitBoss = NewOptBool(e.LimitBoss)
+	ret.LimitItem = NewOptBool(e.LimitItem)
+	ret.Lv = NewOptInt(e.Lv)
+	ret.LvPoint = NewOptInt(e.LvPoint)
+	ret.Model = NewOptInt(e.Model)
+	ret.Sword = NewOptInt(e.Sword)
+	ret.Card = NewOptInt(e.Card)
+	ret.Mode = NewOptString(e.Mode)
+	ret.Cp = NewOptInt(e.Cp)
+	ret.Count = NewOptInt(e.Count)
+	ret.LocationX = NewOptInt(e.LocationX)
+	ret.LocationY = NewOptInt(e.LocationY)
+	ret.LocationZ = NewOptInt(e.LocationZ)
+	ret.LocationN = NewOptInt(e.LocationN)
+	ret.Author = NewOptString(e.Author)
+	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
+	return &ret
+}
+
+func NewUeReads(es []*ent.Ue) []UeRead {
+	if len(es) == 0 {
+		return nil
+	}
+	r := make([]UeRead, len(es))
+	for i, e := range es {
+		r[i] = NewUeRead(e).Elem()
+	}
+	return r
+}
+
+func (u *UeRead) Elem() UeRead {
+	if u == nil {
+		return UeRead{}
+	}
+	return *u
+}
+
+func NewUeUpdate(e *ent.Ue) *UeUpdate {
+	if e == nil {
+		return nil
+	}
+	var ret UeUpdate
+	ret.ID = e.ID
+	ret.Limit = NewOptBool(e.Limit)
+	ret.LimitBoss = NewOptBool(e.LimitBoss)
+	ret.LimitItem = NewOptBool(e.LimitItem)
+	ret.Lv = NewOptInt(e.Lv)
+	ret.LvPoint = NewOptInt(e.LvPoint)
+	ret.Model = NewOptInt(e.Model)
+	ret.Sword = NewOptInt(e.Sword)
+	ret.Card = NewOptInt(e.Card)
+	ret.Mode = NewOptString(e.Mode)
+	ret.Cp = NewOptInt(e.Cp)
+	ret.Count = NewOptInt(e.Count)
+	ret.LocationX = NewOptInt(e.LocationX)
+	ret.LocationY = NewOptInt(e.LocationY)
+	ret.LocationZ = NewOptInt(e.LocationZ)
+	ret.LocationN = NewOptInt(e.LocationN)
+	ret.Author = NewOptString(e.Author)
+	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
+	return &ret
+}
+
+func NewUeUpdates(es []*ent.Ue) []UeUpdate {
+	if len(es) == 0 {
+		return nil
+	}
+	r := make([]UeUpdate, len(es))
+	for i, e := range es {
+		r[i] = NewUeUpdate(e).Elem()
+	}
+	return r
+}
+
+func (u *UeUpdate) Elem() UeUpdate {
+	if u == nil {
+		return UeUpdate{}
+	}
+	return *u
+}
+
+func NewUeOwnerRead(e *ent.User) *UeOwnerRead {
+	if e == nil {
+		return nil
+	}
+	var ret UeOwnerRead
+	ret.ID = e.ID
+	ret.Username = e.Username
+	ret.Did = NewOptString(e.Did)
+	ret.Member = NewOptBool(e.Member)
+	ret.Book = NewOptBool(e.Book)
+	ret.Manga = NewOptBool(e.Manga)
+	ret.Badge = NewOptBool(e.Badge)
+	ret.Bsky = NewOptBool(e.Bsky)
+	ret.Mastodon = NewOptBool(e.Mastodon)
+	ret.Delete = NewOptBool(e.Delete)
+	ret.Handle = NewOptBool(e.Handle)
+	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
+	ret.UpdatedAt = NewOptDateTime(e.UpdatedAt)
+	ret.RaidAt = NewOptDateTime(e.RaidAt)
+	ret.ServerAt = NewOptDateTime(e.ServerAt)
+	ret.EggAt = NewOptDateTime(e.EggAt)
+	ret.Luck = NewOptInt(e.Luck)
+	ret.LuckAt = NewOptDateTime(e.LuckAt)
+	ret.Like = NewOptInt(e.Like)
+	ret.LikeRank = NewOptInt(e.LikeRank)
+	ret.LikeAt = NewOptDateTime(e.LikeAt)
+	ret.Fav = NewOptInt(e.Fav)
+	ret.Ten = NewOptBool(e.Ten)
+	ret.TenSu = NewOptInt(e.TenSu)
+	ret.TenKai = NewOptInt(e.TenKai)
+	ret.Aiten = NewOptInt(e.Aiten)
+	ret.TenCard = NewOptString(e.TenCard)
+	ret.TenDelete = NewOptString(e.TenDelete)
+	ret.TenPost = NewOptString(e.TenPost)
+	ret.TenGet = NewOptString(e.TenGet)
+	ret.TenAt = NewOptDateTime(e.TenAt)
+	ret.Next = NewOptString(e.Next)
+	ret.Room = NewOptInt(e.Room)
+	ret.Model = NewOptBool(e.Model)
+	ret.ModelAt = NewOptDateTime(e.ModelAt)
+	ret.ModelAttack = NewOptInt(e.ModelAttack)
+	ret.ModelLimit = NewOptInt(e.ModelLimit)
+	ret.ModelSkill = NewOptInt(e.ModelSkill)
+	ret.ModelMode = NewOptInt(e.ModelMode)
+	ret.ModelCritical = NewOptInt(e.ModelCritical)
+	ret.ModelCriticalD = NewOptInt(e.ModelCriticalD)
+	ret.Game = NewOptBool(e.Game)
+	ret.GameTest = NewOptBool(e.GameTest)
+	ret.GameEnd = NewOptBool(e.GameEnd)
+	ret.GameAccount = NewOptBool(e.GameAccount)
+	ret.GameLv = NewOptInt(e.GameLv)
+	return &ret
+}
+
+func NewUeOwnerReads(es []*ent.User) []UeOwnerRead {
+	if len(es) == 0 {
+		return nil
+	}
+	r := make([]UeOwnerRead, len(es))
+	for i, e := range es {
+		r[i] = NewUeOwnerRead(e).Elem()
+	}
+	return r
+}
+
+func (u *UeOwnerRead) Elem() UeOwnerRead {
+	if u == nil {
+		return UeOwnerRead{}
+	}
+	return *u
+}
+
 func NewUserCreate(e *ent.User) *UserCreate {
 	if e == nil {
 		return nil
@@ -721,4 +969,48 @@ func (c *UserCardList) Elem() UserCardList {
 		return UserCardList{}
 	}
 	return *c
+}
+
+func NewUserUeList(e *ent.Ue) *UserUeList {
+	if e == nil {
+		return nil
+	}
+	var ret UserUeList
+	ret.ID = e.ID
+	ret.Limit = NewOptBool(e.Limit)
+	ret.LimitBoss = NewOptBool(e.LimitBoss)
+	ret.LimitItem = NewOptBool(e.LimitItem)
+	ret.Lv = NewOptInt(e.Lv)
+	ret.LvPoint = NewOptInt(e.LvPoint)
+	ret.Model = NewOptInt(e.Model)
+	ret.Sword = NewOptInt(e.Sword)
+	ret.Card = NewOptInt(e.Card)
+	ret.Mode = NewOptString(e.Mode)
+	ret.Cp = NewOptInt(e.Cp)
+	ret.Count = NewOptInt(e.Count)
+	ret.LocationX = NewOptInt(e.LocationX)
+	ret.LocationY = NewOptInt(e.LocationY)
+	ret.LocationZ = NewOptInt(e.LocationZ)
+	ret.LocationN = NewOptInt(e.LocationN)
+	ret.Author = NewOptString(e.Author)
+	ret.CreatedAt = NewOptDateTime(e.CreatedAt)
+	return &ret
+}
+
+func NewUserUeLists(es []*ent.Ue) []UserUeList {
+	if len(es) == 0 {
+		return nil
+	}
+	r := make([]UserUeList, len(es))
+	for i, e := range es {
+		r[i] = NewUserUeList(e).Elem()
+	}
+	return r
+}
+
+func (u *UserUeList) Elem() UserUeList {
+	if u == nil {
+		return UserUeList{}
+	}
+	return *u
 }

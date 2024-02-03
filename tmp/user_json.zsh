@@ -12,7 +12,7 @@ data=`curl -sL "$host_users"|jq .`
 n=`echo $data|jq length`
 n=$((n - 1))
 
-f=/Volumes/ssd/project/yui/Content/user.json
+f=~/ai/card/public/json/user.json
 if [ -f $f ];then
 	rm $f
 fi
@@ -33,3 +33,5 @@ do
 done
 
 	echo "}" >> $f
+
+	cat $f|jq .

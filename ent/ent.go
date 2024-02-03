@@ -9,6 +9,7 @@ import (
 	"reflect"
 	"t/ent/card"
 	"t/ent/group"
+	"t/ent/ue"
 	"t/ent/user"
 
 	"entgo.io/ent"
@@ -69,6 +70,7 @@ func columnChecker(table string) func(string) error {
 	checks := map[string]func(string) bool{
 		card.Table:  card.ValidColumn,
 		group.Table: group.ValidColumn,
+		ue.Table:    ue.ValidColumn,
 		user.Table:  user.ValidColumn,
 	}
 	check, ok := checks[table]

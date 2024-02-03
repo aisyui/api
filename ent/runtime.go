@@ -6,6 +6,7 @@ import (
 	"t/ent/card"
 	"t/ent/group"
 	"t/ent/schema"
+	"t/ent/ue"
 	"t/ent/user"
 	"time"
 )
@@ -50,6 +51,28 @@ func init() {
 	groupDescPassword := groupFields[1].Descriptor()
 	// group.PasswordValidator is a validator for the "password" field. It is called by the builders before save.
 	group.PasswordValidator = groupDescPassword.Validators[0].(func(string) error)
+	ueFields := schema.Ue{}.Fields()
+	_ = ueFields
+	// ueDescLimit is the schema descriptor for limit field.
+	ueDescLimit := ueFields[0].Descriptor()
+	// ue.DefaultLimit holds the default value on creation for the limit field.
+	ue.DefaultLimit = ueDescLimit.Default.(bool)
+	// ueDescLimitBoss is the schema descriptor for limit_boss field.
+	ueDescLimitBoss := ueFields[1].Descriptor()
+	// ue.DefaultLimitBoss holds the default value on creation for the limit_boss field.
+	ue.DefaultLimitBoss = ueDescLimitBoss.Default.(bool)
+	// ueDescLimitItem is the schema descriptor for limit_item field.
+	ueDescLimitItem := ueFields[2].Descriptor()
+	// ue.DefaultLimitItem holds the default value on creation for the limit_item field.
+	ue.DefaultLimitItem = ueDescLimitItem.Default.(bool)
+	// ueDescPassword is the schema descriptor for password field.
+	ueDescPassword := ueFields[3].Descriptor()
+	// ue.PasswordValidator is a validator for the "password" field. It is called by the builders before save.
+	ue.PasswordValidator = ueDescPassword.Validators[0].(func(string) error)
+	// ueDescCreatedAt is the schema descriptor for created_at field.
+	ueDescCreatedAt := ueFields[18].Descriptor()
+	// ue.DefaultCreatedAt holds the default value on creation for the created_at field.
+	ue.DefaultCreatedAt = ueDescCreatedAt.Default.(func() time.Time)
 	userFields := schema.User{}.Fields()
 	_ = userFields
 	// userDescUsername is the schema descriptor for username field.

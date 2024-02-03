@@ -107,6 +107,8 @@ const (
 	FieldGameLv = "game_lv"
 	// EdgeCard holds the string denoting the card edge name in mutations.
 	EdgeCard = "card"
+	// EdgeUe holds the string denoting the ue edge name in mutations.
+	EdgeUe = "ue"
 	// Table holds the table name of the user in the database.
 	Table = "users"
 	// CardTable is the table that holds the card relation/edge.
@@ -116,6 +118,13 @@ const (
 	CardInverseTable = "cards"
 	// CardColumn is the table column denoting the card relation/edge.
 	CardColumn = "user_card"
+	// UeTable is the table that holds the ue relation/edge.
+	UeTable = "ues"
+	// UeInverseTable is the table name for the Ue entity.
+	// It exists in this package in order to avoid circular dependency with the "ue" package.
+	UeInverseTable = "ues"
+	// UeColumn is the table column denoting the ue relation/edge.
+	UeColumn = "user_ue"
 )
 
 // Columns holds all SQL columns for user fields.

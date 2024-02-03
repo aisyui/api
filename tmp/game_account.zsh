@@ -8,6 +8,6 @@ id=`curl -sL "$host/users?itemsPerPage=2000"|jq ".[]|select(.username == \"$user
 curl -sL $host/users/$id
 read
 echo $id
-o=false
+o=true
 echo $o
 curl -X PATCH -H "Content-Type: application/json" -d "{\"game\":true, \"game_test\":$o, \"game_end\":$o, \"token\":\"$token\"}" -s $host/users/$id

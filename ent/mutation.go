@@ -10,6 +10,7 @@ import (
 	"t/ent/card"
 	"t/ent/group"
 	"t/ent/predicate"
+	"t/ent/ue"
 	"t/ent/user"
 	"time"
 
@@ -28,6 +29,7 @@ const (
 	// Node types.
 	TypeCard  = "Card"
 	TypeGroup = "Group"
+	TypeUe    = "Ue"
 	TypeUser  = "User"
 )
 
@@ -1662,6 +1664,2093 @@ func (m *GroupMutation) ResetEdge(name string) error {
 	return fmt.Errorf("unknown Group edge %s", name)
 }
 
+// UeMutation represents an operation that mutates the Ue nodes in the graph.
+type UeMutation struct {
+	config
+	op            Op
+	typ           string
+	id            *int
+	_limit        *bool
+	limit_boss    *bool
+	limit_item    *bool
+	password      *string
+	lv            *int
+	addlv         *int
+	lv_point      *int
+	addlv_point   *int
+	model         *int
+	addmodel      *int
+	sword         *int
+	addsword      *int
+	card          *int
+	addcard       *int
+	mode          *string
+	token         *string
+	cp            *int
+	addcp         *int
+	count         *int
+	addcount      *int
+	location_x    *int
+	addlocation_x *int
+	location_y    *int
+	addlocation_y *int
+	location_z    *int
+	addlocation_z *int
+	location_n    *int
+	addlocation_n *int
+	author        *string
+	created_at    *time.Time
+	clearedFields map[string]struct{}
+	owner         *int
+	clearedowner  bool
+	done          bool
+	oldValue      func(context.Context) (*Ue, error)
+	predicates    []predicate.Ue
+}
+
+var _ ent.Mutation = (*UeMutation)(nil)
+
+// ueOption allows management of the mutation configuration using functional options.
+type ueOption func(*UeMutation)
+
+// newUeMutation creates new mutation for the Ue entity.
+func newUeMutation(c config, op Op, opts ...ueOption) *UeMutation {
+	m := &UeMutation{
+		config:        c,
+		op:            op,
+		typ:           TypeUe,
+		clearedFields: make(map[string]struct{}),
+	}
+	for _, opt := range opts {
+		opt(m)
+	}
+	return m
+}
+
+// withUeID sets the ID field of the mutation.
+func withUeID(id int) ueOption {
+	return func(m *UeMutation) {
+		var (
+			err   error
+			once  sync.Once
+			value *Ue
+		)
+		m.oldValue = func(ctx context.Context) (*Ue, error) {
+			once.Do(func() {
+				if m.done {
+					err = errors.New("querying old values post mutation is not allowed")
+				} else {
+					value, err = m.Client().Ue.Get(ctx, id)
+				}
+			})
+			return value, err
+		}
+		m.id = &id
+	}
+}
+
+// withUe sets the old Ue of the mutation.
+func withUe(node *Ue) ueOption {
+	return func(m *UeMutation) {
+		m.oldValue = func(context.Context) (*Ue, error) {
+			return node, nil
+		}
+		m.id = &node.ID
+	}
+}
+
+// Client returns a new `ent.Client` from the mutation. If the mutation was
+// executed in a transaction (ent.Tx), a transactional client is returned.
+func (m UeMutation) Client() *Client {
+	client := &Client{config: m.config}
+	client.init()
+	return client
+}
+
+// Tx returns an `ent.Tx` for mutations that were executed in transactions;
+// it returns an error otherwise.
+func (m UeMutation) Tx() (*Tx, error) {
+	if _, ok := m.driver.(*txDriver); !ok {
+		return nil, errors.New("ent: mutation is not running in a transaction")
+	}
+	tx := &Tx{config: m.config}
+	tx.init()
+	return tx, nil
+}
+
+// ID returns the ID value in the mutation. Note that the ID is only available
+// if it was provided to the builder or after it was returned from the database.
+func (m *UeMutation) ID() (id int, exists bool) {
+	if m.id == nil {
+		return
+	}
+	return *m.id, true
+}
+
+// IDs queries the database and returns the entity ids that match the mutation's predicate.
+// That means, if the mutation is applied within a transaction with an isolation level such
+// as sql.LevelSerializable, the returned ids match the ids of the rows that will be updated
+// or updated by the mutation.
+func (m *UeMutation) IDs(ctx context.Context) ([]int, error) {
+	switch {
+	case m.op.Is(OpUpdateOne | OpDeleteOne):
+		id, exists := m.ID()
+		if exists {
+			return []int{id}, nil
+		}
+		fallthrough
+	case m.op.Is(OpUpdate | OpDelete):
+		return m.Client().Ue.Query().Where(m.predicates...).IDs(ctx)
+	default:
+		return nil, fmt.Errorf("IDs is not allowed on %s operations", m.op)
+	}
+}
+
+// SetLimit sets the "limit" field.
+func (m *UeMutation) SetLimit(b bool) {
+	m._limit = &b
+}
+
+// Limit returns the value of the "limit" field in the mutation.
+func (m *UeMutation) Limit() (r bool, exists bool) {
+	v := m._limit
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLimit returns the old "limit" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldLimit(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLimit is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLimit requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLimit: %w", err)
+	}
+	return oldValue.Limit, nil
+}
+
+// ClearLimit clears the value of the "limit" field.
+func (m *UeMutation) ClearLimit() {
+	m._limit = nil
+	m.clearedFields[ue.FieldLimit] = struct{}{}
+}
+
+// LimitCleared returns if the "limit" field was cleared in this mutation.
+func (m *UeMutation) LimitCleared() bool {
+	_, ok := m.clearedFields[ue.FieldLimit]
+	return ok
+}
+
+// ResetLimit resets all changes to the "limit" field.
+func (m *UeMutation) ResetLimit() {
+	m._limit = nil
+	delete(m.clearedFields, ue.FieldLimit)
+}
+
+// SetLimitBoss sets the "limit_boss" field.
+func (m *UeMutation) SetLimitBoss(b bool) {
+	m.limit_boss = &b
+}
+
+// LimitBoss returns the value of the "limit_boss" field in the mutation.
+func (m *UeMutation) LimitBoss() (r bool, exists bool) {
+	v := m.limit_boss
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLimitBoss returns the old "limit_boss" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldLimitBoss(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLimitBoss is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLimitBoss requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLimitBoss: %w", err)
+	}
+	return oldValue.LimitBoss, nil
+}
+
+// ClearLimitBoss clears the value of the "limit_boss" field.
+func (m *UeMutation) ClearLimitBoss() {
+	m.limit_boss = nil
+	m.clearedFields[ue.FieldLimitBoss] = struct{}{}
+}
+
+// LimitBossCleared returns if the "limit_boss" field was cleared in this mutation.
+func (m *UeMutation) LimitBossCleared() bool {
+	_, ok := m.clearedFields[ue.FieldLimitBoss]
+	return ok
+}
+
+// ResetLimitBoss resets all changes to the "limit_boss" field.
+func (m *UeMutation) ResetLimitBoss() {
+	m.limit_boss = nil
+	delete(m.clearedFields, ue.FieldLimitBoss)
+}
+
+// SetLimitItem sets the "limit_item" field.
+func (m *UeMutation) SetLimitItem(b bool) {
+	m.limit_item = &b
+}
+
+// LimitItem returns the value of the "limit_item" field in the mutation.
+func (m *UeMutation) LimitItem() (r bool, exists bool) {
+	v := m.limit_item
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLimitItem returns the old "limit_item" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldLimitItem(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLimitItem is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLimitItem requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLimitItem: %w", err)
+	}
+	return oldValue.LimitItem, nil
+}
+
+// ClearLimitItem clears the value of the "limit_item" field.
+func (m *UeMutation) ClearLimitItem() {
+	m.limit_item = nil
+	m.clearedFields[ue.FieldLimitItem] = struct{}{}
+}
+
+// LimitItemCleared returns if the "limit_item" field was cleared in this mutation.
+func (m *UeMutation) LimitItemCleared() bool {
+	_, ok := m.clearedFields[ue.FieldLimitItem]
+	return ok
+}
+
+// ResetLimitItem resets all changes to the "limit_item" field.
+func (m *UeMutation) ResetLimitItem() {
+	m.limit_item = nil
+	delete(m.clearedFields, ue.FieldLimitItem)
+}
+
+// SetPassword sets the "password" field.
+func (m *UeMutation) SetPassword(s string) {
+	m.password = &s
+}
+
+// Password returns the value of the "password" field in the mutation.
+func (m *UeMutation) Password() (r string, exists bool) {
+	v := m.password
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldPassword returns the old "password" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldPassword(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldPassword is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldPassword requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldPassword: %w", err)
+	}
+	return oldValue.Password, nil
+}
+
+// ResetPassword resets all changes to the "password" field.
+func (m *UeMutation) ResetPassword() {
+	m.password = nil
+}
+
+// SetLv sets the "lv" field.
+func (m *UeMutation) SetLv(i int) {
+	m.lv = &i
+	m.addlv = nil
+}
+
+// Lv returns the value of the "lv" field in the mutation.
+func (m *UeMutation) Lv() (r int, exists bool) {
+	v := m.lv
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLv returns the old "lv" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldLv(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLv is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLv requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLv: %w", err)
+	}
+	return oldValue.Lv, nil
+}
+
+// AddLv adds i to the "lv" field.
+func (m *UeMutation) AddLv(i int) {
+	if m.addlv != nil {
+		*m.addlv += i
+	} else {
+		m.addlv = &i
+	}
+}
+
+// AddedLv returns the value that was added to the "lv" field in this mutation.
+func (m *UeMutation) AddedLv() (r int, exists bool) {
+	v := m.addlv
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearLv clears the value of the "lv" field.
+func (m *UeMutation) ClearLv() {
+	m.lv = nil
+	m.addlv = nil
+	m.clearedFields[ue.FieldLv] = struct{}{}
+}
+
+// LvCleared returns if the "lv" field was cleared in this mutation.
+func (m *UeMutation) LvCleared() bool {
+	_, ok := m.clearedFields[ue.FieldLv]
+	return ok
+}
+
+// ResetLv resets all changes to the "lv" field.
+func (m *UeMutation) ResetLv() {
+	m.lv = nil
+	m.addlv = nil
+	delete(m.clearedFields, ue.FieldLv)
+}
+
+// SetLvPoint sets the "lv_point" field.
+func (m *UeMutation) SetLvPoint(i int) {
+	m.lv_point = &i
+	m.addlv_point = nil
+}
+
+// LvPoint returns the value of the "lv_point" field in the mutation.
+func (m *UeMutation) LvPoint() (r int, exists bool) {
+	v := m.lv_point
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLvPoint returns the old "lv_point" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldLvPoint(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLvPoint is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLvPoint requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLvPoint: %w", err)
+	}
+	return oldValue.LvPoint, nil
+}
+
+// AddLvPoint adds i to the "lv_point" field.
+func (m *UeMutation) AddLvPoint(i int) {
+	if m.addlv_point != nil {
+		*m.addlv_point += i
+	} else {
+		m.addlv_point = &i
+	}
+}
+
+// AddedLvPoint returns the value that was added to the "lv_point" field in this mutation.
+func (m *UeMutation) AddedLvPoint() (r int, exists bool) {
+	v := m.addlv_point
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearLvPoint clears the value of the "lv_point" field.
+func (m *UeMutation) ClearLvPoint() {
+	m.lv_point = nil
+	m.addlv_point = nil
+	m.clearedFields[ue.FieldLvPoint] = struct{}{}
+}
+
+// LvPointCleared returns if the "lv_point" field was cleared in this mutation.
+func (m *UeMutation) LvPointCleared() bool {
+	_, ok := m.clearedFields[ue.FieldLvPoint]
+	return ok
+}
+
+// ResetLvPoint resets all changes to the "lv_point" field.
+func (m *UeMutation) ResetLvPoint() {
+	m.lv_point = nil
+	m.addlv_point = nil
+	delete(m.clearedFields, ue.FieldLvPoint)
+}
+
+// SetModel sets the "model" field.
+func (m *UeMutation) SetModel(i int) {
+	m.model = &i
+	m.addmodel = nil
+}
+
+// Model returns the value of the "model" field in the mutation.
+func (m *UeMutation) Model() (r int, exists bool) {
+	v := m.model
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldModel returns the old "model" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldModel(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldModel is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldModel requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldModel: %w", err)
+	}
+	return oldValue.Model, nil
+}
+
+// AddModel adds i to the "model" field.
+func (m *UeMutation) AddModel(i int) {
+	if m.addmodel != nil {
+		*m.addmodel += i
+	} else {
+		m.addmodel = &i
+	}
+}
+
+// AddedModel returns the value that was added to the "model" field in this mutation.
+func (m *UeMutation) AddedModel() (r int, exists bool) {
+	v := m.addmodel
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearModel clears the value of the "model" field.
+func (m *UeMutation) ClearModel() {
+	m.model = nil
+	m.addmodel = nil
+	m.clearedFields[ue.FieldModel] = struct{}{}
+}
+
+// ModelCleared returns if the "model" field was cleared in this mutation.
+func (m *UeMutation) ModelCleared() bool {
+	_, ok := m.clearedFields[ue.FieldModel]
+	return ok
+}
+
+// ResetModel resets all changes to the "model" field.
+func (m *UeMutation) ResetModel() {
+	m.model = nil
+	m.addmodel = nil
+	delete(m.clearedFields, ue.FieldModel)
+}
+
+// SetSword sets the "sword" field.
+func (m *UeMutation) SetSword(i int) {
+	m.sword = &i
+	m.addsword = nil
+}
+
+// Sword returns the value of the "sword" field in the mutation.
+func (m *UeMutation) Sword() (r int, exists bool) {
+	v := m.sword
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldSword returns the old "sword" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldSword(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldSword is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldSword requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldSword: %w", err)
+	}
+	return oldValue.Sword, nil
+}
+
+// AddSword adds i to the "sword" field.
+func (m *UeMutation) AddSword(i int) {
+	if m.addsword != nil {
+		*m.addsword += i
+	} else {
+		m.addsword = &i
+	}
+}
+
+// AddedSword returns the value that was added to the "sword" field in this mutation.
+func (m *UeMutation) AddedSword() (r int, exists bool) {
+	v := m.addsword
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearSword clears the value of the "sword" field.
+func (m *UeMutation) ClearSword() {
+	m.sword = nil
+	m.addsword = nil
+	m.clearedFields[ue.FieldSword] = struct{}{}
+}
+
+// SwordCleared returns if the "sword" field was cleared in this mutation.
+func (m *UeMutation) SwordCleared() bool {
+	_, ok := m.clearedFields[ue.FieldSword]
+	return ok
+}
+
+// ResetSword resets all changes to the "sword" field.
+func (m *UeMutation) ResetSword() {
+	m.sword = nil
+	m.addsword = nil
+	delete(m.clearedFields, ue.FieldSword)
+}
+
+// SetCard sets the "card" field.
+func (m *UeMutation) SetCard(i int) {
+	m.card = &i
+	m.addcard = nil
+}
+
+// Card returns the value of the "card" field in the mutation.
+func (m *UeMutation) Card() (r int, exists bool) {
+	v := m.card
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCard returns the old "card" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldCard(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCard is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCard requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCard: %w", err)
+	}
+	return oldValue.Card, nil
+}
+
+// AddCard adds i to the "card" field.
+func (m *UeMutation) AddCard(i int) {
+	if m.addcard != nil {
+		*m.addcard += i
+	} else {
+		m.addcard = &i
+	}
+}
+
+// AddedCard returns the value that was added to the "card" field in this mutation.
+func (m *UeMutation) AddedCard() (r int, exists bool) {
+	v := m.addcard
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearCard clears the value of the "card" field.
+func (m *UeMutation) ClearCard() {
+	m.card = nil
+	m.addcard = nil
+	m.clearedFields[ue.FieldCard] = struct{}{}
+}
+
+// CardCleared returns if the "card" field was cleared in this mutation.
+func (m *UeMutation) CardCleared() bool {
+	_, ok := m.clearedFields[ue.FieldCard]
+	return ok
+}
+
+// ResetCard resets all changes to the "card" field.
+func (m *UeMutation) ResetCard() {
+	m.card = nil
+	m.addcard = nil
+	delete(m.clearedFields, ue.FieldCard)
+}
+
+// SetMode sets the "mode" field.
+func (m *UeMutation) SetMode(s string) {
+	m.mode = &s
+}
+
+// Mode returns the value of the "mode" field in the mutation.
+func (m *UeMutation) Mode() (r string, exists bool) {
+	v := m.mode
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldMode returns the old "mode" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldMode(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldMode is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldMode requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldMode: %w", err)
+	}
+	return oldValue.Mode, nil
+}
+
+// ClearMode clears the value of the "mode" field.
+func (m *UeMutation) ClearMode() {
+	m.mode = nil
+	m.clearedFields[ue.FieldMode] = struct{}{}
+}
+
+// ModeCleared returns if the "mode" field was cleared in this mutation.
+func (m *UeMutation) ModeCleared() bool {
+	_, ok := m.clearedFields[ue.FieldMode]
+	return ok
+}
+
+// ResetMode resets all changes to the "mode" field.
+func (m *UeMutation) ResetMode() {
+	m.mode = nil
+	delete(m.clearedFields, ue.FieldMode)
+}
+
+// SetToken sets the "token" field.
+func (m *UeMutation) SetToken(s string) {
+	m.token = &s
+}
+
+// Token returns the value of the "token" field in the mutation.
+func (m *UeMutation) Token() (r string, exists bool) {
+	v := m.token
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldToken returns the old "token" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldToken(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldToken is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldToken requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldToken: %w", err)
+	}
+	return oldValue.Token, nil
+}
+
+// ClearToken clears the value of the "token" field.
+func (m *UeMutation) ClearToken() {
+	m.token = nil
+	m.clearedFields[ue.FieldToken] = struct{}{}
+}
+
+// TokenCleared returns if the "token" field was cleared in this mutation.
+func (m *UeMutation) TokenCleared() bool {
+	_, ok := m.clearedFields[ue.FieldToken]
+	return ok
+}
+
+// ResetToken resets all changes to the "token" field.
+func (m *UeMutation) ResetToken() {
+	m.token = nil
+	delete(m.clearedFields, ue.FieldToken)
+}
+
+// SetCp sets the "cp" field.
+func (m *UeMutation) SetCp(i int) {
+	m.cp = &i
+	m.addcp = nil
+}
+
+// Cp returns the value of the "cp" field in the mutation.
+func (m *UeMutation) Cp() (r int, exists bool) {
+	v := m.cp
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCp returns the old "cp" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldCp(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCp is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCp requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCp: %w", err)
+	}
+	return oldValue.Cp, nil
+}
+
+// AddCp adds i to the "cp" field.
+func (m *UeMutation) AddCp(i int) {
+	if m.addcp != nil {
+		*m.addcp += i
+	} else {
+		m.addcp = &i
+	}
+}
+
+// AddedCp returns the value that was added to the "cp" field in this mutation.
+func (m *UeMutation) AddedCp() (r int, exists bool) {
+	v := m.addcp
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearCp clears the value of the "cp" field.
+func (m *UeMutation) ClearCp() {
+	m.cp = nil
+	m.addcp = nil
+	m.clearedFields[ue.FieldCp] = struct{}{}
+}
+
+// CpCleared returns if the "cp" field was cleared in this mutation.
+func (m *UeMutation) CpCleared() bool {
+	_, ok := m.clearedFields[ue.FieldCp]
+	return ok
+}
+
+// ResetCp resets all changes to the "cp" field.
+func (m *UeMutation) ResetCp() {
+	m.cp = nil
+	m.addcp = nil
+	delete(m.clearedFields, ue.FieldCp)
+}
+
+// SetCount sets the "count" field.
+func (m *UeMutation) SetCount(i int) {
+	m.count = &i
+	m.addcount = nil
+}
+
+// Count returns the value of the "count" field in the mutation.
+func (m *UeMutation) Count() (r int, exists bool) {
+	v := m.count
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCount returns the old "count" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldCount(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCount is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCount requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCount: %w", err)
+	}
+	return oldValue.Count, nil
+}
+
+// AddCount adds i to the "count" field.
+func (m *UeMutation) AddCount(i int) {
+	if m.addcount != nil {
+		*m.addcount += i
+	} else {
+		m.addcount = &i
+	}
+}
+
+// AddedCount returns the value that was added to the "count" field in this mutation.
+func (m *UeMutation) AddedCount() (r int, exists bool) {
+	v := m.addcount
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearCount clears the value of the "count" field.
+func (m *UeMutation) ClearCount() {
+	m.count = nil
+	m.addcount = nil
+	m.clearedFields[ue.FieldCount] = struct{}{}
+}
+
+// CountCleared returns if the "count" field was cleared in this mutation.
+func (m *UeMutation) CountCleared() bool {
+	_, ok := m.clearedFields[ue.FieldCount]
+	return ok
+}
+
+// ResetCount resets all changes to the "count" field.
+func (m *UeMutation) ResetCount() {
+	m.count = nil
+	m.addcount = nil
+	delete(m.clearedFields, ue.FieldCount)
+}
+
+// SetLocationX sets the "location_x" field.
+func (m *UeMutation) SetLocationX(i int) {
+	m.location_x = &i
+	m.addlocation_x = nil
+}
+
+// LocationX returns the value of the "location_x" field in the mutation.
+func (m *UeMutation) LocationX() (r int, exists bool) {
+	v := m.location_x
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLocationX returns the old "location_x" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldLocationX(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLocationX is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLocationX requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLocationX: %w", err)
+	}
+	return oldValue.LocationX, nil
+}
+
+// AddLocationX adds i to the "location_x" field.
+func (m *UeMutation) AddLocationX(i int) {
+	if m.addlocation_x != nil {
+		*m.addlocation_x += i
+	} else {
+		m.addlocation_x = &i
+	}
+}
+
+// AddedLocationX returns the value that was added to the "location_x" field in this mutation.
+func (m *UeMutation) AddedLocationX() (r int, exists bool) {
+	v := m.addlocation_x
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearLocationX clears the value of the "location_x" field.
+func (m *UeMutation) ClearLocationX() {
+	m.location_x = nil
+	m.addlocation_x = nil
+	m.clearedFields[ue.FieldLocationX] = struct{}{}
+}
+
+// LocationXCleared returns if the "location_x" field was cleared in this mutation.
+func (m *UeMutation) LocationXCleared() bool {
+	_, ok := m.clearedFields[ue.FieldLocationX]
+	return ok
+}
+
+// ResetLocationX resets all changes to the "location_x" field.
+func (m *UeMutation) ResetLocationX() {
+	m.location_x = nil
+	m.addlocation_x = nil
+	delete(m.clearedFields, ue.FieldLocationX)
+}
+
+// SetLocationY sets the "location_y" field.
+func (m *UeMutation) SetLocationY(i int) {
+	m.location_y = &i
+	m.addlocation_y = nil
+}
+
+// LocationY returns the value of the "location_y" field in the mutation.
+func (m *UeMutation) LocationY() (r int, exists bool) {
+	v := m.location_y
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLocationY returns the old "location_y" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldLocationY(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLocationY is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLocationY requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLocationY: %w", err)
+	}
+	return oldValue.LocationY, nil
+}
+
+// AddLocationY adds i to the "location_y" field.
+func (m *UeMutation) AddLocationY(i int) {
+	if m.addlocation_y != nil {
+		*m.addlocation_y += i
+	} else {
+		m.addlocation_y = &i
+	}
+}
+
+// AddedLocationY returns the value that was added to the "location_y" field in this mutation.
+func (m *UeMutation) AddedLocationY() (r int, exists bool) {
+	v := m.addlocation_y
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearLocationY clears the value of the "location_y" field.
+func (m *UeMutation) ClearLocationY() {
+	m.location_y = nil
+	m.addlocation_y = nil
+	m.clearedFields[ue.FieldLocationY] = struct{}{}
+}
+
+// LocationYCleared returns if the "location_y" field was cleared in this mutation.
+func (m *UeMutation) LocationYCleared() bool {
+	_, ok := m.clearedFields[ue.FieldLocationY]
+	return ok
+}
+
+// ResetLocationY resets all changes to the "location_y" field.
+func (m *UeMutation) ResetLocationY() {
+	m.location_y = nil
+	m.addlocation_y = nil
+	delete(m.clearedFields, ue.FieldLocationY)
+}
+
+// SetLocationZ sets the "location_z" field.
+func (m *UeMutation) SetLocationZ(i int) {
+	m.location_z = &i
+	m.addlocation_z = nil
+}
+
+// LocationZ returns the value of the "location_z" field in the mutation.
+func (m *UeMutation) LocationZ() (r int, exists bool) {
+	v := m.location_z
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLocationZ returns the old "location_z" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldLocationZ(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLocationZ is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLocationZ requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLocationZ: %w", err)
+	}
+	return oldValue.LocationZ, nil
+}
+
+// AddLocationZ adds i to the "location_z" field.
+func (m *UeMutation) AddLocationZ(i int) {
+	if m.addlocation_z != nil {
+		*m.addlocation_z += i
+	} else {
+		m.addlocation_z = &i
+	}
+}
+
+// AddedLocationZ returns the value that was added to the "location_z" field in this mutation.
+func (m *UeMutation) AddedLocationZ() (r int, exists bool) {
+	v := m.addlocation_z
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearLocationZ clears the value of the "location_z" field.
+func (m *UeMutation) ClearLocationZ() {
+	m.location_z = nil
+	m.addlocation_z = nil
+	m.clearedFields[ue.FieldLocationZ] = struct{}{}
+}
+
+// LocationZCleared returns if the "location_z" field was cleared in this mutation.
+func (m *UeMutation) LocationZCleared() bool {
+	_, ok := m.clearedFields[ue.FieldLocationZ]
+	return ok
+}
+
+// ResetLocationZ resets all changes to the "location_z" field.
+func (m *UeMutation) ResetLocationZ() {
+	m.location_z = nil
+	m.addlocation_z = nil
+	delete(m.clearedFields, ue.FieldLocationZ)
+}
+
+// SetLocationN sets the "location_n" field.
+func (m *UeMutation) SetLocationN(i int) {
+	m.location_n = &i
+	m.addlocation_n = nil
+}
+
+// LocationN returns the value of the "location_n" field in the mutation.
+func (m *UeMutation) LocationN() (r int, exists bool) {
+	v := m.location_n
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLocationN returns the old "location_n" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldLocationN(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLocationN is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLocationN requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLocationN: %w", err)
+	}
+	return oldValue.LocationN, nil
+}
+
+// AddLocationN adds i to the "location_n" field.
+func (m *UeMutation) AddLocationN(i int) {
+	if m.addlocation_n != nil {
+		*m.addlocation_n += i
+	} else {
+		m.addlocation_n = &i
+	}
+}
+
+// AddedLocationN returns the value that was added to the "location_n" field in this mutation.
+func (m *UeMutation) AddedLocationN() (r int, exists bool) {
+	v := m.addlocation_n
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearLocationN clears the value of the "location_n" field.
+func (m *UeMutation) ClearLocationN() {
+	m.location_n = nil
+	m.addlocation_n = nil
+	m.clearedFields[ue.FieldLocationN] = struct{}{}
+}
+
+// LocationNCleared returns if the "location_n" field was cleared in this mutation.
+func (m *UeMutation) LocationNCleared() bool {
+	_, ok := m.clearedFields[ue.FieldLocationN]
+	return ok
+}
+
+// ResetLocationN resets all changes to the "location_n" field.
+func (m *UeMutation) ResetLocationN() {
+	m.location_n = nil
+	m.addlocation_n = nil
+	delete(m.clearedFields, ue.FieldLocationN)
+}
+
+// SetAuthor sets the "author" field.
+func (m *UeMutation) SetAuthor(s string) {
+	m.author = &s
+}
+
+// Author returns the value of the "author" field in the mutation.
+func (m *UeMutation) Author() (r string, exists bool) {
+	v := m.author
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldAuthor returns the old "author" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldAuthor(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldAuthor is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldAuthor requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldAuthor: %w", err)
+	}
+	return oldValue.Author, nil
+}
+
+// ClearAuthor clears the value of the "author" field.
+func (m *UeMutation) ClearAuthor() {
+	m.author = nil
+	m.clearedFields[ue.FieldAuthor] = struct{}{}
+}
+
+// AuthorCleared returns if the "author" field was cleared in this mutation.
+func (m *UeMutation) AuthorCleared() bool {
+	_, ok := m.clearedFields[ue.FieldAuthor]
+	return ok
+}
+
+// ResetAuthor resets all changes to the "author" field.
+func (m *UeMutation) ResetAuthor() {
+	m.author = nil
+	delete(m.clearedFields, ue.FieldAuthor)
+}
+
+// SetCreatedAt sets the "created_at" field.
+func (m *UeMutation) SetCreatedAt(t time.Time) {
+	m.created_at = &t
+}
+
+// CreatedAt returns the value of the "created_at" field in the mutation.
+func (m *UeMutation) CreatedAt() (r time.Time, exists bool) {
+	v := m.created_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCreatedAt returns the old "created_at" field's value of the Ue entity.
+// If the Ue object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UeMutation) OldCreatedAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCreatedAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCreatedAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCreatedAt: %w", err)
+	}
+	return oldValue.CreatedAt, nil
+}
+
+// ClearCreatedAt clears the value of the "created_at" field.
+func (m *UeMutation) ClearCreatedAt() {
+	m.created_at = nil
+	m.clearedFields[ue.FieldCreatedAt] = struct{}{}
+}
+
+// CreatedAtCleared returns if the "created_at" field was cleared in this mutation.
+func (m *UeMutation) CreatedAtCleared() bool {
+	_, ok := m.clearedFields[ue.FieldCreatedAt]
+	return ok
+}
+
+// ResetCreatedAt resets all changes to the "created_at" field.
+func (m *UeMutation) ResetCreatedAt() {
+	m.created_at = nil
+	delete(m.clearedFields, ue.FieldCreatedAt)
+}
+
+// SetOwnerID sets the "owner" edge to the User entity by id.
+func (m *UeMutation) SetOwnerID(id int) {
+	m.owner = &id
+}
+
+// ClearOwner clears the "owner" edge to the User entity.
+func (m *UeMutation) ClearOwner() {
+	m.clearedowner = true
+}
+
+// OwnerCleared reports if the "owner" edge to the User entity was cleared.
+func (m *UeMutation) OwnerCleared() bool {
+	return m.clearedowner
+}
+
+// OwnerID returns the "owner" edge ID in the mutation.
+func (m *UeMutation) OwnerID() (id int, exists bool) {
+	if m.owner != nil {
+		return *m.owner, true
+	}
+	return
+}
+
+// OwnerIDs returns the "owner" edge IDs in the mutation.
+// Note that IDs always returns len(IDs) <= 1 for unique edges, and you should use
+// OwnerID instead. It exists only for internal usage by the builders.
+func (m *UeMutation) OwnerIDs() (ids []int) {
+	if id := m.owner; id != nil {
+		ids = append(ids, *id)
+	}
+	return
+}
+
+// ResetOwner resets all changes to the "owner" edge.
+func (m *UeMutation) ResetOwner() {
+	m.owner = nil
+	m.clearedowner = false
+}
+
+// Where appends a list predicates to the UeMutation builder.
+func (m *UeMutation) Where(ps ...predicate.Ue) {
+	m.predicates = append(m.predicates, ps...)
+}
+
+// WhereP appends storage-level predicates to the UeMutation builder. Using this method,
+// users can use type-assertion to append predicates that do not depend on any generated package.
+func (m *UeMutation) WhereP(ps ...func(*sql.Selector)) {
+	p := make([]predicate.Ue, len(ps))
+	for i := range ps {
+		p[i] = ps[i]
+	}
+	m.Where(p...)
+}
+
+// Op returns the operation name.
+func (m *UeMutation) Op() Op {
+	return m.op
+}
+
+// SetOp allows setting the mutation operation.
+func (m *UeMutation) SetOp(op Op) {
+	m.op = op
+}
+
+// Type returns the node type of this mutation (Ue).
+func (m *UeMutation) Type() string {
+	return m.typ
+}
+
+// Fields returns all fields that were changed during this mutation. Note that in
+// order to get all numeric fields that were incremented/decremented, call
+// AddedFields().
+func (m *UeMutation) Fields() []string {
+	fields := make([]string, 0, 19)
+	if m._limit != nil {
+		fields = append(fields, ue.FieldLimit)
+	}
+	if m.limit_boss != nil {
+		fields = append(fields, ue.FieldLimitBoss)
+	}
+	if m.limit_item != nil {
+		fields = append(fields, ue.FieldLimitItem)
+	}
+	if m.password != nil {
+		fields = append(fields, ue.FieldPassword)
+	}
+	if m.lv != nil {
+		fields = append(fields, ue.FieldLv)
+	}
+	if m.lv_point != nil {
+		fields = append(fields, ue.FieldLvPoint)
+	}
+	if m.model != nil {
+		fields = append(fields, ue.FieldModel)
+	}
+	if m.sword != nil {
+		fields = append(fields, ue.FieldSword)
+	}
+	if m.card != nil {
+		fields = append(fields, ue.FieldCard)
+	}
+	if m.mode != nil {
+		fields = append(fields, ue.FieldMode)
+	}
+	if m.token != nil {
+		fields = append(fields, ue.FieldToken)
+	}
+	if m.cp != nil {
+		fields = append(fields, ue.FieldCp)
+	}
+	if m.count != nil {
+		fields = append(fields, ue.FieldCount)
+	}
+	if m.location_x != nil {
+		fields = append(fields, ue.FieldLocationX)
+	}
+	if m.location_y != nil {
+		fields = append(fields, ue.FieldLocationY)
+	}
+	if m.location_z != nil {
+		fields = append(fields, ue.FieldLocationZ)
+	}
+	if m.location_n != nil {
+		fields = append(fields, ue.FieldLocationN)
+	}
+	if m.author != nil {
+		fields = append(fields, ue.FieldAuthor)
+	}
+	if m.created_at != nil {
+		fields = append(fields, ue.FieldCreatedAt)
+	}
+	return fields
+}
+
+// Field returns the value of a field with the given name. The second boolean
+// return value indicates that this field was not set, or was not defined in the
+// schema.
+func (m *UeMutation) Field(name string) (ent.Value, bool) {
+	switch name {
+	case ue.FieldLimit:
+		return m.Limit()
+	case ue.FieldLimitBoss:
+		return m.LimitBoss()
+	case ue.FieldLimitItem:
+		return m.LimitItem()
+	case ue.FieldPassword:
+		return m.Password()
+	case ue.FieldLv:
+		return m.Lv()
+	case ue.FieldLvPoint:
+		return m.LvPoint()
+	case ue.FieldModel:
+		return m.Model()
+	case ue.FieldSword:
+		return m.Sword()
+	case ue.FieldCard:
+		return m.Card()
+	case ue.FieldMode:
+		return m.Mode()
+	case ue.FieldToken:
+		return m.Token()
+	case ue.FieldCp:
+		return m.Cp()
+	case ue.FieldCount:
+		return m.Count()
+	case ue.FieldLocationX:
+		return m.LocationX()
+	case ue.FieldLocationY:
+		return m.LocationY()
+	case ue.FieldLocationZ:
+		return m.LocationZ()
+	case ue.FieldLocationN:
+		return m.LocationN()
+	case ue.FieldAuthor:
+		return m.Author()
+	case ue.FieldCreatedAt:
+		return m.CreatedAt()
+	}
+	return nil, false
+}
+
+// OldField returns the old value of the field from the database. An error is
+// returned if the mutation operation is not UpdateOne, or the query to the
+// database failed.
+func (m *UeMutation) OldField(ctx context.Context, name string) (ent.Value, error) {
+	switch name {
+	case ue.FieldLimit:
+		return m.OldLimit(ctx)
+	case ue.FieldLimitBoss:
+		return m.OldLimitBoss(ctx)
+	case ue.FieldLimitItem:
+		return m.OldLimitItem(ctx)
+	case ue.FieldPassword:
+		return m.OldPassword(ctx)
+	case ue.FieldLv:
+		return m.OldLv(ctx)
+	case ue.FieldLvPoint:
+		return m.OldLvPoint(ctx)
+	case ue.FieldModel:
+		return m.OldModel(ctx)
+	case ue.FieldSword:
+		return m.OldSword(ctx)
+	case ue.FieldCard:
+		return m.OldCard(ctx)
+	case ue.FieldMode:
+		return m.OldMode(ctx)
+	case ue.FieldToken:
+		return m.OldToken(ctx)
+	case ue.FieldCp:
+		return m.OldCp(ctx)
+	case ue.FieldCount:
+		return m.OldCount(ctx)
+	case ue.FieldLocationX:
+		return m.OldLocationX(ctx)
+	case ue.FieldLocationY:
+		return m.OldLocationY(ctx)
+	case ue.FieldLocationZ:
+		return m.OldLocationZ(ctx)
+	case ue.FieldLocationN:
+		return m.OldLocationN(ctx)
+	case ue.FieldAuthor:
+		return m.OldAuthor(ctx)
+	case ue.FieldCreatedAt:
+		return m.OldCreatedAt(ctx)
+	}
+	return nil, fmt.Errorf("unknown Ue field %s", name)
+}
+
+// SetField sets the value of a field with the given name. It returns an error if
+// the field is not defined in the schema, or if the type mismatched the field
+// type.
+func (m *UeMutation) SetField(name string, value ent.Value) error {
+	switch name {
+	case ue.FieldLimit:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLimit(v)
+		return nil
+	case ue.FieldLimitBoss:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLimitBoss(v)
+		return nil
+	case ue.FieldLimitItem:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLimitItem(v)
+		return nil
+	case ue.FieldPassword:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetPassword(v)
+		return nil
+	case ue.FieldLv:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLv(v)
+		return nil
+	case ue.FieldLvPoint:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLvPoint(v)
+		return nil
+	case ue.FieldModel:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetModel(v)
+		return nil
+	case ue.FieldSword:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetSword(v)
+		return nil
+	case ue.FieldCard:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCard(v)
+		return nil
+	case ue.FieldMode:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetMode(v)
+		return nil
+	case ue.FieldToken:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetToken(v)
+		return nil
+	case ue.FieldCp:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCp(v)
+		return nil
+	case ue.FieldCount:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCount(v)
+		return nil
+	case ue.FieldLocationX:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLocationX(v)
+		return nil
+	case ue.FieldLocationY:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLocationY(v)
+		return nil
+	case ue.FieldLocationZ:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLocationZ(v)
+		return nil
+	case ue.FieldLocationN:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLocationN(v)
+		return nil
+	case ue.FieldAuthor:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetAuthor(v)
+		return nil
+	case ue.FieldCreatedAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCreatedAt(v)
+		return nil
+	}
+	return fmt.Errorf("unknown Ue field %s", name)
+}
+
+// AddedFields returns all numeric fields that were incremented/decremented during
+// this mutation.
+func (m *UeMutation) AddedFields() []string {
+	var fields []string
+	if m.addlv != nil {
+		fields = append(fields, ue.FieldLv)
+	}
+	if m.addlv_point != nil {
+		fields = append(fields, ue.FieldLvPoint)
+	}
+	if m.addmodel != nil {
+		fields = append(fields, ue.FieldModel)
+	}
+	if m.addsword != nil {
+		fields = append(fields, ue.FieldSword)
+	}
+	if m.addcard != nil {
+		fields = append(fields, ue.FieldCard)
+	}
+	if m.addcp != nil {
+		fields = append(fields, ue.FieldCp)
+	}
+	if m.addcount != nil {
+		fields = append(fields, ue.FieldCount)
+	}
+	if m.addlocation_x != nil {
+		fields = append(fields, ue.FieldLocationX)
+	}
+	if m.addlocation_y != nil {
+		fields = append(fields, ue.FieldLocationY)
+	}
+	if m.addlocation_z != nil {
+		fields = append(fields, ue.FieldLocationZ)
+	}
+	if m.addlocation_n != nil {
+		fields = append(fields, ue.FieldLocationN)
+	}
+	return fields
+}
+
+// AddedField returns the numeric value that was incremented/decremented on a field
+// with the given name. The second boolean return value indicates that this field
+// was not set, or was not defined in the schema.
+func (m *UeMutation) AddedField(name string) (ent.Value, bool) {
+	switch name {
+	case ue.FieldLv:
+		return m.AddedLv()
+	case ue.FieldLvPoint:
+		return m.AddedLvPoint()
+	case ue.FieldModel:
+		return m.AddedModel()
+	case ue.FieldSword:
+		return m.AddedSword()
+	case ue.FieldCard:
+		return m.AddedCard()
+	case ue.FieldCp:
+		return m.AddedCp()
+	case ue.FieldCount:
+		return m.AddedCount()
+	case ue.FieldLocationX:
+		return m.AddedLocationX()
+	case ue.FieldLocationY:
+		return m.AddedLocationY()
+	case ue.FieldLocationZ:
+		return m.AddedLocationZ()
+	case ue.FieldLocationN:
+		return m.AddedLocationN()
+	}
+	return nil, false
+}
+
+// AddField adds the value to the field with the given name. It returns an error if
+// the field is not defined in the schema, or if the type mismatched the field
+// type.
+func (m *UeMutation) AddField(name string, value ent.Value) error {
+	switch name {
+	case ue.FieldLv:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddLv(v)
+		return nil
+	case ue.FieldLvPoint:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddLvPoint(v)
+		return nil
+	case ue.FieldModel:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddModel(v)
+		return nil
+	case ue.FieldSword:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddSword(v)
+		return nil
+	case ue.FieldCard:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddCard(v)
+		return nil
+	case ue.FieldCp:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddCp(v)
+		return nil
+	case ue.FieldCount:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddCount(v)
+		return nil
+	case ue.FieldLocationX:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddLocationX(v)
+		return nil
+	case ue.FieldLocationY:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddLocationY(v)
+		return nil
+	case ue.FieldLocationZ:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddLocationZ(v)
+		return nil
+	case ue.FieldLocationN:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddLocationN(v)
+		return nil
+	}
+	return fmt.Errorf("unknown Ue numeric field %s", name)
+}
+
+// ClearedFields returns all nullable fields that were cleared during this
+// mutation.
+func (m *UeMutation) ClearedFields() []string {
+	var fields []string
+	if m.FieldCleared(ue.FieldLimit) {
+		fields = append(fields, ue.FieldLimit)
+	}
+	if m.FieldCleared(ue.FieldLimitBoss) {
+		fields = append(fields, ue.FieldLimitBoss)
+	}
+	if m.FieldCleared(ue.FieldLimitItem) {
+		fields = append(fields, ue.FieldLimitItem)
+	}
+	if m.FieldCleared(ue.FieldLv) {
+		fields = append(fields, ue.FieldLv)
+	}
+	if m.FieldCleared(ue.FieldLvPoint) {
+		fields = append(fields, ue.FieldLvPoint)
+	}
+	if m.FieldCleared(ue.FieldModel) {
+		fields = append(fields, ue.FieldModel)
+	}
+	if m.FieldCleared(ue.FieldSword) {
+		fields = append(fields, ue.FieldSword)
+	}
+	if m.FieldCleared(ue.FieldCard) {
+		fields = append(fields, ue.FieldCard)
+	}
+	if m.FieldCleared(ue.FieldMode) {
+		fields = append(fields, ue.FieldMode)
+	}
+	if m.FieldCleared(ue.FieldToken) {
+		fields = append(fields, ue.FieldToken)
+	}
+	if m.FieldCleared(ue.FieldCp) {
+		fields = append(fields, ue.FieldCp)
+	}
+	if m.FieldCleared(ue.FieldCount) {
+		fields = append(fields, ue.FieldCount)
+	}
+	if m.FieldCleared(ue.FieldLocationX) {
+		fields = append(fields, ue.FieldLocationX)
+	}
+	if m.FieldCleared(ue.FieldLocationY) {
+		fields = append(fields, ue.FieldLocationY)
+	}
+	if m.FieldCleared(ue.FieldLocationZ) {
+		fields = append(fields, ue.FieldLocationZ)
+	}
+	if m.FieldCleared(ue.FieldLocationN) {
+		fields = append(fields, ue.FieldLocationN)
+	}
+	if m.FieldCleared(ue.FieldAuthor) {
+		fields = append(fields, ue.FieldAuthor)
+	}
+	if m.FieldCleared(ue.FieldCreatedAt) {
+		fields = append(fields, ue.FieldCreatedAt)
+	}
+	return fields
+}
+
+// FieldCleared returns a boolean indicating if a field with the given name was
+// cleared in this mutation.
+func (m *UeMutation) FieldCleared(name string) bool {
+	_, ok := m.clearedFields[name]
+	return ok
+}
+
+// ClearField clears the value of the field with the given name. It returns an
+// error if the field is not defined in the schema.
+func (m *UeMutation) ClearField(name string) error {
+	switch name {
+	case ue.FieldLimit:
+		m.ClearLimit()
+		return nil
+	case ue.FieldLimitBoss:
+		m.ClearLimitBoss()
+		return nil
+	case ue.FieldLimitItem:
+		m.ClearLimitItem()
+		return nil
+	case ue.FieldLv:
+		m.ClearLv()
+		return nil
+	case ue.FieldLvPoint:
+		m.ClearLvPoint()
+		return nil
+	case ue.FieldModel:
+		m.ClearModel()
+		return nil
+	case ue.FieldSword:
+		m.ClearSword()
+		return nil
+	case ue.FieldCard:
+		m.ClearCard()
+		return nil
+	case ue.FieldMode:
+		m.ClearMode()
+		return nil
+	case ue.FieldToken:
+		m.ClearToken()
+		return nil
+	case ue.FieldCp:
+		m.ClearCp()
+		return nil
+	case ue.FieldCount:
+		m.ClearCount()
+		return nil
+	case ue.FieldLocationX:
+		m.ClearLocationX()
+		return nil
+	case ue.FieldLocationY:
+		m.ClearLocationY()
+		return nil
+	case ue.FieldLocationZ:
+		m.ClearLocationZ()
+		return nil
+	case ue.FieldLocationN:
+		m.ClearLocationN()
+		return nil
+	case ue.FieldAuthor:
+		m.ClearAuthor()
+		return nil
+	case ue.FieldCreatedAt:
+		m.ClearCreatedAt()
+		return nil
+	}
+	return fmt.Errorf("unknown Ue nullable field %s", name)
+}
+
+// ResetField resets all changes in the mutation for the field with the given name.
+// It returns an error if the field is not defined in the schema.
+func (m *UeMutation) ResetField(name string) error {
+	switch name {
+	case ue.FieldLimit:
+		m.ResetLimit()
+		return nil
+	case ue.FieldLimitBoss:
+		m.ResetLimitBoss()
+		return nil
+	case ue.FieldLimitItem:
+		m.ResetLimitItem()
+		return nil
+	case ue.FieldPassword:
+		m.ResetPassword()
+		return nil
+	case ue.FieldLv:
+		m.ResetLv()
+		return nil
+	case ue.FieldLvPoint:
+		m.ResetLvPoint()
+		return nil
+	case ue.FieldModel:
+		m.ResetModel()
+		return nil
+	case ue.FieldSword:
+		m.ResetSword()
+		return nil
+	case ue.FieldCard:
+		m.ResetCard()
+		return nil
+	case ue.FieldMode:
+		m.ResetMode()
+		return nil
+	case ue.FieldToken:
+		m.ResetToken()
+		return nil
+	case ue.FieldCp:
+		m.ResetCp()
+		return nil
+	case ue.FieldCount:
+		m.ResetCount()
+		return nil
+	case ue.FieldLocationX:
+		m.ResetLocationX()
+		return nil
+	case ue.FieldLocationY:
+		m.ResetLocationY()
+		return nil
+	case ue.FieldLocationZ:
+		m.ResetLocationZ()
+		return nil
+	case ue.FieldLocationN:
+		m.ResetLocationN()
+		return nil
+	case ue.FieldAuthor:
+		m.ResetAuthor()
+		return nil
+	case ue.FieldCreatedAt:
+		m.ResetCreatedAt()
+		return nil
+	}
+	return fmt.Errorf("unknown Ue field %s", name)
+}
+
+// AddedEdges returns all edge names that were set/added in this mutation.
+func (m *UeMutation) AddedEdges() []string {
+	edges := make([]string, 0, 1)
+	if m.owner != nil {
+		edges = append(edges, ue.EdgeOwner)
+	}
+	return edges
+}
+
+// AddedIDs returns all IDs (to other nodes) that were added for the given edge
+// name in this mutation.
+func (m *UeMutation) AddedIDs(name string) []ent.Value {
+	switch name {
+	case ue.EdgeOwner:
+		if id := m.owner; id != nil {
+			return []ent.Value{*id}
+		}
+	}
+	return nil
+}
+
+// RemovedEdges returns all edge names that were removed in this mutation.
+func (m *UeMutation) RemovedEdges() []string {
+	edges := make([]string, 0, 1)
+	return edges
+}
+
+// RemovedIDs returns all IDs (to other nodes) that were removed for the edge with
+// the given name in this mutation.
+func (m *UeMutation) RemovedIDs(name string) []ent.Value {
+	return nil
+}
+
+// ClearedEdges returns all edge names that were cleared in this mutation.
+func (m *UeMutation) ClearedEdges() []string {
+	edges := make([]string, 0, 1)
+	if m.clearedowner {
+		edges = append(edges, ue.EdgeOwner)
+	}
+	return edges
+}
+
+// EdgeCleared returns a boolean which indicates if the edge with the given name
+// was cleared in this mutation.
+func (m *UeMutation) EdgeCleared(name string) bool {
+	switch name {
+	case ue.EdgeOwner:
+		return m.clearedowner
+	}
+	return false
+}
+
+// ClearEdge clears the value of the edge with the given name. It returns an error
+// if that edge is not defined in the schema.
+func (m *UeMutation) ClearEdge(name string) error {
+	switch name {
+	case ue.EdgeOwner:
+		m.ClearOwner()
+		return nil
+	}
+	return fmt.Errorf("unknown Ue unique edge %s", name)
+}
+
+// ResetEdge resets all changes to the edge with the given name in this mutation.
+// It returns an error if the edge is not defined in the schema.
+func (m *UeMutation) ResetEdge(name string) error {
+	switch name {
+	case ue.EdgeOwner:
+		m.ResetOwner()
+		return nil
+	}
+	return fmt.Errorf("unknown Ue edge %s", name)
+}
+
 // UserMutation represents an operation that mutates the User nodes in the graph.
 type UserMutation struct {
 	config
@@ -1734,6 +3823,9 @@ type UserMutation struct {
 	card                map[int]struct{}
 	removedcard         map[int]struct{}
 	clearedcard         bool
+	ue                  map[int]struct{}
+	removedue           map[int]struct{}
+	clearedue           bool
 	done                bool
 	oldValue            func(context.Context) (*User, error)
 	predicates          []predicate.User
@@ -4483,6 +6575,60 @@ func (m *UserMutation) ResetCard() {
 	m.removedcard = nil
 }
 
+// AddUeIDs adds the "ue" edge to the Ue entity by ids.
+func (m *UserMutation) AddUeIDs(ids ...int) {
+	if m.ue == nil {
+		m.ue = make(map[int]struct{})
+	}
+	for i := range ids {
+		m.ue[ids[i]] = struct{}{}
+	}
+}
+
+// ClearUe clears the "ue" edge to the Ue entity.
+func (m *UserMutation) ClearUe() {
+	m.clearedue = true
+}
+
+// UeCleared reports if the "ue" edge to the Ue entity was cleared.
+func (m *UserMutation) UeCleared() bool {
+	return m.clearedue
+}
+
+// RemoveUeIDs removes the "ue" edge to the Ue entity by IDs.
+func (m *UserMutation) RemoveUeIDs(ids ...int) {
+	if m.removedue == nil {
+		m.removedue = make(map[int]struct{})
+	}
+	for i := range ids {
+		delete(m.ue, ids[i])
+		m.removedue[ids[i]] = struct{}{}
+	}
+}
+
+// RemovedUe returns the removed IDs of the "ue" edge to the Ue entity.
+func (m *UserMutation) RemovedUeIDs() (ids []int) {
+	for id := range m.removedue {
+		ids = append(ids, id)
+	}
+	return
+}
+
+// UeIDs returns the "ue" edge IDs in the mutation.
+func (m *UserMutation) UeIDs() (ids []int) {
+	for id := range m.ue {
+		ids = append(ids, id)
+	}
+	return
+}
+
+// ResetUe resets all changes to the "ue" edge.
+func (m *UserMutation) ResetUe() {
+	m.ue = nil
+	m.clearedue = false
+	m.removedue = nil
+}
+
 // Where appends a list predicates to the UserMutation builder.
 func (m *UserMutation) Where(ps ...predicate.User) {
 	m.predicates = append(m.predicates, ps...)
@@ -5854,9 +8000,12 @@ func (m *UserMutation) ResetField(name string) error {
 
 // AddedEdges returns all edge names that were set/added in this mutation.
 func (m *UserMutation) AddedEdges() []string {
-	edges := make([]string, 0, 1)
+	edges := make([]string, 0, 2)
 	if m.card != nil {
 		edges = append(edges, user.EdgeCard)
+	}
+	if m.ue != nil {
+		edges = append(edges, user.EdgeUe)
 	}
 	return edges
 }
@@ -5871,15 +8020,24 @@ func (m *UserMutation) AddedIDs(name string) []ent.Value {
 			ids = append(ids, id)
 		}
 		return ids
+	case user.EdgeUe:
+		ids := make([]ent.Value, 0, len(m.ue))
+		for id := range m.ue {
+			ids = append(ids, id)
+		}
+		return ids
 	}
 	return nil
 }
 
 // RemovedEdges returns all edge names that were removed in this mutation.
 func (m *UserMutation) RemovedEdges() []string {
-	edges := make([]string, 0, 1)
+	edges := make([]string, 0, 2)
 	if m.removedcard != nil {
 		edges = append(edges, user.EdgeCard)
+	}
+	if m.removedue != nil {
+		edges = append(edges, user.EdgeUe)
 	}
 	return edges
 }
@@ -5894,15 +8052,24 @@ func (m *UserMutation) RemovedIDs(name string) []ent.Value {
 			ids = append(ids, id)
 		}
 		return ids
+	case user.EdgeUe:
+		ids := make([]ent.Value, 0, len(m.removedue))
+		for id := range m.removedue {
+			ids = append(ids, id)
+		}
+		return ids
 	}
 	return nil
 }
 
 // ClearedEdges returns all edge names that were cleared in this mutation.
 func (m *UserMutation) ClearedEdges() []string {
-	edges := make([]string, 0, 1)
+	edges := make([]string, 0, 2)
 	if m.clearedcard {
 		edges = append(edges, user.EdgeCard)
+	}
+	if m.clearedue {
+		edges = append(edges, user.EdgeUe)
 	}
 	return edges
 }
@@ -5913,6 +8080,8 @@ func (m *UserMutation) EdgeCleared(name string) bool {
 	switch name {
 	case user.EdgeCard:
 		return m.clearedcard
+	case user.EdgeUe:
+		return m.clearedue
 	}
 	return false
 }
@@ -5931,6 +8100,9 @@ func (m *UserMutation) ResetEdge(name string) error {
 	switch name {
 	case user.EdgeCard:
 		m.ResetCard()
+		return nil
+	case user.EdgeUe:
+		m.ResetUe()
 		return nil
 	}
 	return fmt.Errorf("unknown User edge %s", name)

@@ -24,6 +24,12 @@ func (s ListGroupUsersOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
+func (s ListUeOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
 func (s ListUserCardOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
@@ -31,6 +37,12 @@ func (s ListUserCardOKApplicationJSON) Validate() error {
 	return nil
 }
 func (s ListUserOKApplicationJSON) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	return nil
+}
+func (s ListUserUeOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
 	}

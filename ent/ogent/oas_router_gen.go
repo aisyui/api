@@ -243,85 +243,76 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				}
-			case 'u': // Prefix: "users"
-				if l := len("users"); len(elem) >= l && elem[0:l] == "users" {
+			case 'u': // Prefix: "u"
+				if l := len("u"); len(elem) >= l && elem[0:l] == "u" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					switch r.Method {
-					case "GET":
-						s.handleListUserRequest([0]string{}, w, r)
-					case "POST":
-						s.handleCreateUserRequest([0]string{}, w, r)
-					default:
-						s.notAllowed(w, r, "GET,POST")
-					}
-
-					return
+					break
 				}
 				switch elem[0] {
-				case '/': // Prefix: "/"
-					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				case 'e': // Prefix: "es"
+					if l := len("es"); len(elem) >= l && elem[0:l] == "es" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Param: "id"
-					// Match until "/"
-					idx := strings.IndexByte(elem, '/')
-					if idx < 0 {
-						idx = len(elem)
-					}
-					args[0] = elem[:idx]
-					elem = elem[idx:]
-
 					if len(elem) == 0 {
 						switch r.Method {
-						case "DELETE":
-							s.handleDeleteUserRequest([1]string{
-								args[0],
-							}, w, r)
 						case "GET":
-							s.handleReadUserRequest([1]string{
-								args[0],
-							}, w, r)
-						case "PATCH":
-							s.handleUpdateUserRequest([1]string{
-								args[0],
-							}, w, r)
+							s.handleListUeRequest([0]string{}, w, r)
+						case "POST":
+							s.handleCreateUeRequest([0]string{}, w, r)
 						default:
-							s.notAllowed(w, r, "DELETE,GET,PATCH")
+							s.notAllowed(w, r, "GET,POST")
 						}
 
 						return
 					}
 					switch elem[0] {
-					case '/': // Prefix: "/card"
-						if l := len("/card"); len(elem) >= l && elem[0:l] == "/card" {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
+						// Param: "id"
+						// Match until "/"
+						idx := strings.IndexByte(elem, '/')
+						if idx < 0 {
+							idx = len(elem)
+						}
+						args[0] = elem[:idx]
+						elem = elem[idx:]
+
 						if len(elem) == 0 {
 							switch r.Method {
+							case "DELETE":
+								s.handleDeleteUeRequest([1]string{
+									args[0],
+								}, w, r)
 							case "GET":
-								s.handleListUserCardRequest([1]string{
+								s.handleReadUeRequest([1]string{
+									args[0],
+								}, w, r)
+							case "PATCH":
+								s.handleUpdateUeRequest([1]string{
 									args[0],
 								}, w, r)
 							default:
-								s.notAllowed(w, r, "GET")
+								s.notAllowed(w, r, "DELETE,GET,PATCH")
 							}
 
 							return
 						}
 						switch elem[0] {
-						case '/': // Prefix: "/start"
-							if l := len("/start"); len(elem) >= l && elem[0:l] == "/start" {
+						case '/': // Prefix: "/owner"
+							if l := len("/owner"); len(elem) >= l && elem[0:l] == "/owner" {
 								elem = elem[l:]
 							} else {
 								break
@@ -330,15 +321,147 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								// Leaf node.
 								switch r.Method {
-								case "PATCH":
-									s.handleDrawStartRequest([1]string{
+								case "GET":
+									s.handleReadUeOwnerRequest([1]string{
 										args[0],
 									}, w, r)
 								default:
-									s.notAllowed(w, r, "PATCH")
+									s.notAllowed(w, r, "GET")
 								}
 
 								return
+							}
+						}
+					}
+				case 's': // Prefix: "sers"
+					if l := len("sers"); len(elem) >= l && elem[0:l] == "sers" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch r.Method {
+						case "GET":
+							s.handleListUserRequest([0]string{}, w, r)
+						case "POST":
+							s.handleCreateUserRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET,POST")
+						}
+
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						// Param: "id"
+						// Match until "/"
+						idx := strings.IndexByte(elem, '/')
+						if idx < 0 {
+							idx = len(elem)
+						}
+						args[0] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							switch r.Method {
+							case "DELETE":
+								s.handleDeleteUserRequest([1]string{
+									args[0],
+								}, w, r)
+							case "GET":
+								s.handleReadUserRequest([1]string{
+									args[0],
+								}, w, r)
+							case "PATCH":
+								s.handleUpdateUserRequest([1]string{
+									args[0],
+								}, w, r)
+							default:
+								s.notAllowed(w, r, "DELETE,GET,PATCH")
+							}
+
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 'c': // Prefix: "card"
+								if l := len("card"); len(elem) >= l && elem[0:l] == "card" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch r.Method {
+									case "GET":
+										s.handleListUserCardRequest([1]string{
+											args[0],
+										}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
+
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/start"
+									if l := len("/start"); len(elem) >= l && elem[0:l] == "/start" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf node.
+										switch r.Method {
+										case "PATCH":
+											s.handleDrawStartRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "PATCH")
+										}
+
+										return
+									}
+								}
+							case 'u': // Prefix: "ue"
+								if l := len("ue"); len(elem) >= l && elem[0:l] == "ue" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									// Leaf node.
+									switch r.Method {
+									case "GET":
+										s.handleListUserUeRequest([1]string{
+											args[0],
+										}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
+
+									return
+								}
 							}
 						}
 					}
@@ -647,91 +770,81 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 					}
 				}
-			case 'u': // Prefix: "users"
-				if l := len("users"); len(elem) >= l && elem[0:l] == "users" {
+			case 'u': // Prefix: "u"
+				if l := len("u"); len(elem) >= l && elem[0:l] == "u" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					switch method {
-					case "GET":
-						r.name = "ListUser"
-						r.operationID = "listUser"
-						r.pathPattern = "/users"
-						r.args = args
-						r.count = 0
-						return r, true
-					case "POST":
-						r.name = "CreateUser"
-						r.operationID = "createUser"
-						r.pathPattern = "/users"
-						r.args = args
-						r.count = 0
-						return r, true
-					default:
-						return
-					}
+					break
 				}
 				switch elem[0] {
-				case '/': // Prefix: "/"
-					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				case 'e': // Prefix: "es"
+					if l := len("es"); len(elem) >= l && elem[0:l] == "es" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Param: "id"
-					// Match until "/"
-					idx := strings.IndexByte(elem, '/')
-					if idx < 0 {
-						idx = len(elem)
-					}
-					args[0] = elem[:idx]
-					elem = elem[idx:]
-
 					if len(elem) == 0 {
 						switch method {
-						case "DELETE":
-							r.name = "DeleteUser"
-							r.operationID = "deleteUser"
-							r.pathPattern = "/users/{id}"
-							r.args = args
-							r.count = 1
-							return r, true
 						case "GET":
-							r.name = "ReadUser"
-							r.operationID = "readUser"
-							r.pathPattern = "/users/{id}"
+							r.name = "ListUe"
+							r.operationID = "listUe"
+							r.pathPattern = "/ues"
 							r.args = args
-							r.count = 1
+							r.count = 0
 							return r, true
-						case "PATCH":
-							r.name = "UpdateUser"
-							r.operationID = "updateUser"
-							r.pathPattern = "/users/{id}"
+						case "POST":
+							r.name = "CreateUe"
+							r.operationID = "createUe"
+							r.pathPattern = "/ues"
 							r.args = args
-							r.count = 1
+							r.count = 0
 							return r, true
 						default:
 							return
 						}
 					}
 					switch elem[0] {
-					case '/': // Prefix: "/card"
-						if l := len("/card"); len(elem) >= l && elem[0:l] == "/card" {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
+						// Param: "id"
+						// Match until "/"
+						idx := strings.IndexByte(elem, '/')
+						if idx < 0 {
+							idx = len(elem)
+						}
+						args[0] = elem[:idx]
+						elem = elem[idx:]
+
 						if len(elem) == 0 {
 							switch method {
+							case "DELETE":
+								r.name = "DeleteUe"
+								r.operationID = "deleteUe"
+								r.pathPattern = "/ues/{id}"
+								r.args = args
+								r.count = 1
+								return r, true
 							case "GET":
-								r.name = "ListUserCard"
-								r.operationID = "listUserCard"
-								r.pathPattern = "/users/{id}/card"
+								r.name = "ReadUe"
+								r.operationID = "readUe"
+								r.pathPattern = "/ues/{id}"
+								r.args = args
+								r.count = 1
+								return r, true
+							case "PATCH":
+								r.name = "UpdateUe"
+								r.operationID = "updateUe"
+								r.pathPattern = "/ues/{id}"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -740,8 +853,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 						}
 						switch elem[0] {
-						case '/': // Prefix: "/start"
-							if l := len("/start"); len(elem) >= l && elem[0:l] == "/start" {
+						case '/': // Prefix: "/owner"
+							if l := len("/owner"); len(elem) >= l && elem[0:l] == "/owner" {
 								elem = elem[l:]
 							} else {
 								break
@@ -749,16 +862,166 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 
 							if len(elem) == 0 {
 								switch method {
-								case "PATCH":
-									// Leaf: DrawStart
-									r.name = "DrawStart"
-									r.operationID = "drawStart"
-									r.pathPattern = "/users/{id}/card/start"
+								case "GET":
+									// Leaf: ReadUeOwner
+									r.name = "ReadUeOwner"
+									r.operationID = "readUeOwner"
+									r.pathPattern = "/ues/{id}/owner"
 									r.args = args
 									r.count = 1
 									return r, true
 								default:
 									return
+								}
+							}
+						}
+					}
+				case 's': // Prefix: "sers"
+					if l := len("sers"); len(elem) >= l && elem[0:l] == "sers" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "GET":
+							r.name = "ListUser"
+							r.operationID = "listUser"
+							r.pathPattern = "/users"
+							r.args = args
+							r.count = 0
+							return r, true
+						case "POST":
+							r.name = "CreateUser"
+							r.operationID = "createUser"
+							r.pathPattern = "/users"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						// Param: "id"
+						// Match until "/"
+						idx := strings.IndexByte(elem, '/')
+						if idx < 0 {
+							idx = len(elem)
+						}
+						args[0] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							switch method {
+							case "DELETE":
+								r.name = "DeleteUser"
+								r.operationID = "deleteUser"
+								r.pathPattern = "/users/{id}"
+								r.args = args
+								r.count = 1
+								return r, true
+							case "GET":
+								r.name = "ReadUser"
+								r.operationID = "readUser"
+								r.pathPattern = "/users/{id}"
+								r.args = args
+								r.count = 1
+								return r, true
+							case "PATCH":
+								r.name = "UpdateUser"
+								r.operationID = "updateUser"
+								r.pathPattern = "/users/{id}"
+								r.args = args
+								r.count = 1
+								return r, true
+							default:
+								return
+							}
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 'c': // Prefix: "card"
+								if l := len("card"); len(elem) >= l && elem[0:l] == "card" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch method {
+									case "GET":
+										r.name = "ListUserCard"
+										r.operationID = "listUserCard"
+										r.pathPattern = "/users/{id}/card"
+										r.args = args
+										r.count = 1
+										return r, true
+									default:
+										return
+									}
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/start"
+									if l := len("/start"); len(elem) >= l && elem[0:l] == "/start" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "PATCH":
+											// Leaf: DrawStart
+											r.name = "DrawStart"
+											r.operationID = "drawStart"
+											r.pathPattern = "/users/{id}/card/start"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
+									}
+								}
+							case 'u': // Prefix: "ue"
+								if l := len("ue"); len(elem) >= l && elem[0:l] == "ue" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch method {
+									case "GET":
+										// Leaf: ListUserUe
+										r.name = "ListUserUe"
+										r.operationID = "listUserUe"
+										r.pathPattern = "/users/{id}/ue"
+										r.args = args
+										r.count = 1
+										return r, true
+									default:
+										return
+									}
 								}
 							}
 						}

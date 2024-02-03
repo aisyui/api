@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"t/ent/card"
+	"t/ent/ue"
 	"t/ent/user"
 	"time"
 
@@ -678,6 +679,21 @@ func (uc *UserCreate) AddCard(c ...*Card) *UserCreate {
 	return uc.AddCardIDs(ids...)
 }
 
+// AddUeIDs adds the "ue" edge to the Ue entity by IDs.
+func (uc *UserCreate) AddUeIDs(ids ...int) *UserCreate {
+	uc.mutation.AddUeIDs(ids...)
+	return uc
+}
+
+// AddUe adds the "ue" edges to the Ue entity.
+func (uc *UserCreate) AddUe(u ...*Ue) *UserCreate {
+	ids := make([]int, len(u))
+	for i := range u {
+		ids[i] = u[i].ID
+	}
+	return uc.AddUeIDs(ids...)
+}
+
 // Mutation returns the UserMutation object of the builder.
 func (uc *UserCreate) Mutation() *UserMutation {
 	return uc.mutation
@@ -1044,6 +1060,22 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(card.FieldID, field.TypeInt),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges = append(_spec.Edges, edge)
+	}
+	if nodes := uc.mutation.UeIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   user.UeTable,
+			Columns: []string{user.UeColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(ue.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

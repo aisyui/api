@@ -12,6 +12,7 @@ import (
 
 	"t/ent/card"
 	"t/ent/group"
+	"t/ent/ue"
 	"t/ent/user"
 
 	"entgo.io/ent"
@@ -29,6 +30,8 @@ type Client struct {
 	Card *CardClient
 	// Group is the client for interacting with the Group builders.
 	Group *GroupClient
+	// Ue is the client for interacting with the Ue builders.
+	Ue *UeClient
 	// User is the client for interacting with the User builders.
 	User *UserClient
 }
@@ -46,6 +49,7 @@ func (c *Client) init() {
 	c.Schema = migrate.NewSchema(c.driver)
 	c.Card = NewCardClient(c.config)
 	c.Group = NewGroupClient(c.config)
+	c.Ue = NewUeClient(c.config)
 	c.User = NewUserClient(c.config)
 }
 
@@ -131,6 +135,7 @@ func (c *Client) Tx(ctx context.Context) (*Tx, error) {
 		config: cfg,
 		Card:   NewCardClient(cfg),
 		Group:  NewGroupClient(cfg),
+		Ue:     NewUeClient(cfg),
 		User:   NewUserClient(cfg),
 	}, nil
 }
@@ -153,6 +158,7 @@ func (c *Client) BeginTx(ctx context.Context, opts *sql.TxOptions) (*Tx, error) 
 		config: cfg,
 		Card:   NewCardClient(cfg),
 		Group:  NewGroupClient(cfg),
+		Ue:     NewUeClient(cfg),
 		User:   NewUserClient(cfg),
 	}, nil
 }
@@ -184,6 +190,7 @@ func (c *Client) Close() error {
 func (c *Client) Use(hooks ...Hook) {
 	c.Card.Use(hooks...)
 	c.Group.Use(hooks...)
+	c.Ue.Use(hooks...)
 	c.User.Use(hooks...)
 }
 
@@ -192,6 +199,7 @@ func (c *Client) Use(hooks ...Hook) {
 func (c *Client) Intercept(interceptors ...Interceptor) {
 	c.Card.Intercept(interceptors...)
 	c.Group.Intercept(interceptors...)
+	c.Ue.Intercept(interceptors...)
 	c.User.Intercept(interceptors...)
 }
 
@@ -202,6 +210,8 @@ func (c *Client) Mutate(ctx context.Context, m Mutation) (Value, error) {
 		return c.Card.mutate(ctx, m)
 	case *GroupMutation:
 		return c.Group.mutate(ctx, m)
+	case *UeMutation:
+		return c.Ue.mutate(ctx, m)
 	case *UserMutation:
 		return c.User.mutate(ctx, m)
 	default:
@@ -477,6 +487,140 @@ func (c *GroupClient) mutate(ctx context.Context, m *GroupMutation) (Value, erro
 	}
 }
 
+// UeClient is a client for the Ue schema.
+type UeClient struct {
+	config
+}
+
+// NewUeClient returns a client for the Ue from the given config.
+func NewUeClient(c config) *UeClient {
+	return &UeClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `ue.Hooks(f(g(h())))`.
+func (c *UeClient) Use(hooks ...Hook) {
+	c.hooks.Ue = append(c.hooks.Ue, hooks...)
+}
+
+// Intercept adds a list of query interceptors to the interceptors stack.
+// A call to `Intercept(f, g, h)` equals to `ue.Intercept(f(g(h())))`.
+func (c *UeClient) Intercept(interceptors ...Interceptor) {
+	c.inters.Ue = append(c.inters.Ue, interceptors...)
+}
+
+// Create returns a builder for creating a Ue entity.
+func (c *UeClient) Create() *UeCreate {
+	mutation := newUeMutation(c.config, OpCreate)
+	return &UeCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of Ue entities.
+func (c *UeClient) CreateBulk(builders ...*UeCreate) *UeCreateBulk {
+	return &UeCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for Ue.
+func (c *UeClient) Update() *UeUpdate {
+	mutation := newUeMutation(c.config, OpUpdate)
+	return &UeUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *UeClient) UpdateOne(u *Ue) *UeUpdateOne {
+	mutation := newUeMutation(c.config, OpUpdateOne, withUe(u))
+	return &UeUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *UeClient) UpdateOneID(id int) *UeUpdateOne {
+	mutation := newUeMutation(c.config, OpUpdateOne, withUeID(id))
+	return &UeUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for Ue.
+func (c *UeClient) Delete() *UeDelete {
+	mutation := newUeMutation(c.config, OpDelete)
+	return &UeDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a builder for deleting the given entity.
+func (c *UeClient) DeleteOne(u *Ue) *UeDeleteOne {
+	return c.DeleteOneID(u.ID)
+}
+
+// DeleteOneID returns a builder for deleting the given entity by its id.
+func (c *UeClient) DeleteOneID(id int) *UeDeleteOne {
+	builder := c.Delete().Where(ue.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &UeDeleteOne{builder}
+}
+
+// Query returns a query builder for Ue.
+func (c *UeClient) Query() *UeQuery {
+	return &UeQuery{
+		config: c.config,
+		ctx:    &QueryContext{Type: TypeUe},
+		inters: c.Interceptors(),
+	}
+}
+
+// Get returns a Ue entity by its id.
+func (c *UeClient) Get(ctx context.Context, id int) (*Ue, error) {
+	return c.Query().Where(ue.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *UeClient) GetX(ctx context.Context, id int) *Ue {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// QueryOwner queries the owner edge of a Ue.
+func (c *UeClient) QueryOwner(u *Ue) *UserQuery {
+	query := (&UserClient{config: c.config}).Query()
+	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
+		id := u.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(ue.Table, ue.FieldID, id),
+			sqlgraph.To(user.Table, user.FieldID),
+			sqlgraph.Edge(sqlgraph.M2O, true, ue.OwnerTable, ue.OwnerColumn),
+		)
+		fromV = sqlgraph.Neighbors(u.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// Hooks returns the client hooks.
+func (c *UeClient) Hooks() []Hook {
+	return c.hooks.Ue
+}
+
+// Interceptors returns the client interceptors.
+func (c *UeClient) Interceptors() []Interceptor {
+	return c.inters.Ue
+}
+
+func (c *UeClient) mutate(ctx context.Context, m *UeMutation) (Value, error) {
+	switch m.Op() {
+	case OpCreate:
+		return (&UeCreate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdate:
+		return (&UeUpdate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdateOne:
+		return (&UeUpdateOne{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpDelete, OpDeleteOne:
+		return (&UeDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
+	default:
+		return nil, fmt.Errorf("ent: unknown Ue mutation op: %q", m.Op())
+	}
+}
+
 // UserClient is a client for the User schema.
 type UserClient struct {
 	config
@@ -586,6 +730,22 @@ func (c *UserClient) QueryCard(u *User) *CardQuery {
 	return query
 }
 
+// QueryUe queries the ue edge of a User.
+func (c *UserClient) QueryUe(u *User) *UeQuery {
+	query := (&UeClient{config: c.config}).Query()
+	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
+		id := u.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(user.Table, user.FieldID, id),
+			sqlgraph.To(ue.Table, ue.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, user.UeTable, user.UeColumn),
+		)
+		fromV = sqlgraph.Neighbors(u.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
 // Hooks returns the client hooks.
 func (c *UserClient) Hooks() []Hook {
 	return c.hooks.User
@@ -614,9 +774,9 @@ func (c *UserClient) mutate(ctx context.Context, m *UserMutation) (Value, error)
 // hooks and interceptors per client, for fast access.
 type (
 	hooks struct {
-		Card, Group, User []ent.Hook
+		Card, Group, Ue, User []ent.Hook
 	}
 	inters struct {
-		Card, Group, User []ent.Interceptor
+		Card, Group, Ue, User []ent.Interceptor
 	}
 )
