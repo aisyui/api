@@ -27,5 +27,6 @@ do
 	s=`echo $data|jq -r ".[$i].status"`
 	cp=`echo $data|jq -r ".[$i].cp"`
 	skill=`echo $data|jq -r ".[$i].skill"`
-	curl -X POST -H "Content-Type: application/json" -d "{\"owner\":$id_n,\"card\":$card,\"status\":\"$s\",\"cp\":$cp,\"password\":\"$pass\",\"skill\":\"$skill\"}" -sL $host/cards
+	author=`echo $data|jq -r ".[$i].author"`
+	curl -X POST -H "Content-Type: application/json" -d "{\"owner\":$id_n,\"card\":$card,\"status\":\"$s\",\"cp\":$cp,\"password\":\"$pass\",\"skill\":\"$skill\",\"author\":\"$author\"}" -sL $host/cards
 done

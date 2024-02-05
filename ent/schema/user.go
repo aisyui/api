@@ -19,8 +19,9 @@ type User struct {
 }
 
 func Nextime() (tt string){
- t := time.Now().In(jst)
- //t := time.Now().Add(time.Hour * 24 * 1).In(jst)
+ //t := time.Now().In(jst)
+	//t := time.Now().Add(time.Hour * 24 * 1).In(jst)
+	t := time.Now().AddDate(0, 0, -1).In(jst)
 	tt = t.Format("20060102")
 	return
 }

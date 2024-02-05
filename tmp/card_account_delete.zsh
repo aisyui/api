@@ -15,5 +15,6 @@ else
 	s=true
 fi
 
+token=`cat ~/.config/atr/api_card.json|jq -r .token`
 curl -X PATCH -H "Content-Type: application/json" -d "{\"delete\":$s,\"token\":\"$token\"}" -s $host/users/$id
 
