@@ -105,6 +105,12 @@ const (
 	FieldGameAccount = "game_account"
 	// FieldGameLv holds the string denoting the game_lv field in the database.
 	FieldGameLv = "game_lv"
+	// FieldCoin holds the string denoting the coin field in the database.
+	FieldCoin = "coin"
+	// FieldCoinOpen holds the string denoting the coin_open field in the database.
+	FieldCoinOpen = "coin_open"
+	// FieldCoinAt holds the string denoting the coin_at field in the database.
+	FieldCoinAt = "coin_at"
 	// EdgeCard holds the string denoting the card edge name in mutations.
 	EdgeCard = "card"
 	// EdgeUe holds the string denoting the ue edge name in mutations.
@@ -177,6 +183,9 @@ var Columns = []string{
 	FieldGameEnd,
 	FieldGameAccount,
 	FieldGameLv,
+	FieldCoin,
+	FieldCoinOpen,
+	FieldCoinAt,
 }
 
 // ForeignKeys holds the SQL foreign-keys that are owned by the "users"
@@ -249,4 +258,8 @@ var (
 	DefaultGameEnd bool
 	// DefaultGameAccount holds the default value on creation for the "game_account" field.
 	DefaultGameAccount bool
+	// DefaultCoinOpen holds the default value on creation for the "coin_open" field.
+	DefaultCoinOpen bool
+	// DefaultCoinAt holds the default value on creation for the "coin_at" field.
+	DefaultCoinAt func() time.Time
 )

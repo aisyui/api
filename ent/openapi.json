@@ -1326,6 +1326,16 @@
                   "game_lv": {
                     "type": "integer"
                   },
+                  "coin": {
+                    "type": "integer"
+                  },
+                  "coin_open": {
+                    "type": "boolean"
+                  },
+                  "coin_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
                   "card": {
                     "type": "array",
                     "items": {
@@ -1615,6 +1625,16 @@
                   },
                   "game_lv": {
                     "type": "integer"
+                  },
+                  "coin": {
+                    "type": "integer"
+                  },
+                  "coin_open": {
+                    "type": "boolean"
+                  },
+                  "coin_at": {
+                    "type": "string",
+                    "format": "date-time"
                   },
                   "card": {
                     "type": "array",
@@ -2156,6 +2176,16 @@
           },
           "game_lv": {
             "type": "integer"
+          },
+          "coin": {
+            "type": "integer"
+          },
+          "coin_open": {
+            "type": "boolean"
+          },
+          "coin_at": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "required": [
@@ -2397,6 +2427,16 @@
           },
           "game_lv": {
             "type": "integer"
+          },
+          "coin": {
+            "type": "integer"
+          },
+          "coin_open": {
+            "type": "boolean"
+          },
+          "coin_at": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "required": [
@@ -2879,6 +2919,16 @@
           },
           "game_lv": {
             "type": "integer"
+          },
+          "coin": {
+            "type": "integer"
+          },
+          "coin_open": {
+            "type": "boolean"
+          },
+          "coin_at": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "required": [
@@ -3041,6 +3091,16 @@
           },
           "game_lv": {
             "type": "integer"
+          },
+          "coin": {
+            "type": "integer"
+          },
+          "coin_open": {
+            "type": "boolean"
+          },
+          "coin_at": {
+            "type": "string",
+            "format": "date-time"
           },
           "card": {
             "type": "array",
@@ -3210,6 +3270,16 @@
           },
           "game_lv": {
             "type": "integer"
+          },
+          "coin": {
+            "type": "integer"
+          },
+          "coin_open": {
+            "type": "boolean"
+          },
+          "coin_at": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "required": [
@@ -3366,6 +3436,16 @@
           },
           "game_lv": {
             "type": "integer"
+          },
+          "coin": {
+            "type": "integer"
+          },
+          "coin_open": {
+            "type": "boolean"
+          },
+          "coin_at": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "required": [
@@ -3522,6 +3602,16 @@
           },
           "game_lv": {
             "type": "integer"
+          },
+          "coin": {
+            "type": "integer"
+          },
+          "coin_open": {
+            "type": "boolean"
+          },
+          "coin_at": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "required": [
@@ -3678,6 +3768,16 @@
           },
           "game_lv": {
             "type": "integer"
+          },
+          "coin": {
+            "type": "integer"
+          },
+          "coin_open": {
+            "type": "boolean"
+          },
+          "coin_at": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "required": [

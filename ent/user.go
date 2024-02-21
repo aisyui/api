@@ -110,6 +110,12 @@ type User struct {
 	GameAccount bool `json:"game_account,omitempty"`
 	// GameLv holds the value of the "game_lv" field.
 	GameLv int `json:"game_lv,omitempty"`
+	// Coin holds the value of the "coin" field.
+	Coin int `json:"coin,omitempty"`
+	// CoinOpen holds the value of the "coin_open" field.
+	CoinOpen bool `json:"coin_open,omitempty"`
+	// CoinAt holds the value of the "coin_at" field.
+	CoinAt time.Time `json:"coin_at,omitempty"`
 	// Edges holds the relations/edges for other nodes in the graph.
 	// The values are being populated by the UserQuery when eager-loading is set.
 	Edges       UserEdges `json:"edges"`
@@ -150,13 +156,13 @@ func (*User) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case user.FieldMember, user.FieldBook, user.FieldManga, user.FieldBadge, user.FieldBsky, user.FieldMastodon, user.FieldDelete, user.FieldHandle, user.FieldTen, user.FieldModel, user.FieldGame, user.FieldGameTest, user.FieldGameEnd, user.FieldGameAccount:
+		case user.FieldMember, user.FieldBook, user.FieldManga, user.FieldBadge, user.FieldBsky, user.FieldMastodon, user.FieldDelete, user.FieldHandle, user.FieldTen, user.FieldModel, user.FieldGame, user.FieldGameTest, user.FieldGameEnd, user.FieldGameAccount, user.FieldCoinOpen:
 			values[i] = new(sql.NullBool)
-		case user.FieldID, user.FieldLuck, user.FieldLike, user.FieldLikeRank, user.FieldFav, user.FieldTenSu, user.FieldTenKai, user.FieldAiten, user.FieldRoom, user.FieldModelAttack, user.FieldModelLimit, user.FieldModelSkill, user.FieldModelMode, user.FieldModelCritical, user.FieldModelCriticalD, user.FieldGameLv:
+		case user.FieldID, user.FieldLuck, user.FieldLike, user.FieldLikeRank, user.FieldFav, user.FieldTenSu, user.FieldTenKai, user.FieldAiten, user.FieldRoom, user.FieldModelAttack, user.FieldModelLimit, user.FieldModelSkill, user.FieldModelMode, user.FieldModelCritical, user.FieldModelCriticalD, user.FieldGameLv, user.FieldCoin:
 			values[i] = new(sql.NullInt64)
 		case user.FieldUsername, user.FieldDid, user.FieldToken, user.FieldPassword, user.FieldTenCard, user.FieldTenDelete, user.FieldTenPost, user.FieldTenGet, user.FieldNext:
 			values[i] = new(sql.NullString)
-		case user.FieldCreatedAt, user.FieldUpdatedAt, user.FieldRaidAt, user.FieldServerAt, user.FieldEggAt, user.FieldLuckAt, user.FieldLikeAt, user.FieldTenAt, user.FieldModelAt:
+		case user.FieldCreatedAt, user.FieldUpdatedAt, user.FieldRaidAt, user.FieldServerAt, user.FieldEggAt, user.FieldLuckAt, user.FieldLikeAt, user.FieldTenAt, user.FieldModelAt, user.FieldCoinAt:
 			values[i] = new(sql.NullTime)
 		case user.ForeignKeys[0]: // group_users
 			values[i] = new(sql.NullInt64)
@@ -463,6 +469,24 @@ func (u *User) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				u.GameLv = int(value.Int64)
 			}
+		case user.FieldCoin:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field coin", values[i])
+			} else if value.Valid {
+				u.Coin = int(value.Int64)
+			}
+		case user.FieldCoinOpen:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field coin_open", values[i])
+			} else if value.Valid {
+				u.CoinOpen = value.Bool
+			}
+		case user.FieldCoinAt:
+			if value, ok := values[i].(*sql.NullTime); !ok {
+				return fmt.Errorf("unexpected type %T for field coin_at", values[i])
+			} else if value.Valid {
+				u.CoinAt = value.Time
+			}
 		case user.ForeignKeys[0]:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for edge-field group_users", value)
@@ -646,6 +670,15 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("game_lv=")
 	builder.WriteString(fmt.Sprintf("%v", u.GameLv))
+	builder.WriteString(", ")
+	builder.WriteString("coin=")
+	builder.WriteString(fmt.Sprintf("%v", u.Coin))
+	builder.WriteString(", ")
+	builder.WriteString("coin_open=")
+	builder.WriteString(fmt.Sprintf("%v", u.CoinOpen))
+	builder.WriteString(", ")
+	builder.WriteString("coin_at=")
+	builder.WriteString(u.CoinAt.Format(time.ANSIC))
 	builder.WriteByte(')')
 	return builder.String()
 }

@@ -939,6 +939,15 @@ func (h *OgentHandler) CreateUser(ctx context.Context, req *CreateUserReq) (Crea
 	if v, ok := req.GameLv.Get(); ok {
 		b.SetGameLv(v)
 	}
+	if v, ok := req.Coin.Get(); ok {
+		b.SetCoin(v)
+	}
+	if v, ok := req.CoinOpen.Get(); ok {
+		b.SetCoinOpen(v)
+	}
+	if v, ok := req.CoinAt.Get(); ok {
+		b.SetCoinAt(v)
+	}
 
 	// Add all fields.
 	//b.SetUsername(req.Username)
@@ -1141,6 +1150,15 @@ func (h *OgentHandler) UpdateUser(ctx context.Context, req *UpdateUserReq, param
 			}
 			if v, ok := req.GameLv.Get(); ok {
 				b.SetGameLv(v)
+			}
+			if v, ok := req.Coin.Get(); ok {
+				b.SetCoin(v)
+			}
+			if v, ok := req.CoinOpen.Get(); ok {
+				b.SetCoinOpen(v)
+			}
+			if v, ok := req.CoinAt.Get(); ok {
+				b.SetCoinAt(v)
 			}
 			// Add all edges.
 			if req.Card != nil {

@@ -664,6 +664,48 @@ func (uc *UserCreate) SetNillableGameLv(i *int) *UserCreate {
 	return uc
 }
 
+// SetCoin sets the "coin" field.
+func (uc *UserCreate) SetCoin(i int) *UserCreate {
+	uc.mutation.SetCoin(i)
+	return uc
+}
+
+// SetNillableCoin sets the "coin" field if the given value is not nil.
+func (uc *UserCreate) SetNillableCoin(i *int) *UserCreate {
+	if i != nil {
+		uc.SetCoin(*i)
+	}
+	return uc
+}
+
+// SetCoinOpen sets the "coin_open" field.
+func (uc *UserCreate) SetCoinOpen(b bool) *UserCreate {
+	uc.mutation.SetCoinOpen(b)
+	return uc
+}
+
+// SetNillableCoinOpen sets the "coin_open" field if the given value is not nil.
+func (uc *UserCreate) SetNillableCoinOpen(b *bool) *UserCreate {
+	if b != nil {
+		uc.SetCoinOpen(*b)
+	}
+	return uc
+}
+
+// SetCoinAt sets the "coin_at" field.
+func (uc *UserCreate) SetCoinAt(t time.Time) *UserCreate {
+	uc.mutation.SetCoinAt(t)
+	return uc
+}
+
+// SetNillableCoinAt sets the "coin_at" field if the given value is not nil.
+func (uc *UserCreate) SetNillableCoinAt(t *time.Time) *UserCreate {
+	if t != nil {
+		uc.SetCoinAt(*t)
+	}
+	return uc
+}
+
 // AddCardIDs adds the "card" edge to the Card entity by IDs.
 func (uc *UserCreate) AddCardIDs(ids ...int) *UserCreate {
 	uc.mutation.AddCardIDs(ids...)
@@ -816,6 +858,14 @@ func (uc *UserCreate) defaults() {
 	if _, ok := uc.mutation.GameAccount(); !ok {
 		v := user.DefaultGameAccount
 		uc.mutation.SetGameAccount(v)
+	}
+	if _, ok := uc.mutation.CoinOpen(); !ok {
+		v := user.DefaultCoinOpen
+		uc.mutation.SetCoinOpen(v)
+	}
+	if _, ok := uc.mutation.CoinAt(); !ok {
+		v := user.DefaultCoinAt()
+		uc.mutation.SetCoinAt(v)
 	}
 }
 
@@ -1050,6 +1100,18 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 	if value, ok := uc.mutation.GameLv(); ok {
 		_spec.SetField(user.FieldGameLv, field.TypeInt, value)
 		_node.GameLv = value
+	}
+	if value, ok := uc.mutation.Coin(); ok {
+		_spec.SetField(user.FieldCoin, field.TypeInt, value)
+		_node.Coin = value
+	}
+	if value, ok := uc.mutation.CoinOpen(); ok {
+		_spec.SetField(user.FieldCoinOpen, field.TypeBool, value)
+		_node.CoinOpen = value
+	}
+	if value, ok := uc.mutation.CoinAt(); ok {
+		_spec.SetField(user.FieldCoinAt, field.TypeTime, value)
+		_node.CoinAt = value
 	}
 	if nodes := uc.mutation.CardIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{

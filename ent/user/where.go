@@ -290,6 +290,21 @@ func GameLv(v int) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldGameLv, v))
 }
 
+// Coin applies equality check predicate on the "coin" field. It's identical to CoinEQ.
+func Coin(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldCoin, v))
+}
+
+// CoinOpen applies equality check predicate on the "coin_open" field. It's identical to CoinOpenEQ.
+func CoinOpen(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldCoinOpen, v))
+}
+
+// CoinAt applies equality check predicate on the "coin_at" field. It's identical to CoinAtEQ.
+func CoinAt(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldCoinAt, v))
+}
+
 // UsernameEQ applies the EQ predicate on the "username" field.
 func UsernameEQ(v string) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldUsername, v))
@@ -2423,6 +2438,126 @@ func GameLvIsNil() predicate.User {
 // GameLvNotNil applies the NotNil predicate on the "game_lv" field.
 func GameLvNotNil() predicate.User {
 	return predicate.User(sql.FieldNotNull(FieldGameLv))
+}
+
+// CoinEQ applies the EQ predicate on the "coin" field.
+func CoinEQ(v int) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldCoin, v))
+}
+
+// CoinNEQ applies the NEQ predicate on the "coin" field.
+func CoinNEQ(v int) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldCoin, v))
+}
+
+// CoinIn applies the In predicate on the "coin" field.
+func CoinIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldIn(FieldCoin, vs...))
+}
+
+// CoinNotIn applies the NotIn predicate on the "coin" field.
+func CoinNotIn(vs ...int) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldCoin, vs...))
+}
+
+// CoinGT applies the GT predicate on the "coin" field.
+func CoinGT(v int) predicate.User {
+	return predicate.User(sql.FieldGT(FieldCoin, v))
+}
+
+// CoinGTE applies the GTE predicate on the "coin" field.
+func CoinGTE(v int) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldCoin, v))
+}
+
+// CoinLT applies the LT predicate on the "coin" field.
+func CoinLT(v int) predicate.User {
+	return predicate.User(sql.FieldLT(FieldCoin, v))
+}
+
+// CoinLTE applies the LTE predicate on the "coin" field.
+func CoinLTE(v int) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldCoin, v))
+}
+
+// CoinIsNil applies the IsNil predicate on the "coin" field.
+func CoinIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldCoin))
+}
+
+// CoinNotNil applies the NotNil predicate on the "coin" field.
+func CoinNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldCoin))
+}
+
+// CoinOpenEQ applies the EQ predicate on the "coin_open" field.
+func CoinOpenEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldCoinOpen, v))
+}
+
+// CoinOpenNEQ applies the NEQ predicate on the "coin_open" field.
+func CoinOpenNEQ(v bool) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldCoinOpen, v))
+}
+
+// CoinOpenIsNil applies the IsNil predicate on the "coin_open" field.
+func CoinOpenIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldCoinOpen))
+}
+
+// CoinOpenNotNil applies the NotNil predicate on the "coin_open" field.
+func CoinOpenNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldCoinOpen))
+}
+
+// CoinAtEQ applies the EQ predicate on the "coin_at" field.
+func CoinAtEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldCoinAt, v))
+}
+
+// CoinAtNEQ applies the NEQ predicate on the "coin_at" field.
+func CoinAtNEQ(v time.Time) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldCoinAt, v))
+}
+
+// CoinAtIn applies the In predicate on the "coin_at" field.
+func CoinAtIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldIn(FieldCoinAt, vs...))
+}
+
+// CoinAtNotIn applies the NotIn predicate on the "coin_at" field.
+func CoinAtNotIn(vs ...time.Time) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldCoinAt, vs...))
+}
+
+// CoinAtGT applies the GT predicate on the "coin_at" field.
+func CoinAtGT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGT(FieldCoinAt, v))
+}
+
+// CoinAtGTE applies the GTE predicate on the "coin_at" field.
+func CoinAtGTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldCoinAt, v))
+}
+
+// CoinAtLT applies the LT predicate on the "coin_at" field.
+func CoinAtLT(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLT(FieldCoinAt, v))
+}
+
+// CoinAtLTE applies the LTE predicate on the "coin_at" field.
+func CoinAtLTE(v time.Time) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldCoinAt, v))
+}
+
+// CoinAtIsNil applies the IsNil predicate on the "coin_at" field.
+func CoinAtIsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldCoinAt))
+}
+
+// CoinAtNotNil applies the NotNil predicate on the "coin_at" field.
+func CoinAtNotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldCoinAt))
 }
 
 // HasCard applies the HasEdge predicate on the "card" edge.

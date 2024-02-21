@@ -1015,6 +1015,73 @@ func (uu *UserUpdate) ClearGameLv() *UserUpdate {
 	return uu
 }
 
+// SetCoin sets the "coin" field.
+func (uu *UserUpdate) SetCoin(i int) *UserUpdate {
+	uu.mutation.ResetCoin()
+	uu.mutation.SetCoin(i)
+	return uu
+}
+
+// SetNillableCoin sets the "coin" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableCoin(i *int) *UserUpdate {
+	if i != nil {
+		uu.SetCoin(*i)
+	}
+	return uu
+}
+
+// AddCoin adds i to the "coin" field.
+func (uu *UserUpdate) AddCoin(i int) *UserUpdate {
+	uu.mutation.AddCoin(i)
+	return uu
+}
+
+// ClearCoin clears the value of the "coin" field.
+func (uu *UserUpdate) ClearCoin() *UserUpdate {
+	uu.mutation.ClearCoin()
+	return uu
+}
+
+// SetCoinOpen sets the "coin_open" field.
+func (uu *UserUpdate) SetCoinOpen(b bool) *UserUpdate {
+	uu.mutation.SetCoinOpen(b)
+	return uu
+}
+
+// SetNillableCoinOpen sets the "coin_open" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableCoinOpen(b *bool) *UserUpdate {
+	if b != nil {
+		uu.SetCoinOpen(*b)
+	}
+	return uu
+}
+
+// ClearCoinOpen clears the value of the "coin_open" field.
+func (uu *UserUpdate) ClearCoinOpen() *UserUpdate {
+	uu.mutation.ClearCoinOpen()
+	return uu
+}
+
+// SetCoinAt sets the "coin_at" field.
+func (uu *UserUpdate) SetCoinAt(t time.Time) *UserUpdate {
+	uu.mutation.SetCoinAt(t)
+	return uu
+}
+
+// SetNillableCoinAt sets the "coin_at" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableCoinAt(t *time.Time) *UserUpdate {
+	if t != nil {
+		uu.SetCoinAt(*t)
+	}
+	return uu
+}
+
+// ClearCoinAt clears the value of the "coin_at" field.
+func (uu *UserUpdate) ClearCoinAt() *UserUpdate {
+	uu.mutation.ClearCoinAt()
+	return uu
+}
+
 // AddCardIDs adds the "card" edge to the Card entity by IDs.
 func (uu *UserUpdate) AddCardIDs(ids ...int) *UserUpdate {
 	uu.mutation.AddCardIDs(ids...)
@@ -1439,6 +1506,27 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	}
 	if uu.mutation.GameLvCleared() {
 		_spec.ClearField(user.FieldGameLv, field.TypeInt)
+	}
+	if value, ok := uu.mutation.Coin(); ok {
+		_spec.SetField(user.FieldCoin, field.TypeInt, value)
+	}
+	if value, ok := uu.mutation.AddedCoin(); ok {
+		_spec.AddField(user.FieldCoin, field.TypeInt, value)
+	}
+	if uu.mutation.CoinCleared() {
+		_spec.ClearField(user.FieldCoin, field.TypeInt)
+	}
+	if value, ok := uu.mutation.CoinOpen(); ok {
+		_spec.SetField(user.FieldCoinOpen, field.TypeBool, value)
+	}
+	if uu.mutation.CoinOpenCleared() {
+		_spec.ClearField(user.FieldCoinOpen, field.TypeBool)
+	}
+	if value, ok := uu.mutation.CoinAt(); ok {
+		_spec.SetField(user.FieldCoinAt, field.TypeTime, value)
+	}
+	if uu.mutation.CoinAtCleared() {
+		_spec.ClearField(user.FieldCoinAt, field.TypeTime)
 	}
 	if uu.mutation.CardCleared() {
 		edge := &sqlgraph.EdgeSpec{
@@ -2535,6 +2623,73 @@ func (uuo *UserUpdateOne) ClearGameLv() *UserUpdateOne {
 	return uuo
 }
 
+// SetCoin sets the "coin" field.
+func (uuo *UserUpdateOne) SetCoin(i int) *UserUpdateOne {
+	uuo.mutation.ResetCoin()
+	uuo.mutation.SetCoin(i)
+	return uuo
+}
+
+// SetNillableCoin sets the "coin" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableCoin(i *int) *UserUpdateOne {
+	if i != nil {
+		uuo.SetCoin(*i)
+	}
+	return uuo
+}
+
+// AddCoin adds i to the "coin" field.
+func (uuo *UserUpdateOne) AddCoin(i int) *UserUpdateOne {
+	uuo.mutation.AddCoin(i)
+	return uuo
+}
+
+// ClearCoin clears the value of the "coin" field.
+func (uuo *UserUpdateOne) ClearCoin() *UserUpdateOne {
+	uuo.mutation.ClearCoin()
+	return uuo
+}
+
+// SetCoinOpen sets the "coin_open" field.
+func (uuo *UserUpdateOne) SetCoinOpen(b bool) *UserUpdateOne {
+	uuo.mutation.SetCoinOpen(b)
+	return uuo
+}
+
+// SetNillableCoinOpen sets the "coin_open" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableCoinOpen(b *bool) *UserUpdateOne {
+	if b != nil {
+		uuo.SetCoinOpen(*b)
+	}
+	return uuo
+}
+
+// ClearCoinOpen clears the value of the "coin_open" field.
+func (uuo *UserUpdateOne) ClearCoinOpen() *UserUpdateOne {
+	uuo.mutation.ClearCoinOpen()
+	return uuo
+}
+
+// SetCoinAt sets the "coin_at" field.
+func (uuo *UserUpdateOne) SetCoinAt(t time.Time) *UserUpdateOne {
+	uuo.mutation.SetCoinAt(t)
+	return uuo
+}
+
+// SetNillableCoinAt sets the "coin_at" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableCoinAt(t *time.Time) *UserUpdateOne {
+	if t != nil {
+		uuo.SetCoinAt(*t)
+	}
+	return uuo
+}
+
+// ClearCoinAt clears the value of the "coin_at" field.
+func (uuo *UserUpdateOne) ClearCoinAt() *UserUpdateOne {
+	uuo.mutation.ClearCoinAt()
+	return uuo
+}
+
 // AddCardIDs adds the "card" edge to the Card entity by IDs.
 func (uuo *UserUpdateOne) AddCardIDs(ids ...int) *UserUpdateOne {
 	uuo.mutation.AddCardIDs(ids...)
@@ -2989,6 +3144,27 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	}
 	if uuo.mutation.GameLvCleared() {
 		_spec.ClearField(user.FieldGameLv, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.Coin(); ok {
+		_spec.SetField(user.FieldCoin, field.TypeInt, value)
+	}
+	if value, ok := uuo.mutation.AddedCoin(); ok {
+		_spec.AddField(user.FieldCoin, field.TypeInt, value)
+	}
+	if uuo.mutation.CoinCleared() {
+		_spec.ClearField(user.FieldCoin, field.TypeInt)
+	}
+	if value, ok := uuo.mutation.CoinOpen(); ok {
+		_spec.SetField(user.FieldCoinOpen, field.TypeBool, value)
+	}
+	if uuo.mutation.CoinOpenCleared() {
+		_spec.ClearField(user.FieldCoinOpen, field.TypeBool)
+	}
+	if value, ok := uuo.mutation.CoinAt(); ok {
+		_spec.SetField(user.FieldCoinAt, field.TypeTime, value)
+	}
+	if uuo.mutation.CoinAtCleared() {
+		_spec.ClearField(user.FieldCoinAt, field.TypeTime)
 	}
 	if uuo.mutation.CardCleared() {
 		edge := &sqlgraph.EdgeSpec{

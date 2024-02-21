@@ -195,6 +195,9 @@ func NewCardOwnerRead(e *ent.User) *CardOwnerRead {
 	ret.GameEnd = NewOptBool(e.GameEnd)
 	ret.GameAccount = NewOptBool(e.GameAccount)
 	ret.GameLv = NewOptInt(e.GameLv)
+	ret.Coin = NewOptInt(e.Coin)
+	ret.CoinOpen = NewOptBool(e.CoinOpen)
+	ret.CoinAt = NewOptDateTime(e.CoinAt)
 	return &ret
 }
 
@@ -379,6 +382,9 @@ func NewGroupUsersList(e *ent.User) *GroupUsersList {
 	ret.GameEnd = NewOptBool(e.GameEnd)
 	ret.GameAccount = NewOptBool(e.GameAccount)
 	ret.GameLv = NewOptInt(e.GameLv)
+	ret.Coin = NewOptInt(e.Coin)
+	ret.CoinOpen = NewOptBool(e.CoinOpen)
+	ret.CoinAt = NewOptDateTime(e.CoinAt)
 	return &ret
 }
 
@@ -627,6 +633,9 @@ func NewUeOwnerRead(e *ent.User) *UeOwnerRead {
 	ret.GameEnd = NewOptBool(e.GameEnd)
 	ret.GameAccount = NewOptBool(e.GameAccount)
 	ret.GameLv = NewOptInt(e.GameLv)
+	ret.Coin = NewOptInt(e.Coin)
+	ret.CoinOpen = NewOptBool(e.CoinOpen)
+	ret.CoinAt = NewOptDateTime(e.CoinAt)
 	return &ret
 }
 
@@ -699,6 +708,9 @@ func NewUserCreate(e *ent.User) *UserCreate {
 	ret.GameEnd = NewOptBool(e.GameEnd)
 	ret.GameAccount = NewOptBool(e.GameAccount)
 	ret.GameLv = NewOptInt(e.GameLv)
+	ret.Coin = NewOptInt(e.Coin)
+	ret.CoinOpen = NewOptBool(e.CoinOpen)
+	ret.CoinAt = NewOptDateTime(e.CoinAt)
 	return &ret
 }
 
@@ -771,6 +783,9 @@ func NewUserList(e *ent.User) *UserList {
 	ret.GameEnd = NewOptBool(e.GameEnd)
 	ret.GameAccount = NewOptBool(e.GameAccount)
 	ret.GameLv = NewOptInt(e.GameLv)
+	ret.Coin = NewOptInt(e.Coin)
+	ret.CoinOpen = NewOptBool(e.CoinOpen)
+	ret.CoinAt = NewOptDateTime(e.CoinAt)
 	return &ret
 }
 
@@ -843,6 +858,9 @@ func NewUserRead(e *ent.User) *UserRead {
 	ret.GameEnd = NewOptBool(e.GameEnd)
 	ret.GameAccount = NewOptBool(e.GameAccount)
 	ret.GameLv = NewOptInt(e.GameLv)
+	ret.Coin = NewOptInt(e.Coin)
+	ret.CoinOpen = NewOptBool(e.CoinOpen)
+	ret.CoinAt = NewOptDateTime(e.CoinAt)
 	return &ret
 }
 
@@ -915,6 +933,9 @@ func NewUserUpdate(e *ent.User) *UserUpdate {
 	ret.GameEnd = NewOptBool(e.GameEnd)
 	ret.GameAccount = NewOptBool(e.GameAccount)
 	ret.GameLv = NewOptInt(e.GameLv)
+	ret.Coin = NewOptInt(e.Coin)
+	ret.CoinOpen = NewOptBool(e.CoinOpen)
+	ret.CoinAt = NewOptDateTime(e.CoinAt)
 	return &ret
 }
 

@@ -3819,6 +3819,10 @@ type UserMutation struct {
 	game_account        *bool
 	game_lv             *int
 	addgame_lv          *int
+	coin                *int
+	addcoin             *int
+	coin_open           *bool
+	coin_at             *time.Time
 	clearedFields       map[string]struct{}
 	card                map[int]struct{}
 	removedcard         map[int]struct{}
@@ -6521,6 +6525,174 @@ func (m *UserMutation) ResetGameLv() {
 	delete(m.clearedFields, user.FieldGameLv)
 }
 
+// SetCoin sets the "coin" field.
+func (m *UserMutation) SetCoin(i int) {
+	m.coin = &i
+	m.addcoin = nil
+}
+
+// Coin returns the value of the "coin" field in the mutation.
+func (m *UserMutation) Coin() (r int, exists bool) {
+	v := m.coin
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCoin returns the old "coin" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldCoin(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCoin is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCoin requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCoin: %w", err)
+	}
+	return oldValue.Coin, nil
+}
+
+// AddCoin adds i to the "coin" field.
+func (m *UserMutation) AddCoin(i int) {
+	if m.addcoin != nil {
+		*m.addcoin += i
+	} else {
+		m.addcoin = &i
+	}
+}
+
+// AddedCoin returns the value that was added to the "coin" field in this mutation.
+func (m *UserMutation) AddedCoin() (r int, exists bool) {
+	v := m.addcoin
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ClearCoin clears the value of the "coin" field.
+func (m *UserMutation) ClearCoin() {
+	m.coin = nil
+	m.addcoin = nil
+	m.clearedFields[user.FieldCoin] = struct{}{}
+}
+
+// CoinCleared returns if the "coin" field was cleared in this mutation.
+func (m *UserMutation) CoinCleared() bool {
+	_, ok := m.clearedFields[user.FieldCoin]
+	return ok
+}
+
+// ResetCoin resets all changes to the "coin" field.
+func (m *UserMutation) ResetCoin() {
+	m.coin = nil
+	m.addcoin = nil
+	delete(m.clearedFields, user.FieldCoin)
+}
+
+// SetCoinOpen sets the "coin_open" field.
+func (m *UserMutation) SetCoinOpen(b bool) {
+	m.coin_open = &b
+}
+
+// CoinOpen returns the value of the "coin_open" field in the mutation.
+func (m *UserMutation) CoinOpen() (r bool, exists bool) {
+	v := m.coin_open
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCoinOpen returns the old "coin_open" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldCoinOpen(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCoinOpen is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCoinOpen requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCoinOpen: %w", err)
+	}
+	return oldValue.CoinOpen, nil
+}
+
+// ClearCoinOpen clears the value of the "coin_open" field.
+func (m *UserMutation) ClearCoinOpen() {
+	m.coin_open = nil
+	m.clearedFields[user.FieldCoinOpen] = struct{}{}
+}
+
+// CoinOpenCleared returns if the "coin_open" field was cleared in this mutation.
+func (m *UserMutation) CoinOpenCleared() bool {
+	_, ok := m.clearedFields[user.FieldCoinOpen]
+	return ok
+}
+
+// ResetCoinOpen resets all changes to the "coin_open" field.
+func (m *UserMutation) ResetCoinOpen() {
+	m.coin_open = nil
+	delete(m.clearedFields, user.FieldCoinOpen)
+}
+
+// SetCoinAt sets the "coin_at" field.
+func (m *UserMutation) SetCoinAt(t time.Time) {
+	m.coin_at = &t
+}
+
+// CoinAt returns the value of the "coin_at" field in the mutation.
+func (m *UserMutation) CoinAt() (r time.Time, exists bool) {
+	v := m.coin_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCoinAt returns the old "coin_at" field's value of the User entity.
+// If the User object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *UserMutation) OldCoinAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCoinAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCoinAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCoinAt: %w", err)
+	}
+	return oldValue.CoinAt, nil
+}
+
+// ClearCoinAt clears the value of the "coin_at" field.
+func (m *UserMutation) ClearCoinAt() {
+	m.coin_at = nil
+	m.clearedFields[user.FieldCoinAt] = struct{}{}
+}
+
+// CoinAtCleared returns if the "coin_at" field was cleared in this mutation.
+func (m *UserMutation) CoinAtCleared() bool {
+	_, ok := m.clearedFields[user.FieldCoinAt]
+	return ok
+}
+
+// ResetCoinAt resets all changes to the "coin_at" field.
+func (m *UserMutation) ResetCoinAt() {
+	m.coin_at = nil
+	delete(m.clearedFields, user.FieldCoinAt)
+}
+
 // AddCardIDs adds the "card" edge to the Card entity by ids.
 func (m *UserMutation) AddCardIDs(ids ...int) {
 	if m.card == nil {
@@ -6663,7 +6835,7 @@ func (m *UserMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *UserMutation) Fields() []string {
-	fields := make([]string, 0, 47)
+	fields := make([]string, 0, 50)
 	if m.username != nil {
 		fields = append(fields, user.FieldUsername)
 	}
@@ -6805,6 +6977,15 @@ func (m *UserMutation) Fields() []string {
 	if m.game_lv != nil {
 		fields = append(fields, user.FieldGameLv)
 	}
+	if m.coin != nil {
+		fields = append(fields, user.FieldCoin)
+	}
+	if m.coin_open != nil {
+		fields = append(fields, user.FieldCoinOpen)
+	}
+	if m.coin_at != nil {
+		fields = append(fields, user.FieldCoinAt)
+	}
 	return fields
 }
 
@@ -6907,6 +7088,12 @@ func (m *UserMutation) Field(name string) (ent.Value, bool) {
 		return m.GameAccount()
 	case user.FieldGameLv:
 		return m.GameLv()
+	case user.FieldCoin:
+		return m.Coin()
+	case user.FieldCoinOpen:
+		return m.CoinOpen()
+	case user.FieldCoinAt:
+		return m.CoinAt()
 	}
 	return nil, false
 }
@@ -7010,6 +7197,12 @@ func (m *UserMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldGameAccount(ctx)
 	case user.FieldGameLv:
 		return m.OldGameLv(ctx)
+	case user.FieldCoin:
+		return m.OldCoin(ctx)
+	case user.FieldCoinOpen:
+		return m.OldCoinOpen(ctx)
+	case user.FieldCoinAt:
+		return m.OldCoinAt(ctx)
 	}
 	return nil, fmt.Errorf("unknown User field %s", name)
 }
@@ -7348,6 +7541,27 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetGameLv(v)
 		return nil
+	case user.FieldCoin:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCoin(v)
+		return nil
+	case user.FieldCoinOpen:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCoinOpen(v)
+		return nil
+	case user.FieldCoinAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCoinAt(v)
+		return nil
 	}
 	return fmt.Errorf("unknown User field %s", name)
 }
@@ -7401,6 +7615,9 @@ func (m *UserMutation) AddedFields() []string {
 	if m.addgame_lv != nil {
 		fields = append(fields, user.FieldGameLv)
 	}
+	if m.addcoin != nil {
+		fields = append(fields, user.FieldCoin)
+	}
 	return fields
 }
 
@@ -7439,6 +7656,8 @@ func (m *UserMutation) AddedField(name string) (ent.Value, bool) {
 		return m.AddedModelCriticalD()
 	case user.FieldGameLv:
 		return m.AddedGameLv()
+	case user.FieldCoin:
+		return m.AddedCoin()
 	}
 	return nil, false
 }
@@ -7552,6 +7771,13 @@ func (m *UserMutation) AddField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddGameLv(v)
+		return nil
+	case user.FieldCoin:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddCoin(v)
 		return nil
 	}
 	return fmt.Errorf("unknown User numeric field %s", name)
@@ -7695,6 +7921,15 @@ func (m *UserMutation) ClearedFields() []string {
 	}
 	if m.FieldCleared(user.FieldGameLv) {
 		fields = append(fields, user.FieldGameLv)
+	}
+	if m.FieldCleared(user.FieldCoin) {
+		fields = append(fields, user.FieldCoin)
+	}
+	if m.FieldCleared(user.FieldCoinOpen) {
+		fields = append(fields, user.FieldCoinOpen)
+	}
+	if m.FieldCleared(user.FieldCoinAt) {
+		fields = append(fields, user.FieldCoinAt)
 	}
 	return fields
 }
@@ -7845,6 +8080,15 @@ func (m *UserMutation) ClearField(name string) error {
 	case user.FieldGameLv:
 		m.ClearGameLv()
 		return nil
+	case user.FieldCoin:
+		m.ClearCoin()
+		return nil
+	case user.FieldCoinOpen:
+		m.ClearCoinOpen()
+		return nil
+	case user.FieldCoinAt:
+		m.ClearCoinAt()
+		return nil
 	}
 	return fmt.Errorf("unknown User nullable field %s", name)
 }
@@ -7993,6 +8237,15 @@ func (m *UserMutation) ResetField(name string) error {
 		return nil
 	case user.FieldGameLv:
 		m.ResetGameLv()
+		return nil
+	case user.FieldCoin:
+		m.ResetCoin()
+		return nil
+	case user.FieldCoinOpen:
+		m.ResetCoinOpen()
+		return nil
+	case user.FieldCoinAt:
+		m.ResetCoinAt()
 		return nil
 	}
 	return fmt.Errorf("unknown User field %s", name)

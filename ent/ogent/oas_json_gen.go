@@ -765,9 +765,27 @@ func (s *CardOwnerRead) encodeFields(e *jx.Encoder) {
 			s.GameLv.Encode(e)
 		}
 	}
+	{
+		if s.Coin.Set {
+			e.FieldStart("coin")
+			s.Coin.Encode(e)
+		}
+	}
+	{
+		if s.CoinOpen.Set {
+			e.FieldStart("coin_open")
+			s.CoinOpen.Encode(e)
+		}
+	}
+	{
+		if s.CoinAt.Set {
+			e.FieldStart("coin_at")
+			s.CoinAt.Encode(e, json.EncodeDateTime)
+		}
+	}
 }
 
-var jsonFieldsNameOfCardOwnerRead = [46]string{
+var jsonFieldsNameOfCardOwnerRead = [49]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -814,6 +832,9 @@ var jsonFieldsNameOfCardOwnerRead = [46]string{
 	43: "game_end",
 	44: "game_account",
 	45: "game_lv",
+	46: "coin",
+	47: "coin_open",
+	48: "coin_at",
 }
 
 // Decode decodes CardOwnerRead from json.
@@ -821,7 +842,7 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CardOwnerRead to nil")
 	}
-	var requiredBitSet [6]uint8
+	var requiredBitSet [7]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -1289,6 +1310,36 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"game_lv\"")
 			}
+		case "coin":
+			if err := func() error {
+				s.Coin.Reset()
+				if err := s.Coin.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin\"")
+			}
+		case "coin_open":
+			if err := func() error {
+				s.CoinOpen.Reset()
+				if err := s.CoinOpen.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_open\"")
+			}
+		case "coin_at":
+			if err := func() error {
+				s.CoinAt.Reset()
+				if err := s.CoinAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_at\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -1298,8 +1349,9 @@ func (s *CardOwnerRead) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [6]uint8{
+	for i, mask := range [7]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -2945,6 +2997,24 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Coin.Set {
+			e.FieldStart("coin")
+			s.Coin.Encode(e)
+		}
+	}
+	{
+		if s.CoinOpen.Set {
+			e.FieldStart("coin_open")
+			s.CoinOpen.Encode(e)
+		}
+	}
+	{
+		if s.CoinAt.Set {
+			e.FieldStart("coin_at")
+			s.CoinAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Card != nil {
 			e.FieldStart("card")
 			e.ArrStart()
@@ -2966,7 +3036,7 @@ func (s *CreateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfCreateUserReq = [49]string{
+var jsonFieldsNameOfCreateUserReq = [52]string{
 	0:  "username",
 	1:  "did",
 	2:  "member",
@@ -3014,8 +3084,11 @@ var jsonFieldsNameOfCreateUserReq = [49]string{
 	44: "game_end",
 	45: "game_account",
 	46: "game_lv",
-	47: "card",
-	48: "ue",
+	47: "coin",
+	48: "coin_open",
+	49: "coin_at",
+	50: "card",
+	51: "ue",
 }
 
 // Decode decodes CreateUserReq from json.
@@ -3500,6 +3573,36 @@ func (s *CreateUserReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"game_lv\"")
+			}
+		case "coin":
+			if err := func() error {
+				s.Coin.Reset()
+				if err := s.Coin.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin\"")
+			}
+		case "coin_open":
+			if err := func() error {
+				s.CoinOpen.Reset()
+				if err := s.CoinOpen.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_open\"")
+			}
+		case "coin_at":
+			if err := func() error {
+				s.CoinAt.Reset()
+				if err := s.CoinAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_at\"")
 			}
 		case "card":
 			if err := func() error {
@@ -4344,9 +4447,27 @@ func (s *GroupUsersList) encodeFields(e *jx.Encoder) {
 			s.GameLv.Encode(e)
 		}
 	}
+	{
+		if s.Coin.Set {
+			e.FieldStart("coin")
+			s.Coin.Encode(e)
+		}
+	}
+	{
+		if s.CoinOpen.Set {
+			e.FieldStart("coin_open")
+			s.CoinOpen.Encode(e)
+		}
+	}
+	{
+		if s.CoinAt.Set {
+			e.FieldStart("coin_at")
+			s.CoinAt.Encode(e, json.EncodeDateTime)
+		}
+	}
 }
 
-var jsonFieldsNameOfGroupUsersList = [46]string{
+var jsonFieldsNameOfGroupUsersList = [49]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -4393,6 +4514,9 @@ var jsonFieldsNameOfGroupUsersList = [46]string{
 	43: "game_end",
 	44: "game_account",
 	45: "game_lv",
+	46: "coin",
+	47: "coin_open",
+	48: "coin_at",
 }
 
 // Decode decodes GroupUsersList from json.
@@ -4400,7 +4524,7 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode GroupUsersList to nil")
 	}
-	var requiredBitSet [6]uint8
+	var requiredBitSet [7]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -4868,6 +4992,36 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"game_lv\"")
 			}
+		case "coin":
+			if err := func() error {
+				s.Coin.Reset()
+				if err := s.Coin.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin\"")
+			}
+		case "coin_open":
+			if err := func() error {
+				s.CoinOpen.Reset()
+				if err := s.CoinOpen.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_open\"")
+			}
+		case "coin_at":
+			if err := func() error {
+				s.CoinAt.Reset()
+				if err := s.CoinAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_at\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -4877,8 +5031,9 @@ func (s *GroupUsersList) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [6]uint8{
+	for i, mask := range [7]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -7014,9 +7169,27 @@ func (s *UeOwnerRead) encodeFields(e *jx.Encoder) {
 			s.GameLv.Encode(e)
 		}
 	}
+	{
+		if s.Coin.Set {
+			e.FieldStart("coin")
+			s.Coin.Encode(e)
+		}
+	}
+	{
+		if s.CoinOpen.Set {
+			e.FieldStart("coin_open")
+			s.CoinOpen.Encode(e)
+		}
+	}
+	{
+		if s.CoinAt.Set {
+			e.FieldStart("coin_at")
+			s.CoinAt.Encode(e, json.EncodeDateTime)
+		}
+	}
 }
 
-var jsonFieldsNameOfUeOwnerRead = [46]string{
+var jsonFieldsNameOfUeOwnerRead = [49]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -7063,6 +7236,9 @@ var jsonFieldsNameOfUeOwnerRead = [46]string{
 	43: "game_end",
 	44: "game_account",
 	45: "game_lv",
+	46: "coin",
+	47: "coin_open",
+	48: "coin_at",
 }
 
 // Decode decodes UeOwnerRead from json.
@@ -7070,7 +7246,7 @@ func (s *UeOwnerRead) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UeOwnerRead to nil")
 	}
-	var requiredBitSet [6]uint8
+	var requiredBitSet [7]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -7538,6 +7714,36 @@ func (s *UeOwnerRead) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"game_lv\"")
 			}
+		case "coin":
+			if err := func() error {
+				s.Coin.Reset()
+				if err := s.Coin.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin\"")
+			}
+		case "coin_open":
+			if err := func() error {
+				s.CoinOpen.Reset()
+				if err := s.CoinOpen.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_open\"")
+			}
+		case "coin_at":
+			if err := func() error {
+				s.CoinAt.Reset()
+				if err := s.CoinAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_at\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -7547,8 +7753,9 @@ func (s *UeOwnerRead) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [6]uint8{
+	for i, mask := range [7]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -9293,6 +9500,24 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Coin.Set {
+			e.FieldStart("coin")
+			s.Coin.Encode(e)
+		}
+	}
+	{
+		if s.CoinOpen.Set {
+			e.FieldStart("coin_open")
+			s.CoinOpen.Encode(e)
+		}
+	}
+	{
+		if s.CoinAt.Set {
+			e.FieldStart("coin_at")
+			s.CoinAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
 		if s.Card != nil {
 			e.FieldStart("card")
 			e.ArrStart()
@@ -9314,7 +9539,7 @@ func (s *UpdateUserReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfUpdateUserReq = [46]string{
+var jsonFieldsNameOfUpdateUserReq = [49]string{
 	0:  "did",
 	1:  "member",
 	2:  "book",
@@ -9359,8 +9584,11 @@ var jsonFieldsNameOfUpdateUserReq = [46]string{
 	41: "game_end",
 	42: "game_account",
 	43: "game_lv",
-	44: "card",
-	45: "ue",
+	44: "coin",
+	45: "coin_open",
+	46: "coin_at",
+	47: "card",
+	48: "ue",
 }
 
 // Decode decodes UpdateUserReq from json.
@@ -9810,6 +10038,36 @@ func (s *UpdateUserReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"game_lv\"")
+			}
+		case "coin":
+			if err := func() error {
+				s.Coin.Reset()
+				if err := s.Coin.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin\"")
+			}
+		case "coin_open":
+			if err := func() error {
+				s.CoinOpen.Reset()
+				if err := s.CoinOpen.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_open\"")
+			}
+		case "coin_at":
+			if err := func() error {
+				s.CoinAt.Reset()
+				if err := s.CoinAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_at\"")
 			}
 		case "card":
 			if err := func() error {
@@ -10390,9 +10648,27 @@ func (s *UserCreate) encodeFields(e *jx.Encoder) {
 			s.GameLv.Encode(e)
 		}
 	}
+	{
+		if s.Coin.Set {
+			e.FieldStart("coin")
+			s.Coin.Encode(e)
+		}
+	}
+	{
+		if s.CoinOpen.Set {
+			e.FieldStart("coin_open")
+			s.CoinOpen.Encode(e)
+		}
+	}
+	{
+		if s.CoinAt.Set {
+			e.FieldStart("coin_at")
+			s.CoinAt.Encode(e, json.EncodeDateTime)
+		}
+	}
 }
 
-var jsonFieldsNameOfUserCreate = [46]string{
+var jsonFieldsNameOfUserCreate = [49]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -10439,6 +10715,9 @@ var jsonFieldsNameOfUserCreate = [46]string{
 	43: "game_end",
 	44: "game_account",
 	45: "game_lv",
+	46: "coin",
+	47: "coin_open",
+	48: "coin_at",
 }
 
 // Decode decodes UserCreate from json.
@@ -10446,7 +10725,7 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserCreate to nil")
 	}
-	var requiredBitSet [6]uint8
+	var requiredBitSet [7]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -10914,6 +11193,36 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"game_lv\"")
 			}
+		case "coin":
+			if err := func() error {
+				s.Coin.Reset()
+				if err := s.Coin.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin\"")
+			}
+		case "coin_open":
+			if err := func() error {
+				s.CoinOpen.Reset()
+				if err := s.CoinOpen.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_open\"")
+			}
+		case "coin_at":
+			if err := func() error {
+				s.CoinAt.Reset()
+				if err := s.CoinAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_at\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -10923,8 +11232,9 @@ func (s *UserCreate) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [6]uint8{
+	for i, mask := range [7]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -11258,9 +11568,27 @@ func (s *UserList) encodeFields(e *jx.Encoder) {
 			s.GameLv.Encode(e)
 		}
 	}
+	{
+		if s.Coin.Set {
+			e.FieldStart("coin")
+			s.Coin.Encode(e)
+		}
+	}
+	{
+		if s.CoinOpen.Set {
+			e.FieldStart("coin_open")
+			s.CoinOpen.Encode(e)
+		}
+	}
+	{
+		if s.CoinAt.Set {
+			e.FieldStart("coin_at")
+			s.CoinAt.Encode(e, json.EncodeDateTime)
+		}
+	}
 }
 
-var jsonFieldsNameOfUserList = [46]string{
+var jsonFieldsNameOfUserList = [49]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -11307,6 +11635,9 @@ var jsonFieldsNameOfUserList = [46]string{
 	43: "game_end",
 	44: "game_account",
 	45: "game_lv",
+	46: "coin",
+	47: "coin_open",
+	48: "coin_at",
 }
 
 // Decode decodes UserList from json.
@@ -11314,7 +11645,7 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserList to nil")
 	}
-	var requiredBitSet [6]uint8
+	var requiredBitSet [7]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -11782,6 +12113,36 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"game_lv\"")
 			}
+		case "coin":
+			if err := func() error {
+				s.Coin.Reset()
+				if err := s.Coin.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin\"")
+			}
+		case "coin_open":
+			if err := func() error {
+				s.CoinOpen.Reset()
+				if err := s.CoinOpen.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_open\"")
+			}
+		case "coin_at":
+			if err := func() error {
+				s.CoinAt.Reset()
+				if err := s.CoinAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_at\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -11791,8 +12152,9 @@ func (s *UserList) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [6]uint8{
+	for i, mask := range [7]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -12126,9 +12488,27 @@ func (s *UserRead) encodeFields(e *jx.Encoder) {
 			s.GameLv.Encode(e)
 		}
 	}
+	{
+		if s.Coin.Set {
+			e.FieldStart("coin")
+			s.Coin.Encode(e)
+		}
+	}
+	{
+		if s.CoinOpen.Set {
+			e.FieldStart("coin_open")
+			s.CoinOpen.Encode(e)
+		}
+	}
+	{
+		if s.CoinAt.Set {
+			e.FieldStart("coin_at")
+			s.CoinAt.Encode(e, json.EncodeDateTime)
+		}
+	}
 }
 
-var jsonFieldsNameOfUserRead = [46]string{
+var jsonFieldsNameOfUserRead = [49]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -12175,6 +12555,9 @@ var jsonFieldsNameOfUserRead = [46]string{
 	43: "game_end",
 	44: "game_account",
 	45: "game_lv",
+	46: "coin",
+	47: "coin_open",
+	48: "coin_at",
 }
 
 // Decode decodes UserRead from json.
@@ -12182,7 +12565,7 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserRead to nil")
 	}
-	var requiredBitSet [6]uint8
+	var requiredBitSet [7]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -12650,6 +13033,36 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"game_lv\"")
 			}
+		case "coin":
+			if err := func() error {
+				s.Coin.Reset()
+				if err := s.Coin.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin\"")
+			}
+		case "coin_open":
+			if err := func() error {
+				s.CoinOpen.Reset()
+				if err := s.CoinOpen.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_open\"")
+			}
+		case "coin_at":
+			if err := func() error {
+				s.CoinAt.Reset()
+				if err := s.CoinAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_at\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -12659,8 +13072,9 @@ func (s *UserRead) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [6]uint8{
+	for i, mask := range [7]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -13382,9 +13796,27 @@ func (s *UserUpdate) encodeFields(e *jx.Encoder) {
 			s.GameLv.Encode(e)
 		}
 	}
+	{
+		if s.Coin.Set {
+			e.FieldStart("coin")
+			s.Coin.Encode(e)
+		}
+	}
+	{
+		if s.CoinOpen.Set {
+			e.FieldStart("coin_open")
+			s.CoinOpen.Encode(e)
+		}
+	}
+	{
+		if s.CoinAt.Set {
+			e.FieldStart("coin_at")
+			s.CoinAt.Encode(e, json.EncodeDateTime)
+		}
+	}
 }
 
-var jsonFieldsNameOfUserUpdate = [46]string{
+var jsonFieldsNameOfUserUpdate = [49]string{
 	0:  "id",
 	1:  "username",
 	2:  "did",
@@ -13431,6 +13863,9 @@ var jsonFieldsNameOfUserUpdate = [46]string{
 	43: "game_end",
 	44: "game_account",
 	45: "game_lv",
+	46: "coin",
+	47: "coin_open",
+	48: "coin_at",
 }
 
 // Decode decodes UserUpdate from json.
@@ -13438,7 +13873,7 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode UserUpdate to nil")
 	}
-	var requiredBitSet [6]uint8
+	var requiredBitSet [7]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -13906,6 +14341,36 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"game_lv\"")
 			}
+		case "coin":
+			if err := func() error {
+				s.Coin.Reset()
+				if err := s.Coin.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin\"")
+			}
+		case "coin_open":
+			if err := func() error {
+				s.CoinOpen.Reset()
+				if err := s.CoinOpen.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_open\"")
+			}
+		case "coin_at":
+			if err := func() error {
+				s.CoinAt.Reset()
+				if err := s.CoinAt.Decode(d, json.DecodeDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"coin_at\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -13915,8 +14380,9 @@ func (s *UserUpdate) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [6]uint8{
+	for i, mask := range [7]uint8{
 		0b00000011,
+		0b00000000,
 		0b00000000,
 		0b00000000,
 		0b00000000,

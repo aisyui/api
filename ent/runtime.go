@@ -185,4 +185,12 @@ func init() {
 	userDescGameAccount := userFields[45].Descriptor()
 	// user.DefaultGameAccount holds the default value on creation for the game_account field.
 	user.DefaultGameAccount = userDescGameAccount.Default.(bool)
+	// userDescCoinOpen is the schema descriptor for coin_open field.
+	userDescCoinOpen := userFields[48].Descriptor()
+	// user.DefaultCoinOpen holds the default value on creation for the coin_open field.
+	user.DefaultCoinOpen = userDescCoinOpen.Default.(bool)
+	// userDescCoinAt is the schema descriptor for coin_at field.
+	userDescCoinAt := userFields[49].Descriptor()
+	// user.DefaultCoinAt holds the default value on creation for the coin_at field.
+	user.DefaultCoinAt = userDescCoinAt.Default.(func() time.Time)
 }

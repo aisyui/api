@@ -217,6 +217,20 @@ func (User) Fields() []ent.Field {
 
 		field.Int("game_lv").
 		Optional(),
+
+		field.Int("coin").
+		Optional(),
+
+		field.Bool("coin_open").
+		Default(false).
+		Optional(),
+
+		field.Time("coin_at").
+		Optional().
+		Default(func() time.Time {
+			return time.Now().In(jst)
+		}),
+
 	}
 }
 

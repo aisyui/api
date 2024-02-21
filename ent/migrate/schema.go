@@ -129,7 +129,7 @@ var (
 		{Name: "ten_post", Type: field.TypeString, Nullable: true},
 		{Name: "ten_get", Type: field.TypeString, Nullable: true},
 		{Name: "ten_at", Type: field.TypeTime, Nullable: true},
-		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20240220"},
+		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20240222"},
 		{Name: "room", Type: field.TypeInt, Nullable: true},
 		{Name: "model", Type: field.TypeBool, Nullable: true},
 		{Name: "model_at", Type: field.TypeTime, Nullable: true},
@@ -144,6 +144,9 @@ var (
 		{Name: "game_end", Type: field.TypeBool, Nullable: true, Default: false},
 		{Name: "game_account", Type: field.TypeBool, Nullable: true, Default: false},
 		{Name: "game_lv", Type: field.TypeInt, Nullable: true},
+		{Name: "coin", Type: field.TypeInt, Nullable: true},
+		{Name: "coin_open", Type: field.TypeBool, Nullable: true, Default: false},
+		{Name: "coin_at", Type: field.TypeTime, Nullable: true},
 		{Name: "group_users", Type: field.TypeInt, Nullable: true},
 	}
 	// UsersTable holds the schema information for the "users" table.
@@ -154,7 +157,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "users_groups_users",
-				Columns:    []*schema.Column{UsersColumns[48]},
+				Columns:    []*schema.Column{UsersColumns[51]},
 				RefColumns: []*schema.Column{GroupsColumns[0]},
 				OnDelete:   schema.SetNull,
 			},

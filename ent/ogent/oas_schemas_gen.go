@@ -264,6 +264,9 @@ type CardOwnerRead struct {
 	GameEnd        OptBool     `json:"game_end"`
 	GameAccount    OptBool     `json:"game_account"`
 	GameLv         OptInt      `json:"game_lv"`
+	Coin           OptInt      `json:"coin"`
+	CoinOpen       OptBool     `json:"coin_open"`
+	CoinAt         OptDateTime `json:"coin_at"`
 }
 
 // GetID returns the value of ID.
@@ -496,6 +499,21 @@ func (s *CardOwnerRead) GetGameLv() OptInt {
 	return s.GameLv
 }
 
+// GetCoin returns the value of Coin.
+func (s *CardOwnerRead) GetCoin() OptInt {
+	return s.Coin
+}
+
+// GetCoinOpen returns the value of CoinOpen.
+func (s *CardOwnerRead) GetCoinOpen() OptBool {
+	return s.CoinOpen
+}
+
+// GetCoinAt returns the value of CoinAt.
+func (s *CardOwnerRead) GetCoinAt() OptDateTime {
+	return s.CoinAt
+}
+
 // SetID sets the value of ID.
 func (s *CardOwnerRead) SetID(val int) {
 	s.ID = val
@@ -724,6 +742,21 @@ func (s *CardOwnerRead) SetGameAccount(val OptBool) {
 // SetGameLv sets the value of GameLv.
 func (s *CardOwnerRead) SetGameLv(val OptInt) {
 	s.GameLv = val
+}
+
+// SetCoin sets the value of Coin.
+func (s *CardOwnerRead) SetCoin(val OptInt) {
+	s.Coin = val
+}
+
+// SetCoinOpen sets the value of CoinOpen.
+func (s *CardOwnerRead) SetCoinOpen(val OptBool) {
+	s.CoinOpen = val
+}
+
+// SetCoinAt sets the value of CoinAt.
+func (s *CardOwnerRead) SetCoinAt(val OptDateTime) {
+	s.CoinAt = val
 }
 
 func (*CardOwnerRead) readCardOwnerRes() {}
@@ -1369,6 +1402,9 @@ type CreateUserReq struct {
 	GameEnd        OptBool     `json:"game_end"`
 	GameAccount    OptBool     `json:"game_account"`
 	GameLv         OptInt      `json:"game_lv"`
+	Coin           OptInt      `json:"coin"`
+	CoinOpen       OptBool     `json:"coin_open"`
+	CoinAt         OptDateTime `json:"coin_at"`
 	Card           []int       `json:"card"`
 	Ue             []int       `json:"ue"`
 }
@@ -1606,6 +1642,21 @@ func (s *CreateUserReq) GetGameAccount() OptBool {
 // GetGameLv returns the value of GameLv.
 func (s *CreateUserReq) GetGameLv() OptInt {
 	return s.GameLv
+}
+
+// GetCoin returns the value of Coin.
+func (s *CreateUserReq) GetCoin() OptInt {
+	return s.Coin
+}
+
+// GetCoinOpen returns the value of CoinOpen.
+func (s *CreateUserReq) GetCoinOpen() OptBool {
+	return s.CoinOpen
+}
+
+// GetCoinAt returns the value of CoinAt.
+func (s *CreateUserReq) GetCoinAt() OptDateTime {
+	return s.CoinAt
 }
 
 // GetCard returns the value of Card.
@@ -1853,6 +1904,21 @@ func (s *CreateUserReq) SetGameLv(val OptInt) {
 	s.GameLv = val
 }
 
+// SetCoin sets the value of Coin.
+func (s *CreateUserReq) SetCoin(val OptInt) {
+	s.Coin = val
+}
+
+// SetCoinOpen sets the value of CoinOpen.
+func (s *CreateUserReq) SetCoinOpen(val OptBool) {
+	s.CoinOpen = val
+}
+
+// SetCoinAt sets the value of CoinAt.
+func (s *CreateUserReq) SetCoinAt(val OptDateTime) {
+	s.CoinAt = val
+}
+
 // SetCard sets the value of Card.
 func (s *CreateUserReq) SetCard(val []int) {
 	s.Card = val
@@ -2047,6 +2113,9 @@ type GroupUsersList struct {
 	GameEnd        OptBool     `json:"game_end"`
 	GameAccount    OptBool     `json:"game_account"`
 	GameLv         OptInt      `json:"game_lv"`
+	Coin           OptInt      `json:"coin"`
+	CoinOpen       OptBool     `json:"coin_open"`
+	CoinAt         OptDateTime `json:"coin_at"`
 }
 
 // GetID returns the value of ID.
@@ -2279,6 +2348,21 @@ func (s *GroupUsersList) GetGameLv() OptInt {
 	return s.GameLv
 }
 
+// GetCoin returns the value of Coin.
+func (s *GroupUsersList) GetCoin() OptInt {
+	return s.Coin
+}
+
+// GetCoinOpen returns the value of CoinOpen.
+func (s *GroupUsersList) GetCoinOpen() OptBool {
+	return s.CoinOpen
+}
+
+// GetCoinAt returns the value of CoinAt.
+func (s *GroupUsersList) GetCoinAt() OptDateTime {
+	return s.CoinAt
+}
+
 // SetID sets the value of ID.
 func (s *GroupUsersList) SetID(val int) {
 	s.ID = val
@@ -2507,6 +2591,21 @@ func (s *GroupUsersList) SetGameAccount(val OptBool) {
 // SetGameLv sets the value of GameLv.
 func (s *GroupUsersList) SetGameLv(val OptInt) {
 	s.GameLv = val
+}
+
+// SetCoin sets the value of Coin.
+func (s *GroupUsersList) SetCoin(val OptInt) {
+	s.Coin = val
+}
+
+// SetCoinOpen sets the value of CoinOpen.
+func (s *GroupUsersList) SetCoinOpen(val OptBool) {
+	s.CoinOpen = val
+}
+
+// SetCoinAt sets the value of CoinAt.
+func (s *GroupUsersList) SetCoinAt(val OptDateTime) {
+	s.CoinAt = val
 }
 
 type ListCardOKApplicationJSON []CardList
@@ -3419,6 +3518,9 @@ type UeOwnerRead struct {
 	GameEnd        OptBool     `json:"game_end"`
 	GameAccount    OptBool     `json:"game_account"`
 	GameLv         OptInt      `json:"game_lv"`
+	Coin           OptInt      `json:"coin"`
+	CoinOpen       OptBool     `json:"coin_open"`
+	CoinAt         OptDateTime `json:"coin_at"`
 }
 
 // GetID returns the value of ID.
@@ -3651,6 +3753,21 @@ func (s *UeOwnerRead) GetGameLv() OptInt {
 	return s.GameLv
 }
 
+// GetCoin returns the value of Coin.
+func (s *UeOwnerRead) GetCoin() OptInt {
+	return s.Coin
+}
+
+// GetCoinOpen returns the value of CoinOpen.
+func (s *UeOwnerRead) GetCoinOpen() OptBool {
+	return s.CoinOpen
+}
+
+// GetCoinAt returns the value of CoinAt.
+func (s *UeOwnerRead) GetCoinAt() OptDateTime {
+	return s.CoinAt
+}
+
 // SetID sets the value of ID.
 func (s *UeOwnerRead) SetID(val int) {
 	s.ID = val
@@ -3879,6 +3996,21 @@ func (s *UeOwnerRead) SetGameAccount(val OptBool) {
 // SetGameLv sets the value of GameLv.
 func (s *UeOwnerRead) SetGameLv(val OptInt) {
 	s.GameLv = val
+}
+
+// SetCoin sets the value of Coin.
+func (s *UeOwnerRead) SetCoin(val OptInt) {
+	s.Coin = val
+}
+
+// SetCoinOpen sets the value of CoinOpen.
+func (s *UeOwnerRead) SetCoinOpen(val OptBool) {
+	s.CoinOpen = val
+}
+
+// SetCoinAt sets the value of CoinAt.
+func (s *UeOwnerRead) SetCoinAt(val OptDateTime) {
+	s.CoinAt = val
 }
 
 func (*UeOwnerRead) readUeOwnerRes() {}
@@ -4664,6 +4796,9 @@ type UpdateUserReq struct {
 	GameEnd        OptBool     `json:"game_end"`
 	GameAccount    OptBool     `json:"game_account"`
 	GameLv         OptInt      `json:"game_lv"`
+	Coin           OptInt      `json:"coin"`
+	CoinOpen       OptBool     `json:"coin_open"`
+	CoinAt         OptDateTime `json:"coin_at"`
 	Card           []int       `json:"card"`
 	Ue             []int       `json:"ue"`
 }
@@ -4886,6 +5021,21 @@ func (s *UpdateUserReq) GetGameAccount() OptBool {
 // GetGameLv returns the value of GameLv.
 func (s *UpdateUserReq) GetGameLv() OptInt {
 	return s.GameLv
+}
+
+// GetCoin returns the value of Coin.
+func (s *UpdateUserReq) GetCoin() OptInt {
+	return s.Coin
+}
+
+// GetCoinOpen returns the value of CoinOpen.
+func (s *UpdateUserReq) GetCoinOpen() OptBool {
+	return s.CoinOpen
+}
+
+// GetCoinAt returns the value of CoinAt.
+func (s *UpdateUserReq) GetCoinAt() OptDateTime {
+	return s.CoinAt
 }
 
 // GetCard returns the value of Card.
@@ -5118,6 +5268,21 @@ func (s *UpdateUserReq) SetGameLv(val OptInt) {
 	s.GameLv = val
 }
 
+// SetCoin sets the value of Coin.
+func (s *UpdateUserReq) SetCoin(val OptInt) {
+	s.Coin = val
+}
+
+// SetCoinOpen sets the value of CoinOpen.
+func (s *UpdateUserReq) SetCoinOpen(val OptBool) {
+	s.CoinOpen = val
+}
+
+// SetCoinAt sets the value of CoinAt.
+func (s *UpdateUserReq) SetCoinAt(val OptDateTime) {
+	s.CoinAt = val
+}
+
 // SetCard sets the value of Card.
 func (s *UpdateUserReq) SetCard(val []int) {
 	s.Card = val
@@ -5279,6 +5444,9 @@ type UserCreate struct {
 	GameEnd        OptBool     `json:"game_end"`
 	GameAccount    OptBool     `json:"game_account"`
 	GameLv         OptInt      `json:"game_lv"`
+	Coin           OptInt      `json:"coin"`
+	CoinOpen       OptBool     `json:"coin_open"`
+	CoinAt         OptDateTime `json:"coin_at"`
 }
 
 // GetID returns the value of ID.
@@ -5511,6 +5679,21 @@ func (s *UserCreate) GetGameLv() OptInt {
 	return s.GameLv
 }
 
+// GetCoin returns the value of Coin.
+func (s *UserCreate) GetCoin() OptInt {
+	return s.Coin
+}
+
+// GetCoinOpen returns the value of CoinOpen.
+func (s *UserCreate) GetCoinOpen() OptBool {
+	return s.CoinOpen
+}
+
+// GetCoinAt returns the value of CoinAt.
+func (s *UserCreate) GetCoinAt() OptDateTime {
+	return s.CoinAt
+}
+
 // SetID sets the value of ID.
 func (s *UserCreate) SetID(val int) {
 	s.ID = val
@@ -5741,6 +5924,21 @@ func (s *UserCreate) SetGameLv(val OptInt) {
 	s.GameLv = val
 }
 
+// SetCoin sets the value of Coin.
+func (s *UserCreate) SetCoin(val OptInt) {
+	s.Coin = val
+}
+
+// SetCoinOpen sets the value of CoinOpen.
+func (s *UserCreate) SetCoinOpen(val OptBool) {
+	s.CoinOpen = val
+}
+
+// SetCoinAt sets the value of CoinAt.
+func (s *UserCreate) SetCoinAt(val OptDateTime) {
+	s.CoinAt = val
+}
+
 func (*UserCreate) createUserRes() {}
 
 // Ref: #/components/schemas/UserList
@@ -5791,6 +5989,9 @@ type UserList struct {
 	GameEnd        OptBool     `json:"game_end"`
 	GameAccount    OptBool     `json:"game_account"`
 	GameLv         OptInt      `json:"game_lv"`
+	Coin           OptInt      `json:"coin"`
+	CoinOpen       OptBool     `json:"coin_open"`
+	CoinAt         OptDateTime `json:"coin_at"`
 }
 
 // GetID returns the value of ID.
@@ -6023,6 +6224,21 @@ func (s *UserList) GetGameLv() OptInt {
 	return s.GameLv
 }
 
+// GetCoin returns the value of Coin.
+func (s *UserList) GetCoin() OptInt {
+	return s.Coin
+}
+
+// GetCoinOpen returns the value of CoinOpen.
+func (s *UserList) GetCoinOpen() OptBool {
+	return s.CoinOpen
+}
+
+// GetCoinAt returns the value of CoinAt.
+func (s *UserList) GetCoinAt() OptDateTime {
+	return s.CoinAt
+}
+
 // SetID sets the value of ID.
 func (s *UserList) SetID(val int) {
 	s.ID = val
@@ -6253,6 +6469,21 @@ func (s *UserList) SetGameLv(val OptInt) {
 	s.GameLv = val
 }
 
+// SetCoin sets the value of Coin.
+func (s *UserList) SetCoin(val OptInt) {
+	s.Coin = val
+}
+
+// SetCoinOpen sets the value of CoinOpen.
+func (s *UserList) SetCoinOpen(val OptBool) {
+	s.CoinOpen = val
+}
+
+// SetCoinAt sets the value of CoinAt.
+func (s *UserList) SetCoinAt(val OptDateTime) {
+	s.CoinAt = val
+}
+
 // Ref: #/components/schemas/UserRead
 type UserRead struct {
 	ID             int         `json:"id"`
@@ -6301,6 +6532,9 @@ type UserRead struct {
 	GameEnd        OptBool     `json:"game_end"`
 	GameAccount    OptBool     `json:"game_account"`
 	GameLv         OptInt      `json:"game_lv"`
+	Coin           OptInt      `json:"coin"`
+	CoinOpen       OptBool     `json:"coin_open"`
+	CoinAt         OptDateTime `json:"coin_at"`
 }
 
 // GetID returns the value of ID.
@@ -6533,6 +6767,21 @@ func (s *UserRead) GetGameLv() OptInt {
 	return s.GameLv
 }
 
+// GetCoin returns the value of Coin.
+func (s *UserRead) GetCoin() OptInt {
+	return s.Coin
+}
+
+// GetCoinOpen returns the value of CoinOpen.
+func (s *UserRead) GetCoinOpen() OptBool {
+	return s.CoinOpen
+}
+
+// GetCoinAt returns the value of CoinAt.
+func (s *UserRead) GetCoinAt() OptDateTime {
+	return s.CoinAt
+}
+
 // SetID sets the value of ID.
 func (s *UserRead) SetID(val int) {
 	s.ID = val
@@ -6761,6 +7010,21 @@ func (s *UserRead) SetGameAccount(val OptBool) {
 // SetGameLv sets the value of GameLv.
 func (s *UserRead) SetGameLv(val OptInt) {
 	s.GameLv = val
+}
+
+// SetCoin sets the value of Coin.
+func (s *UserRead) SetCoin(val OptInt) {
+	s.Coin = val
+}
+
+// SetCoinOpen sets the value of CoinOpen.
+func (s *UserRead) SetCoinOpen(val OptBool) {
+	s.CoinOpen = val
+}
+
+// SetCoinAt sets the value of CoinAt.
+func (s *UserRead) SetCoinAt(val OptDateTime) {
+	s.CoinAt = val
 }
 
 func (*UserRead) readUserRes() {}
@@ -7015,6 +7279,9 @@ type UserUpdate struct {
 	GameEnd        OptBool     `json:"game_end"`
 	GameAccount    OptBool     `json:"game_account"`
 	GameLv         OptInt      `json:"game_lv"`
+	Coin           OptInt      `json:"coin"`
+	CoinOpen       OptBool     `json:"coin_open"`
+	CoinAt         OptDateTime `json:"coin_at"`
 }
 
 // GetID returns the value of ID.
@@ -7247,6 +7514,21 @@ func (s *UserUpdate) GetGameLv() OptInt {
 	return s.GameLv
 }
 
+// GetCoin returns the value of Coin.
+func (s *UserUpdate) GetCoin() OptInt {
+	return s.Coin
+}
+
+// GetCoinOpen returns the value of CoinOpen.
+func (s *UserUpdate) GetCoinOpen() OptBool {
+	return s.CoinOpen
+}
+
+// GetCoinAt returns the value of CoinAt.
+func (s *UserUpdate) GetCoinAt() OptDateTime {
+	return s.CoinAt
+}
+
 // SetID sets the value of ID.
 func (s *UserUpdate) SetID(val int) {
 	s.ID = val
@@ -7475,6 +7757,21 @@ func (s *UserUpdate) SetGameAccount(val OptBool) {
 // SetGameLv sets the value of GameLv.
 func (s *UserUpdate) SetGameLv(val OptInt) {
 	s.GameLv = val
+}
+
+// SetCoin sets the value of Coin.
+func (s *UserUpdate) SetCoin(val OptInt) {
+	s.Coin = val
+}
+
+// SetCoinOpen sets the value of CoinOpen.
+func (s *UserUpdate) SetCoinOpen(val OptBool) {
+	s.CoinOpen = val
+}
+
+// SetCoinAt sets the value of CoinAt.
+func (s *UserUpdate) SetCoinAt(val OptDateTime) {
+	s.CoinAt = val
 }
 
 func (*UserUpdate) updateUserRes() {}
