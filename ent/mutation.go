@@ -3,15 +3,15 @@
 package ent
 
 import (
+	"api/ent/card"
+	"api/ent/group"
+	"api/ent/predicate"
+	"api/ent/ue"
+	"api/ent/user"
 	"context"
 	"errors"
 	"fmt"
 	"sync"
-	"t/ent/card"
-	"t/ent/group"
-	"t/ent/predicate"
-	"t/ent/ue"
-	"t/ent/user"
 	"time"
 
 	"entgo.io/ent"

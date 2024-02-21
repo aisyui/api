@@ -8,12 +8,12 @@ import (
 	"fmt"
 	"log"
 
-	"t/ent/migrate"
+	"api/ent/migrate"
 
-	"t/ent/card"
-	"t/ent/group"
-	"t/ent/ue"
-	"t/ent/user"
+	"api/ent/card"
+	"api/ent/group"
+	"api/ent/ue"
+	"api/ent/user"
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect"

@@ -3,10 +3,10 @@
 package ent
 
 import (
+	"api/ent/ue"
+	"api/ent/user"
 	"fmt"
 	"strings"
-	"t/ent/ue"
-	"t/ent/user"
 	"time"
 
 	"entgo.io/ent/dialect/sql"

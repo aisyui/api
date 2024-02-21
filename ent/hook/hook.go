@@ -3,9 +3,9 @@
 package hook
 
 import (
+	"api/ent"
 	"context"
 	"fmt"
-	"t/ent"
 )
 
 // The CardFunc type is an adapter to allow the use of ordinary

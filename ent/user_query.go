@@ -3,14 +3,14 @@
 package ent
 
 import (
+	"api/ent/card"
+	"api/ent/predicate"
+	"api/ent/ue"
+	"api/ent/user"
 	"context"
 	"database/sql/driver"
 	"fmt"
 	"math"
-	"t/ent/card"
-	"t/ent/predicate"
-	"t/ent/ue"
-	"t/ent/user"
 
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"

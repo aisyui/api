@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"t/ent"
-	"t/ent/ogent"
+	"api/ent"
+	"api/ent/ogent"
 	"entgo.io/ent/dialect"
 	_ "github.com/mattn/go-sqlite3"
 	"entgo.io/ent/dialect/sql/schema"

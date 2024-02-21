@@ -6,11 +6,11 @@ import (
 	"context"
 	"net/http"
 
-	"t/ent"
-	"t/ent/card"
-	"t/ent/group"
-	"t/ent/ue"
-	"t/ent/user"
+	"api/ent"
+	"api/ent/card"
+	"api/ent/group"
+	"api/ent/ue"
+	"api/ent/user"
 	"os"
 	"github.com/go-faster/jx"
 )

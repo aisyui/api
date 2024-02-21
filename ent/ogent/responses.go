@@ -2,7 +2,7 @@
 
 package ogent
 
-import "t/ent"
+import "api/ent"
 
 func NewCardCreate(e *ent.Card) *CardCreate {
 	if e == nil {

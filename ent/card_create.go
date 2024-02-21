@@ -3,11 +3,11 @@
 package ent
 
 import (
+	"api/ent/card"
+	"api/ent/user"
 	"context"
 	"errors"
 	"fmt"
-	"t/ent/card"
-	"t/ent/user"
 	"time"
 
 	"entgo.io/ent/dialect/sql/sqlgraph"

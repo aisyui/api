@@ -3,14 +3,14 @@
 package ent
 
 import (
+	"api/ent/card"
+	"api/ent/group"
+	"api/ent/ue"
+	"api/ent/user"
 	"context"
 	"errors"
 	"fmt"
 	"reflect"
-	"t/ent/card"
-	"t/ent/group"
-	"t/ent/ue"
-	"t/ent/user"
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"

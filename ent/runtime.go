@@ -3,11 +3,11 @@
 package ent
 
 import (
-	"t/ent/card"
-	"t/ent/group"
-	"t/ent/schema"
-	"t/ent/ue"
-	"t/ent/user"
+	"api/ent/card"
+	"api/ent/group"
+	"api/ent/schema"
+	"api/ent/ue"
+	"api/ent/user"
 	"time"
 )
 

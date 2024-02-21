@@ -3,7 +3,7 @@
 package group
 
 import (
-	"t/ent/predicate"
+	"api/ent/predicate"
 
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
