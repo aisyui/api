@@ -7,3 +7,4 @@ tmp/card_day.zsh
 tmp/card_delete.zsh
 memo.md
 api
+**.DS_Store
