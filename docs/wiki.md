@@ -30,4 +30,3 @@ cd openapi
 cargo build
 ```
 
-
