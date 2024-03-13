@@ -8,3 +8,12 @@ tmp/card_delete.zsh
 memo.md
 api
 **.DS_Store
+node_modules
+target
+pnpm-lock.yaml
+
+**Cargo.lock
+
+*/target/
+*/**/*.rs.bk
+*/Cargo.lock
