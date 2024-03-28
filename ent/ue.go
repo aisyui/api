@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
 )
 
@@ -57,8 +58,9 @@ type Ue struct {
 	CreatedAt time.Time `json:"created_at,omitempty"`
 	// Edges holds the relations/edges for other nodes in the graph.
 	// The values are being populated by the UeQuery when eager-loading is set.
-	Edges   UeEdges `json:"edges"`
-	user_ue *int
+	Edges        UeEdges `json:"edges"`
+	user_ue      *int
+	selectValues sql.SelectValues
 }
 
 // UeEdges holds the relations/edges for other nodes in the graph.
@@ -99,7 +101,7 @@ func (*Ue) scanValues(columns []string) ([]any, error) {
 		case ue.ForeignKeys[0]: // user_ue
 			values[i] = new(sql.NullInt64)
 		default:
-			return nil, fmt.Errorf("unexpected column %q for type Ue", columns[i])
+			values[i] = new(sql.UnknownType)
 		}
 	}
 	return values, nil
@@ -240,9 +242,17 @@ func (u *Ue) assignValues(columns []string, values []any) error {
 				u.user_ue = new(int)
 				*u.user_ue = int(value.Int64)
 			}
+		default:
+			u.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
+}
+
+// Value returns the ent.Value that was dynamically selected and assigned to the Ue.
+// This includes values selected through modifiers, order, etc.
+func (u *Ue) Value(name string) (ent.Value, error) {
+	return u.selectValues.Get(name)
 }
 
 // QueryOwner queries the "owner" edge of the Ue entity.

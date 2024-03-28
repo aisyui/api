@@ -129,7 +129,7 @@ var (
 		{Name: "ten_post", Type: field.TypeString, Nullable: true},
 		{Name: "ten_get", Type: field.TypeString, Nullable: true},
 		{Name: "ten_at", Type: field.TypeTime, Nullable: true},
-		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20240222"},
+		{Name: "next", Type: field.TypeString, Nullable: true, Default: "20240327"},
 		{Name: "room", Type: field.TypeInt, Nullable: true},
 		{Name: "model", Type: field.TypeBool, Nullable: true},
 		{Name: "model_at", Type: field.TypeTime, Nullable: true},

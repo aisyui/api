@@ -4,6 +4,9 @@ package ue
 
 import (
 	"time"
+
+	"entgo.io/ent/dialect/sql"
+	"entgo.io/ent/dialect/sql/sqlgraph"
 )
 
 const (
@@ -119,3 +122,120 @@ var (
 	// DefaultCreatedAt holds the default value on creation for the "created_at" field.
 	DefaultCreatedAt func() time.Time
 )
+
+// OrderOption defines the ordering options for the Ue queries.
+type OrderOption func(*sql.Selector)
+
+// ByID orders the results by the id field.
+func ByID(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldID, opts...).ToFunc()
+}
+
+// ByLimit orders the results by the limit field.
+func ByLimit(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldLimit, opts...).ToFunc()
+}
+
+// ByLimitBoss orders the results by the limit_boss field.
+func ByLimitBoss(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldLimitBoss, opts...).ToFunc()
+}
+
+// ByLimitItem orders the results by the limit_item field.
+func ByLimitItem(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldLimitItem, opts...).ToFunc()
+}
+
+// ByPassword orders the results by the password field.
+func ByPassword(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldPassword, opts...).ToFunc()
+}
+
+// ByLv orders the results by the lv field.
+func ByLv(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldLv, opts...).ToFunc()
+}
+
+// ByLvPoint orders the results by the lv_point field.
+func ByLvPoint(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldLvPoint, opts...).ToFunc()
+}
+
+// ByModel orders the results by the model field.
+func ByModel(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldModel, opts...).ToFunc()
+}
+
+// BySword orders the results by the sword field.
+func BySword(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldSword, opts...).ToFunc()
+}
+
+// ByCard orders the results by the card field.
+func ByCard(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCard, opts...).ToFunc()
+}
+
+// ByMode orders the results by the mode field.
+func ByMode(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldMode, opts...).ToFunc()
+}
+
+// ByToken orders the results by the token field.
+func ByToken(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldToken, opts...).ToFunc()
+}
+
+// ByCp orders the results by the cp field.
+func ByCp(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCp, opts...).ToFunc()
+}
+
+// ByCount orders the results by the count field.
+func ByCount(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCount, opts...).ToFunc()
+}
+
+// ByLocationX orders the results by the location_x field.
+func ByLocationX(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldLocationX, opts...).ToFunc()
+}
+
+// ByLocationY orders the results by the location_y field.
+func ByLocationY(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldLocationY, opts...).ToFunc()
+}
+
+// ByLocationZ orders the results by the location_z field.
+func ByLocationZ(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldLocationZ, opts...).ToFunc()
+}
+
+// ByLocationN orders the results by the location_n field.
+func ByLocationN(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldLocationN, opts...).ToFunc()
+}
+
+// ByAuthor orders the results by the author field.
+func ByAuthor(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldAuthor, opts...).ToFunc()
+}
+
+// ByCreatedAt orders the results by the created_at field.
+func ByCreatedAt(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCreatedAt, opts...).ToFunc()
+}
+
+// ByOwnerField orders the results by owner field.
+func ByOwnerField(field string, opts ...sql.OrderTermOption) OrderOption {
+	return func(s *sql.Selector) {
+		sqlgraph.OrderByNeighborTerms(s, newOwnerStep(), sql.OrderByField(field, opts...))
+	}
+}
+func newOwnerStep() *sqlgraph.Step {
+	return sqlgraph.NewStep(
+		sqlgraph.From(Table, FieldID),
+		sqlgraph.To(OwnerInverseTable, FieldID),
+		sqlgraph.Edge(sqlgraph.M2O, true, OwnerTable, OwnerColumn),
+	)
+}

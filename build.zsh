@@ -4,7 +4,8 @@ d=${0:a:h}
 cd $d
 su=5000
 
-go generate ./...
+go1.21.8 generate ./...
+#go generate ./...
 cp -rf $d/ent/openapi.json $d/tmp/
 
 case $OSTYPE in

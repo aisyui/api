@@ -2574,11 +2574,7 @@ func HasCard() predicate.User {
 // HasCardWith applies the HasEdge predicate on the "card" edge with a given conditions (other predicates).
 func HasCardWith(preds ...predicate.Card) predicate.User {
 	return predicate.User(func(s *sql.Selector) {
-		step := sqlgraph.NewStep(
-			sqlgraph.From(Table, FieldID),
-			sqlgraph.To(CardInverseTable, FieldID),
-			sqlgraph.Edge(sqlgraph.O2M, false, CardTable, CardColumn),
-		)
+		step := newCardStep()
 		sqlgraph.HasNeighborsWith(s, step, func(s *sql.Selector) {
 			for _, p := range preds {
 				p(s)
@@ -2601,11 +2597,7 @@ func HasUe() predicate.User {
 // HasUeWith applies the HasEdge predicate on the "ue" edge with a given conditions (other predicates).
 func HasUeWith(preds ...predicate.Ue) predicate.User {
 	return predicate.User(func(s *sql.Selector) {
-		step := sqlgraph.NewStep(
-			sqlgraph.From(Table, FieldID),
-			sqlgraph.To(UeInverseTable, FieldID),
-			sqlgraph.Edge(sqlgraph.O2M, false, UeTable, UeColumn),
-		)
+		step := newUeStep()
 		sqlgraph.HasNeighborsWith(s, step, func(s *sql.Selector) {
 			for _, p := range preds {
 				p(s)

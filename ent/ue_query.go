@@ -19,7 +19,7 @@ import (
 type UeQuery struct {
 	config
 	ctx        *QueryContext
-	order      []OrderFunc
+	order      []ue.OrderOption
 	inters     []Interceptor
 	predicates []predicate.Ue
 	withOwner  *UserQuery
@@ -55,7 +55,7 @@ func (uq *UeQuery) Unique(unique bool) *UeQuery {
 }
 
 // Order specifies how the records should be ordered.
-func (uq *UeQuery) Order(o ...OrderFunc) *UeQuery {
+func (uq *UeQuery) Order(o ...ue.OrderOption) *UeQuery {
 	uq.order = append(uq.order, o...)
 	return uq
 }
@@ -271,7 +271,7 @@ func (uq *UeQuery) Clone() *UeQuery {
 	return &UeQuery{
 		config:     uq.config,
 		ctx:        uq.ctx.Clone(),
-		order:      append([]OrderFunc{}, uq.order...),
+		order:      append([]ue.OrderOption{}, uq.order...),
 		inters:     append([]Interceptor{}, uq.inters...),
 		predicates: append([]predicate.Ue{}, uq.predicates...),
 		withOwner:  uq.withOwner.Clone(),

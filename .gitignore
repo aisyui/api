@@ -8,3 +8,6 @@ tmp/card_delete.zsh
 memo.md
 api
 **.DS_Store
+node_modules
+*.lock
+target
