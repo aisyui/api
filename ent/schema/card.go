@@ -30,35 +30,12 @@ func (Card) Fields() []ent.Field {
 		field.Int("card").
 		DefaultFunc(func() int {
 			rand.Seed(time.Now().UnixNano())
-			var a = rand.Intn(10)
+			var a = rand.Intn(20)
 			if a == 1 {
-				card = rand.Intn(16)
+				card = rand.Intn(3) + 123
 			} else {
 				card = 0
 			}
-
-			if card == 13 {
-				card = 29
-			}
-
-			// 2023/04/09 premium card id:15
-			if card == 15 {
-				card = 3
-			}
-
-			if card == 16 {
-				card = 4
-			}
-
-			if card == 17 {
-				card = 5
-			}
-
-			if card == 18 {
-				card = 6
-			}			
-
-			//var card = rand.Intn(91)
 			return card
 		}).
 		Optional(),
@@ -66,7 +43,7 @@ func (Card) Fields() []ent.Field {
 		field.String("skill").
 		DefaultFunc(func() string {
 			rand.Seed(time.Now().UnixNano())
-			var a = rand.Intn(12)
+			var a = rand.Intn(30)
 			if a == 1 {
 				skill = "critical"
 			} else {
@@ -83,7 +60,7 @@ func (Card) Fields() []ent.Field {
 		//Immutable().
 		DefaultFunc(func() string {
 			rand.Seed(time.Now().UnixNano())
-			var a = rand.Intn(10)
+			var a = rand.Intn(40)
 			if a == 1 {
 				super = "super"
 			} else {
